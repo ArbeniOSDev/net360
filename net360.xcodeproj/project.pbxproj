@@ -11,6 +11,26 @@
 		F4EF3BCA2C47E36C002010E6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF3BC92C47E36C002010E6 /* ContentView.swift */; };
 		F4EF3BCC2C47E36D002010E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4EF3BCB2C47E36D002010E6 /* Assets.xcassets */; };
 		F4EF3BCF2C47E36D002010E6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4EF3BCE2C47E36D002010E6 /* Preview Assets.xcassets */; };
+		F4EF3BD62C47E4FA002010E6 /* CustomDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF3BD52C47E4FA002010E6 /* CustomDropDown.swift */; };
+		F4EF3BD82C47E51C002010E6 /* DateFieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF3BD72C47E51C002010E6 /* DateFieldValidator.swift */; };
+		F4EF3BDB2C47E545002010E6 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF3BDA2C47E545002010E6 /* TextStyles.swift */; };
+		F4EF3BE62C47E579002010E6 /* Ubuntu-LI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4EF3BDD2C47E579002010E6 /* Ubuntu-LI.ttf */; };
+		F4EF3BE72C47E579002010E6 /* Ubuntu-MI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4EF3BDE2C47E579002010E6 /* Ubuntu-MI.ttf */; };
+		F4EF3BE82C47E579002010E6 /* Ubuntu-RI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4EF3BDF2C47E579002010E6 /* Ubuntu-RI.ttf */; };
+		F4EF3BE92C47E579002010E6 /* Ubuntu-L.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4EF3BE02C47E579002010E6 /* Ubuntu-L.ttf */; };
+		F4EF3BEA2C47E579002010E6 /* Ubuntu-B.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4EF3BE12C47E579002010E6 /* Ubuntu-B.ttf */; };
+		F4EF3BEB2C47E579002010E6 /* Ubuntu-C.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4EF3BE22C47E579002010E6 /* Ubuntu-C.ttf */; };
+		F4EF3BEC2C47E579002010E6 /* Ubuntu-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4EF3BE32C47E579002010E6 /* Ubuntu-R.ttf */; };
+		F4EF3BED2C47E579002010E6 /* Ubuntu-M.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4EF3BE42C47E579002010E6 /* Ubuntu-M.ttf */; };
+		F4EF3BEE2C47E579002010E6 /* Ubuntu-BI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4EF3BE52C47E579002010E6 /* Ubuntu-BI.ttf */; };
+		F4EF3BF02C47E58D002010E6 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF3BEF2C47E58D002010E6 /* FontExtension.swift */; };
+		F4EF3BF22C47E5BE002010E6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF3BF12C47E5BE002010E6 /* Colors.swift */; };
+		F4EF3BF52C47E6BC002010E6 /* LayoutConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF3BF42C47E6BC002010E6 /* LayoutConstants.swift */; };
+		F4EF3BF72C47E6EA002010E6 /* Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF3BF62C47E6EA002010E6 /* Modifier.swift */; };
+		F4EF3BF92C47E717002010E6 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF3BF82C47E717002010E6 /* View.swift */; };
+		F4EF3BFB2C47E76B002010E6 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF3BFA2C47E76B002010E6 /* Images.swift */; };
+		F4EF3BFD2C47E8BE002010E6 /* DeviceResolutionResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF3BFC2C47E8BE002010E6 /* DeviceResolutionResolver.swift */; };
+		F4EF3C002C47ED2D002010E6 /* EventListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF3BFF2C47ED2D002010E6 /* EventListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +39,26 @@
 		F4EF3BC92C47E36C002010E6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F4EF3BCB2C47E36D002010E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4EF3BCE2C47E36D002010E6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F4EF3BD52C47E4FA002010E6 /* CustomDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropDown.swift; sourceTree = "<group>"; };
+		F4EF3BD72C47E51C002010E6 /* DateFieldValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFieldValidator.swift; sourceTree = "<group>"; };
+		F4EF3BDA2C47E545002010E6 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
+		F4EF3BDD2C47E579002010E6 /* Ubuntu-LI.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-LI.ttf"; sourceTree = "<group>"; };
+		F4EF3BDE2C47E579002010E6 /* Ubuntu-MI.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-MI.ttf"; sourceTree = "<group>"; };
+		F4EF3BDF2C47E579002010E6 /* Ubuntu-RI.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-RI.ttf"; sourceTree = "<group>"; };
+		F4EF3BE02C47E579002010E6 /* Ubuntu-L.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-L.ttf"; sourceTree = "<group>"; };
+		F4EF3BE12C47E579002010E6 /* Ubuntu-B.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-B.ttf"; sourceTree = "<group>"; };
+		F4EF3BE22C47E579002010E6 /* Ubuntu-C.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-C.ttf"; sourceTree = "<group>"; };
+		F4EF3BE32C47E579002010E6 /* Ubuntu-R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-R.ttf"; sourceTree = "<group>"; };
+		F4EF3BE42C47E579002010E6 /* Ubuntu-M.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-M.ttf"; sourceTree = "<group>"; };
+		F4EF3BE52C47E579002010E6 /* Ubuntu-BI.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-BI.ttf"; sourceTree = "<group>"; };
+		F4EF3BEF2C47E58D002010E6 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
+		F4EF3BF12C47E5BE002010E6 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		F4EF3BF42C47E6BC002010E6 /* LayoutConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutConstants.swift; sourceTree = "<group>"; };
+		F4EF3BF62C47E6EA002010E6 /* Modifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifier.swift; sourceTree = "<group>"; };
+		F4EF3BF82C47E717002010E6 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		F4EF3BFA2C47E76B002010E6 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		F4EF3BFC2C47E8BE002010E6 /* DeviceResolutionResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceResolutionResolver.swift; sourceTree = "<group>"; };
+		F4EF3BFF2C47ED2D002010E6 /* EventListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +91,16 @@
 		F4EF3BC62C47E36C002010E6 /* net360 */ = {
 			isa = PBXGroup;
 			children = (
+				F4EF3BFE2C47ED17002010E6 /* View */,
+				F4EF3BF32C47E6AA002010E6 /* Utilities */,
+				F4EF3BDC2C47E566002010E6 /* Font */,
+				F4EF3BD92C47E537002010E6 /* Extensions */,
 				F4EF3BC72C47E36C002010E6 /* net360App.swift */,
 				F4EF3BC92C47E36C002010E6 /* ContentView.swift */,
 				F4EF3BCB2C47E36D002010E6 /* Assets.xcassets */,
 				F4EF3BCD2C47E36D002010E6 /* Preview Content */,
+				F4EF3BD52C47E4FA002010E6 /* CustomDropDown.swift */,
+				F4EF3BD72C47E51C002010E6 /* DateFieldValidator.swift */,
 			);
 			path = net360;
 			sourceTree = "<group>";
@@ -65,6 +111,52 @@
 				F4EF3BCE2C47E36D002010E6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F4EF3BD92C47E537002010E6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F4EF3BDA2C47E545002010E6 /* TextStyles.swift */,
+				F4EF3BEF2C47E58D002010E6 /* FontExtension.swift */,
+				F4EF3BF12C47E5BE002010E6 /* Colors.swift */,
+				F4EF3BF82C47E717002010E6 /* View.swift */,
+				F4EF3BFA2C47E76B002010E6 /* Images.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F4EF3BDC2C47E566002010E6 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				F4EF3BE12C47E579002010E6 /* Ubuntu-B.ttf */,
+				F4EF3BE52C47E579002010E6 /* Ubuntu-BI.ttf */,
+				F4EF3BE22C47E579002010E6 /* Ubuntu-C.ttf */,
+				F4EF3BE02C47E579002010E6 /* Ubuntu-L.ttf */,
+				F4EF3BDD2C47E579002010E6 /* Ubuntu-LI.ttf */,
+				F4EF3BE42C47E579002010E6 /* Ubuntu-M.ttf */,
+				F4EF3BDE2C47E579002010E6 /* Ubuntu-MI.ttf */,
+				F4EF3BE32C47E579002010E6 /* Ubuntu-R.ttf */,
+				F4EF3BDF2C47E579002010E6 /* Ubuntu-RI.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		F4EF3BF32C47E6AA002010E6 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F4EF3BF42C47E6BC002010E6 /* LayoutConstants.swift */,
+				F4EF3BF62C47E6EA002010E6 /* Modifier.swift */,
+				F4EF3BFC2C47E8BE002010E6 /* DeviceResolutionResolver.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		F4EF3BFE2C47ED17002010E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F4EF3BFF2C47ED2D002010E6 /* EventListCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,8 +217,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4EF3BE92C47E579002010E6 /* Ubuntu-L.ttf in Resources */,
+				F4EF3BED2C47E579002010E6 /* Ubuntu-M.ttf in Resources */,
+				F4EF3BEE2C47E579002010E6 /* Ubuntu-BI.ttf in Resources */,
+				F4EF3BE62C47E579002010E6 /* Ubuntu-LI.ttf in Resources */,
+				F4EF3BE82C47E579002010E6 /* Ubuntu-RI.ttf in Resources */,
+				F4EF3BEB2C47E579002010E6 /* Ubuntu-C.ttf in Resources */,
+				F4EF3BEA2C47E579002010E6 /* Ubuntu-B.ttf in Resources */,
 				F4EF3BCF2C47E36D002010E6 /* Preview Assets.xcassets in Resources */,
+				F4EF3BEC2C47E579002010E6 /* Ubuntu-R.ttf in Resources */,
 				F4EF3BCC2C47E36D002010E6 /* Assets.xcassets in Resources */,
+				F4EF3BE72C47E579002010E6 /* Ubuntu-MI.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +238,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4EF3BF02C47E58D002010E6 /* FontExtension.swift in Sources */,
+				F4EF3BD62C47E4FA002010E6 /* CustomDropDown.swift in Sources */,
+				F4EF3BF92C47E717002010E6 /* View.swift in Sources */,
+				F4EF3BFB2C47E76B002010E6 /* Images.swift in Sources */,
 				F4EF3BCA2C47E36C002010E6 /* ContentView.swift in Sources */,
+				F4EF3BF52C47E6BC002010E6 /* LayoutConstants.swift in Sources */,
+				F4EF3BF22C47E5BE002010E6 /* Colors.swift in Sources */,
+				F4EF3BDB2C47E545002010E6 /* TextStyles.swift in Sources */,
 				F4EF3BC82C47E36C002010E6 /* net360App.swift in Sources */,
+				F4EF3BD82C47E51C002010E6 /* DateFieldValidator.swift in Sources */,
+				F4EF3BF72C47E6EA002010E6 /* Modifier.swift in Sources */,
+				F4EF3BFD2C47E8BE002010E6 /* DeviceResolutionResolver.swift in Sources */,
+				F4EF3C002C47ED2D002010E6 /* EventListCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
