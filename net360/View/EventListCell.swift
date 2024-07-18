@@ -8,27 +8,34 @@
 import SwiftUI
 
 struct EventListCell: View {
+    @Binding var event: Event
     @State private var isChecked = false
-    let index: Int
-       
+    @ObservedObject var viewModel: ContentViewModel
+    
     var body: some View {
         HStack(alignment: .center) {
-            Text("Arosa Classic Car")
+            Text(event.name)
                 .frame(width: 165, alignment: .leading)
                 .lineLimit(nil)
                 .padding(.leading, 6)
-            Text("5")
+            Text("\(event.count)")
                 .frame(width: 55, alignment: .center)
             Button(action: {
-                // Action for button
             }) {
                 HStack {
                     Spacer()
-                    ThreeDotsButton()
+                    ThreeDotsButton {
+                        viewModel.selectedEventID = event.id
+                        print("CheckBoxView tapped for event ID: \(event.id)")
+                    }
                     Spacer()
                 }.padding(.trailing, 10)
             }
             CheckBoxView(isChecked: $isChecked)
+                .onChange(of: isChecked) { newValue in
+                    viewModel.selectedEventID = event.id
+                    print("CheckBoxView tapped for event ID: \(event.id)")
+                }
         }
     }
 }

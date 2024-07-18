@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var selectedYear: String = "2024"
     @State var search: String = ""
+    @StateObject var viewModel = ContentViewModel()
     
     var body: some View {
         ZStack {
@@ -37,6 +38,12 @@ struct ContentView: View {
                         }
                     }
                     TextField("Search...", text: $search)
+                        .padding()
+                        .background(Color.gray.opacity(0.1))
+                        .cornerRadius(8)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.gray, lineWidth: 0.5))
                     Spacer()
                 }
                 .padding()
@@ -51,10 +58,10 @@ struct ContentView: View {
                         .frame(maxWidth: .infinity)
                 }
                 .font(.headline)
-                ForEach(0..<5, id: \.self) { index in
-                    EventListCell(index: index)
+                ForEach($viewModel.events) { $event in
+                    EventListCell(event: $event, viewModel: viewModel)
                         .verticalPadding(10)
-                        .background(index % 2 == 0 ? Color.gray.opacity(0.2) : Color.white)
+                        .background(event.id % 2 == 0 ? Color.gray.opacity(0.2) : Color.white)
                         .verticalPadding(-4)
                 }
             }
