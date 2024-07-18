@@ -19,42 +19,27 @@ struct EventListCardView: View {
     var body: some View {
         VStack(spacing: 14) {
             Text(eventType == .expired ? "Expired" : "DAYS TO START \(15)")
-                .font(.caption)
-                .fontWeight(.bold)
+            SubTextBold(eventType == .expired ? "Expired" : "DAYS TO START \(15)", 14, color: .white)
                 .padding(.vertical, 4)
                 .padding(.horizontal, 8)
                 .background(eventType == .expired ? Color.red : Color.yellow)
-                .foregroundColor(.white)
                 .cornerRadius(5)
                 .frame(maxWidth: .infinity, alignment: .center)
             
-            Divider()
+            SubTextBold(event?.location ?? "Bern", 18, color: .white)
             
-            Text(event?.location ?? "Bern")
-                .font(.title)
-                .fontWeight(.bold)
-                .foregroundColor(.black)
+            SubText(event?.venue ?? "Allmend", color: .gray)
             
-            Text(event?.venue ?? "Allmend")
-                .font(.subheadline)
-                .foregroundColor(.gray)
-            
-            Divider()
-            
-            Text("Start Date: \("02-Aug-2024")")
-                .font(.caption)
+            SubText("Start Date: \("02-Aug-2024")", 13, color: .white)
                 .padding(.horizontal, 8)
                 .padding(.vertical, 4)
                 .background(Color.blue)
-                .foregroundColor(.white).bold()
                 .cornerRadius(5)
             
-            Text("End Date: \("04-Aug-2024")")
-                .font(.caption)
+            SubText("End Date: \("04-Aug-2024")", 13, color: .white)
                 .padding(.horizontal, 8)
                 .padding(.vertical, 4)
                 .background(Color.blue)
-                .foregroundColor(.white).bold()
                 .cornerRadius(5)
             
             Text(eventType == .expired ? "Total Day \("18")" : "Total Events \("18")")

@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct TourPlanListView: View {
+    @State private var selectedIndex = 0
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             SubTextBold("Tourplan List", 18)
-            Spacer()
+            CustomSegmentedPickerView(selectedIndex: $selectedIndex)
+                .horizontalPadding()
             ScrollView {
                 ForEach(0..<4) { _ in
                     EventListHorizontalCardView(eventType: .future)
