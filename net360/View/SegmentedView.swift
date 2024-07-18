@@ -23,7 +23,7 @@ struct CustomSegmentedPickerView: View {
                 HStack {
                     ForEach(self.titles.indices, id: \.self) { index in
                         Button(action: { selectedIndex = index }) {
-                            DescText(self.titles[index], LayoutConstants.fontSize14, .bold, color: selectedIndex == index ? .white : .mainColor)
+                            DescText(self.titles[index], LayoutConstants.fontSize14, .bold, color: selectedIndex == index ? .white : Color(hex: "#00A3FF"))
                                 .frame(maxWidth: .infinity)
                         }.padding(EdgeInsets(top: 18, leading: 1, bottom: 18, trailing: 1))
                             .background(
@@ -34,7 +34,7 @@ struct CustomSegmentedPickerView: View {
                     }
                 }
                 .background(
-                    Capsule().fill(Color.blue)
+                    Capsule().fill(Color(hex: "#00A3FF"))
                         .frame(width: self.frames[self.selectedIndex].width,
                                height: self.frames[self.selectedIndex].height, alignment: .topLeading)
                         .offset(x: self.frames[self.selectedIndex].minX - self.frames[0].minX)
@@ -42,7 +42,7 @@ struct CustomSegmentedPickerView: View {
                 )
             }
             .frame(height: 51)
-            .background(Color(red: 0.87, green: 0.92, blue: 0.97))
+            .background(Color(hex: "#C5EAFF"))
             .cornerRadius(51)
             .shadow(color: .black.opacity(0.10), radius: 2, x: 0, y: 0)
         }

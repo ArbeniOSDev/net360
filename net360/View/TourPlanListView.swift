@@ -17,9 +17,15 @@ struct TourPlanListView: View {
                 .horizontalPadding()
             ScrollView {
                 ForEach(0..<4) { _ in
-                    EventListHorizontalCardView(eventType: .future)
+                    if selectedIndex == 0 {
+                        EventListCardView(eventType: .future)
+                            .verticalPadding()
+                    } else {
+                        EventListCardView(eventType: .expired)
+                            .verticalPadding()
+                    }
                 }
-                .padding([.horizontal, .top, .bottom])
+                .padding([.horizontal, .bottom])
             }
             Spacer()
         }

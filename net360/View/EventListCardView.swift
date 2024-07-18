@@ -17,56 +17,64 @@ struct EventListCardView: View {
     var eventType: EventType
     
     var body: some View {
-        VStack(spacing: 14) {
-            Text(eventType == .expired ? "Expired" : "DAYS TO START \(15)")
-            SubTextBold(eventType == .expired ? "Expired" : "DAYS TO START \(15)", 14, color: .white)
-                .padding(.vertical, 4)
-                .padding(.horizontal, 8)
-                .background(eventType == .expired ? Color.red : Color.yellow)
-                .cornerRadius(5)
-                .frame(maxWidth: .infinity, alignment: .center)
-            
-            SubTextBold(event?.location ?? "Bern", 18, color: .white)
-            
-            SubText(event?.venue ?? "Allmend", color: .gray)
-            
-            SubText("Start Date: \("02-Aug-2024")", 13, color: .white)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 4)
-                .background(Color.blue)
-                .cornerRadius(5)
-            
-            SubText("End Date: \("04-Aug-2024")", 13, color: .white)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 4)
-                .background(Color.blue)
-                .cornerRadius(5)
-            
-            Text(eventType == .expired ? "Total Day \("18")" : "Total Events \("18")")
-                .font(.caption)
-                .fontWeight(.bold)
-                .padding(.vertical, 4)
-                .padding(.horizontal, 8)
-                .background(Color.yellow)
-                .foregroundColor(.black)
-                .cornerRadius(5)
-            
-            Button(action: {
-                // Action for button
-            }) {
+        HStack(spacing: 20) {
+            VStack(alignment: .leading, spacing: 8) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(event?.location ?? "Frauenfeld")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color(hex: "#07314C"))
+                    Text(event?.venue ?? "Allmend")
+                        .font(.title3)
+                        .foregroundColor(Color(hex: "#07314C"))
+                }.padding(.bottom, 10)
                 HStack {
-                    SubTextBold("Zeitplane", 14, color: .white)
+                    VStack(alignment: .leading) {
+                        DescText("Start", 12, color: .black)
+                        SubTextBold("02", 20, color: .black)
+                        DescText("AUG", 12, color: .black)
+                    }
+                    VStack(alignment: .leading) {
+                        DescText("End", 12, color: .black)
+                        SubTextBold("04", 20, color: .black)
+                        DescText("AUG", 12, color: .black)
+                    }
                 }
-                .padding()
-                .frame(width: 110)
-                .background(eventType == .future ? Color.green : Color.red)
+            }.frame(maxWidth: .infinity)
+            Spacer()
+            VStack(alignment: .trailing, spacing: 20) {
+                VStack(alignment: .trailing) {
+                    SubTextBold(eventType == .future ? "15 Days to Start" : "Expired", 16, .bold, color: .white)
+                        .padding(.vertical, 4)
+                        .padding(.horizontal, 8)
+                        .background(eventType == .future ? Color(hex: "#00A3FF") : Color(hex: "#9D6EFF"))
+                        .cornerRadius(5)
+                    SubTextBold("2 Days", 16, .bold, color: .white)
+                        .padding(.vertical, 4)
+                        .padding(.horizontal, 8)
+                        .background(eventType == .future ? Color(hex: "#00A3FF") : Color(hex: "#9D6EFF"))
+                        .cornerRadius(5)
+                }
+                .padding(.bottom, 10)
+                Button(action: {
+                    
+                }) {
+                    HStack {
+                        Spacer()
+                        SubTextBold("Zeitpläne", 16, .bold, color: .black)
+                        Spacer()
+                    }
+                    .padding()
+                    .background(eventType == .future ? Color(hex: "#0BFFD3") : Color(hex: "#C3FE45"))
+                }
+                .frame(width: 140)
                 .cornerRadius(10)
             }
         }
-        .padding()
+        .padding(20)
         .background(Color.white)
         .cornerRadius(15)
-        .shadow(color: .gray, radius: 5, x: 0, y: 0)
+        .shadow(color: .gray.opacity(0.9), radius: 6, x: 0, y: 4)
     }
 }
 
