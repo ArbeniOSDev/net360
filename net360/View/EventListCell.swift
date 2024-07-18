@@ -14,11 +14,11 @@ struct EventListCell: View {
     
     var body: some View {
         HStack(alignment: .center) {
-            Text(event.name)
+            Text(event.name ?? "")
                 .frame(width: 165, alignment: .leading)
                 .lineLimit(nil)
                 .padding(.leading, 6)
-            Text("\(event.count)")
+            Text("\(event.count ?? 0)")
                 .frame(width: 55, alignment: .center)
             Button(action: {
             }) {
@@ -26,7 +26,7 @@ struct EventListCell: View {
                     Spacer()
                     ThreeDotsButton {
                         viewModel.selectedEventID = event.id
-                        print("CheckBoxView tapped for event ID: \(event.id)")
+                        print("CheckBoxView tapped for event ID: \(event.id ?? 0)")
                     }
                     Spacer()
                 }.padding(.trailing, 10)
@@ -34,7 +34,7 @@ struct EventListCell: View {
             CheckBoxView(isChecked: $isChecked)
                 .onChange(of: isChecked) { newValue in
                     viewModel.selectedEventID = event.id
-                    print("CheckBoxView tapped for event ID: \(event.id)")
+                    print("CheckBoxView tapped for event ID: \(event.id ?? 0)")
                 }
         }
     }

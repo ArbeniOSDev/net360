@@ -13,13 +13,15 @@ class ContentViewModel: ObservableObject {
     
     init() {
         self.events = (0..<5).map { id in
-            Event(id: id, name: "Event \(id)", count: Int.random(in: 1...10))
+            Event(id: id, name: "Event \(id ?? 0)", count: Int.random(in: 1...10), location: "", venue: "")
         }
     }
 }
 
 struct Event: Identifiable {
-    let id: Int
-    let name: String
-    let count: Int
+    let id: Int?
+    let name: String?
+    let count: Int?
+    let location: String?
+    let venue: String?
 }

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F47217E92C48FC1E00ADCB54 /* CustomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47217E82C48FC1E00ADCB54 /* CustomButtons.swift */; };
 		F47217EB2C4901C800ADCB54 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47217EA2C4901C800ADCB54 /* ContentViewModel.swift */; };
+		F47217ED2C490A8300ADCB54 /* TourPlanListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47217EC2C490A8300ADCB54 /* TourPlanListView.swift */; };
+		F47217EF2C490AA500ADCB54 /* EventListCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47217EE2C490AA500ADCB54 /* EventListCardView.swift */; };
 		F4EF3BC82C47E36C002010E6 /* net360App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF3BC72C47E36C002010E6 /* net360App.swift */; };
 		F4EF3BCA2C47E36C002010E6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF3BC92C47E36C002010E6 /* ContentView.swift */; };
 		F4EF3BCC2C47E36D002010E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4EF3BCB2C47E36D002010E6 /* Assets.xcassets */; };
@@ -37,6 +39,8 @@
 /* Begin PBXFileReference section */
 		F47217E82C48FC1E00ADCB54 /* CustomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
 		F47217EA2C4901C800ADCB54 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		F47217EC2C490A8300ADCB54 /* TourPlanListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourPlanListView.swift; sourceTree = "<group>"; };
+		F47217EE2C490AA500ADCB54 /* EventListCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListCardView.swift; sourceTree = "<group>"; };
 		F4EF3BC42C47E36C002010E6 /* net360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = net360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4EF3BC72C47E36C002010E6 /* net360App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = net360App.swift; sourceTree = "<group>"; };
 		F4EF3BC92C47E36C002010E6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 				F4EF3BC92C47E36C002010E6 /* ContentView.swift */,
 				F4EF3BFF2C47ED2D002010E6 /* EventListCell.swift */,
 				F47217EA2C4901C800ADCB54 /* ContentViewModel.swift */,
+				F47217EC2C490A8300ADCB54 /* TourPlanListView.swift */,
+				F47217EE2C490AA500ADCB54 /* EventListCardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -241,10 +247,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F47217ED2C490A8300ADCB54 /* TourPlanListView.swift in Sources */,
 				F4EF3BF02C47E58D002010E6 /* FontExtension.swift in Sources */,
 				F47217E92C48FC1E00ADCB54 /* CustomButtons.swift in Sources */,
 				F4EF3BF92C47E717002010E6 /* View.swift in Sources */,
 				F4EF3BFB2C47E76B002010E6 /* Images.swift in Sources */,
+				F47217EF2C490AA500ADCB54 /* EventListCardView.swift in Sources */,
 				F4EF3BCA2C47E36C002010E6 /* ContentView.swift in Sources */,
 				F4EF3BF52C47E6BC002010E6 /* LayoutConstants.swift in Sources */,
 				F4EF3BF22C47E5BE002010E6 /* Colors.swift in Sources */,

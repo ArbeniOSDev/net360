@@ -27,10 +27,9 @@ struct CheckBoxView: View {
 
 struct ThreeDotsButton: View {
     var callBack: () -> Void
+    
     var body: some View {
-        Button(action: {
-            callBack()
-        }) {
+        NavigationLink(destination: TourPlanListView()) {
             ZStack {
                 Circle()
                     .fill(Color(red: 59/255, green: 133/255, blue: 253/255))
@@ -40,8 +39,10 @@ struct ThreeDotsButton: View {
                     .foregroundColor(.white)
                     .font(.system(size: 13))
             }
+            .onTapGesture {
+                callBack()
+            }
         }
-        .buttonStyle(PlainButtonStyle())
     }
 }
 
