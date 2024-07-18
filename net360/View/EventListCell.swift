@@ -28,12 +28,7 @@ struct EventListCell: View {
                     Spacer()
                 }
             }
-            Button(action: {
-                isChecked.toggle()
-            }) {
-                Image(systemName: isChecked ? "checkmark.square" : "square")
-                    .frame(maxWidth: .infinity)
-            }
+            CheckBoxView(isChecked: $isChecked)
         }
     }
 }
