@@ -24,9 +24,9 @@ struct EventListCell: View {
             }) {
                 HStack {
                     Spacer()
-                    Text("But")
+                    ThreeDotsButton()
                     Spacer()
-                }
+                }.padding(.trailing, 10)
             }
             CheckBoxView(isChecked: $isChecked)
         }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F47217E92C48FC1E00ADCB54 /* CustomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47217E82C48FC1E00ADCB54 /* CustomButtons.swift */; };
 		F4EF3BC82C47E36C002010E6 /* net360App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF3BC72C47E36C002010E6 /* net360App.swift */; };
 		F4EF3BCA2C47E36C002010E6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF3BC92C47E36C002010E6 /* ContentView.swift */; };
 		F4EF3BCC2C47E36D002010E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4EF3BCB2C47E36D002010E6 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F47217E82C48FC1E00ADCB54 /* CustomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
 		F4EF3BC42C47E36C002010E6 /* net360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = net360.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4EF3BC72C47E36C002010E6 /* net360App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = net360App.swift; sourceTree = "<group>"; };
 		F4EF3BC92C47E36C002010E6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				F4EF3BF12C47E5BE002010E6 /* Colors.swift */,
 				F4EF3BF82C47E717002010E6 /* View.swift */,
 				F4EF3BFA2C47E76B002010E6 /* Images.swift */,
+				F47217E82C48FC1E00ADCB54 /* CustomButtons.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 			files = (
 				F4EF3BF02C47E58D002010E6 /* FontExtension.swift in Sources */,
 				F4EF3BD62C47E4FA002010E6 /* CustomDropDown.swift in Sources */,
+				F47217E92C48FC1E00ADCB54 /* CustomButtons.swift in Sources */,
 				F4EF3BF92C47E717002010E6 /* View.swift in Sources */,
 				F4EF3BFB2C47E76B002010E6 /* Images.swift in Sources */,
 				F4EF3BCA2C47E36C002010E6 /* ContentView.swift in Sources */,
