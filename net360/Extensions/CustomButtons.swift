@@ -39,9 +39,6 @@ struct ThreeDotsButton: View {
                     .foregroundColor(.white)
                     .font(.system(size: 13))
             }
-            .onTapGesture {
-                callBack()
-            }
         }
     }
 }

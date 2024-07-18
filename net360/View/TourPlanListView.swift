@@ -11,21 +11,12 @@ struct TourPlanListView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             SubTextBold("Tourplan List", 18)
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    ForEach(0..<3) { _ in
-                        EventListCardView(eventType: .future)
-                    }
-                }.padding()
-            }
             Spacer()
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    ForEach(0..<3) { _ in
-                        EventListCardView(eventType: .expired)
-                    }
+            ScrollView {
+                ForEach(0..<4) { _ in
+                    EventListHorizontalCardView(eventType: .future)
                 }
-                .padding()
+                .padding([.horizontal, .top, .bottom])
             }
             Spacer()
         }
