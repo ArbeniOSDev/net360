@@ -15,6 +15,7 @@ enum EventType {
 struct EventListCardView: View {
     var event: Event?
     var eventType: EventType
+    @State private var navigateToDetails = false
     
     var body: some View {
         HStack(spacing: 20) {
@@ -60,9 +61,15 @@ struct EventListCardView: View {
                     
                 }) {
                     HStack {
-                        Spacer()
-                        SubTextBold("Zeitpläne", 16, .bold, color: .black)
-                        Spacer()
+                        NavigationLink(destination: DetailsEventListView(), isActive: $navigateToDetails) {
+                            Spacer()
+                            Button {
+                                navigateToDetails = true
+                            } label: {
+                                SubTextBold("Zeitpläne", 16, .bold, color: .black)
+                            }
+                            Spacer()
+                        }
                     }
                     .padding()
                     .background(eventType == .future ? Color(hex: "#0BFFD3") : Color(hex: "#C3FE45"))
@@ -75,82 +82,6 @@ struct EventListCardView: View {
         .background(Color.white)
         .cornerRadius(15)
         .shadow(color: .gray.opacity(0.9), radius: 6, x: 0, y: 4)
-    }
-}
-
-struct EventListHorizontalCardView: View {
-    var eventType: EventType
-    
-    var body: some View {
-        HStack {
-            VStack(alignment: .center, spacing: 12) {
-                Text(eventType == .expired ? "Expired" : "DAYS TO START \(15)")
-                    .font(.caption)
-                    .fontWeight(.bold)
-                    .padding(.vertical, 4)
-                    .padding(.horizontal, 8)
-                    .background(eventType == .expired ? Color.red : Color.yellow)
-                    .foregroundColor(.white)
-                    .cornerRadius(5)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                Text("Bern")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundColor(.black)
-                Text("Allmend")
-                    .font(.body)
-                    .fontWeight(.regular)
-                    .foregroundColor(.gray)
-                
-                Text(eventType == .future ? "4 Days" : "4 Days")
-                    .font(.caption)
-                    .fontWeight(.bold)
-                    .padding(.vertical, 4)
-                    .padding(.horizontal, 8)
-                    .background(Color.yellow)
-                    .foregroundColor(.black)
-                    .cornerRadius(5)
-                    .frame(maxWidth: .infinity, alignment: .center)
-            }
-            .padding()
-            VStack(alignment: .leading, spacing: 8) {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("From: 02-Aug-2024")
-                        .font(.caption)
-                        .padding(.vertical, 8)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(5)
-                    
-                    Text("To: 04-Aug-2024")
-                        .font(.caption)
-                        .padding(.vertical, 8)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(5)
-                }
-//                Spacer()
-                Button(action: {
-                    // Action for button
-                }) {
-                    HStack {
-                        Text("Zeitpläne")
-                            .foregroundColor(.white)
-                            .fontWeight(.bold)
-                    }
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(eventType == .future ? Color.green : Color.red)
-                    .cornerRadius(10)
-                }.frame(maxWidth: .infinity)
-            }
-            .padding()
-        }
-        .background(Color.white)
-        .cornerRadius(15)
-        .shadow(color: .gray, radius: 5, x: 0, y: 0)
     }
 }
 

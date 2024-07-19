@@ -1,0 +1,91 @@
+//
+//  DetailsEventCellView.swift
+//  net360
+//
+//  Created by Arben on 19.7.24.
+//
+
+import SwiftUI
+
+struct TicketCell: View {
+    var ticket: Ticket?
+    
+    var body: some View {
+        HStack(spacing: 0) {
+            VStack(alignment: .leading, spacing: 14) {
+                HStack(alignment: .center) {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Place:")
+                            .font(.subheadline)
+                            .foregroundColor(.white.opacity(0.8))
+                        SubTextBold(ticket?.from ?? "", 29, color: .white).fontWeight(.bold)
+                    }
+                    Spacer()
+                    VStack(alignment: .center, spacing: 8) {
+                        Text("Freie Platze:")
+                            .font(.subheadline)
+                            .foregroundColor(.white.opacity(0.8))
+                        SubTextBold("Available 4", 20, color: .white)
+                    }
+                }
+                HStack {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Time:")
+                            .font(.subheadline)
+                            .foregroundColor(.white.opacity(0.8))
+                        Text("10:00")
+                            .font(.title2)
+                            .bold()
+                        Text("12:00")
+                            .font(.title2)
+                            .bold()
+                    }
+                    Spacer()
+                    VStack(alignment: .center, spacing: 12) {
+                        Text("Dauer:")
+                            .font(.subheadline)
+                            .foregroundColor(.white.opacity(0.8))
+                        Text(ticket?.bookingID ?? "")
+                            .font(.title2)
+                            .bold()
+                        Spacer()
+                    }
+                }
+            }
+            .padding()
+            .background(Color(hex: "#05a8cc"))
+            .foregroundColor(.white)
+            .cornerRadius(15)
+            
+            VStack(alignment: .center, spacing: 10) {
+                Text(ticket?.date ?? "")
+                    .font(.title)
+                    .foregroundColor(Color(hex: "#05a8cc"))
+                    .multilineTextAlignment(.center)
+                    .bold()
+                Text(ticket?.year ?? "")
+                    .font(.title2)
+                    .bold()
+            }
+            .frame(maxWidth: 80, maxHeight: .infinity)
+            .padding()
+            .background(Color.white)
+            .cornerRadius(15)
+        }
+        .padding(.horizontal)
+        .background(Color.clear)
+        .cornerRadius(15)
+        .shadow(radius: 5)
+    }
+}
+
+struct Ticket: Identifiable {
+    let id = UUID()
+    let from: String?
+    let to: String?
+    let time: String?
+    let bookingID: String?
+    let price: String?
+    let date: String?
+    let year: String?
+}

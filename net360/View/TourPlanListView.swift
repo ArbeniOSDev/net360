@@ -11,24 +11,22 @@ struct TourPlanListView: View {
     @State private var selectedIndex = 0
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            SubTextBold("Tourplan List", 18)
-            CustomSegmentedPickerView(selectedIndex: $selectedIndex)
-                .horizontalPadding()
-            ScrollView {
-                ForEach(0..<4) { _ in
-                    if selectedIndex == 0 {
-                        EventListCardView(eventType: .future)
-                            .verticalPadding()
-                    } else {
-                        EventListCardView(eventType: .expired)
-                            .verticalPadding()
-                    }
+        SubTextBold("Tourplan List", 18)
+        CustomSegmentedPickerView(selectedIndex: $selectedIndex)
+            .horizontalPadding()
+        ScrollView(showsIndicators: false) {
+            ForEach(0..<4) { _ in
+                if selectedIndex == 0 {
+                    EventListCardView(eventType: .future)
+                        .verticalPadding()
+                } else {
+                    EventListCardView(eventType: .expired)
+                        .verticalPadding()
                 }
-                .padding([.horizontal, .bottom])
             }
-            Spacer()
+            .padding([.horizontal, .bottom])
         }
+        Spacer()
     }
 }
 
