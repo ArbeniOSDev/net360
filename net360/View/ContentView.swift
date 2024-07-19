@@ -11,6 +11,13 @@ struct ContentView: View {
     @State private var selectedYear: String = "2024"
     @State var search: String = ""
     @StateObject var viewModel = ContentViewModel()
+    let events = [
+           Event1(title: "Opening Speech", speaker: "John Doe", hall: "Hall 1"),
+           Event1(title: "Lorem Ipsum", speaker: "John Doe", hall: "Hall 2"),
+           Event1(title: "Opening Speech", speaker: "John Doe", hall: "Hall 3"),
+           Event1(title: "Lorem Ipsum 2", speaker: "John Doe", hall: "Hall 4"),
+           Event1(title: "Lorem Ipsum 3", speaker: "John Doe", hall: "Hall 5")
+       ]
     
     var body: some View {
         NavigationStack {
@@ -48,22 +55,9 @@ struct ContentView: View {
                         Spacer()
                     }
                     .padding()
-                    HStack {
-                        Text("Campaing")
-                            .frame(width: 170, alignment: .center)
-                        Text("Active")
-                            .frame(width: 55, alignment: .leading)
-                        Text("Details")
-                            .frame(maxWidth: .infinity)
-                        Text("Vorbei")
-                            .frame(maxWidth: .infinity)
-                    }
-                    .font(.headline)
-                    ForEach($viewModel.events) { $event in
-                        EventListCell(event: $event, viewModel: viewModel)
-                            .verticalPadding(10)
-                            .background((event.id ?? 0) % 2 == 0 ? Color.gray.opacity(0.2) : Color.white)
-                            .verticalPadding(-4)
+                    ForEach(events) { event in
+                        NewEventCellView(event: event)
+                            .verticalPadding()
                     }
                 }
                 .horizontalPadding()
@@ -71,6 +65,8 @@ struct ContentView: View {
         }
     }
 }
+
+//NavigationLink(destination: TourPlanListView()) {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

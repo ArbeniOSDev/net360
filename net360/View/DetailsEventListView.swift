@@ -29,6 +29,17 @@ struct DetailsEventListView: View {
                 .verticalPadding()
         }
         .listStyle(PlainListStyle())
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+//                    showOverlayView = true
+                }) {
+//                    Image(systemName: "square.and.pencil")
+                    SubTextBold("Save", 20, color: .blue)
+                        .padding()
+                }
+            }
+        }
     }
 }
 
