@@ -44,7 +44,6 @@ struct ThreeDotsButton: View {
 }
 
 struct CustomDropDown: View {
-//    var title: String = "Label"
     var placeholder: String = "All Types"
     @Binding var selectedValue: String
     @State var value = ""

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TicketCell: View {
     var ticket: Ticket?
+    @State private var isSelected: Bool = false
     
     var body: some View {
         HStack(spacing: 0) {
@@ -56,8 +57,22 @@ struct TicketCell: View {
             .background(Color(hex: "#05a8cc"))
             .foregroundColor(.white)
             .cornerRadius(15)
-            
             VStack(alignment: .center, spacing: 10) {
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        isSelected.toggle()
+                    }) {
+                        Circle()
+                            .stroke(isSelected ? Color.clear : Color.gray, lineWidth: 2)
+                            .background(Circle().fill(isSelected ? Color(hex: "#05a8cc") : Color.clear))
+                            .frame(width: 24, height: 24)
+                            .overlay(isSelected ? Image(systemName: "checkmark")
+                                .foregroundColor(.white) : nil)
+                    }
+                }
+                .padding(8)
+                Spacer()
                 Text(ticket?.date ?? "")
                     .font(.title)
                     .foregroundColor(Color(hex: "#05a8cc"))
@@ -77,15 +92,4 @@ struct TicketCell: View {
         .cornerRadius(15)
         .shadow(radius: 5)
     }
-}
-
-struct Ticket: Identifiable {
-    let id = UUID()
-    let from: String?
-    let to: String?
-    let time: String?
-    let bookingID: String?
-    let price: String?
-    let date: String?
-    let year: String?
 }
