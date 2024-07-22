@@ -14,22 +14,23 @@ struct DetailsEventListView: View {
     
     var body: some View {
         VStack {
-            CustomSegmentedPickerView(selectedIndex: $selectedIndex)
+            CustomSegmentedPickerView(selectedIndex: $selectedIndex).topPadding()
         }.horizontalPadding()
         List(viewModel.tickets) { ticket in
-            TicketCell(ticket: ticket)
+            TicketCell(ticket: ticket, selectedIndex: selectedIndex)
                 .listRowInsets(EdgeInsets())
                 .listRowSeparator(.hidden)
                 .verticalPadding()
         }
         .listStyle(PlainListStyle())
         .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    showAlert = true
-                }) {
-                    SubTextBold("Save", 20, color: .blue)
-                        .padding()
+            if selectedIndex != 1 {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        showAlert = true
+                    }) {
+                        SubTextBold("Save", 20, color: .blue)
+                    }
                 }
             }
         }

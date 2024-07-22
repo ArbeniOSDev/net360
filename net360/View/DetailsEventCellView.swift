@@ -10,6 +10,7 @@ import SwiftUI
 struct TicketCell: View {
     var ticket: Ticket?
     @State private var isSelected: Bool = false
+    var selectedIndex: Int
     
     var body: some View {
         HStack(spacing: 0) {
@@ -58,19 +59,23 @@ struct TicketCell: View {
             .foregroundColor(.white)
             .cornerRadius(15)
             VStack(alignment: .center, spacing: 10) {
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        isSelected.toggle()
-                    }) {
-                        Circle()
-                            .stroke(isSelected ? Color.clear : Color.gray, lineWidth: 2)
-                            .background(Circle().fill(isSelected ? Color(hex: "#05a8cc") : Color.clear))
-                            .frame(width: 24, height: 24)
-                            .overlay(isSelected ? Image(systemName: "checkmark")
-                                .foregroundColor(.white) : nil)
+                if selectedIndex != 1 {
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            isSelected.toggle()
+                        }) {
+                            Circle()
+                                .stroke(isSelected ? Color.clear : Color.gray, lineWidth: 2)
+                                .background(Circle().fill(isSelected ? Color(hex: "#05a8cc") : Color.clear))
+                                .frame(width: 24, height: 24)
+                                .overlay(isSelected ? Image(systemName: "checkmark")
+                                    .foregroundColor(.white) : nil)
+                        }
                     }
-                }.padding(.trailing, -5).padding(.top, -15)
+                    .padding(.trailing, -5)
+                    .padding(.top, -15)
+                }
                 Text(ticket?.date ?? "")
                     .font(.title)
                     .foregroundColor(Color(hex: "#05a8cc"))
