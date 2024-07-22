@@ -70,9 +70,7 @@ struct TicketCell: View {
                             .overlay(isSelected ? Image(systemName: "checkmark")
                                 .foregroundColor(.white) : nil)
                     }
-                }
-                .padding(8)
-                Spacer()
+                }.padding(.trailing, -5).padding(.top, -15)
                 Text(ticket?.date ?? "")
                     .font(.title)
                     .foregroundColor(Color(hex: "#05a8cc"))

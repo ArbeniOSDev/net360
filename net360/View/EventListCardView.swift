@@ -39,6 +39,11 @@ struct EventListCardView: View {
                         DescText("End", 12, color: .black)
                         SubTextBold("04", 20, color: .black)
                         DescText("AUG", 12, color: .black)
+                    }.padding(.trailing, 20)
+                    VStack(alignment: .center) {
+                        DescText("Total", 12, color: .black)
+                        SubTextBold("15", 20, color: .black)
+                        DescText("Events", 12, color: .black)
                     }
                 }
             }.frame(maxWidth: .infinity)

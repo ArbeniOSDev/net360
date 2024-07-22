@@ -13,25 +13,25 @@ struct NewEventCellView: View {
     var body: some View {
         NavigationLink(destination: TourPlanListView()) {
             HStack {
-                VStack(alignment: .leading, spacing: 8) {
+                VStack(alignment: .leading, spacing: 12) {
                     Text(event.title)
                         .font(.headline)
-                        .foregroundColor(Color(hex: "#00A3FF"))
-                    HStack {
-                        Image(systemName: "person.fill")
-                        Text(event.speaker)
-                            .font(.subheadline)
-                        Image(systemName: "building.columns.fill")
-                        Text(event.hall)
-                            .font(.subheadline)
+                        .foregroundColor(.black.opacity(0.7))
+                    HStack(spacing: 10) {
+                        Image("calendar")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                            .padding(.leading, 10)
+                        SubTextBold(event.speaker, 16, color: .black.opacity(0.7))
+                        SubTextBold("Events", 16, color: .black.opacity(0.7))
                     }
-                    .foregroundColor(Color(hex: "#07314C"))
+                    .foregroundColor(.black)
                 }
                 Spacer()
                 Image(systemName: "arrow.right")
                     .foregroundColor(.white)
                     .padding()
-                    .background(Color.green)
+                    .background(Color(hex: "#00A3FF"))
                     .cornerRadius(8)
             }
             .padding()

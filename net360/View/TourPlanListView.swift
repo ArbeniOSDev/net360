@@ -14,7 +14,7 @@ struct TourPlanListView: View {
     var body: some View {
         ZStack {
             VStack {
-                SubTextBold("Tourplan List", 18)
+                SubTextBold("Tourplan List", 18).topPadding()
                 CustomSegmentedPickerView(selectedIndex: $selectedIndex)
                     .horizontalPadding()
                 ScrollView(showsIndicators: false) {
