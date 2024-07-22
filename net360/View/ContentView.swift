@@ -20,6 +20,14 @@ struct ContentView: View {
         Event1(title: "Winti Mäss 2024", speaker: "4", hall: "Hall 5")
     ]
     
+    var filteredEvents: [Event1] {
+        if search.isEmpty {
+            return events
+        } else {
+            return events.filter { $0.title.localizedCaseInsensitiveContains(search) }
+        }
+    }
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -56,7 +64,7 @@ struct ContentView: View {
                         }.topPadding()
                     }
                     .padding()
-                    ForEach(events) { event in
+                    ForEach(filteredEvents) { event in
                         NewEventCellView(event: event)
                             .verticalPadding()
                     }

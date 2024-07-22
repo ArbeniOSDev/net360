@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CustomSegmentedPickerView: View {
     @Binding var selectedIndex: Int
-    private var titles = ["Future", "Expired"]
+    private var titles = ["Current", "Expired"]
     private var colors = Color.white
     @State private var frames = Array<CGRect>(repeating: .zero, count: 3)
 

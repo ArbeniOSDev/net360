@@ -55,7 +55,7 @@ struct TicketCell: View {
                 }
             }
             .padding()
-            .background(Color(hex: "#05a8cc"))
+            .background(Color(hex: selectedIndex == 1 ? "#9D6EFF" : "#05a8cc"))
             .foregroundColor(.white)
             .cornerRadius(15)
             VStack(alignment: .center, spacing: 10) {
@@ -78,7 +78,7 @@ struct TicketCell: View {
                 }
                 Text(ticket?.date ?? "")
                     .font(.title)
-                    .foregroundColor(Color(hex: "#05a8cc"))
+                    .foregroundColor(Color(hex: selectedIndex == 1 ? "#9D6EFF" : "#05a8cc"))
                     .multilineTextAlignment(.center)
                     .bold()
                 Text(ticket?.year ?? "")
