@@ -14,19 +14,12 @@ struct ContentView: View {
     @StateObject var viewModel = ContentViewModel()
     @State private var showOverlayView: Bool = false
     @State private var showMyEventsView: Bool = false
-    let events = [
-        Event1(title: "Zirkus Knie 2024", speaker: "5", hall: "Hall 1"),
-        Event1(title: "OHA 2024", speaker: "1", hall: "Hall 2"),
-        Event1(title: "ZOM 2024", speaker: "2", hall: "Hall 3"),
-        Event1(title: "Zugermesse 2024", speaker: "7", hall: "Hall 4"),
-        Event1(title: "Winti Mäss 2024", speaker: "4", hall: "Hall 5")
-    ]
     
     var filteredEvents: [Event1] {
         if search.isEmpty {
-            return events
+            return viewModel.eventsData
         } else {
-            return events.filter { $0.title.localizedCaseInsensitiveContains(search) }
+            return viewModel.eventsData.filter { $0.title.localizedCaseInsensitiveContains(search) }
         }
     }
     

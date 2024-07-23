@@ -48,7 +48,7 @@ struct TourPlanListView: View {
                         showOverlayView = false
                     }
                 
-                OverlayView(showOverlayView: $showOverlayView)
+                TourPlanOverlayView(showOverlayView: $showOverlayView)
                     .frame(width: 300, height: 450)
                     .background(Color.white)
                     .cornerRadius(10)
