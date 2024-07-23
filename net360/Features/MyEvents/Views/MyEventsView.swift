@@ -65,7 +65,7 @@ struct MyEventsView: View {
 //                            .stroke(.black,lineWidth: 1)
 //                            .padding(-3))
 //                    .scaleEffect(!taskModel.isCurrentHour(date: task.taskDate) ? 0.8 : 1)
-//                
+//
 //                Rectangle()
 //                    .fill(.black)
 //                    .frame(width: 3)

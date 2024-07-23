@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OverlayView: View {
+struct TourPlanOverlayView: View {
     @Binding var showOverlayView: Bool
     @State private var dropDownValue1: String = ""
     @State private var dropDownValue2: String = ""
