@@ -13,6 +13,7 @@ struct ContentView: View {
     @State var search: String = ""
     @StateObject var viewModel = ContentViewModel()
     @State private var showOverlayView: Bool = false
+    @State private var showMyEventsView: Bool = false
     let events = [
         Event1(title: "Zirkus Knie 2024", speaker: "5", hall: "Hall 1"),
         Event1(title: "OHA 2024", speaker: "1", hall: "Hall 2"),
@@ -63,6 +64,22 @@ struct ContentView: View {
                                 }
                             }
                         }.topPadding()
+                            Button {
+                                showMyEventsView = true
+                            } label: {
+                                SubTextBold("My Events", 16, .bold, color: .white)
+                                    .padding()
+                                    .background(Color(hex: "#00A3FF"))
+                                    .cornerRadius(10)
+                                    .frame(width: 200)
+                            }.topPadding()
+                            .background(
+                                NavigationLink(
+                                    destination: MyEventsView(),
+                                    isActive: $showMyEventsView,
+                                    label: { EmptyView() }
+                                )
+                            )
                     }
                     .padding()
                     ForEach(filteredEvents) { event in

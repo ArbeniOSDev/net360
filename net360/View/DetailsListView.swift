@@ -38,10 +38,10 @@ struct DetailsListView: View {
                         .resizable()
                         .frame(width: 55, height: 55)
                         .padding(.leading, 8)
-                    Text(details[index].1)
-                        .font(.title3)
+                    DescText(details[index].1, 18, color: .black)
                         .padding(.leading, 8)
                 }
+                .listRowSeparator(.hidden)
                 .padding(.vertical, 4)
             }
             .listStyle(.plain)

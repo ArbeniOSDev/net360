@@ -18,40 +18,26 @@ struct TicketCell: View {
             VStack(alignment: .leading, spacing: 14) {
                 HStack(alignment: .center) {
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("Place:")
-                            .font(.subheadline)
-                            .foregroundColor(.white.opacity(0.8))
+                        DescText("Place:", color: .white.opacity(0.8))
                         SubTextBold(ticket?.from ?? "", 29, color: .white).fontWeight(.bold)
                     }
                     Spacer()
                     VStack(alignment: .center, spacing: 8) {
-                        Text("Freie Platze:")
-                            .font(.subheadline)
-                            .foregroundColor(.white.opacity(0.8))
+                        DescText("Freie Platze:", color: .white.opacity(0.8))
                         SubTextBold("Available 4", 20, color: .white)
                     }
                 }
                 HStack {
                     VStack(alignment: .leading, spacing: 10) {
-                        Text("Time:")
-                            .font(.subheadline)
-                            .foregroundColor(.white.opacity(0.8))
-                        Text("10:00")
-                            .font(.title2)
-                            .bold()
-                        Text("12:00")
-                            .font(.title2)
-                            .bold()
+                        DescText("Time:", color: .white.opacity(0.8))
+                        SubTextBold("10:00", 22, .bold, color: .white)
+                        SubTextBold("12:00", 22, .bold, color: .white)
                         Spacer()
                     }
                     Spacer()
                     VStack(alignment: .center, spacing: 12) {
-                        Text("Dauer:")
-                            .font(.subheadline)
-                            .foregroundColor(.white.opacity(0.8))
-                        Text(ticket?.bookingID ?? "")
-                            .font(.title2)
-                            .bold()
+                        DescText("Dauer:", color: .white.opacity(0.8))
+                        SubTextBold(ticket?.bookingID ?? "", 22, .bold, color: .white)
                         Spacer()
                         Button {
                             showOverlayList.toggle()
@@ -85,14 +71,8 @@ struct TicketCell: View {
                     .padding(.trailing, -5)
                     .padding(.top, -22)
                 }
-                Text(ticket?.date ?? "")
-                    .font(.title)
-                    .foregroundColor(Color(hex: selectedIndex == 1 ? "#9D6EFF" : "#05a8cc"))
-                    .multilineTextAlignment(.center)
-                    .bold()
-                Text(ticket?.year ?? "")
-                    .font(.title2)
-                    .bold()
+                SubTextBold(ticket?.date ?? "", 30, .bold, color: Color(hex: selectedIndex == 1 ? "#9D6EFF" : "#05a8cc"), textAlignment: .center)
+                SubTextBold(ticket?.year ?? "", 22, .bold, color: .black)
             }
             .frame(maxWidth: 80, maxHeight: .infinity)
             .padding()

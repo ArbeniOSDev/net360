@@ -14,11 +14,11 @@ struct EventListCell: View {
     
     var body: some View {
         HStack(alignment: .center) {
-            Text(event.name ?? "")
+            SubTextBold(event.name ?? "", 18, color: .black)
                 .frame(width: 165, alignment: .leading)
                 .lineLimit(nil)
                 .padding(.leading, 6)
-            Text("\(event.count ?? 0)")
+            SubTextBold("\(event.count ?? 0)", 18, color: .black)
                 .frame(width: 55, alignment: .center)
             Button(action: {
             }) {
@@ -39,9 +39,3 @@ struct EventListCell: View {
         }
     }
 }
-
-//struct EventListCell_Previews: PreviewProvider {
-//    static var previews: some View {
-//        EventListCell()
-//    }
-//}

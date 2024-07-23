@@ -21,13 +21,8 @@ struct EventListCardView: View {
         HStack(spacing: 20) {
             VStack(alignment: .leading, spacing: 8) {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(event?.location ?? "Frauenfeld")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .foregroundColor(Color(hex: "#07314C"))
-                    Text(event?.venue ?? "Allmend")
-                        .font(.title3)
-                        .foregroundColor(Color(hex: "#07314C"))
+                    SubTextBold(event?.location ?? "Basel", 22, .bold, color: Color(hex: "#07314C"))
+                    SubTextBold(event?.venue ?? "Allmend", 22, .bold, color: Color(hex: "#07314C"))
                 }.padding(.bottom, 10)
                 HStack {
                     VStack(alignment: .leading) {
