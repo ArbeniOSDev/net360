@@ -10,6 +10,7 @@ import SwiftUI
 struct TicketCell: View {
     var ticket: Ticket?
     @State private var isSelected: Bool = false
+    @Binding var showOverlayList: Bool
     var selectedIndex: Int
     
     var body: some View {
@@ -41,6 +42,7 @@ struct TicketCell: View {
                         Text("12:00")
                             .font(.title2)
                             .bold()
+                        Spacer()
                     }
                     Spacer()
                     VStack(alignment: .center, spacing: 12) {
@@ -51,6 +53,11 @@ struct TicketCell: View {
                             .font(.title2)
                             .bold()
                         Spacer()
+                        Button {
+                            showOverlayList.toggle()
+                        } label: {
+                            EventTeamList(showOverlay: $showOverlayList)
+                        }
                     }
                 }
             }
@@ -63,7 +70,6 @@ struct TicketCell: View {
                     HStack {
                         Spacer()
                         Button(action: {
-                            isSelected.toggle()
                         }) {
                             Circle()
                                 .stroke(isSelected ? Color.clear : Color.gray, lineWidth: 2)
@@ -72,9 +78,12 @@ struct TicketCell: View {
                                 .overlay(isSelected ? Image(systemName: "checkmark")
                                     .foregroundColor(.white) : nil)
                         }
+                        .onTapGesture {
+                            isSelected.toggle()
+                        }
                     }
                     .padding(.trailing, -5)
-                    .padding(.top, -15)
+                    .padding(.top, -22)
                 }
                 Text(ticket?.date ?? "")
                     .font(.title)

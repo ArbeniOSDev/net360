@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var selectedYear: String = "2024"
     @State var search: String = ""
     @StateObject var viewModel = ContentViewModel()
+    @State private var showOverlayView: Bool = false
     let events = [
         Event1(title: "Zirkus Knie 2024", speaker: "5", hall: "Hall 1"),
         Event1(title: "OHA 2024", speaker: "1", hall: "Hall 2"),
@@ -81,12 +82,22 @@ struct ContentView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
+                        showOverlayView.toggle()
                     }) {
-                        Image(systemName: "bell")
-                            .customImageModifier(width: 17, renderingMode: .template, color: .mainColor, aspectRatio: .fit)
+                        Image(systemName: "square.and.pencil")
+                            .customImageModifier(width: 17, renderingMode: .template, color: .blue, aspectRatio: .fit)
                     }
                 }
             }).navigationBarTitleDisplayMode(.inline)
+                .overlay(content: {
+                    if showOverlayView {
+                        VStack {
+                            AddNewKampagneView()
+                        }
+                        .background(Color.white)
+                        .horizontalPadding(25)
+                    }
+                })
         }
     }
 }

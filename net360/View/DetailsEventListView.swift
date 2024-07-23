@@ -11,13 +11,14 @@ struct DetailsEventListView: View {
     @StateObject var viewModel = DetailsEventListViewModel()
     @State private var selectedIndex = 0
     @State private var showAlert: Bool = false
+    @State private var showOverlay: Bool = false
     
     var body: some View {
         VStack {
             CustomSegmentedPickerView(selectedIndex: $selectedIndex).topPadding()
         }.horizontalPadding()
         List(viewModel.tickets) { ticket in
-            TicketCell(ticket: ticket, selectedIndex: selectedIndex)
+            TicketCell(ticket: ticket, showOverlayList: $showOverlay, selectedIndex: selectedIndex)
                 .listRowInsets(EdgeInsets())
                 .listRowSeparator(.hidden)
                 .verticalPadding()
@@ -31,6 +32,14 @@ struct DetailsEventListView: View {
                     }) {
                         SubTextBold("Save", 20, color: .blue)
                     }
+                }
+            }
+        }
+        .overlay {
+            if showOverlay {
+                VStack {
+                    DetailsListView(dismissList: $showOverlay)
+                        .horizontalPadding(20)
                 }
             }
         }
