@@ -13,7 +13,7 @@ struct ContentView: View {
     @State var search: String = ""
     @StateObject var viewModel = ContentViewModel()
     @State private var showOverlayView: Bool = false
-    @State private var showMyEventsView: Bool = false
+    @StateObject var eventViewModel = EventViewModel()
     
     var filteredEvents: [Event1] {
         if search.isEmpty {
@@ -29,16 +29,17 @@ struct ContentView: View {
                 Color.bgColor
                     .ignoresSafeArea()
                 ScrollView {
-                    VStack {
-                        SubTextBold("Kampagnen Liste", 22, color: .black.opacity(0.7))
-                        TextField("Search...", text: $search)
-                            .padding()
-                            .background(Color.gray.opacity(0.1))
-                            .cornerRadius(8)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.gray, lineWidth: 0.5))
+                    VStack(spacing: 15) {
+                        VStack(alignment: .leading) {
+                        SubTextBold("Kampagnen Liste", (18), color: .black.opacity(0.7))
+                                .topPadding()
+                        SearchBar(text: $search)
+//                            if showOverlayView {
+//                                AddNewKampagneView(saveKampagne: $showOverlayView)
+//                                    .verticalPadding()
+//                            }
                         HStack(alignment: .center, spacing: 16) {
+                            Spacer()
                             Group {
                                 Button {
                                     selectedYear = "2024"
@@ -56,31 +57,14 @@ struct ContentView: View {
                                     DescText("2022", 16, color: selectedYear == "2022" ? .blue : .gray)
                                 }
                             }
-                        }.topPadding()
-                            Button {
-                                showMyEventsView = true
-                            } label: {
-                                SubTextBold("My Events", 16, .bold, color: .white)
-                                    .padding()
-                                    .background(Color(hex: "#00A3FF"))
-                                    .cornerRadius(10)
-                                    .frame(width: 200)
-                            }.topPadding()
-                            .background(
-                                NavigationLink(
-                                    destination: MyEventsView(),
-                                    isActive: $showMyEventsView,
-                                    label: { EmptyView() }
-                                )
-                            )
+                            Spacer()
+                        }.verticalPadding(8)
                     }
-                    .padding()
                     ForEach(filteredEvents) { event in
                         NewEventCellView(event: event)
-                            .verticalPadding()
                     }
                 }
-                .horizontalPadding()
+            }.horizontalPadding(20)
             }
             .toolbar(content: {
                 ToolbarItem(placement: .principal) {
@@ -91,23 +75,18 @@ struct ContentView: View {
                         }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        showOverlayView.toggle()
-                    }) {
-                        Image(systemName: "square.and.pencil")
+//                    Button(action: {
+//                        showOverlayView.toggle()
+//                    }) {
+//                        Image(systemName: "plus.circle")
+//                            .customImageModifier(width: 17, renderingMode: .template, color: .blue, aspectRatio: .fit)
+//                    }
+                    NavigationLink(destination: AddNewKampagneView(viewModel: eventViewModel)) {
+                        Image(systemName: "plus.circle")
                             .customImageModifier(width: 17, renderingMode: .template, color: .blue, aspectRatio: .fit)
                     }
                 }
             }).navigationBarTitleDisplayMode(.inline)
-                .overlay(content: {
-                    if showOverlayView {
-                        VStack {
-                            AddNewKampagneView()
-                        }
-                        .background(Color.white)
-                        .horizontalPadding(25)
-                    }
-                })
         }
     }
 }

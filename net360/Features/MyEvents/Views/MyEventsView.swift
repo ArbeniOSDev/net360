@@ -12,26 +12,24 @@ struct MyEventsView: View {
     @Namespace var animation
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            LazyVStack(spacing: 15, pinnedViews: [.sectionHeaders]) {
-                Section {
+        NavigationView {
+            ZStack {
+                Color.bgColor
+                    .ignoresSafeArea()
+                ScrollView(.vertical, showsIndicators: false) {
+                    HeaderView()
                     TasksView()
-                } header: {
-                    HeaderView().topPadding(40)
                 }
             }
         }
-        .ignoresSafeArea(.container, edges: .top)
     }
     
     // MARK: Tasks View
     func TasksView()->some View{
-        LazyVStack(spacing: 20){
+        LazyVStack(spacing: 15){
             if let tasks = taskModel.filteredTasks{
                 if tasks.isEmpty{
-                    Text("No tasks found!!!")
-                        .font(.system(size: 16))
-                        .fontWeight(.light)
+                    DescTextLight("No tasks found!!!", 16)
                         .offset(y: 100)
                 }
                 else {
@@ -70,18 +68,14 @@ struct MyEventsView: View {
 //                    .fill(.black)
 //                    .frame(width: 3)
 //            }
-            
-            VStack{
+//            
+            VStack (spacing: 20) {
                 HStack(alignment: .top, spacing: 10) {
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text(task.taskTitle)
-                            .font(.title2.bold())
-                        Text(task.taskDescription)
-                            .font(.callout)
-                            .foregroundStyle(.secondary)
-                    }
-                    .hLeading()
-                    Text(task.taskDate.formatted(date: .omitted, time: .shortened))
+                    VStack(alignment: .leading, spacing: 10) {
+                        DescText(task.taskTitle, 22).bold()
+                        DescText(task.taskDescription, 14, color: .gray.opacity(0.8))
+                    }.hLeading()
+                    DescText(task.taskDate.formatted(date: .omitted, time: .shortened), 18)
                 }
                 
                 if taskModel.isCurrentHour(date: task.taskDate){
@@ -92,35 +86,31 @@ struct MyEventsView: View {
                                 Image(user)
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
-                                    .frame(width: 45, height: 45)
+                                    .frame(width: 42, height: 42)
                                     .clipShape(Circle())
                                     .background(
                                         Circle()
-                                            .stroke(.black,lineWidth: 5))
+                                            .stroke(.black,lineWidth: 3))
                             }
-                        }
-                        .hLeading()
-                        // MARK: Check Button
+                        }.hLeading()
                         Button {
                         } label: {
                             Image(systemName: "checkmark")
-                                .foregroundStyle(.black)
-                                .padding(10)
-                                .background(Color.white,in: RoundedRectangle(cornerRadius: 10))
+                                .foregroundStyle(.white)
+                                .padding(7)
+                                .background(Color(hex: "#00A3FF"), in: RoundedRectangle(cornerRadius: 5))
                         }
-                    }
-                    .padding(.top)
+                    }.padding(.top)
                 }
             }
             .foregroundColor(taskModel.isCurrentHour(date: task.taskDate) ? .white : .black)
             .padding(taskModel.isCurrentHour(date: task.taskDate) ? 15 : 0)
             .padding(.bottom,taskModel.isCurrentHour(date: task.taskDate) ? 0 : 10)
             .hLeading()
-            .background(
-                Color("Black")
-                    .cornerRadius(25)
-                    .opacity(taskModel.isCurrentHour(date: task.taskDate) ? 1 : 0)
-            )
+                .background(Color.white)
+                .cornerRadius(8)
+                .shadow(color: Color.gray.opacity(0.3), radius: 2, x: 0, y: 0)
+                .padding(1)
         }
         .hLeading()
     }
@@ -129,15 +119,13 @@ struct MyEventsView: View {
     func HeaderView()->some View{
         HStack(spacing: 10){
             VStack(alignment: .leading, spacing: 10) {
-                Text(Date().formatted(date: .abbreviated, time: .omitted))
-                    .foregroundColor(.gray)
-                Text("Today")
-                    .font(.largeTitle.bold())
+                DescText(Date().formatted(date: .abbreviated, time: .omitted), color: .gray)
+                DescText("Today", 22).bold()
             }
             .hLeading()
             Button {
             } label: {
-                Image("Profile")
+                Image("User1")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 45, height: 45)
@@ -145,8 +133,7 @@ struct MyEventsView: View {
             }
         }
         .padding()
-        .padding(.top,getSafeArea().top)
-        .background(Color.white)
+        .background(Color.bgColor)
     }
 }
 

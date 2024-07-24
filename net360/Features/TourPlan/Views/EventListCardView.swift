@@ -23,16 +23,16 @@ struct EventListCardView: View {
                 HStack {
                     VStack(alignment: .leading) {
                         SubTextBold(event?.location ?? "Basel", 22, .bold, color: Color(hex: "#07314C"))
-                        SubTextBold(event?.venue ?? "Allmend", 22, .bold, color: Color(hex: "#07314C"))
+                        SubTextBold(event?.venue ?? "Allmend", 16, .bold, color: .gray)
                     }
                     Spacer()
                     VStack(alignment: .trailing) {
-                        SubTextBold(eventType == .future ? "15 Days to Start" : "Expired", 16, .bold, color: .white)
+                        SubTextBold(eventType == .future ? "15 Days to Start" : "Expired", 14, .bold, color: .white)
                             .padding(.vertical, 4)
                             .padding(.horizontal, 8)
                             .background(eventType == .future ? Color(hex: "#00A3FF") : Color(hex: "#9D6EFF"))
                             .cornerRadius(5)
-                        SubTextBold("2 Days", 16, .bold, color: .white)
+                        SubTextBold("2 Days", 14, .bold, color: .white)
                             .padding(.vertical, 4)
                             .padding(.horizontal, 8)
                             .background(eventType == .future ? Color(hex: "#00A3FF") : Color(hex: "#9D6EFF"))
@@ -82,7 +82,8 @@ struct EventListCardView: View {
         }.padding(20)
             .background(Color.white)
             .cornerRadius(15)
-            .shadow(color: .gray.opacity(0.9), radius: 6, x: 0, y: 4)
+            .shadow(color: Color.gray.opacity(0.3), radius: 2, x: 0, y: 0)
+            .padding(1)
     }
 }
 

@@ -94,17 +94,17 @@ extension View {
     
     func hLeading()->some View{
         self
-            .frame(maxWidth: .infinity,alignment: .leading)
+            .frame(maxWidth: .infinity, alignment: .leading)
     }
     
     func hTrailing()->some View{
         self
-            .frame(maxWidth: .infinity,alignment: .trailing)
+            .frame(maxWidth: .infinity, alignment: .trailing)
     }
     
     func hCenter()->some View{
         self
-            .frame(maxWidth: .infinity,alignment: .center)
+            .frame(maxWidth: .infinity, alignment: .center)
     }
     
     // MARK: Safe Area

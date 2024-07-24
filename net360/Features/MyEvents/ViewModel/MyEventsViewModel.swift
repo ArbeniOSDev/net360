@@ -9,14 +9,14 @@ import SwiftUI
 
 class TaskViewModel: ObservableObject {
     @Published var storedTasks: [Task] = [
-         Task(taskTitle: "Meeting", taskDescription: "Discuss team task for the day", taskDate: Date()),
-         Task(taskTitle: "Icon set", taskDescription: "Edit icons for team task for next week", taskDate: Date()),
-         Task(taskTitle: "Prototype", taskDescription: "Make and send prototype", taskDate: Date()),
-         Task(taskTitle: "Check asset", taskDescription: "Start checking the assets", taskDate: Date()),
-         Task(taskTitle: "Team party", taskDescription: "Make fun with team mates", taskDate: Date()),
-         Task(taskTitle: "Client Meeting", taskDescription: "Explain project to client", taskDate: Date()),
-         Task(taskTitle: "Next Project", taskDescription: "Discuss next project with team", taskDate: Date()),
-         Task(taskTitle: "App Proposal", taskDescription: "Meet client for next App Proposal", taskDate: Date()),
+         Task(taskTitle: "ZÜRICH", taskDescription: "Meine Ereignisse", taskDate: Date()),
+         Task(taskTitle: "THUN", taskDescription: "Meine Ereignisse", taskDate: Date()),
+         Task(taskTitle: "ZUG", taskDescription: "Meine Ereignisse", taskDate: Date()),
+         Task(taskTitle: "AARAU", taskDescription: "Meine Ereignisse", taskDate: Date()),
+         Task(taskTitle: "AARAU", taskDescription: "Meine Ereignisse", taskDate: Date()),
+         Task(taskTitle: "LUZERN", taskDescription: "Meine Ereignisse", taskDate: Date()),
+         Task(taskTitle: "BERN", taskDescription: "Meine Ereignisse", taskDate: Date()),
+         Task(taskTitle: "ZÜRICH", taskDescription: "Meine Ereignisse", taskDate: Date()),
      ]
     
     // MARK: Current Week Days

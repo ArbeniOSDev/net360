@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Ubuntu-B.ttf</string>
+		<string>Ubuntu-BI.ttf</string>
+		<string>Ubuntu-C.ttf</string>
+		<string>Ubuntu-L.ttf</string>
+		<string>Ubuntu-LI.ttf</string>
+		<string>Ubuntu-M.ttf</string>
+		<string>Ubuntu-MI.ttf</string>
+		<string>Ubuntu-R.ttf</string>
+		<string>Ubuntu-RI.ttf</string>
+	</array>
+</dict>
+</plist>

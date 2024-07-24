@@ -10,16 +10,16 @@ import SwiftUI
 enum TabbedItems: Int, CaseIterable {
     case home = 0
     case activity
-    case settings
+//    case settings
     
     var title: String{
         switch self {
         case .home:
             return "Home"
         case .activity:
-            return "Events"
-        case .settings:
-            return "Profile"
+            return "My Events"
+//        case .settings:
+//            return "Profile"
         }
     }
     
@@ -29,8 +29,8 @@ enum TabbedItems: Int, CaseIterable {
             return "homeIcon"
         case .activity:
             return "eventIcon"
-        case .settings:
-            return "setting"
+//        case .settings:
+//            return "setting"
         }
     }
 }
@@ -89,10 +89,10 @@ struct CustomTabBar: View {
                         ContentView()
                             .tag(0)
                             .environmentObject(authManager)
-                        EmptyView()
+                        MyEventsView()
                             .tag(1)
-                        EmptyView()
-                            .tag(2)
+//                        EmptyView()
+//                            .tag(2)
                     }.modifier(InternetConnectionBannerModifier(isInternetConnected: $networkManager.isConnected))
                     if selectedTab != 4 {
                         ZStack {

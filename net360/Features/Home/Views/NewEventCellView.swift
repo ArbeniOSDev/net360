@@ -14,31 +14,29 @@ struct NewEventCellView: View {
         NavigationLink(destination: TourPlanListView()) {
             HStack {
                 VStack(alignment: .leading, spacing: 12) {
-                    Text(event.title)
-                        .font(.headline)
-                        .foregroundColor(.black.opacity(0.7))
-                    HStack(spacing: 10) {
+                    SubTextBold(event.title, 16, color: .black.opacity(0.7))
+                    HStack(spacing: 5) {
                         Image("calendar")
                             .resizable()
-                            .frame(width: 20, height: 20)
-                            .padding(.leading, 10)
-                        SubTextBold(event.speaker, 16, color: .black.opacity(0.7))
-                        SubTextBold("Events", 16, color: .black.opacity(0.7))
+                            .frame(width: 18, height: 18)
+                            .padding(.trailing, 10)
+                        DescText(event.speaker, 14, color: .black.opacity(0.7))
+                        DescText("Events", 14, color: .black.opacity(0.7))
                     }
                     .foregroundColor(.black)
                 }
                 Spacer()
                 Image(systemName: "arrow.right")
                     .foregroundColor(.white)
-                    .padding()
+                    .padding(8)
                     .background(Color(hex: "#00A3FF"))
                     .cornerRadius(8)
             }
             .padding()
             .background(Color.white)
             .cornerRadius(8)
-            .shadow(color: Color.gray.opacity(0.5), radius: 5, x: 0, y: 2)
-            .padding(.horizontal)
+            .shadow(color: Color.gray.opacity(0.3), radius: 2, x: 0, y: 0)
+            .padding(1)
         }
     }
 }

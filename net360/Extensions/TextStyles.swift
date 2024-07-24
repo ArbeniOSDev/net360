@@ -13,12 +13,11 @@ struct MandatoryText: View {
     
     var body: some View {
         HStack (alignment: .lastTextBaseline, spacing: 1) {
-            Text(text)
-                .foregroundColor(color)
+            SubText(text, 13, color: .gray.opacity(0.7))
                 .lineLimit(2)
 //                .font(.ubuntuCustomFont(ofSize: 16))
-            Text(" *")
-                .foregroundColor(.red).opacity(0.5)
+            SubText(" *", 13, color: .red.opacity(0.5))
+//                .foregroundColor(.red).opacity(0.5)
 //                .font(.ubuntuCustomFont(ofSize: 16))
         }
     }
