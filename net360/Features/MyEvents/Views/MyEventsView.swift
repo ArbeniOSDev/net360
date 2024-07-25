@@ -78,30 +78,23 @@ struct MyEventsView: View {
                     DescText(task.taskDate.formatted(date: .omitted, time: .shortened), 18)
                 }
                 
-                if taskModel.isCurrentHour(date: task.taskDate){
+//                if taskModel.isCurrentHour(date: task.taskDate) {
                     // MARK: Team Members
                     HStack(spacing: 0){
                         HStack(spacing: -10){
                             ForEach(["User1","User2","User3"],id: \.self){user in
                                 Image(user)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 42, height: 42)
-                                    .clipShape(Circle())
+                                    .imageCircleModifier(height: 42, width: 42, renderingMode: .original, color: .clear, aspectRatio: .fill, colorStroke: .black, lineWidth: 3)
                                     .background(
-                                        Circle()
-                                            .stroke(.black,lineWidth: 3))
+                                        Circle().stroke(.black,lineWidth: 3))
                             }
                         }.hLeading()
                         Button {
                         } label: {
-                            Image(systemName: "checkmark")
-                                .foregroundStyle(.white)
-                                .padding(7)
-                                .background(Color(hex: "#00A3FF"), in: RoundedRectangle(cornerRadius: 5))
+                            ImageButton(systemName: "checkmark", padding: 7, hexColor: "#00A3FF")
                         }
                     }.padding(.top)
-                }
+//                }
             }
             .foregroundColor(taskModel.isCurrentHour(date: task.taskDate) ? .white : .black)
             .padding(taskModel.isCurrentHour(date: task.taskDate) ? 15 : 0)
@@ -127,9 +120,7 @@ struct MyEventsView: View {
             } label: {
                 Image("User1")
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 45, height: 45)
-                    .clipShape(Circle())
+                    .imageCircleModifier(height: 45, width: 45, renderingMode: .original, color: .clear, aspectRatio: .fill,  colorStroke: .clear, lineWidth: 0.1)
             }
         }
         .padding()

@@ -26,11 +26,7 @@ struct NewEventCellView: View {
                     .foregroundColor(.black)
                 }
                 Spacer()
-                Image(systemName: "arrow.right")
-                    .foregroundColor(.white)
-                    .padding(8)
-                    .background(Color(hex: "#00A3FF"))
-                    .cornerRadius(8)
+                ImageButton(systemName: "arrow.right", padding: 8, hexColor: "#00A3FF")
             }
             .padding()
             .background(Color.white)

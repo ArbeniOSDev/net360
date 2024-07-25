@@ -11,6 +11,9 @@ struct AddNewKampagneView: View {
     @ObservedObject var viewModel: EventViewModel
     @State private var dateFields: [EventModel] = [EventModel()]
     @State private var numberofPersons = 0
+    @State private var buttonText = "Speichern"
+    @State private var buttonColor = Color.blue
+    @State private var buttonDisabled = false
     
     var body: some View {
         NavigationView {
@@ -21,23 +24,29 @@ struct AddNewKampagneView: View {
                     VStack(alignment: .leading, spacing: 15) {
                         VStack(alignment: .leading, spacing: 5) {
                             DescText("Neue Kampagne", 16, color: .black)
-                            CustomTextField(placeholder: "Kampagnenname", text: $viewModel.campaignName, validate: .requiredField)
+                            CustomTextField(placeholder: "Kampagnenname", text: $viewModel.campaignName)
                             Button {
+                                if !viewModel.campaignName.isEmpty {
+                                    viewModel.chooseCampaignList.append(viewModel.campaignName)
+                                    viewModel.campaignName = ""
+                                    updateButton()
+                                }
                             } label: {
-                                DescText("Speichern", 16, color: .white)
+                                DescText(buttonText, 16, color: .white)
                                     .padding(10)
                                     .frame(maxWidth: .infinity)
-                                    .background(Color.blue)
+                                    .background(buttonColor)
                                     .cornerRadius(10)
-                            }
+                            }.disabled(buttonDisabled)
                         }
+                        Divider()
                         VStack (alignment: .leading) {
                             DescText("ERSTELLEN SIE EINE NEUE VERANSTALTUNG", 16, color: .black)
                             CustomDropDownLineView(placeholder: "Kampagne wählen", selectedValue: $viewModel.chooseCampaignValue, value: "", dropDownList: viewModel.chooseCampaignList, shouldShowDropDown: $viewModel.chooseCampaign, validate: .date)
                                 .onTapGesture {
                                     viewModel.chooseCampaign = true
                                 }
-                            HStack(spacing: 4) {
+                            HStack(alignment: .firstTextBaseline, spacing: 4) {
                                 CustomDropDownLineView(placeholder: "Verantwortlich", selectedValue: $viewModel.responsibleValue, value: "", dropDownList: viewModel.responsibleList, shouldShowDropDown: $viewModel.responsible, validate: .date)
                                     .onTapGesture {
                                         viewModel.responsible = true
@@ -96,16 +105,11 @@ struct AddNewKampagneView: View {
                                 Button(action: {
                                     dateFields.append(EventModel())
                                 }) {
-                                    Image(systemName: "plus")
-                                        .resizable()
-                                        .frame(width: 15, height: 15).bold()
-                                        .foregroundColor(Color.white)
-                                        .padding(10)
-                                        .background(Color.blue)
-                                        .cornerRadius(50)
+                                    ImageButton(systemName: "plus", padding: 8, hexColor: "#00A3FF").bold()
+                                        .cornerRadius(30)
                                 }.bottomPadding(-17)
                             }
-                        }.bottomPadding(75)
+                        }.paddingTB(10, 75)
                     }.horizontalPadding(20)
                 }
                 Button {
@@ -119,6 +123,21 @@ struct AddNewKampagneView: View {
                 }.horizontalPadding(20)
                     .frame(maxWidth: .infinity, minHeight: 50)
                     .background(Color.bgColor)
+            }
+        }
+    }
+    
+    private func updateButton() -> Void {
+        withAnimation {
+            buttonText = "Add Successfully"
+            buttonColor = Color.green
+            buttonDisabled = true
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            withAnimation {
+                buttonText = "Speichern"
+                buttonColor = Color.blue
+                buttonDisabled = false
             }
         }
     }

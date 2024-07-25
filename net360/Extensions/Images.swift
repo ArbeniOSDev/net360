@@ -41,4 +41,17 @@ extension Image {
                 .frame(width: width, height: height)
                 .foregroundColor(color)
         }
+    
+    func imageCircleModifier(height: CGFloat = 8, width: CGFloat = 8, renderingMode: Image.TemplateRenderingMode = .template, color: Color = .white, aspectRatio: Aspect = .fit, colorStroke: Color = .white, lineWidth: CGFloat = 1) -> some View {
+            self
+                .resizable()
+                .renderingMode(renderingMode)
+                .aspectRatio(contentMode: aspectRatio == .fit ? .fit : .fill) // Choose content mode based on aspect ratio
+                .frame(width: width, height: height)
+                .foregroundColor(color)
+                .clipShape(Circle())
+                .background(
+                    Circle().stroke(colorStroke, lineWidth: lineWidth)
+                )
+        }
 }

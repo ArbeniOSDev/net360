@@ -9,10 +9,11 @@ import SwiftUI
 
 struct TicketCell: View {
     var ticket: Ticket?
-    @State private var isSelected: Bool = false
+    @Binding var isSelected: Bool
     @Binding var showOverlayList: Bool
     var selectedIndex: Int
-    
+    var index: Int
+
     var body: some View {
         HStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 14) {
@@ -56,6 +57,7 @@ struct TicketCell: View {
                     HStack {
                         Spacer()
                         Button(action: {
+                            isSelected.toggle()
                         }) {
                             Circle()
                                 .stroke(isSelected ? Color.clear : Color.gray, lineWidth: 2)
@@ -68,11 +70,11 @@ struct TicketCell: View {
                             isSelected.toggle()
                         }
                     }
-                    .padding(.trailing, -5)
-                    .padding(.top, -22)
                 }
+                Spacer()
                 SubTextBold(ticket?.date ?? "", 30, .bold, color: Color(hex: selectedIndex == 1 ? "#9D6EFF" : "#05a8cc"), textAlignment: .center)
                 SubTextBold(ticket?.year ?? "", 22, .bold, color: .black)
+                Spacer()
             }
             .frame(maxWidth: 80, maxHeight: .infinity)
             .padding()

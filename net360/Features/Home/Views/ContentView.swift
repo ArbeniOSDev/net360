@@ -34,10 +34,6 @@ struct ContentView: View {
                         SubTextBold("Kampagnen Liste", (18), color: .black.opacity(0.7))
                                 .topPadding()
                         SearchBar(text: $search)
-//                            if showOverlayView {
-//                                AddNewKampagneView(saveKampagne: $showOverlayView)
-//                                    .verticalPadding()
-//                            }
                         HStack(alignment: .center, spacing: 16) {
                             Spacer()
                             Group {
@@ -75,15 +71,9 @@ struct ContentView: View {
                         }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-//                    Button(action: {
-//                        showOverlayView.toggle()
-//                    }) {
-//                        Image(systemName: "plus.circle")
-//                            .customImageModifier(width: 17, renderingMode: .template, color: .blue, aspectRatio: .fit)
-//                    }
                     NavigationLink(destination: AddNewKampagneView(viewModel: eventViewModel)) {
-                        Image(systemName: "plus.circle")
-                            .customImageModifier(width: 17, renderingMode: .template, color: .blue, aspectRatio: .fit)
+                        Image(systemName: "plus.circle.fill")
+                            .customImageModifier(width: 20, renderingMode: .template, color: .blue, aspectRatio: .fit)
                     }
                 }
             }).navigationBarTitleDisplayMode(.inline)

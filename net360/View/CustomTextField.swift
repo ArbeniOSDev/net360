@@ -68,7 +68,7 @@ struct CustomTextField: View {
   var body: some View {
     VStack(alignment: .leading, spacing: 0) {
         if hasLabelDescription {
-            SubText(labelText, 13, .light, color: .white)
+            DescText(labelText, 13, .light, color: .white)
                 .paddingLB(6, 10)
         }
       ZStack(alignment: .leading) {
@@ -80,8 +80,7 @@ struct CustomTextField: View {
           }
         } else {
             if text.isEmpty {
-                Text(placeholder)
-                    .foregroundColor(.gray.opacity(0.7))
+                DescText(placeholder, 13, color: .gray.opacity(0.7))
             }
         }
         HStack {

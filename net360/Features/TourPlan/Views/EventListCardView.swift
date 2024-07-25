@@ -63,13 +63,9 @@ struct EventListCardView: View {
                         
                     }) {
                         HStack {
-                            NavigationLink(destination: DetailsEventListView(), isActive: $navigateToDetails) {
+                            NavigationLink(destination: DetailsEventListView()) {
                                 Spacer()
-                                Button {
-                                    navigateToDetails = true
-                                } label: {
                                     SubTextBold("Zeitpläne", 16, .bold, color: .black)
-                                }
                                 Spacer()
                             }
                         }.verticalPadding()

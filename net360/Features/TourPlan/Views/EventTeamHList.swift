@@ -15,16 +15,10 @@ struct EventTeamList: View {
             showOverlay = true
         } label: {
             HStack(spacing: -10){
-                ForEach(["mergimeRaci","melanieGuenth","edonaRexhepi"],id: \.self){user in
+                ForEach(["mergimeRaci","melanieGuenth","edonaRexhepi"], id: \.self) { user in
                     Image(user)
                         .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 45, height: 45)
-                        .clipShape(Circle())
-                        .background(
-                            Circle()
-                                .stroke(.white, lineWidth: 2)
-                        )
+                        .imageCircleModifier(height: 45, width: 45, renderingMode: .original, color: .clear, aspectRatio: .fill, colorStroke: .white, lineWidth: 2)
                 }
             }
         }
