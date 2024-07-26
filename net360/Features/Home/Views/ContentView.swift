@@ -14,6 +14,7 @@ struct ContentView: View {
     @StateObject var viewModel = ContentViewModel()
     @State private var showOverlayView: Bool = false
     @StateObject var eventViewModel = EventViewModel()
+    private let years = Array(2020...2024).reversed()
     
     var filteredEvents: [Event1] {
         if search.isEmpty {
@@ -29,38 +30,35 @@ struct ContentView: View {
                 Color.bgColor
                     .ignoresSafeArea()
                 ScrollView {
-                    VStack(spacing: 15) {
+                    VStack(spacing: 20) {
                         VStack(alignment: .leading) {
-                        SubTextBold("Kampagnen Liste", (18), color: .black.opacity(0.7))
+                            SubTextBold("Kampagnen Liste", (18), color: .black.opacity(0.7))
                                 .topPadding()
-                        SearchBar(text: $search)
-                        HStack(alignment: .center, spacing: 16) {
-                            Spacer()
-                            Group {
-                                Button {
-                                    selectedYear = "2024"
-                                } label: {
-                                    DescText("2024", 16, color: selectedYear == "2024" ? .blue : .gray)
+                            SearchBar(text: $search)
+                            HStack(alignment: .center, spacing: 25) {
+                                //                            ScrollView(.horizontal, showsIndicators: false) {
+                                Spacer()
+                                HStack (spacing: 20) {
+                                    ForEach(years, id: \.self) { year in
+                                        Button {
+                                            selectedYear = "\(year)"
+                                        } label: {
+                                            DescText("\(year)", 16, color: selectedYear == "\(year)" ? .blue : .gray)
+                                        }
+                                    }
                                 }
-                                Button {
-                                    selectedYear = "2023"
-                                } label: {
-                                    DescText("2023", 16, color: selectedYear == "2023" ? .blue : .gray)
-                                }
-                                Button {
-                                    selectedYear = "2022"
-                                } label: {
-                                    DescText("2022", 16, color: selectedYear == "2022" ? .blue : .gray)
-                                }
+                                Spacer()
+                                //                            }
+                            }.topPadding()
+                            Divider()
+                        }
+                        VStack(spacing: 15) {
+                            ForEach(filteredEvents) { event in
+                                NewEventCellView(event: event)
                             }
-                            Spacer()
-                        }.verticalPadding(8)
+                        }
                     }
-                    ForEach(filteredEvents) { event in
-                        NewEventCellView(event: event)
-                    }
-                }
-            }.horizontalPadding(20)
+                }.horizontalPadding(20)
             }
             .toolbar(content: {
                 ToolbarItem(placement: .principal) {

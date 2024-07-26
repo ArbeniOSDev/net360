@@ -13,24 +13,23 @@ struct NewEventCellView: View {
     var body: some View {
         NavigationLink(destination: TourPlanListView()) {
             HStack {
-                VStack(alignment: .leading, spacing: 12) {
-                    SubTextBold(event.title, 16, color: .black.opacity(0.7))
-                    HStack(spacing: 5) {
-                        Image("calendar")
-                            .resizable()
-                            .frame(width: 18, height: 18)
-                            .padding(.trailing, 10)
-                        DescText(event.speaker, 14, color: .black.opacity(0.7))
-                        DescText("Events", 14, color: .black.opacity(0.7))
+                HStack(spacing: 15) {
+                    VStack(alignment: .center) {
+                        DescText("Active", 12, color: .gray)
+                        let speaker = event.speaker == "1" ? "Enevt" : "Events"
+                        DescText(speaker, 12, color: .gray)
+                        DescText(event.speaker, 20, color: .black.opacity(0.7)).bold()
                     }
-                    .foregroundColor(.black)
+                Divider()
+                    SubTextBold(event.title, 16, color: .black.opacity(0.7))
                 }
                 Spacer()
-                ImageButton(systemName: "arrow.right", padding: 8, hexColor: "#00A3FF")
+                Image(systemName:  "chevron.right")
+                    .customImageModifier(width: 8, renderingMode: .original, color: Color(hex: "#00A3FF"), aspectRatio: .fit)
             }
             .padding()
             .background(Color.white)
-            .cornerRadius(8)
+            .cornerRadius(10)
             .shadow(color: Color.gray.opacity(0.3), radius: 2, x: 0, y: 0)
             .padding(1)
         }

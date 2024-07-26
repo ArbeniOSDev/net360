@@ -101,7 +101,7 @@ struct MyEventsView: View {
             .padding(.bottom,taskModel.isCurrentHour(date: task.taskDate) ? 0 : 10)
             .hLeading()
                 .background(Color.white)
-                .cornerRadius(8)
+                .cornerRadius(10)
                 .shadow(color: Color.gray.opacity(0.3), radius: 2, x: 0, y: 0)
                 .padding(1)
         }
@@ -111,7 +111,7 @@ struct MyEventsView: View {
     // MARK: Header
     func HeaderView()->some View{
         HStack(spacing: 10){
-            VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading, spacing: 5) {
                 DescText(Date().formatted(date: .abbreviated, time: .omitted), color: .gray)
                 DescText("Today", 22).bold()
             }
