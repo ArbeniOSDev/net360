@@ -72,12 +72,6 @@ struct DateTextField: View {
         }
     }
     
-    private func formatDate(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
-        return formatter.string(from: date)
-    }
-    
     func validateText(newValue: String) {
         switch validate {
         case .requiredField:

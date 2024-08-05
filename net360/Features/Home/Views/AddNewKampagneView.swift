@@ -22,7 +22,7 @@ struct AddNewKampagneView: View {
                     .ignoresSafeArea()
                 ScrollView {
                     VStack(alignment: .leading, spacing: 15) {
-                        VStack(alignment: .leading, spacing: 5) {
+                        VStack(alignment: .leading, spacing: 15) {
                             DescText("Neue Kampagne", 16, color: .black)
                             CustomTextField(placeholder: "Kampagnenname", text: $viewModel.campaignName)
                             Button {
@@ -64,7 +64,7 @@ struct AddNewKampagneView: View {
                                 VStack {
                                     ForEach($dateFields) { $field in
                                         VStack {
-                                            DateTextField(text: $field.selectedDateAsString, onClick: $field.showCalendarPicker, placeholder: "Birthdate", iconName: "calendarIcon", validate: .date, isClear: .constant(false))
+                                            DateTextField(text: $field.selectedDateAsString, onClick: $field.showCalendarPicker, placeholder: "Birthdate", iconName: "calendarIcon", validate: .optionalValue, isClear: .constant(false))
                                                 .font(.ubuntuCustomFont(ofSize: 16))
                                             if field.showCalendarPicker {
                                                 DatePicker(
@@ -79,8 +79,9 @@ struct AddNewKampagneView: View {
                                                 })
                                                 .onChange(of: field.selectedFirstDate) { value in
                                                     let dateFormatter = DateFormatter()
-                                                    dateFormatter.dateStyle = .medium
+                                                    dateFormatter.dateFormat = "dd/MM/yyyy"
                                                     field.selectedDateAsString = dateFormatter.string(from: value)
+                                                    field.showCalendarPicker = false
                                                 }
                                             }
                                             DatePicker(selection: $field.startTime, in: ...Date(), displayedComponents: .hourAndMinute) {
@@ -124,6 +125,15 @@ struct AddNewKampagneView: View {
                     .frame(maxWidth: .infinity, minHeight: 50)
                     .background(Color.bgColor)
             }
+            .onTapGesture {
+                hideDatePickers()
+            }
+        }
+    }
+    
+    private func hideDatePickers() {
+        for index in dateFields.indices {
+            dateFields[index].showCalendarPicker = false
         }
     }
     

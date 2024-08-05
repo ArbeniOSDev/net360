@@ -17,6 +17,7 @@ class DetailsEventListViewModel: ObservableObject {
     @Published var selectedValue = ""
     @Published var dropDownList = ["Visar Ademi", "Diellza Aliji", "Peter Funke", "Gzim Hasani", "Mergime Reci"]
     @Published var shouldShowDropDown: Bool = false
+    @Published var noDataAvailable: Bool = false
     
     init(apiService: APIServiceProtocol = APIService()) {
         self.apiService = apiService
@@ -35,9 +36,13 @@ class DetailsEventListViewModel: ObservableObject {
                 case .failure(let error):
                     self?.isLoading = false
                     self?.error = error
+                    self?.noDataAvailable = true
                 }
             }, receiveValue: { [weak self] (detailsEventObject: DetailsEventModel?) in
                 self?.detailsEventObject = detailsEventObject
+                if detailsEventObject?.tickets == nil {
+                    self?.noDataAvailable = true
+                }
             })
             .store(in: &cancellables)
     }

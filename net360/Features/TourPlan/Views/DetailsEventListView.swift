@@ -35,7 +35,7 @@ struct DetailsEventListView: View {
                                 }
                             ).verticalPadding()
                         }
-                    } else {
+                    } else if viewModel.noDataAvailable {
                         Text("No tickets available")
                             .padding()
                     }

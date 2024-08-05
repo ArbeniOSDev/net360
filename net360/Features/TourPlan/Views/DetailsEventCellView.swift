@@ -69,14 +69,14 @@ struct TicketCell: View {
                         }) {
                             Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                                 .resizable()
-                                .frame(width: 20, height: 20)
+                                .frame(width: 25, height: 25)
                                 .foregroundColor(Color(hex: "#05a8cc"))
                         }
                     }
                 } else {
                     Circle()
                         .stroke(Color.clear, lineWidth: 0)
-                        .frame(width: 20, height: 20)
+                        .frame(width: 25, height: 25)
                 }
                 Spacer()
                 let components = (ticket?.date ?? dateString).split(separator: " ")
@@ -97,6 +97,7 @@ struct TicketCell: View {
                             .foregroundColor(.black)
                     }
                 }
+                .multilineTextAlignment(.center)
                 .bottomPadding()
                 Spacer()
             }
