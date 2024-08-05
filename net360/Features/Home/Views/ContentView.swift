@@ -29,29 +29,27 @@ struct ContentView: View {
             ZStack {
                 Color.bgColor
                     .ignoresSafeArea()
-                ScrollView {
-                    VStack(spacing: 20) {
-                        VStack(alignment: .leading) {
-                            SubTextBold("Kampagnen Liste", (18), color: .black.opacity(0.7))
-                                .topPadding()
-                            SearchBar(text: $search)
-                            HStack(alignment: .center, spacing: 25) {
-                                //                            ScrollView(.horizontal, showsIndicators: false) {
-                                Spacer()
-                                HStack (spacing: 20) {
-                                    ForEach(years, id: \.self) { year in
-                                        Button {
-                                            selectedYear = "\(year)"
-                                        } label: {
-                                            DescText("\(year)", 16, color: selectedYear == "\(year)" ? .blue : .gray)
-                                        }
+                VStack(spacing: 20) {
+                    VStack(alignment: .leading) {
+                        SubTextBold("Kampagnen Liste", (18), color: .black.opacity(0.7))
+                            .topPadding()
+                        SearchBar(text: $search)
+                        HStack(alignment: .center, spacing: 25) {
+                            Spacer()
+                            HStack (spacing: 20) {
+                                ForEach(years, id: \.self) { year in
+                                    Button {
+                                        selectedYear = "\(year)"
+                                    } label: {
+                                        DescText("\(year)", 16, color: selectedYear == "\(year)" ? .blue : .gray)
                                     }
                                 }
-                                Spacer()
-                                //                            }
-                            }.topPadding()
-                            Divider()
-                        }
+                            }
+                            Spacer()
+                        }.topPadding()
+                        Divider()
+                    }
+                    ScrollView {
                         VStack(spacing: 15) {
                             ForEach(filteredEvents) { event in
                                 NewEventCellView(event: event)

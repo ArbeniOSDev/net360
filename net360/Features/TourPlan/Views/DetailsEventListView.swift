@@ -14,39 +14,33 @@ struct DetailsEventListView: View {
     @State private var showOverlay: Bool = false
     @State private var isSelected: Bool = false
     @State private var selectedCells: [Int: Bool] = [:]
-
+    @State private var selectedCellID: UUID? = nil
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             Color.bgColor
                 .ignoresSafeArea()
-        VStack(spacing: 15) {
-            CustomSegmentedPickerView(selectedIndex: $selectedIndex)
-                .horizontalPadding()
-            ScrollView {
-                ForEach(viewModel.tickets) { ticket in
-                    ForEach(viewModel.tickets.indices, id: \.self) { index in
-                        TicketCell(
-                            ticket: viewModel.tickets[index],
-                            isSelected: Binding(
-                                get: { selectedCells[index] ?? false },
-                                set: { selectedCells[index] = $0 }
-                            ),
-                            showOverlayList: $showOverlay,
-                            selectedIndex: selectedIndex,
-                            index: index
-                        ).verticalPadding()
+            VStack(spacing: 15) {
+                CustomSegmentedPickerView(selectedIndex: $selectedIndex)
+                    .horizontalPadding()
+                ScrollView {
+                    ForEach(viewModel.tickets) { ticket in
+                        ForEach(viewModel.tickets.indices, id: \.self) { index in
+                            TicketCell(
+                                ticket: viewModel.tickets[index],
+                                isSelected: selectedCellID == viewModel.tickets[index].id,
+                                showOverlayList: $showOverlay,
+                                selectedIndex: selectedIndex,
+                                index: index,
+                                onSelect: { id in
+                                    selectedCellID = selectedCellID == id ? nil : id
+                                }
+                            ).verticalPadding()
+                        }
                     }
                 }
             }
         }
-    }
-//        List(viewModel.tickets) { ticket in
-//            TicketCell(ticket: ticket, showOverlayList: $showOverlay, selectedIndex: selectedIndex)
-//                .listRowInsets(EdgeInsets())
-//                .listRowSeparator(.hidden)
-//                .verticalPadding()
-//        }.horizontalPadding()
-//            .listStyle(PlainListStyle())
         .toolbar {
             if selectedIndex != 1 {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -55,6 +49,7 @@ struct DetailsEventListView: View {
                     }) {
                         SubText("Save", 16, color: .blue)
                     }
+                    .disabled(selectedCellID == nil)
                 }
             }
         }

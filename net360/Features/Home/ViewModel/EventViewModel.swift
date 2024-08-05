@@ -13,15 +13,10 @@ class EventViewModel: ObservableObject {
     @Published var description: String = ""
     @Published var place: String = ""
     @Published var notes: String = ""
-
     @Published var dropDownList = ["Dog", "Cat", "Cow", "Pig", "Other"]
-    
-    
-    
     @Published var chooseCampaignValue: String = ""
     @Published var responsibleValue: String = ""
     @Published var deputyResponsibleValue: String = ""
-    
     @Published var chooseCampaign: Bool = false
     @Published var responsible: Bool = false
     @Published var deputyResponsible: Bool = false

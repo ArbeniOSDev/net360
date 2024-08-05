@@ -9,11 +9,12 @@ import SwiftUI
 
 struct TicketCell: View {
     var ticket: Ticket?
-    @Binding var isSelected: Bool
+    var isSelected: Bool
     @Binding var showOverlayList: Bool
     var selectedIndex: Int
     var index: Int
     let dateString = "AUG 04 2024"
+    var onSelect: (UUID) -> Void
     
     var body: some View {
         HStack(spacing: 0) {
@@ -61,15 +62,13 @@ struct TicketCell: View {
                     HStack {
                         Spacer()
                         Button(action: {
-                            isSelected.toggle()
+                            onSelect(ticket?.id ?? UUID())
+                            print(ticket?.id ?? UUID())
                         }) {
                             Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                                 .resizable()
                                 .frame(width: 20, height: 20)
                                 .foregroundColor(Color(hex: "#05a8cc"))
-                        }
-                        .onTapGesture {
-                            isSelected.toggle()
                         }
                     }
                 } else {
