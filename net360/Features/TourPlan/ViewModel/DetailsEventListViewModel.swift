@@ -6,11 +6,41 @@
 //
 
 import Foundation
+import Combine
 
 class DetailsEventListViewModel: ObservableObject {
+    @Published var detailsEventObject: DetailsEventModel?
+    private let apiService: APIServiceProtocol
+    private var cancellables: Set<AnyCancellable> = []
+    @Published var isLoading: Bool = false
+    @Published var error: Error?
     @Published var selectedValue = ""
     @Published var dropDownList = ["Visar Ademi", "Diellza Aliji", "Peter Funke", "Gzim Hasani", "Mergime Reci"]
     @Published var shouldShowDropDown: Bool = false
+    
+    init(apiService: APIServiceProtocol = APIService()) {
+        self.apiService = apiService
+        
+        fetchData()
+    }
+    
+    func fetchData() {
+        isLoading = true
+        apiService.request(.detailsEvent, method: .get, parameters: nil, headers: nil)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { [weak self] completion in
+                switch completion {
+                case .finished:
+                    self?.isLoading = false
+                case .failure(let error):
+                    self?.isLoading = false
+                    self?.error = error
+                }
+            }, receiveValue: { [weak self] (detailsEventObject: DetailsEventModel?) in
+                self?.detailsEventObject = detailsEventObject
+            })
+            .store(in: &cancellables)
+    }
     
     let tickets: [Ticket] = [
         Ticket(from: "Basel", to: "New Zealand", time: "10:00 - 10:30", bookingID: "2h 0m", price: "300 MYR", date: "AUG\n04", year: "2024"),

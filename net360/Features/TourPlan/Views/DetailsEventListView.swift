@@ -12,9 +12,7 @@ struct DetailsEventListView: View {
     @State private var selectedIndex = 0
     @State private var showAlert: Bool = false
     @State private var showOverlay: Bool = false
-    @State private var isSelected: Bool = false
-    @State private var selectedCells: [Int: Bool] = [:]
-    @State private var selectedCellID: UUID? = nil
+    @State private var selectedCellID: Int? = nil
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -24,11 +22,11 @@ struct DetailsEventListView: View {
                 CustomSegmentedPickerView(selectedIndex: $selectedIndex)
                     .horizontalPadding()
                 ScrollView {
-                    ForEach(viewModel.tickets) { ticket in
-                        ForEach(viewModel.tickets.indices, id: \.self) { index in
+                    if let tickets = viewModel.detailsEventObject?.tickets {
+                        ForEach(tickets.indices, id: \.self) { index in
                             TicketCell(
-                                ticket: viewModel.tickets[index],
-                                isSelected: selectedCellID == viewModel.tickets[index].id,
+                                ticket: tickets[index],
+                                isSelected: selectedCellID == tickets[index].id,
                                 showOverlayList: $showOverlay,
                                 selectedIndex: selectedIndex,
                                 index: index,
@@ -37,6 +35,9 @@ struct DetailsEventListView: View {
                                 }
                             ).verticalPadding()
                         }
+                    } else {
+                        Text("No tickets available")
+                            .padding()
                     }
                 }
             }

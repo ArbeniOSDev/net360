@@ -16,6 +16,8 @@
 		B924FF682C5133BD00F75AB9 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B924FF672C5133BD00F75AB9 /* EventModel.swift */; };
 		B924FF6A2C5135B200F75AB9 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B924FF692C5135B200F75AB9 /* EventViewModel.swift */; };
 		B9D154832C522C06001A0771 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D154822C522C06001A0771 /* ImageButton.swift */; };
+		F434967D2C60F29C008DB661 /* DetailsEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434967C2C60F29C008DB661 /* DetailsEventModel.swift */; };
+		F43496802C60F42A008DB661 /* APIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434967F2C60F42A008DB661 /* APIServiceProtocol.swift */; };
 		F461A6BB2C4A4D6000BEAFE2 /* DetailsEventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F461A6BA2C4A4D6000BEAFE2 /* DetailsEventListView.swift */; };
 		F461A6BD2C4A4D7500BEAFE2 /* DetailsEventCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F461A6BC2C4A4D7500BEAFE2 /* DetailsEventCellView.swift */; };
 		F461A6BF2C4A5CCD00BEAFE2 /* CustomDropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F461A6BE2C4A5CCD00BEAFE2 /* CustomDropDownView.swift */; };
@@ -78,6 +80,8 @@
 		B924FF672C5133BD00F75AB9 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		B924FF692C5135B200F75AB9 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		B9D154822C522C06001A0771 /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
+		F434967C2C60F29C008DB661 /* DetailsEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsEventModel.swift; sourceTree = "<group>"; };
+		F434967F2C60F42A008DB661 /* APIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceProtocol.swift; sourceTree = "<group>"; };
 		F461A6BA2C4A4D6000BEAFE2 /* DetailsEventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsEventListView.swift; sourceTree = "<group>"; };
 		F461A6BC2C4A4D7500BEAFE2 /* DetailsEventCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsEventCellView.swift; sourceTree = "<group>"; };
 		F461A6BE2C4A5CCD00BEAFE2 /* CustomDropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropDownView.swift; sourceTree = "<group>"; };
@@ -141,12 +145,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F434967E2C60F3E2008DB661 /* APIServices */ = {
+			isa = PBXGroup;
+			children = (
+				F434967F2C60F42A008DB661 /* APIServiceProtocol.swift */,
+			);
+			path = APIServices;
+			sourceTree = "<group>";
+		};
 		F461A6C22C4A8ECD00BEAFE2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				F461A6C32C4A8EEB00BEAFE2 /* TicketModel.swift */,
 				F4E8E5A12C4FECF4003C661F /* TaskModel.swift */,
 				B924FF672C5133BD00F75AB9 /* EventModel.swift */,
+				F434967C2C60F29C008DB661 /* DetailsEventModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -274,6 +287,7 @@
 		F4EF3BC62C47E36C002010E6 /* net360 */ = {
 			isa = PBXGroup;
 			children = (
+				F434967E2C60F3E2008DB661 /* APIServices */,
 				B924FF5C2C50E97E00F75AB9 /* Info.plist */,
 				F4E8E5962C4FEB4F003C661F /* Features */,
 				F461A6C22C4A8ECD00BEAFE2 /* Models */,
@@ -465,7 +479,9 @@
 				F4EF3BF52C47E6BC002010E6 /* LayoutConstants.swift in Sources */,
 				B9D154832C522C06001A0771 /* ImageButton.swift in Sources */,
 				F461A6BF2C4A5CCD00BEAFE2 /* CustomDropDownView.swift in Sources */,
+				F434967D2C60F29C008DB661 /* DetailsEventModel.swift in Sources */,
 				F4E8E5952C4FDC5A003C661F /* MyEventsViewModel.swift in Sources */,
+				F43496802C60F42A008DB661 /* APIServiceProtocol.swift in Sources */,
 				F461A6BD2C4A4D7500BEAFE2 /* DetailsEventCellView.swift in Sources */,
 				F4E8E5912C4FA5D1003C661F /* AddNewKampagneView.swift in Sources */,
 				B924FF682C5133BD00F75AB9 /* EventModel.swift in Sources */,
