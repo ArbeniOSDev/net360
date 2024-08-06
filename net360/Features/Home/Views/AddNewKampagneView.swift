@@ -10,10 +10,11 @@ import SwiftUI
 struct AddNewKampagneView: View {
     @ObservedObject var viewModel: EventViewModel
     @State private var dateFields: [EventModel] = [EventModel()]
-    @State private var numberofPersons = 0
     @State private var buttonText = "Speichern"
     @State private var buttonColor = Color.blue
     @State private var buttonDisabled = false
+    @State private var showAlert = false
+    @State private var alertMessage = ""
     
     var body: some View {
         NavigationView {
@@ -64,7 +65,7 @@ struct AddNewKampagneView: View {
                                 VStack {
                                     ForEach($dateFields) { $field in
                                         VStack {
-                                            DateTextField(text: $field.selectedDateAsString, onClick: $field.showCalendarPicker, placeholder: "Birthdate", iconName: "calendarIcon", validate: .optionalValue, isClear: .constant(false))
+                                            DateTextField(text: $field.selectedDateAsString, onClick: $field.showCalendarPicker, placeholder: "Datum", iconName: "calendarIcon", validate: .date, isClear: .constant(false))
                                                 .font(.ubuntuCustomFont(ofSize: 16))
                                             if field.showCalendarPicker {
                                                 DatePicker(
@@ -84,10 +85,10 @@ struct AddNewKampagneView: View {
                                                     hideDatePickers()
                                                 }
                                             }
-                                            DatePicker(selection: $field.startTime, in: ...Date(), displayedComponents: .hourAndMinute) {
+                                            DatePicker(selection: $field.startTime, displayedComponents: .hourAndMinute) {
                                                 DescText("Start time", 14, color: .gray.opacity(0.7))
                                             }
-                                            DatePicker(selection: $field.endTime, in: ...Date(), displayedComponents: .hourAndMinute) {
+                                            DatePicker(selection: $field.endTime, displayedComponents: .hourAndMinute) {
                                                 DescText("End time", 14, color: .gray.opacity(0.7))
                                             }
                                             LabeledStepper(
@@ -115,8 +116,10 @@ struct AddNewKampagneView: View {
                 }
                 Button {
                     if viewModel.checkFieldsValue(dateFields: dateFields) {
-                        // API
 //                        viewModel.makeAPI(dateFields: dateFields)
+                    } else {
+                        showAlert = true
+                        alertMessage = "Please fill in all required fields"
                     }
                 } label: {
                     DescText("Speichern", 16, color: .white)
@@ -124,10 +127,12 @@ struct AddNewKampagneView: View {
                         .frame(maxWidth: .infinity)
                         .background(Color.blue)
                         .cornerRadius(10)
-                    
                 }.horizontalPadding(20)
                     .frame(maxWidth: .infinity, minHeight: 50)
                     .background(Color.bgColor)
+                    .alert(isPresented: $showAlert) {
+                        Alert(title: Text("Mandatory Fields!"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                    }
             }
             .onTapGesture {
                 hideDatePickers()
