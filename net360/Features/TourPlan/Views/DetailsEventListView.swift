@@ -64,7 +64,7 @@ struct DetailsEventListView: View {
         }
         .alert(isPresented: $showAlert) {
             Alert(title: Text("Event appointed!"),
-                  message: Text("You have successfully appointed in the Basel event on 04 August 2024"),
+                  message: Text("You have successfully appointed in the  \(viewModel.getSelectedTicketFromField(selectedCellID: selectedCellID)) event on 04 August 2024"),
                   dismissButton: .default(Text("OK")))
         }
     }

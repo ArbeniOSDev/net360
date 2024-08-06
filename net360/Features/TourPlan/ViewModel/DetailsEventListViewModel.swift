@@ -47,6 +47,15 @@ class DetailsEventListViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
+    func getSelectedTicketFromField(selectedCellID: Int?) -> String {
+        guard let id = selectedCellID,
+              let ticket = detailsEventObject?.tickets?.first(where: { $0.id == id }),
+              let fromField = ticket.from else {
+            return ""
+        }
+        return fromField
+    }
+    
     let tickets: [Ticket] = [
         Ticket(from: "Basel", to: "New Zealand", time: "10:00 - 10:30", bookingID: "2h 0m", price: "300 MYR", date: "AUG\n04", year: "2024"),
         Ticket(from: "Zurich", to: "New Zealand", time: "12:00 - 13:30", bookingID: "2h 0m", price: "300 MYR", date: "SEP\n04", year: "2024"),
