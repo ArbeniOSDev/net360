@@ -58,7 +58,7 @@ struct AddNewKampagneView: View {
                             }
                             CustomTextField(placeholder: "Beschreibung", text: $viewModel.description, validate: .requiredField)
                             CustomTextField(placeholder: "Ort", text: $viewModel.place, validate: .requiredField)
-                            CustomTextField(placeholder: "Notice", text: $viewModel.notes, validate: .requiredField)
+                            CustomTextField(placeholder: "Notice", text: $viewModel.notes, validate: .optionalValue)
                             
                             ZStack(alignment: .bottom) {
                                 VStack {
@@ -81,7 +81,7 @@ struct AddNewKampagneView: View {
                                                     let dateFormatter = DateFormatter()
                                                     dateFormatter.dateFormat = "dd/MM/yyyy"
                                                     field.selectedDateAsString = dateFormatter.string(from: value)
-                                                    field.showCalendarPicker = false
+                                                    hideDatePickers()
                                                 }
                                             }
                                             DatePicker(selection: $field.startTime, in: ...Date(), displayedComponents: .hourAndMinute) {
@@ -114,6 +114,10 @@ struct AddNewKampagneView: View {
                     }.horizontalPadding(20)
                 }
                 Button {
+                    if viewModel.checkFieldsValue(dateFields: dateFields) {
+                        // API
+//                        viewModel.makeAPI(dateFields: dateFields)
+                    }
                 } label: {
                     DescText("Speichern", 16, color: .white)
                         .padding(10)
