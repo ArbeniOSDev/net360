@@ -63,3 +63,49 @@ class DetailsEventListViewModel: ObservableObject {
         Ticket(from: "Bern", to: "New Zealand", time: "09:00 - 11:30", bookingID: "2h 0m", price: "available 4", date: "JUN\n04", year: "2024"),
     ]
 }
+
+
+//{
+//  "tickets": [
+//    {
+//      "id": 1,
+//      "from": "Basel",
+//      "to": "New Zealand",
+//      "time": "10:00 - 10:30",
+//      "bookingID": "2h 0m",
+//      "price": "300 MYR",
+//      "date": "AUG\n04",
+//      "year": "2024"
+//    },
+//    {
+//      "id": 2,
+//      "from": "Zurich",
+//      "to": "New Zealand",
+//      "time": "12:00 - 13:30",
+//      "bookingID": "2h 0m",
+//      "price": "300 MYR",
+//      "date": "SEP\n04",
+//      "year": "2024"
+//    },
+//    {
+//      "id": 3,
+//      "from": "Geneva",
+//      "to": "New Zealand",
+//      "time": "13:00 - 14:30",
+//      "bookingID": "2h 0m",
+//      "price": "300 MYR",
+//      "date": "MAR\n04",
+//      "year": "2024"
+//    },
+//    {
+//      "id": 4,
+//      "from": "Bern",
+//      "to": "New Zealand",
+//      "time": "09:00 - 11:30",
+//      "bookingID": "2h 0m",
+//      "price": "available 4",
+//      "date": "JUN\n04",
+//      "year": "2024"
+//    }
+//  ]
+//}

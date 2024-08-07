@@ -25,6 +25,10 @@
 		F461A6C42C4A8EEB00BEAFE2 /* TicketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F461A6C32C4A8EEB00BEAFE2 /* TicketModel.swift */; };
 		F461A6C62C4AA12A00BEAFE2 /* TourPlanOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F461A6C52C4AA12A00BEAFE2 /* TourPlanOverlayView.swift */; };
 		F461A6C82C4AAA5100BEAFE2 /* NewEventCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F461A6C72C4AAA5100BEAFE2 /* NewEventCellView.swift */; };
+		F468AA072C6396C9002AB250 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F468AA062C6396C9002AB250 /* LoginView.swift */; };
+		F468AA092C63971B002AB250 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F468AA082C63971B002AB250 /* UserResponse.swift */; };
+		F468AA0B2C639784002AB250 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F468AA0A2C639784002AB250 /* KeychainHelper.swift */; };
+		F468AA0E2C6399D2002AB250 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F468AA0D2C6399D2002AB250 /* SplashScreenView.swift */; };
 		F47217E92C48FC1E00ADCB54 /* CustomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47217E82C48FC1E00ADCB54 /* CustomButtons.swift */; };
 		F47217EB2C4901C800ADCB54 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47217EA2C4901C800ADCB54 /* ContentViewModel.swift */; };
 		F47217ED2C490A8300ADCB54 /* TourPlanListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47217EC2C490A8300ADCB54 /* TourPlanListView.swift */; };
@@ -89,6 +93,10 @@
 		F461A6C32C4A8EEB00BEAFE2 /* TicketModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketModel.swift; sourceTree = "<group>"; };
 		F461A6C52C4AA12A00BEAFE2 /* TourPlanOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourPlanOverlayView.swift; sourceTree = "<group>"; };
 		F461A6C72C4AAA5100BEAFE2 /* NewEventCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventCellView.swift; sourceTree = "<group>"; };
+		F468AA062C6396C9002AB250 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		F468AA082C63971B002AB250 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
+		F468AA0A2C639784002AB250 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		F468AA0D2C6399D2002AB250 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		F47217E82C48FC1E00ADCB54 /* CustomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
 		F47217EA2C4901C800ADCB54 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		F47217EC2C490A8300ADCB54 /* TourPlanListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourPlanListView.swift; sourceTree = "<group>"; };
@@ -160,13 +168,23 @@
 				F4E8E5A12C4FECF4003C661F /* TaskModel.swift */,
 				B924FF672C5133BD00F75AB9 /* EventModel.swift */,
 				F434967C2C60F29C008DB661 /* DetailsEventModel.swift */,
+				F468AA082C63971B002AB250 /* UserResponse.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F468AA0C2C6399C4002AB250 /* SplashScreenView */ = {
+			isa = PBXGroup;
+			children = (
+				F468AA0D2C6399D2002AB250 /* SplashScreenView.swift */,
+			);
+			path = SplashScreenView;
 			sourceTree = "<group>";
 		};
 		F4E8E5962C4FEB4F003C661F /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				F468AA0C2C6399C4002AB250 /* SplashScreenView */,
 				F4E8E5A32C4FED3E003C661F /* Login */,
 				F4E8E59E2C4FECB2003C661F /* MyEvents */,
 				F4E8E59B2C4FEBDA003C661F /* TourPlan */,
@@ -264,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				F4EF38132C4E41E600434364 /* LoginViewModel.swift */,
+				F468AA062C6396C9002AB250 /* LoginView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -352,6 +371,7 @@
 				F4EF380F2C4E412C00434364 /* APIConstants.swift */,
 				F4EF38152C4E421200434364 /* AlertController.swift */,
 				F4EF38172C4E42F400434364 /* InternetConnectionBannerModifier.swift */,
+				F468AA0A2C639784002AB250 /* KeychainHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -481,6 +501,7 @@
 				F461A6BF2C4A5CCD00BEAFE2 /* CustomDropDownView.swift in Sources */,
 				F434967D2C60F29C008DB661 /* DetailsEventModel.swift in Sources */,
 				F4E8E5952C4FDC5A003C661F /* MyEventsViewModel.swift in Sources */,
+				F468AA0E2C6399D2002AB250 /* SplashScreenView.swift in Sources */,
 				F43496802C60F42A008DB661 /* APIServiceProtocol.swift in Sources */,
 				F461A6BD2C4A4D7500BEAFE2 /* DetailsEventCellView.swift in Sources */,
 				F4E8E5912C4FA5D1003C661F /* AddNewKampagneView.swift in Sources */,
@@ -490,13 +511,16 @@
 				F4E8E58D2C4F87DF003C661F /* EventTeamHList.swift in Sources */,
 				B924FF5B2C50DD9200F75AB9 /* SearchBar.swift in Sources */,
 				F4EF3BDB2C47E545002010E6 /* TextStyles.swift in Sources */,
+				F468AA072C6396C9002AB250 /* LoginView.swift in Sources */,
 				F461A6C82C4AAA5100BEAFE2 /* NewEventCellView.swift in Sources */,
 				F4EF3BC82C47E36C002010E6 /* net360App.swift in Sources */,
+				F468AA092C63971B002AB250 /* UserResponse.swift in Sources */,
 				F4EF3BD82C47E51C002010E6 /* DateFieldValidator.swift in Sources */,
 				F4EF3BF72C47E6EA002010E6 /* Modifier.swift in Sources */,
 				F461A6C62C4AA12A00BEAFE2 /* TourPlanOverlayView.swift in Sources */,
 				F4EF380C2C4E40F700434364 /* Network Manager.swift in Sources */,
 				F4EF380A2C4E40C400434364 /* CustomTabBar.swift in Sources */,
+				F468AA0B2C639784002AB250 /* KeychainHelper.swift in Sources */,
 				F4EF3BFD2C47E8BE002010E6 /* DeviceResolutionResolver.swift in Sources */,
 				F4EF3C002C47ED2D002010E6 /* EventListCell.swift in Sources */,
 				F47217EB2C4901C800ADCB54 /* ContentViewModel.swift in Sources */,
