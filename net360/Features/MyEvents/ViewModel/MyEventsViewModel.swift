@@ -6,8 +6,15 @@
 //
 
 import SwiftUI
+import Combine
 
 class TaskViewModel: ObservableObject {
+    private let apiService: APIServiceProtocol
+    private var cancellables: Set<AnyCancellable> = []
+    @Published var isLoading: Bool = false
+    @Published var error: Error?
+    @Published var detailsEventObject: DetailsEventModel?
+
     @Published var storedTasks: [Task] = [
          Task(taskTitle: "ZÜRICH", taskDescription: "Meine Ereignisse", taskDate: Date()),
          Task(taskTitle: "THUN", taskDescription: "Meine Ereignisse", taskDate: Date()),
@@ -28,10 +35,30 @@ class TaskViewModel: ObservableObject {
     // MARK: Filtering Today Tasks
     @Published var filteredTasks: [Task]?
     
-    // MARK: Intializing
-    init(){
+    init(apiService: APIServiceProtocol = APIService()) {
+        self.apiService = apiService
+        
         fetchCurrentWeek()
         filterTodayTasks()
+        fetchData()
+    }
+    
+    func fetchData() {
+        isLoading = true
+        apiService.request(.detailsEvent, method: .get, parameters: nil, headers: nil)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { [weak self] completion in
+                switch completion {
+                case .finished:
+                    self?.isLoading = false
+                case .failure(let error):
+                    self?.isLoading = false
+                    self?.error = error
+                }
+            }, receiveValue: { [weak self] (detailsEventObject: DetailsEventModel?) in
+                self?.detailsEventObject = detailsEventObject
+            })
+            .store(in: &cancellables)
     }
     
     // MARK: Filter Today Tasks

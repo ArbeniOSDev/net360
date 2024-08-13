@@ -12,7 +12,7 @@ struct LoginView: View {
     @State private var username = ""
     @State private var password = ""
     @State private var showPassword = false
-
+    
     var body: some View {
         ZStack {
             backgroundGradient
@@ -23,9 +23,17 @@ struct LoginView: View {
                         .frame(minHeight: geometry.size.height)
                 }
             }
-        }.edgesIgnoringSafeArea(.all)
+            
+            if authManager.isLoading {
+                loader
+            }
+        }
+        .edgesIgnoringSafeArea(.all)
+        .alert(isPresented: $authManager.showAlert) {
+            Alert(title: Text("Error"), message: Text(authManager.errorMessage ?? "Server Error"), dismissButton: .default(Text("OK")))
+        }
     }
-
+    
     private var backgroundGradient: some View {
         Color("mainColor").opacity(0.85)
             .overlay {
@@ -35,40 +43,40 @@ struct LoginView: View {
                 ]), startPoint: .bottom, endPoint: .top)
             }
     }
-
+    
     private var content: some View {
-            VStack(spacing: 30) {
-                Spacer()
-                loginForm
-                    .horizontalPadding(15)
-                Spacer()
-                signupPrompt
-                    .bold()
-            }
+        VStack(spacing: 30) {
+            Spacer()
+            loginForm
+                .horizontalPadding(15)
+            Spacer()
+            signupPrompt
+                .bold()
+        }
     }
-
+    
     private var loginForm: some View {
-            VStack(spacing: 20) {
-                Image("logo")
-                    .customImageModifier(width: 90, aspectRatio: .fit)
-                    .padding(.bottom, 25)
-                inputField(icon: "person", placeholder: "E-Mail Address", text: $username)
-                passwordField
-                loginButton
-                    .verticalPadding()
-                forgotPasswordButton
-            }.horizontalPadding(20)
+        VStack(spacing: 20) {
+            Image("logo")
+                .customImageModifier(width: 90, aspectRatio: .fit)
+                .padding(.bottom, 25)
+            inputField(icon: "person", placeholder: "E-Mail Address", text: $authManager.username)
+            passwordField
+            loginButton
+                .verticalPadding()
+            forgotPasswordButton
+        }.horizontalPadding(20)
     }
-
+    
     private var passwordField: some View {
         HStack {
             Image(systemName: "lock")
                 .foregroundColor(.secondary)
             if showPassword {
-                TextField("Password", text: $password)
+                TextField("Password", text: $authManager.password)
                     .font(.ubuntuCustomFont(ofSize: 16))
             } else {
-                SecureField("Password", text: $password)
+                SecureField("Password", text: $authManager.password)
                     .font(.ubuntuCustomFont(ofSize: 16))
             }
             Button(action: { showPassword.toggle() }) {
@@ -79,7 +87,7 @@ struct LoginView: View {
         .padding()
         .background(Capsule().fill(Color.white))
     }
-
+    
     private func inputField(icon: String, placeholder: String, text: Binding<String>) -> some View {
         HStack {
             Image(systemName: icon)
@@ -90,10 +98,23 @@ struct LoginView: View {
         .padding()
         .background(Capsule().fill(Color.white))
     }
-
+    
+    private var loader: some View {
+        VStack {
+            Spacer()
+            ProgressView()
+                .progressViewStyle(CircularProgressViewStyle())
+                .scaleEffect(1.5)
+                .padding()
+                .background(Color.white)
+                .cornerRadius(10)
+            Spacer()
+        }
+    }
+    
     private var loginButton: some View {
         Button(action: {
-            authManager.performLogin()
+            authManager.makeLoginAPI()
         }) {
             DescText("Login", 20, color: .white).bold()
                 .frame(maxWidth: .infinity)
@@ -102,19 +123,19 @@ struct LoginView: View {
                 .cornerRadius(40)
         }
     }
-
+    
     private var forgotPasswordButton: some View {
         Button(action: {}) {
             DescText("Forgot Your Password?", 16, color: .white).underline()
                 .fontWeight(.heavy)
         }
     }
-
+    
     private var signupPrompt: some View {
         HStack {
             DescText("Don't have an account?", 16, color: .white)
             Button(action: {}) {
-                DescText("Sing Up!", 16, color: .white).underline()
+                DescText("Sign Up!", 16, color: .white).underline()
             }
         }.bottomPadding(20)
     }

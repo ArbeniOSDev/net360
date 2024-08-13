@@ -18,11 +18,15 @@ protocol APIServiceProtocol {
 
 enum Endpoint {
     case detailsEvent
+    case login
     
     var url: URL? {
         switch self {
         case .detailsEvent:
             let urlString = "\(APIConstants.detailsEventUrl)"
+            return URL(string: urlString)
+        case .login:
+            let urlString = "\(APIConstants.login)"
             return URL(string: urlString)
         }
     }

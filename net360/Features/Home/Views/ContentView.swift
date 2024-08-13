@@ -59,7 +59,14 @@ struct ContentView: View {
                 }.horizontalPadding(20)
             }
             .toolbar(content: {
-                ToolbarItem(placement: .principal) {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        authManager.logout()
+                    }) {
+                        Image("logoutIcon")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                    }
                     Image("smzh-logo2")
                         .customImageModifier(width: 110, renderingMode: .original, color: .mainColor)
                         .if(UIDevice.current.userInterfaceIdiom == .pad) {
@@ -69,7 +76,7 @@ struct ContentView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(destination: AddNewKampagneView(viewModel: eventViewModel)) {
                         Image(systemName: "plus.circle.fill")
-                            .customImageModifier(width: 20, renderingMode: .template, color: .blue, aspectRatio: .fit)
+                            .customImageModifier(width: 25, renderingMode: .template, color: .blue, aspectRatio: .fit)
                     }
                 }
             }).navigationBarTitleDisplayMode(.inline)

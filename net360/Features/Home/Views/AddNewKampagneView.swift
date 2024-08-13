@@ -71,7 +71,7 @@ struct AddNewKampagneView: View {
                                                 DatePicker(
                                                     "",
                                                     selection: $field.selectedFirstDate,
-                                                    in: ...Date(),
+                                                    in: Date()...,
                                                     displayedComponents: [.date]
                                                 )
                                                 .modifier(DatePickerModifier())
@@ -135,7 +135,7 @@ struct AddNewKampagneView: View {
                     }
             }
             .onTapGesture {
-                hideDatePickers()
+//                hideDatePickers()
             }
         }
     }

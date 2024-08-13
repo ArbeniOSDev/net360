@@ -14,9 +14,9 @@ struct ImageButton: View {
     
     var body: some View {
         Image(systemName: systemName)
-            .foregroundColor(.white)
+            .foregroundColor(.blue)
             .padding(padding)
-            .background(Color(hex: hexColor))
+            .background(.white)
             .cornerRadius(8)
     }
 }

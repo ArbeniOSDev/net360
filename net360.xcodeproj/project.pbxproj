@@ -16,8 +16,11 @@
 		B924FF682C5133BD00F75AB9 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B924FF672C5133BD00F75AB9 /* EventModel.swift */; };
 		B924FF6A2C5135B200F75AB9 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B924FF692C5135B200F75AB9 /* EventViewModel.swift */; };
 		B9D154832C522C06001A0771 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D154822C522C06001A0771 /* ImageButton.swift */; };
+		F418EEA02C69E56E00B45D9F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F418EE9F2C69E56E00B45D9F /* Kingfisher */; };
 		F434967D2C60F29C008DB661 /* DetailsEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434967C2C60F29C008DB661 /* DetailsEventModel.swift */; };
 		F43496802C60F42A008DB661 /* APIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434967F2C60F42A008DB661 /* APIServiceProtocol.swift */; };
+		F4442FB82C6B365100C51996 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4442FB72C6B365100C51996 /* KeychainService.swift */; };
+		F4442FBA2C6B3F5100C51996 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4442FB92C6B3F5100C51996 /* APIClient.swift */; };
 		F461A6BB2C4A4D6000BEAFE2 /* DetailsEventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F461A6BA2C4A4D6000BEAFE2 /* DetailsEventListView.swift */; };
 		F461A6BD2C4A4D7500BEAFE2 /* DetailsEventCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F461A6BC2C4A4D7500BEAFE2 /* DetailsEventCellView.swift */; };
 		F461A6BF2C4A5CCD00BEAFE2 /* CustomDropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F461A6BE2C4A5CCD00BEAFE2 /* CustomDropDownView.swift */; };
@@ -34,6 +37,7 @@
 		F47217ED2C490A8300ADCB54 /* TourPlanListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47217EC2C490A8300ADCB54 /* TourPlanListView.swift */; };
 		F47217EF2C490AA500ADCB54 /* EventListCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47217EE2C490AA500ADCB54 /* EventListCardView.swift */; };
 		F47217F12C49433400ADCB54 /* SegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47217F02C49433400ADCB54 /* SegmentedView.swift */; };
+		F4E6FA1C2C6A5765004BE52F /* LoginObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E6FA1B2C6A5765004BE52F /* LoginObject.swift */; };
 		F4E8E58D2C4F87DF003C661F /* EventTeamHList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8E58C2C4F87DF003C661F /* EventTeamHList.swift */; };
 		F4E8E58F2C4F942B003C661F /* DetailsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8E58E2C4F942B003C661F /* DetailsListView.swift */; };
 		F4E8E5912C4FA5D1003C661F /* AddNewKampagneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8E5902C4FA5D1003C661F /* AddNewKampagneView.swift */; };
@@ -86,6 +90,8 @@
 		B9D154822C522C06001A0771 /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
 		F434967C2C60F29C008DB661 /* DetailsEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsEventModel.swift; sourceTree = "<group>"; };
 		F434967F2C60F42A008DB661 /* APIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceProtocol.swift; sourceTree = "<group>"; };
+		F4442FB72C6B365100C51996 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		F4442FB92C6B3F5100C51996 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		F461A6BA2C4A4D6000BEAFE2 /* DetailsEventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsEventListView.swift; sourceTree = "<group>"; };
 		F461A6BC2C4A4D7500BEAFE2 /* DetailsEventCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsEventCellView.swift; sourceTree = "<group>"; };
 		F461A6BE2C4A5CCD00BEAFE2 /* CustomDropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropDownView.swift; sourceTree = "<group>"; };
@@ -102,6 +108,7 @@
 		F47217EC2C490A8300ADCB54 /* TourPlanListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourPlanListView.swift; sourceTree = "<group>"; };
 		F47217EE2C490AA500ADCB54 /* EventListCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListCardView.swift; sourceTree = "<group>"; };
 		F47217F02C49433400ADCB54 /* SegmentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedView.swift; sourceTree = "<group>"; };
+		F4E6FA1B2C6A5765004BE52F /* LoginObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginObject.swift; sourceTree = "<group>"; };
 		F4E8E58C2C4F87DF003C661F /* EventTeamHList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTeamHList.swift; sourceTree = "<group>"; };
 		F4E8E58E2C4F942B003C661F /* DetailsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsListView.swift; sourceTree = "<group>"; };
 		F4E8E5902C4FA5D1003C661F /* AddNewKampagneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewKampagneView.swift; sourceTree = "<group>"; };
@@ -147,6 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F418EEA02C69E56E00B45D9F /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +177,7 @@
 				B924FF672C5133BD00F75AB9 /* EventModel.swift */,
 				F434967C2C60F29C008DB661 /* DetailsEventModel.swift */,
 				F468AA082C63971B002AB250 /* UserResponse.swift */,
+				F4E6FA1B2C6A5765004BE52F /* LoginObject.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -372,6 +381,8 @@
 				F4EF38152C4E421200434364 /* AlertController.swift */,
 				F4EF38172C4E42F400434364 /* InternetConnectionBannerModifier.swift */,
 				F468AA0A2C639784002AB250 /* KeychainHelper.swift */,
+				F4442FB72C6B365100C51996 /* KeychainService.swift */,
+				F4442FB92C6B3F5100C51996 /* APIClient.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -409,6 +420,9 @@
 			dependencies = (
 			);
 			name = net360;
+			packageProductDependencies = (
+				F418EE9F2C69E56E00B45D9F /* Kingfisher */,
+			);
 			productName = net360;
 			productReference = F4EF3BC42C47E36C002010E6 /* net360.app */;
 			productType = "com.apple.product-type.application";
@@ -437,6 +451,9 @@
 				Base,
 			);
 			mainGroup = F4EF3BBB2C47E36B002010E6;
+			packageReferences = (
+				F418EE9E2C69E56E00B45D9F /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = F4EF3BC52C47E36C002010E6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -480,6 +497,7 @@
 				F47217E92C48FC1E00ADCB54 /* CustomButtons.swift in Sources */,
 				F461A6BB2C4A4D6000BEAFE2 /* DetailsEventListView.swift in Sources */,
 				F4EF3BF92C47E717002010E6 /* View.swift in Sources */,
+				F4E6FA1C2C6A5765004BE52F /* LoginObject.swift in Sources */,
 				F4E8E5932C4FDB90003C661F /* MyEventsView.swift in Sources */,
 				B924FF622C5105F100F75AB9 /* CustomDropDown.swift in Sources */,
 				F4E8E58F2C4F942B003C661F /* DetailsListView.swift in Sources */,
@@ -514,11 +532,13 @@
 				F468AA072C6396C9002AB250 /* LoginView.swift in Sources */,
 				F461A6C82C4AAA5100BEAFE2 /* NewEventCellView.swift in Sources */,
 				F4EF3BC82C47E36C002010E6 /* net360App.swift in Sources */,
+				F4442FBA2C6B3F5100C51996 /* APIClient.swift in Sources */,
 				F468AA092C63971B002AB250 /* UserResponse.swift in Sources */,
 				F4EF3BD82C47E51C002010E6 /* DateFieldValidator.swift in Sources */,
 				F4EF3BF72C47E6EA002010E6 /* Modifier.swift in Sources */,
 				F461A6C62C4AA12A00BEAFE2 /* TourPlanOverlayView.swift in Sources */,
 				F4EF380C2C4E40F700434364 /* Network Manager.swift in Sources */,
+				F4442FB82C6B365100C51996 /* KeychainService.swift in Sources */,
 				F4EF380A2C4E40C400434364 /* CustomTabBar.swift in Sources */,
 				F468AA0B2C639784002AB250 /* KeychainHelper.swift in Sources */,
 				F4EF3BFD2C47E8BE002010E6 /* DeviceResolutionResolver.swift in Sources */,
@@ -729,6 +749,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F418EE9E2C69E56E00B45D9F /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F418EE9F2C69E56E00B45D9F /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F418EE9E2C69E56E00B45D9F /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F4EF3BBC2C47E36B002010E6 /* Project object */;
 }

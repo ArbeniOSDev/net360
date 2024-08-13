@@ -9,12 +9,9 @@ import SwiftUI
 
 @main
 struct net360App: App {
-//    @StateObject private var authManager = LoginViewModel()
 
     var body: some Scene {
         WindowGroup {
-//            CustomTabBar(authManager: authManager)
-//                .environmentObject(authManager)
             SplashScreenView()
         }
     }
