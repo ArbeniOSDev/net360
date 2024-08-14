@@ -13,6 +13,9 @@ struct MyEventsView: View {
     @State private var selectedCellID: Int? = nil
     @State private var showOverlay: Bool = false
     @State private var selectedIndex = 0
+    @State private var slideStartTime: String? = nil
+    @State private var slideEndTime: String? = nil
+    @State private var isFirstSlide = true
     
     var body: some View {
         NavigationView {
@@ -24,12 +27,14 @@ struct MyEventsView: View {
                     TaskView()
                 }
                 
-                .overlay {
-                    if showOverlay, let selectedCellID = selectedCellID {
-                        VStack {
-                            OverlayView(selectedCellID: selectedCellID)
-                                .edgesIgnoringSafeArea(.all)
-                        }.horizontalPadding(20)
+                if showOverlay {
+                    Color.black.opacity(0.5)
+                        .ignoresSafeArea()
+                    
+                    if let selectedCellID = selectedCellID {
+                        OverlayView(selectedCellID: selectedCellID)
+                            .edgesIgnoringSafeArea(.all)
+                            .padding(20)
                     }
                 }
             }
@@ -72,47 +77,35 @@ struct MyEventsView: View {
                             .resizable()
                             .frame(width: 25, height: 25)
                             .foregroundColor(.black)
-                            .padding(.trailing, 10)
+                            .padding(.trailing, 10).bottomPadding(20)
                     }
                 }
                 
-                Text("Selected Ticket ID: \(selectedCellID)")
-                    .font(.headline)
-                    .padding()
-
-                HStack(spacing: 10) {
-                    Button(action: {
-                        // First button action
-                    }) {
-                        Text("Start Time")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.blue)
-                            .cornerRadius(10)
+                HStack(spacing: 32) {
+                    VStack {
+                        DescText("Start time", 16, .bold, color: .white)
+                        SubTextBold("\(slideStartTime ?? "")", 26, .bold, color: .white)
+                            .frame(height: 20)
                     }
-                    
-                    Button(action: {
-                        // Second button action
-                    }) {
-                        Text("Stop Time")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.red)
-                            .cornerRadius(10)
+                    VStack {
+                        DescText("End time", 16, .bold, color: .white)
+                        SubTextBold("\(slideEndTime ?? "")", 26, .bold, color: .white)
+                            .frame(height: 20)
                     }
-                }
-                .padding()
-                .background(Color.white)
-                .cornerRadius(15)
-                .padding(.horizontal, 30)
-                .padding(.bottom, 50)
+                }.bottomPadding()
+                
+                SliderButton(onComplete: {
+                    if isFirstSlide {
+                        slideStartTime = getCurrentTime()
+                        isFirstSlide = false
+                    } else {
+                        slideEndTime = getCurrentTime()
+                    }
+                })
             }
+            .frame(height: 200)
             .padding()
-            .background(Color.white)
+            .background(Color(hex: "#05a8cc"))
             .cornerRadius(15)
         }
     
@@ -224,6 +217,12 @@ struct MyEventsView: View {
         dateFormatter.dateFormat = "EEEE"
         return dateFormatter.string(from: Date())
     }
+    
+    func getCurrentTime() -> String {
+          let formatter = DateFormatter()
+          formatter.dateFormat = "HH:mm"
+          return formatter.string(from: Date())
+      }
 }
 
 struct MyEventsView_Previews: PreviewProvider {

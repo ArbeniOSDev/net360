@@ -87,6 +87,10 @@ class LoginViewModel: ObservableObject {
                     self?.isLoading = false
                     self?.showAlert = true
                     self?.errorMessage = loginObject.error ?? ""
+                } else {
+                    self?.isLoading = false
+                    self?.showAlert = true
+                    self?.errorMessage = "Server Error"
                 }
             })
             .store(in: &cancellables)

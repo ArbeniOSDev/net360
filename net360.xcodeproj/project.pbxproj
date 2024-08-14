@@ -75,6 +75,7 @@
 		F4EF3BFB2C47E76B002010E6 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF3BFA2C47E76B002010E6 /* Images.swift */; };
 		F4EF3BFD2C47E8BE002010E6 /* DeviceResolutionResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF3BFC2C47E8BE002010E6 /* DeviceResolutionResolver.swift */; };
 		F4EF3C002C47ED2D002010E6 /* EventListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF3BFF2C47ED2D002010E6 /* EventListCell.swift */; };
+		F4F55ABB2C6C98D500FFC66B /* SliderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F55ABA2C6C98D500FFC66B /* SliderButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -147,6 +148,7 @@
 		F4EF3BFA2C47E76B002010E6 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		F4EF3BFC2C47E8BE002010E6 /* DeviceResolutionResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceResolutionResolver.swift; sourceTree = "<group>"; };
 		F4EF3BFF2C47ED2D002010E6 /* EventListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListCell.swift; sourceTree = "<group>"; };
+		F4F55ABA2C6C98D500FFC66B /* SliderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -390,6 +392,7 @@
 		F4EF3BFE2C47ED17002010E6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F4F55AB92C6C988A00FFC66B /* SlideButton */,
 				F47217F02C49433400ADCB54 /* SegmentedView.swift */,
 				F461A6BE2C4A5CCD00BEAFE2 /* CustomDropDownView.swift */,
 				F4EF38092C4E40C400434364 /* CustomTabBar.swift */,
@@ -402,6 +405,14 @@
 				B9D154822C522C06001A0771 /* ImageButton.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		F4F55AB92C6C988A00FFC66B /* SlideButton */ = {
+			isa = PBXGroup;
+			children = (
+				F4F55ABA2C6C98D500FFC66B /* SliderButton.swift */,
+			);
+			path = SlideButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -525,6 +536,7 @@
 				F4E8E5912C4FA5D1003C661F /* AddNewKampagneView.swift in Sources */,
 				B924FF682C5133BD00F75AB9 /* EventModel.swift in Sources */,
 				F4EF3BF22C47E5BE002010E6 /* Colors.swift in Sources */,
+				F4F55ABB2C6C98D500FFC66B /* SliderButton.swift in Sources */,
 				F4E8E5A22C4FECF4003C661F /* TaskModel.swift in Sources */,
 				F4E8E58D2C4F87DF003C661F /* EventTeamHList.swift in Sources */,
 				B924FF5B2C50DD9200F75AB9 /* SearchBar.swift in Sources */,
