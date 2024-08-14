@@ -9,13 +9,14 @@ import SwiftUI
 
 struct MyEventsView: View {
     @StateObject var taskViewModel: TaskViewModel = TaskViewModel()
-    @Namespace var animation
     @State private var selectedCellID: Int? = nil
     @State private var showOverlay: Bool = false
     @State private var selectedIndex = 0
     @State private var slideStartTime: String? = nil
     @State private var slideEndTime: String? = nil
     @State private var isFirstSlide = true
+    @State private var navigateToProfileView: Bool = false
+    @State private var showSheet = false
     
     var body: some View {
         NavigationView {
@@ -58,41 +59,38 @@ struct MyEventsView: View {
                         ).verticalPadding()
                             .onTapGesture {
                                 selectedCellID = index
-                                showOverlay = true
+                                showSheet.toggle()
+//                                showOverlay = true
                             }
                     }
                 }
             }.horizontalPadding()
         }
+        .sheet(isPresented: $showSheet) {
+//            Text("This is the expandable bottom sheet.")
+//            if let selectedCellID = selectedCellID {
+                OverlayView(selectedCellID: selectedCellID ?? 0)
+//                    .edgesIgnoringSafeArea(.all)
+//                    .padding(20)
+//            }
+                .presentationDetents([.height(200), .medium, .large])
+        }
     }
     
     func OverlayView(selectedCellID: Int) -> some View {
             VStack {
-                HStack {
-                    Spacer()
-                    Button {
-                        showOverlay = false
-                    } label: {
-                        Image(systemName: "xmark.circle.fill")
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                            .foregroundColor(.black)
-                            .padding(.trailing, 10).bottomPadding(20)
-                    }
-                }
-                
                 HStack(spacing: 32) {
                     VStack {
-                        DescText("Start time", 16, .bold, color: .white)
-                        SubTextBold("\(slideStartTime ?? "")", 26, .bold, color: .white)
+                        DescText("Start time", 16, .bold, color: .black)
+                        SubTextBold("\(slideStartTime ?? "")", 26, .bold, color: .black)
                             .frame(height: 20)
                     }
                     VStack {
-                        DescText("End time", 16, .bold, color: .white)
-                        SubTextBold("\(slideEndTime ?? "")", 26, .bold, color: .white)
+                        DescText("End time", 16, .bold, color: .black)
+                        SubTextBold("\(slideEndTime ?? "")", 26, .bold, color: .black)
                             .frame(height: 20)
                     }
-                }.bottomPadding()
+                }.bottomPadding(15)
                 
                 SliderButton(onComplete: {
                     if isFirstSlide {
@@ -103,10 +101,8 @@ struct MyEventsView: View {
                     }
                 })
             }
-            .frame(height: 200)
-            .padding()
-            .background(Color(hex: "#05a8cc"))
-            .cornerRadius(15)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(.white)
         }
     
     // MARK: Tasks View
@@ -194,18 +190,17 @@ struct MyEventsView: View {
     }
     
     // MARK: Header
-    func HeaderView()->some View{
+    func HeaderView()->some View {
         HStack(spacing: 10){
             VStack(alignment: .leading, spacing: 5) {
                 DescText(Date().formatted(date: .abbreviated, time: .omitted), color: .gray)
                 DescText(getTodayDayName(), 22).bold()
             }
             .hLeading()
-            Button {
-            } label: {
+            NavigationLink(destination: ProfileSettingsView()) {
                 Image("User1")
                     .resizable()
-                    .imageCircleModifier(height: 45, width: 45, renderingMode: .original, color: .clear, aspectRatio: .fill,  colorStroke: .clear, lineWidth: 0.1)
+                    .imageCircleModifier(height: 45, width: 45, renderingMode: .original, color: .clear, aspectRatio: .fill, colorStroke: .clear, lineWidth: 0.1)
             }
         }
         .padding()

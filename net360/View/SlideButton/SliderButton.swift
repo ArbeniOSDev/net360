@@ -17,11 +17,10 @@ struct SliderButton: View {
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: 50, style: .continuous)
                     .frame(width: 250)
-                    .foregroundColor(Color(.systemGray))
-                    .foregroundStyle(.ultraThickMaterial)
-                    .blendMode(.plusLighter)
+                    .foregroundColor(Color(hex: "#05a8cc"))
                 HStack {
                     Image(systemName: "arrow.right.circle.fill")
+                        .foregroundColor(.white)
                         .font(.system(size: 52))
                         .offset(x: self.dragAmount)
                         .simultaneousGesture(DragGesture()
@@ -44,9 +43,8 @@ struct SliderButton: View {
                             }
                         )
                     if showSliderText && dragAmount <= 10 {
-                        Text("Slide to start")
-                            .foregroundColor(.black)
-                            .padding(.leading, 10)
+                        SubText("Slide to start", 17, color: .white).bold()
+                            .padding(.leading, 14)
                     }
                     Spacer()
                 }

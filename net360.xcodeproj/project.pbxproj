@@ -17,6 +17,7 @@
 		B924FF6A2C5135B200F75AB9 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B924FF692C5135B200F75AB9 /* EventViewModel.swift */; };
 		B9D154832C522C06001A0771 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D154822C522C06001A0771 /* ImageButton.swift */; };
 		F418EEA02C69E56E00B45D9F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F418EE9F2C69E56E00B45D9F /* Kingfisher */; };
+		F429C7592C6CDBA20021E67B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429C7582C6CDBA20021E67B /* ProfileView.swift */; };
 		F434967D2C60F29C008DB661 /* DetailsEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434967C2C60F29C008DB661 /* DetailsEventModel.swift */; };
 		F43496802C60F42A008DB661 /* APIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434967F2C60F42A008DB661 /* APIServiceProtocol.swift */; };
 		F4442FB82C6B365100C51996 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4442FB72C6B365100C51996 /* KeychainService.swift */; };
@@ -89,6 +90,7 @@
 		B924FF672C5133BD00F75AB9 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		B924FF692C5135B200F75AB9 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		B9D154822C522C06001A0771 /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
+		F429C7582C6CDBA20021E67B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		F434967C2C60F29C008DB661 /* DetailsEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsEventModel.swift; sourceTree = "<group>"; };
 		F434967F2C60F42A008DB661 /* APIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceProtocol.swift; sourceTree = "<group>"; };
 		F4442FB72C6B365100C51996 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				F4E8E59E2C4FECB2003C661F /* MyEvents */,
 				F4E8E59B2C4FEBDA003C661F /* TourPlan */,
 				F4E8E5972C4FEB74003C661F /* Home */,
+				F429C7582C6CDBA20021E67B /* ProfileView.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				F4E8E5A22C4FECF4003C661F /* TaskModel.swift in Sources */,
 				F4E8E58D2C4F87DF003C661F /* EventTeamHList.swift in Sources */,
 				B924FF5B2C50DD9200F75AB9 /* SearchBar.swift in Sources */,
+				F429C7592C6CDBA20021E67B /* ProfileView.swift in Sources */,
 				F4EF3BDB2C47E545002010E6 /* TextStyles.swift in Sources */,
 				F468AA072C6396C9002AB250 /* LoginView.swift in Sources */,
 				F461A6C82C4AAA5100BEAFE2 /* NewEventCellView.swift in Sources */,
