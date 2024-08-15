@@ -16,7 +16,17 @@
 		B924FF682C5133BD00F75AB9 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B924FF672C5133BD00F75AB9 /* EventModel.swift */; };
 		B924FF6A2C5135B200F75AB9 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B924FF692C5135B200F75AB9 /* EventViewModel.swift */; };
 		B9D154832C522C06001A0771 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D154822C522C06001A0771 /* ImageButton.swift */; };
+		F4172E802C6DEBA700C5CB2D /* NewProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4172E7F2C6DEBA700C5CB2D /* NewProfileView.swift */; };
+		F4172E822C6DED6900C5CB2D /* BackgroundProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4172E812C6DED6900C5CB2D /* BackgroundProfile.swift */; };
+		F4172E842C6DED8100C5CB2D /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4172E832C6DED8100C5CB2D /* ImagePicker.swift */; };
+		F4172E862C6E08D400C5CB2D /* ProfileOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4172E852C6E08D400C5CB2D /* ProfileOptionView.swift */; };
+		F4172E882C6E1BB900C5CB2D /* LAContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4172E872C6E1BB900C5CB2D /* LAContext.swift */; };
+		F4172E8A2C6E1E6200C5CB2D /* NewPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4172E892C6E1E6200C5CB2D /* NewPasswordView.swift */; };
 		F418EEA02C69E56E00B45D9F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F418EE9F2C69E56E00B45D9F /* Kingfisher */; };
+		F41DDEEB2C6E2F4600CAF5AC /* LanguageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41DDEEA2C6E2F4600CAF5AC /* LanguageCellView.swift */; };
+		F41DDEED2C6E349700CAF5AC /* SupportCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41DDEEC2C6E349700CAF5AC /* SupportCellView.swift */; };
+		F41DDEEF2C6E34A700CAF5AC /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41DDEEE2C6E34A700CAF5AC /* Person.swift */; };
+		F41DDEF12C6E351700CAF5AC /* ContactList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41DDEF02C6E351700CAF5AC /* ContactList.swift */; };
 		F429C7592C6CDBA20021E67B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429C7582C6CDBA20021E67B /* ProfileView.swift */; };
 		F434967D2C60F29C008DB661 /* DetailsEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434967C2C60F29C008DB661 /* DetailsEventModel.swift */; };
 		F43496802C60F42A008DB661 /* APIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434967F2C60F42A008DB661 /* APIServiceProtocol.swift */; };
@@ -90,6 +100,16 @@
 		B924FF672C5133BD00F75AB9 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		B924FF692C5135B200F75AB9 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		B9D154822C522C06001A0771 /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
+		F4172E7F2C6DEBA700C5CB2D /* NewProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileView.swift; sourceTree = "<group>"; };
+		F4172E812C6DED6900C5CB2D /* BackgroundProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundProfile.swift; sourceTree = "<group>"; };
+		F4172E832C6DED8100C5CB2D /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		F4172E852C6E08D400C5CB2D /* ProfileOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileOptionView.swift; sourceTree = "<group>"; };
+		F4172E872C6E1BB900C5CB2D /* LAContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LAContext.swift; sourceTree = "<group>"; };
+		F4172E892C6E1E6200C5CB2D /* NewPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordView.swift; sourceTree = "<group>"; };
+		F41DDEEA2C6E2F4600CAF5AC /* LanguageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageCellView.swift; sourceTree = "<group>"; };
+		F41DDEEC2C6E349700CAF5AC /* SupportCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportCellView.swift; sourceTree = "<group>"; };
+		F41DDEEE2C6E34A700CAF5AC /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		F41DDEF02C6E351700CAF5AC /* ContactList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactList.swift; sourceTree = "<group>"; };
 		F429C7582C6CDBA20021E67B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		F434967C2C60F29C008DB661 /* DetailsEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsEventModel.swift; sourceTree = "<group>"; };
 		F434967F2C60F42A008DB661 /* APIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceProtocol.swift; sourceTree = "<group>"; };
@@ -182,6 +202,7 @@
 				F434967C2C60F29C008DB661 /* DetailsEventModel.swift */,
 				F468AA082C63971B002AB250 /* UserResponse.swift */,
 				F4E6FA1B2C6A5765004BE52F /* LoginObject.swift */,
+				F41DDEEE2C6E34A700CAF5AC /* Person.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -203,6 +224,13 @@
 				F4E8E59B2C4FEBDA003C661F /* TourPlan */,
 				F4E8E5972C4FEB74003C661F /* Home */,
 				F429C7582C6CDBA20021E67B /* ProfileView.swift */,
+				F4172E7F2C6DEBA700C5CB2D /* NewProfileView.swift */,
+				F4172E812C6DED6900C5CB2D /* BackgroundProfile.swift */,
+				F4172E852C6E08D400C5CB2D /* ProfileOptionView.swift */,
+				F4172E892C6E1E6200C5CB2D /* NewPasswordView.swift */,
+				F41DDEEA2C6E2F4600CAF5AC /* LanguageCellView.swift */,
+				F41DDEEC2C6E349700CAF5AC /* SupportCellView.swift */,
+				F41DDEF02C6E351700CAF5AC /* ContactList.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -388,6 +416,8 @@
 				F468AA0A2C639784002AB250 /* KeychainHelper.swift */,
 				F4442FB72C6B365100C51996 /* KeychainService.swift */,
 				F4442FB92C6B3F5100C51996 /* APIClient.swift */,
+				F4172E832C6DED8100C5CB2D /* ImagePicker.swift */,
+				F4172E872C6E1BB900C5CB2D /* LAContext.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -511,21 +541,29 @@
 				F47217E92C48FC1E00ADCB54 /* CustomButtons.swift in Sources */,
 				F461A6BB2C4A4D6000BEAFE2 /* DetailsEventListView.swift in Sources */,
 				F4EF3BF92C47E717002010E6 /* View.swift in Sources */,
+				F4172E8A2C6E1E6200C5CB2D /* NewPasswordView.swift in Sources */,
 				F4E6FA1C2C6A5765004BE52F /* LoginObject.swift in Sources */,
+				F41DDEEB2C6E2F4600CAF5AC /* LanguageCellView.swift in Sources */,
 				F4E8E5932C4FDB90003C661F /* MyEventsView.swift in Sources */,
 				B924FF622C5105F100F75AB9 /* CustomDropDown.swift in Sources */,
+				F4172E862C6E08D400C5CB2D /* ProfileOptionView.swift in Sources */,
 				F4E8E58F2C4F942B003C661F /* DetailsListView.swift in Sources */,
 				B924FF6A2C5135B200F75AB9 /* EventViewModel.swift in Sources */,
 				B924FF662C512EAE00F75AB9 /* LabeledStepper.swift in Sources */,
 				F4EF3BFB2C47E76B002010E6 /* Images.swift in Sources */,
 				F4EF38142C4E41E600434364 /* LoginViewModel.swift in Sources */,
 				F4EF38162C4E421200434364 /* AlertController.swift in Sources */,
+				F41DDEF12C6E351700CAF5AC /* ContactList.swift in Sources */,
 				F4EF380E2C4E410A00434364 /* UpdateVersionManager.swift in Sources */,
 				B924FF642C5123EF00F75AB9 /* DateTextField.swift in Sources */,
+				F4172E822C6DED6900C5CB2D /* BackgroundProfile.swift in Sources */,
 				F4EF38102C4E412C00434364 /* APIConstants.swift in Sources */,
+				F4172E882C6E1BB900C5CB2D /* LAContext.swift in Sources */,
 				F461A6C12C4A5E6500BEAFE2 /* DetailsEventListViewModel.swift in Sources */,
 				F47217EF2C490AA500ADCB54 /* EventListCardView.swift in Sources */,
 				B924FF602C51048200F75AB9 /* SecureTextField.swift in Sources */,
+				F41DDEEF2C6E34A700CAF5AC /* Person.swift in Sources */,
+				F4172E802C6DEBA700C5CB2D /* NewProfileView.swift in Sources */,
 				F461A6C42C4A8EEB00BEAFE2 /* TicketModel.swift in Sources */,
 				F4EF3BCA2C47E36C002010E6 /* ContentView.swift in Sources */,
 				F4EF3BF52C47E6BC002010E6 /* LayoutConstants.swift in Sources */,
@@ -541,6 +579,7 @@
 				F4EF3BF22C47E5BE002010E6 /* Colors.swift in Sources */,
 				F4F55ABB2C6C98D500FFC66B /* SliderButton.swift in Sources */,
 				F4E8E5A22C4FECF4003C661F /* TaskModel.swift in Sources */,
+				F41DDEED2C6E349700CAF5AC /* SupportCellView.swift in Sources */,
 				F4E8E58D2C4F87DF003C661F /* EventTeamHList.swift in Sources */,
 				B924FF5B2C50DD9200F75AB9 /* SearchBar.swift in Sources */,
 				F429C7592C6CDBA20021E67B /* ProfileView.swift in Sources */,
@@ -548,6 +587,7 @@
 				F468AA072C6396C9002AB250 /* LoginView.swift in Sources */,
 				F461A6C82C4AAA5100BEAFE2 /* NewEventCellView.swift in Sources */,
 				F4EF3BC82C47E36C002010E6 /* net360App.swift in Sources */,
+				F4172E842C6DED8100C5CB2D /* ImagePicker.swift in Sources */,
 				F4442FBA2C6B3F5100C51996 /* APIClient.swift in Sources */,
 				F468AA092C63971B002AB250 /* UserResponse.swift in Sources */,
 				F4EF3BD82C47E51C002010E6 /* DateFieldValidator.swift in Sources */,
@@ -693,6 +733,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = net360/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Allow using the Face ID";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -724,6 +765,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = net360/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Allow using the Face ID";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

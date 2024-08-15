@@ -27,17 +27,6 @@ struct MyEventsView: View {
                     HeaderView()
                     TaskView()
                 }
-                
-                if showOverlay {
-                    Color.black.opacity(0.5)
-                        .ignoresSafeArea()
-                    
-                    if let selectedCellID = selectedCellID {
-                        OverlayView(selectedCellID: selectedCellID)
-                            .edgesIgnoringSafeArea(.all)
-                            .padding(20)
-                    }
-                }
             }
         }
     }
@@ -78,32 +67,34 @@ struct MyEventsView: View {
     }
     
     func OverlayView(selectedCellID: Int) -> some View {
-            VStack {
-                HStack(spacing: 32) {
-                    VStack {
-                        DescText("Start time", 16, .bold, color: .black)
-                        SubTextBold("\(slideStartTime ?? "")", 26, .bold, color: .black)
-                            .frame(height: 20)
-                    }
-                    VStack {
-                        DescText("End time", 16, .bold, color: .black)
-                        SubTextBold("\(slideEndTime ?? "")", 26, .bold, color: .black)
-                            .frame(height: 20)
-                    }
-                }.bottomPadding(15)
-                
-                SliderButton(onComplete: {
+        VStack {
+            HStack(spacing: 32) {
+                VStack {
+                    DescText("Start time", 16, .bold, color: .black)
+                    SubTextBold("\(slideStartTime ?? "")", 26, .bold, color: .black)
+                        .frame(height: 20)
+                }
+                VStack {
+                    DescText("End time", 16, .bold, color: .black)
+                    SubTextBold("\(slideEndTime ?? "")", 26, .bold, color: .black)
+                        .frame(height: 20)
+                }
+            }.padding(.bottom, 15)
+            
+            SliderButton(
+                onComplete: {
                     if isFirstSlide {
                         slideStartTime = getCurrentTime()
                         isFirstSlide = false
                     } else {
                         slideEndTime = getCurrentTime()
                     }
-                })
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.white)
+                }, text: isFirstSlide ? "Slide to start" : "Slide to finish", isFirstSlide: isFirstSlide
+            )
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.white)
+    }
     
     // MARK: Tasks View
     func TasksView()->some View{
@@ -181,7 +172,7 @@ struct MyEventsView: View {
             .padding(taskViewModel.isCurrentHour(date: task.taskDate) ? 15 : 0)
             .padding(.bottom,taskViewModel.isCurrentHour(date: task.taskDate) ? 0 : 10)
             .hLeading()
-                .background(Color(hex: "#05a8cc"))
+            .background(Color.customBlueColor)
                 .cornerRadius(10)
                 .shadow(color: Color.gray.opacity(0.3), radius: 2, x: 0, y: 0)
                 .padding(1)
@@ -197,7 +188,7 @@ struct MyEventsView: View {
                 DescText(getTodayDayName(), 22).bold()
             }
             .hLeading()
-            NavigationLink(destination: ProfileSettingsView()) {
+            NavigationLink(destination: NewProfileView()) {
                 Image("User1")
                     .resizable()
                     .imageCircleModifier(height: 45, width: 45, renderingMode: .original, color: .clear, aspectRatio: .fill, colorStroke: .clear, lineWidth: 0.1)

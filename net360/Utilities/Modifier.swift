@@ -6,6 +6,31 @@
 //
 
 import SwiftUI
+
+typealias Callback = () -> Void
+
+struct ListBackgroundModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(iOS 16.0, *) {
+            content
+                .scrollContentBackground(.hidden)
+        } else {
+            content
+        }
+    }
+}
+
+struct ListSeparatorModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(iOS 15.0, *) {
+            content
+                .listRowSeparator(.hidden)
+        } else {
+            content
+                .listRowInsets(EdgeInsets())
+        }
+    }
+}
  
 struct CustomFrameModifier: ViewModifier {
     func body(content: Content) -> some View {
@@ -20,6 +45,11 @@ struct CustomFrameModifier: ViewModifier {
 //            .offset(y: -90)
             .padding(.bottom, -200)
     }
+}
+
+extension View {
+    var clearScrollBackground: some View { self.modifier(ListBackgroundModifier()) }
+    var hiddenSeparator: some View { self.modifier(ListSeparatorModifier()) }
 }
  
 extension View {

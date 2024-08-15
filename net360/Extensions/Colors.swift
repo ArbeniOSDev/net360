@@ -13,6 +13,7 @@ extension Color {
     static let loginColor = Color("loginColor")
     static let vorsorgeColor = Color("vorsorgeColor")
     static let bgColor = Color("bgColor")
+    static let customBlueColor = Color("blueColor")
 }
  
 extension Color {

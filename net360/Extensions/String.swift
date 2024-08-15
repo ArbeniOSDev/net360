@@ -5,7 +5,7 @@
 //  Created by Arben on 22.7.24.
 //
 
-import Foundation
+import SwiftUI
 
 extension String {
     func versionCompare(_ otherVersion: String) -> ComparisonResult {
@@ -53,5 +53,28 @@ extension String {
             }
         }
         return false
+    }
+    
+    var removeSpaces: String {
+      let stringNumWithoutSpaces = self.replacingOccurrences(of: " ", with: "")
+      return stringNumWithoutSpaces
+    }
+    
+    func callPhone() {
+      let phone = "tel://\(self)"
+      guard let url = URL(string: phone) else {
+        print("Failed to create url for dialing")
+        return
+      }
+      UIApplication.shared.open(url)
+    }
+    
+    func sendEmail() {
+      let mailLink = "mailto:\(self)"
+      guard let mailUrl = URL(string: mailLink) else {
+        print("Failed to create url for sending email")
+        return
+      }
+      UIApplication.shared.open(mailUrl)
     }
 }

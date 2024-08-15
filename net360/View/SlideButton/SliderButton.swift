@@ -10,14 +10,17 @@ import SwiftUI
 struct SliderButton: View {
     @State var dragAmount: CGFloat = 0
     @State var showSliderText = true
+    @State var backgroundColor: Color = Color.customBlueColor
     var onComplete: (() -> Void)?
-    
+    var text: String = ""
+    var isFirstSlide: Bool
+
     var body: some View {
         VStack {
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: 50, style: .continuous)
                     .frame(width: 250)
-                    .foregroundColor(Color(hex: "#05a8cc"))
+                    .foregroundColor(backgroundColor)
                 HStack {
                     Image(systemName: "arrow.right.circle.fill")
                         .foregroundColor(.white)
@@ -31,6 +34,9 @@ struct SliderButton: View {
                             }
                             .onEnded { value in
                                 if dragAmount >= 100 {
+                                    if isFirstSlide {
+                                        backgroundColor = .red  // Change the color on first slide completion
+                                    }
                                     onComplete?()
                                     withAnimation(.spring()) {
                                         dragAmount = 0
@@ -43,7 +49,7 @@ struct SliderButton: View {
                             }
                         )
                     if showSliderText && dragAmount <= 10 {
-                        SubText("Slide to start", 17, color: .white).bold()
+                        SubText(text, 17, color: .white).bold()
                             .padding(.leading, 14)
                     }
                     Spacer()

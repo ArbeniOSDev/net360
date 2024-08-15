@@ -54,7 +54,7 @@ struct TicketCell: View {
                 }
             }
             .padding()
-            .background(selectedIndex == 1 ? Color.red.opacity(0.5) : Color(hex: "#05a8cc"))
+            .background(selectedIndex == 1 ? Color.red.opacity(0.5) : .customBlueColor)
             .foregroundColor(.white)
             .cornerRadius(15)
             VStack(alignment: .center, spacing: 5) {
@@ -70,7 +70,7 @@ struct TicketCell: View {
                             Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                                 .resizable()
                                 .frame(width: 25, height: 25)
-                                .foregroundColor(Color(hex: "#05a8cc"))
+                                .foregroundColor(Color.customBlueColor)
                         }
                     }
                 } else {
@@ -84,10 +84,10 @@ struct TicketCell: View {
                     if components.count == 3 {
                         Text(String(components[0])) // Month
                             .font(.system(size: 22, weight: .bold))
-                            .foregroundColor(selectedIndex == 1 ? Color.red.opacity(0.5) : Color(hex: "#05a8cc"))
+                            .foregroundColor(selectedIndex == 1 ? Color.red.opacity(0.5) : Color.customBlueColor)
                         Text(String(components[1])) // Day
                             .font(.system(size: 37, weight: .bold))
-                            .foregroundColor(selectedIndex == 1 ? Color.red.opacity(0.5) : Color(hex: "#05a8cc"))
+                            .foregroundColor(selectedIndex == 1 ? Color.red.opacity(0.5) : Color.customBlueColor)
                         Text(String(components[2])) // Year
                             .font(.system(size: 19, weight: .bold))
                             .foregroundColor(.black)
