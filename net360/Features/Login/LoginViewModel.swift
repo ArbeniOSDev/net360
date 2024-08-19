@@ -23,7 +23,7 @@ class LoginViewModel: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
 
     init() {
-        checkLoggedIn() // Check login status on initialization
+        checkLoggedIn()
     }
 
     func saveUserObjectToUserDefaults() {
@@ -84,7 +84,7 @@ class LoginViewModel: ObservableObject {
                     self?.saveUserObjectToUserDefaults()
                     self?.isLoading = false
                     self?.isLoggedIn = true
-                    self?.isInitialLoginCompleted = true // Mark initial login as completed
+                    self?.isInitialLoginCompleted = true
                 } else if loginObject.error != "" {
                     self?.isLoading = false
                     self?.showAlert = true
@@ -103,7 +103,7 @@ class LoginViewModel: ObservableObject {
         UserDefaults.standard.removeObject(forKey: "userData")
         userModel = nil
         isLoggedIn = false
-        isInitialLoginCompleted = false // Reset initial login status on logout
+        isInitialLoginCompleted = false
     }
 }
 
