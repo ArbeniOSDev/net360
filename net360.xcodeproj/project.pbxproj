@@ -48,12 +48,13 @@
 		F47217ED2C490A8300ADCB54 /* TourPlanListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47217EC2C490A8300ADCB54 /* TourPlanListView.swift */; };
 		F47217EF2C490AA500ADCB54 /* EventListCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47217EE2C490AA500ADCB54 /* EventListCardView.swift */; };
 		F47217F12C49433400ADCB54 /* SegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47217F02C49433400ADCB54 /* SegmentedView.swift */; };
+		F498ADF02C734C0C009C3BF0 /* CustomSegmentedPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F498ADEF2C734C0C009C3BF0 /* CustomSegmentedPickerView.swift */; };
 		F4E6FA1C2C6A5765004BE52F /* LoginObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E6FA1B2C6A5765004BE52F /* LoginObject.swift */; };
 		F4E8E58D2C4F87DF003C661F /* EventTeamHList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8E58C2C4F87DF003C661F /* EventTeamHList.swift */; };
 		F4E8E58F2C4F942B003C661F /* DetailsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8E58E2C4F942B003C661F /* DetailsListView.swift */; };
 		F4E8E5912C4FA5D1003C661F /* AddNewKampagneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8E5902C4FA5D1003C661F /* AddNewKampagneView.swift */; };
 		F4E8E5932C4FDB90003C661F /* MyEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8E5922C4FDB90003C661F /* MyEventsView.swift */; };
-		F4E8E5952C4FDC5A003C661F /* MyEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8E5942C4FDC5A003C661F /* MyEventsViewModel.swift */; };
+		F4E8E5952C4FDC5A003C661F /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8E5942C4FDC5A003C661F /* TaskViewModel.swift */; };
 		F4E8E5A22C4FECF4003C661F /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8E5A12C4FECF4003C661F /* TaskModel.swift */; };
 		F4EF380A2C4E40C400434364 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF38092C4E40C400434364 /* CustomTabBar.swift */; };
 		F4EF380C2C4E40F700434364 /* Network Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF380B2C4E40F700434364 /* Network Manager.swift */; };
@@ -131,12 +132,13 @@
 		F47217EC2C490A8300ADCB54 /* TourPlanListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourPlanListView.swift; sourceTree = "<group>"; };
 		F47217EE2C490AA500ADCB54 /* EventListCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListCardView.swift; sourceTree = "<group>"; };
 		F47217F02C49433400ADCB54 /* SegmentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedView.swift; sourceTree = "<group>"; };
+		F498ADEF2C734C0C009C3BF0 /* CustomSegmentedPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedPickerView.swift; sourceTree = "<group>"; };
 		F4E6FA1B2C6A5765004BE52F /* LoginObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginObject.swift; sourceTree = "<group>"; };
 		F4E8E58C2C4F87DF003C661F /* EventTeamHList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTeamHList.swift; sourceTree = "<group>"; };
 		F4E8E58E2C4F942B003C661F /* DetailsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsListView.swift; sourceTree = "<group>"; };
 		F4E8E5902C4FA5D1003C661F /* AddNewKampagneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewKampagneView.swift; sourceTree = "<group>"; };
 		F4E8E5922C4FDB90003C661F /* MyEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsView.swift; sourceTree = "<group>"; };
-		F4E8E5942C4FDC5A003C661F /* MyEventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsViewModel.swift; sourceTree = "<group>"; };
+		F4E8E5942C4FDC5A003C661F /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 		F4E8E5A12C4FECF4003C661F /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		F4EF38092C4E40C400434364 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		F4EF380B2C4E40F700434364 /* Network Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network Manager.swift"; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				F41DDEEA2C6E2F4600CAF5AC /* LanguageCellView.swift */,
 				F41DDEEC2C6E349700CAF5AC /* SupportCellView.swift */,
 				F41DDEF02C6E351700CAF5AC /* ContactList.swift */,
+				F498ADEF2C734C0C009C3BF0 /* CustomSegmentedPickerView.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -315,7 +318,7 @@
 		F4E8E5A02C4FECC0003C661F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				F4E8E5942C4FDC5A003C661F /* MyEventsViewModel.swift */,
+				F4E8E5942C4FDC5A003C661F /* TaskViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -570,7 +573,7 @@
 				B9D154832C522C06001A0771 /* ImageButton.swift in Sources */,
 				F461A6BF2C4A5CCD00BEAFE2 /* CustomDropDownView.swift in Sources */,
 				F434967D2C60F29C008DB661 /* DetailsEventModel.swift in Sources */,
-				F4E8E5952C4FDC5A003C661F /* MyEventsViewModel.swift in Sources */,
+				F4E8E5952C4FDC5A003C661F /* TaskViewModel.swift in Sources */,
 				F468AA0E2C6399D2002AB250 /* SplashScreenView.swift in Sources */,
 				F43496802C60F42A008DB661 /* APIServiceProtocol.swift in Sources */,
 				F461A6BD2C4A4D7500BEAFE2 /* DetailsEventCellView.swift in Sources */,
@@ -589,6 +592,7 @@
 				F4EF3BC82C47E36C002010E6 /* net360App.swift in Sources */,
 				F4172E842C6DED8100C5CB2D /* ImagePicker.swift in Sources */,
 				F4442FBA2C6B3F5100C51996 /* APIClient.swift in Sources */,
+				F498ADF02C734C0C009C3BF0 /* CustomSegmentedPickerView.swift in Sources */,
 				F468AA092C63971B002AB250 /* UserResponse.swift in Sources */,
 				F4EF3BD82C47E51C002010E6 /* DateFieldValidator.swift in Sources */,
 				F4EF3BF72C47E6EA002010E6 /* Modifier.swift in Sources */,

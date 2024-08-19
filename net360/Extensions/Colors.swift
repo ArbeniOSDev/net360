@@ -14,6 +14,7 @@ extension Color {
     static let vorsorgeColor = Color("vorsorgeColor")
     static let bgColor = Color("bgColor")
     static let customBlueColor = Color("blueColor")
+    static let segmentColor = Color("segmentColor")
 }
  
 extension Color {

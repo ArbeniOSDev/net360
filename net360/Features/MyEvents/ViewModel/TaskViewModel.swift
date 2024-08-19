@@ -1,5 +1,5 @@
 //
-//  MyEventsViewModel.swift
+//  TaskViewModel.swift
 //  net360
 //
 //  Created by Arben on 23.7.24.
@@ -26,21 +26,9 @@ class TaskViewModel: ObservableObject {
          Task(taskTitle: "ZÜRICH", taskDescription: "Meine Ereignisse", taskDate: Date()),
      ]
     
-    // MARK: Current Week Days
-    @Published var currentWeek: [Date] = []
-    
-    // MARK: Current Day
-    @Published var currentDay: Date = Date()
-    
-    // MARK: Filtering Today Tasks
-    @Published var filteredTasks: [Task]?
-    
     init(apiService: APIServiceProtocol = APIService()) {
         self.apiService = apiService
         
-        fetchCurrentWeek()
-        filterTodayTasks()
-//        fetchData()
         generateDummyData()
     }
     
@@ -53,7 +41,7 @@ class TaskViewModel: ObservableObject {
                 time: "10:00 AM",
                 bookingID: "1234",
                 price: "$300",
-                date: "AUG\n09",
+                date: "MAY 22",
                 year: "2024",
                 startingTime: "14:30",
                 endedTime: "",
@@ -67,7 +55,7 @@ class TaskViewModel: ObservableObject {
                 time: "2:00 PM",
                 bookingID: "5678",
                 price: "$150",
-                date: "SEP\n12",
+                date: "AUG 19",
                 year: "2024",
                 startingTime: "10:31",
                 endedTime: "",
@@ -81,7 +69,7 @@ class TaskViewModel: ObservableObject {
                 time: "5:30 PM",
                 bookingID: "9101",
                 price: "$200",
-                date: "OCT\n24",
+                date: "SEP 11",
                 year: "2024",
                 startingTime: "14:30",
                 endedTime: "17:00",
@@ -95,7 +83,21 @@ class TaskViewModel: ObservableObject {
                 time: "5:30 PM",
                 bookingID: "9101",
                 price: "$200",
-                date: "OCT\n24",
+                date: "OCT 24",
+                year: "2024",
+                startingTime: "",
+                endedTime: "",
+                hasStartedEvent: false,
+                hasEndedEvent: false
+            ),
+            Details(
+                id: 5,
+                from: "St.Gallen",
+                to: "Seattle",
+                time: "5:30 PM",
+                bookingID: "9102",
+                price: "$200",
+                date: "AUG 19",
                 year: "2024",
                 startingTime: "",
                 endedTime: "",
@@ -134,74 +136,5 @@ class TaskViewModel: ObservableObject {
                 self?.detailsEventObject = detailsEventObject
             })
             .store(in: &cancellables)
-    }
-    
-    // MARK: Filter Today Tasks
-    func filterTodayTasks(){
-        
-        DispatchQueue.global(qos: .userInteractive).async {
-            
-            let calendar = Calendar.current
-            
-            let filtered = self.storedTasks.filter{
-                return calendar.isDate($0.taskDate, inSameDayAs: self.currentDay)
-            }
-                .sorted { task1, task2 in
-                    return task2.taskDate < task1.taskDate
-                }
-            
-            DispatchQueue.main.async {
-                withAnimation{
-                    self.filteredTasks = filtered
-                }
-            }
-        }
-    }
-    
-    func fetchCurrentWeek(){
-        
-        let today = Date()
-        let calendar = Calendar.current
-        
-        let week = calendar.dateInterval(of: .weekOfMonth, for: today)
-        
-        guard let firstWeekDay = week?.start else{
-            return
-        }
-        
-        (0..<7).forEach { day in
-            
-            if let weekday = calendar.date(byAdding: .day, value: day, to: firstWeekDay){
-                currentWeek.append(weekday)
-            }
-        }
-    }
-    
-    // MARK: Extracting Date
-    func extractDate(date: Date,format: String)->String{
-        let formatter = DateFormatter()
-        
-        formatter.dateFormat = format
-        
-        return formatter.string(from: date)
-    }
-    
-    // MARK: Checking if current Date is Today
-    func isToday(date: Date)->Bool{
-        
-        let calendar = Calendar.current
-        
-        return calendar.isDate(currentDay, inSameDayAs: date)
-    }
-    
-    // MARK: Checking if the currentHour is task Hour
-    func isCurrentHour(date: Date)->Bool{
-        
-        let calendar = Calendar.current
-        
-        let hour = calendar.component(.hour, from: date)
-        let currentHour = calendar.component(.hour, from: Date())
-        
-        return hour == currentHour
     }
 }

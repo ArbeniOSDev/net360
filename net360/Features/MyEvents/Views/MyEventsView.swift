@@ -15,11 +15,11 @@ struct MyEventsView: View {
     @State private var slideStartTime: String = ""
     @State private var slideEndTime: String = ""
     @State private var isFirstSlide = true
-    @State private var navigateToProfileView: Bool = false
     @State private var showSheet = false
     @State private var slideCompletedTwice = false
     @State private var sliderBackgroundColor: Color = .customBlueColor
     @State private var sliderText: String = "Slide to start"
+    @State private var newsSelectedSegment = 0
     
     var body: some View {
         NavigationView {
@@ -28,6 +28,7 @@ struct MyEventsView: View {
                     .ignoresSafeArea()
                 VStack {
                     HeaderView()
+                    CustomSegmentedPickerView1(selectedIndex: $newsSelectedSegment).horizontalPadding()
                     PointerView()
                     TaskView()
                 }
@@ -52,54 +53,54 @@ struct MyEventsView: View {
                 .frame(width: 25, height: 25)
             DescText("Click an event to start timing", 16, color: .black)
             Spacer()
-        }.horizontalPadding()
+        }.horizontalPadding(20).topPadding()
     }
     
     func TaskView() -> some View {
-          ScrollView(.vertical, showsIndicators: false) {
-              VStack {
-                  if let tickets = taskViewModel.detailsEventObject?.tickets {
-                      ForEach(tickets.indices, id: \.self) { index in
-                          TicketCell(
-                              ticket: tickets[index],
-                              isSelected: true,
-                              showOverlayList: $showOverlay,
-                              selectedIndex: selectedCellID,
-                              index: index,
-                              onSelect: { id in
-                                  selectedCellID = id
-                              }
-                          ).verticalPadding()
-                              .onTapGesture {
-                                  selectedCellID = index
-                                  setupOverlayState(for: tickets[index])
-                                  showSheet = true
-                              }
-                      }
-                  }
-              }.horizontalPadding()
-          }
-          .sheet(isPresented: $showSheet) {
-              OverlayView(
-                  selectedCellID: selectedCellID,
-                  slideStartTime: $slideStartTime,
-                  slideEndTime: $slideEndTime,
-                  isFirstSlide: $isFirstSlide,
-                  slideCompletedTwice: $slideCompletedTwice,
-                  sliderBackgroundColor: $sliderBackgroundColor,
-                  sliderText: $sliderText,
-                  taskViewModel: taskViewModel
-              )
-              .presentationDetents([.height(230), .medium, .large])
-          }
-      }
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack {
+                if let tickets = taskViewModel.detailsEventObject?.tickets {
+                    ForEach(tickets.indices, id: \.self) { index in
+                        TicketCell(
+                            ticket: tickets[index],
+                            isSelected: true,
+                            showOverlayList: $showOverlay,
+                            selectedIndex: selectedCellID,
+                            index: index,
+                            onSelect: { id in
+                                selectedCellID = id
+                            }
+                        ).verticalPadding()
+                            .onTapGesture {
+                                selectedCellID = index
+                                setupOverlayState(for: tickets[index])
+                                showSheet = true
+                            }
+                    }
+                }
+            }.horizontalPadding()
+        }
+        .sheet(isPresented: $showSheet) {
+            OverlayView(
+                selectedCellID: selectedCellID,
+                slideStartTime: $slideStartTime,
+                slideEndTime: $slideEndTime,
+                isFirstSlide: $isFirstSlide,
+                slideCompletedTwice: $slideCompletedTwice,
+                sliderBackgroundColor: $sliderBackgroundColor,
+                sliderText: $sliderText,
+                taskViewModel: taskViewModel
+            )
+            .presentationDetents([.height(230), .medium, .large])
+        }
+    }
     
     private func setupOverlayState(for ticket: Details) {
         slideStartTime = ticket.startingTime ?? ""
         slideEndTime = ticket.endedTime ?? ""
         isFirstSlide = !(ticket.hasStartedEvent ?? false)
         slideCompletedTwice = ticket.hasEndedEvent ?? false
-
+        
         if ticket.hasStartedEvent == true && ticket.hasEndedEvent == false {
             sliderBackgroundColor = .red
             sliderText = "Slide to finish"
@@ -113,10 +114,10 @@ struct MyEventsView: View {
     }
     
     static func getCurrentTime() -> String {
-          let formatter = DateFormatter()
-          formatter.timeStyle = .short
-          return formatter.string(from: Date())
-      }
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        return formatter.string(from: Date())
+    }
     
     struct OverlayView: View {
         let selectedCellID: Int
@@ -126,115 +127,110 @@ struct MyEventsView: View {
         @Binding var slideCompletedTwice: Bool
         @Binding var sliderBackgroundColor: Color
         @Binding var sliderText: String
-        
         @ObservedObject var taskViewModel: TaskViewModel
         
         var body: some View {
             VStack {
-                HStack(spacing: 32) {
-                    VStack {
-                        DescText("Start time", 16, color: .black)
-                        SubTextBold("\(slideStartTime)", 26, .bold, color: .black)
-                            .frame(height: 20)
-                    }
-                    VStack {
-                        DescText("End time", 16, color: .black)
-                        SubTextBold("\(slideEndTime)", 26, .bold, color: .black)
-                            .frame(height: 20)
-                    }
-                }.padding(.bottom, 15)
-                
-                if !slideCompletedTwice {
-                    SliderButton(
-                        onComplete: {
-                            let currentTime = MyEventsView.getCurrentTime()
-                            
-                            switch (isFirstSlide, slideCompletedTwice) {
-                            case (true, false):
-                                // First case: Event not started
-                                slideStartTime = currentTime
-                                sliderBackgroundColor = .red
-                                sliderText = "Slide to finish"
-                                taskViewModel.updateTicket(at: selectedCellID, withStartTime: slideStartTime)
-                                isFirstSlide = false
+                if isEventScheduledForToday() {
+                    HStack(spacing: 32) {
+                        VStack {
+                            DescText("Start time", 16, color: .black)
+                            SubTextBold("\(slideStartTime)", 26, .bold, color: .black)
+                                .frame(height: 20)
+                        }
+                        VStack {
+                            DescText("End time", 16, color: .black)
+                            SubTextBold("\(slideEndTime)", 26, .bold, color: .black)
+                                .frame(height: 20)
+                        }
+                    }.padding(.bottom, 15)
+                    
+                    if !slideCompletedTwice {
+                        SliderButton(
+                            onComplete: {
+                                let currentTime = MyEventsView.getCurrentTime()
                                 
-                            case (false, false):
-                                // Second case: Event started but not ended
-                                slideEndTime = currentTime
-                                slideCompletedTwice = true
-                                sliderBackgroundColor = .blue
-                                sliderText = "Completed"
-                                taskViewModel.updateTicket(at: selectedCellID, withEndTime: slideEndTime)
-                                
-                            default:
-                                break
-                            }
-                        },
-                        text: sliderText,
-                        backgroundColor: sliderBackgroundColor
-                    )
+                                switch (isFirstSlide, slideCompletedTwice) {
+                                case (true, false):
+                                    // First case: Event not started
+                                    slideStartTime = currentTime
+                                    sliderBackgroundColor = .red
+                                    sliderText = "Slide to finish"
+                                    taskViewModel.updateTicket(at: selectedCellID, withStartTime: slideStartTime)
+                                    isFirstSlide = false
+                                    
+                                case (false, false):
+                                    // Second case: Event started but not ended
+                                    slideEndTime = currentTime
+                                    slideCompletedTwice = true
+                                    sliderBackgroundColor = .blue
+                                    sliderText = "Completed"
+                                    taskViewModel.updateTicket(at: selectedCellID, withEndTime: slideEndTime)
+                                    
+                                default:
+                                    break
+                                }
+                            },
+                            text: sliderText,
+                            backgroundColor: sliderBackgroundColor
+                        )
+                    } else {
+                        VStack(spacing: 8) {
+                            Image("successTickIcon")
+                                .resizable()
+                                .frame(width: 60, height: 60)
+                            SubText("You have completed the event", 16, color: .black)
+                            SubText("Total time: 2 hours and 30 min", 16, color: .black).bold()
+                        }
+                    }
                 } else {
-                    VStack(spacing: 8) {
-                        Image("successTickIcon")
+                    VStack(spacing: 22) {
+                        Image(systemName: "calendar.badge.exclamationmark")
                             .resizable()
-                            .frame(width: 60, height: 60)
-                        SubText("You have completed the event", 16, color: .black)
-                        SubText("Total time: 2 hours and 30 min", 16, color: .black).bold()
+                            .aspectRatio(contentMode: .fit)
+                            .foregroundColor(.customBlueColor)
+                            .frame(width: 60)
+                        SubText("This event is not scheduled for today.", 18, color: .black)
+                            .bold()
                     }
+                    .padding()
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.white)
         }
-    }
-    
-    private func handleSlideCompletion() {
-          let currentTime = MyEventsView.getCurrentTime()
-          
-          switch (isFirstSlide, slideCompletedTwice) {
-          case (true, false):
-              // First case: Event not started
-              slideStartTime = currentTime
-              sliderBackgroundColor = .red
-              sliderText = "Slide to finish"
-              taskViewModel.updateTicket(at: selectedCellID, withStartTime: slideStartTime)
-              isFirstSlide = false
-              
-          case (false, false):
-              // Second case: Event started but not ended
-              slideEndTime = currentTime
-              slideCompletedTwice = true
-              sliderBackgroundColor = .blue
-              sliderText = "Completed"
-              taskViewModel.updateTicket(at: selectedCellID, withEndTime: slideEndTime)
-              
-          default:
-              break
-          }
-      }
-    
-    // MARK: Tasks View
-    func TasksView()->some View{
-        LazyVStack(spacing: 15){
-            if let tasks = taskViewModel.filteredTasks{
-                if tasks.isEmpty{
-                    DescTextLight("No tasks found!!!", 16)
-                        .offset(y: 100)
-                }
-                else {
-                    ForEach(tasks){task in
-                        TaskCardView(task: task)
-                    }
-                }
+        
+        private func isEventScheduledForToday() -> Bool {
+            guard let tickets = taskViewModel.detailsEventObject?.tickets,
+                  selectedCellID < tickets.count else {
+                return false
             }
-            else {
-                ProgressView()
-                    .offset(y: 100)
+            
+            let eventDateString = tickets[selectedCellID].date?.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MMM dd"
+            
+            // Get current year
+            let currentYear = Calendar.current.component(.year, from: Date())
+            
+            // Combine the date and year
+            let fullDateString = "\(eventDateString ?? "") \(currentYear)"
+            
+            if let eventDate = formatter.date(from: eventDateString ?? "") {
+                let calendar = Calendar.current
+                var components = calendar.dateComponents([.year, .month, .day], from: eventDate)
+                components.year = currentYear
+                
+                if let updatedEventDate = calendar.date(from: components) {
+                    return Calendar.current.isDateInToday(updatedEventDate)
+                } else {
+                    print("Failed to update event date with current year")
+                }
+            } else {
+                print("Failed to parse date: \(fullDateString)")
             }
-        }
-        .padding()
-        .onChange(of: taskViewModel.currentDay) { newValue in
-            taskViewModel.filterTodayTasks()
+            return false
         }
     }
     
@@ -265,9 +261,6 @@ struct MyEventsView: View {
                     }
                 }.padding(.top)
             }
-            .foregroundColor(taskViewModel.isCurrentHour(date: task.taskDate) ? .white : .black)
-            .padding(taskViewModel.isCurrentHour(date: task.taskDate) ? 15 : 0)
-            .padding(.bottom,taskViewModel.isCurrentHour(date: task.taskDate) ? 0 : 10)
             .hLeading()
             .background(Color.customBlueColor)
             .cornerRadius(10)
@@ -299,12 +292,6 @@ struct MyEventsView: View {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"
         return dateFormatter.string(from: Date())
-    }
-    
-    func getCurrentTime() -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        return formatter.string(from: Date())
     }
 }
 
