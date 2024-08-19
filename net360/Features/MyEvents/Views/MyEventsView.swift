@@ -96,8 +96,26 @@ struct MyEventsView: View {
     }
     
     private func setupOverlayState(for ticket: Details) {
-        slideStartTime = ticket.startingTime ?? ""
-        slideEndTime = ticket.endedTime ?? ""
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH:mm"
+        
+        let displayFormatter = DateFormatter()
+        displayFormatter.dateFormat = "hh:mm a"
+
+        if let startTime = ticket.startingTime,
+           let startTimeDate = timeFormatter.date(from: startTime) {
+            slideStartTime = displayFormatter.string(from: startTimeDate)
+        } else {
+            slideStartTime = ""
+        }
+        
+        if let endTime = ticket.endedTime,
+           let endTimeDate = timeFormatter.date(from: endTime) {
+            slideEndTime = displayFormatter.string(from: endTimeDate)
+        } else {
+            slideEndTime = ""
+        }
+        
         isFirstSlide = !(ticket.hasStartedEvent ?? false)
         slideCompletedTwice = ticket.hasEndedEvent ?? false
         
