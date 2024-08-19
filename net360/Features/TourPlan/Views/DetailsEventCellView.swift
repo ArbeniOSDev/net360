@@ -54,11 +54,11 @@ struct TicketCell: View {
                 }
             }
             .padding()
-            .background(selectedIndex == 1 ? Color.red.opacity(0.5) : .customBlueColor)
+            .background(Color.customBlueColor)
             .foregroundColor(.white)
             .cornerRadius(15)
             VStack(alignment: .center, spacing: 5) {
-                if selectedIndex != 1 {
+                if selectedIndex > -1 {
                     HStack {
                         Spacer()
                         Button(action: {

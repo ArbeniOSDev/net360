@@ -12,4 +12,6 @@ struct Task: Identifiable{
     var taskTitle: String
     var taskDescription: String
     var taskDate: Date
+    var hasStartedEvent: Bool?
+    var hasFinishedEvent: Bool?
 }

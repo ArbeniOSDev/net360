@@ -10,7 +10,6 @@ import SwiftUI
 enum TabbedItems: Int, CaseIterable {
     case home = 0
     case activity
-//    case settings
     
     var title: String{
         switch self {
@@ -18,8 +17,6 @@ enum TabbedItems: Int, CaseIterable {
             return "Home"
         case .activity:
             return "My Events"
-//        case .settings:
-//            return "Profile"
         }
     }
     
@@ -29,8 +26,6 @@ enum TabbedItems: Int, CaseIterable {
             return "homeIcon"
         case .activity:
             return "eventIcon"
-//        case .settings:
-//            return "setting"
         }
     }
 }
@@ -42,7 +37,7 @@ struct CustomTabBar: View {
     private var updateManager: UpdateVersionManager!
     @State var showUpdateAlert: Bool = false
     @ObservedObject var authManager: LoginViewModel
-
+    
     init(dismissLunch: Binding<Bool> = .constant(false), authManager: LoginViewModel) {
         UITabBar.appearance().isHidden = true
         updateManager = UpdateVersionManager()
@@ -55,15 +50,7 @@ struct CustomTabBar: View {
     }
     
     var body: some View {
-//        if #available(iOS 16.0, *) {
-//            NavigationStack {
-                contentView()
-//            }
-//        } else {
-//            NavigationView {
-//                contentView()
-//            }
-//        }
+        contentView()
     }
     
     func contentView() -> some View {
@@ -91,8 +78,6 @@ struct CustomTabBar: View {
                             .environmentObject(authManager)
                         MyEventsView()
                             .tag(1)
-//                        EmptyView()
-//                            .tag(2)
                     }.modifier(InternetConnectionBannerModifier(isInternetConnected: $networkManager.isConnected))
                     if selectedTab != 4 {
                         ZStack {

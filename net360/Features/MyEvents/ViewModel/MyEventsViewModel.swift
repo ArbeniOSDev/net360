@@ -40,7 +40,82 @@ class TaskViewModel: ObservableObject {
         
         fetchCurrentWeek()
         filterTodayTasks()
-        fetchData()
+//        fetchData()
+        generateDummyData()
+    }
+    
+    private func generateDummyData() {
+        let tickets = [
+            Details(
+                id: 1,
+                from: "Zurich",
+                to: "Los Angeles",
+                time: "10:00 AM",
+                bookingID: "1234",
+                price: "$300",
+                date: "AUG\n09",
+                year: "2024",
+                startingTime: "14:30",
+                endedTime: "",
+                hasStartedEvent: true,
+                hasEndedEvent: false
+            ),
+            Details(
+                id: 2,
+                from: "Basel",
+                to: "Houston",
+                time: "2:00 PM",
+                bookingID: "5678",
+                price: "$150",
+                date: "SEP\n12",
+                year: "2024",
+                startingTime: "10:31",
+                endedTime: "",
+                hasStartedEvent: true,
+                hasEndedEvent: false
+            ),
+            Details(
+                id: 3,
+                from: "Bern",
+                to: "Seattle",
+                time: "5:30 PM",
+                bookingID: "9101",
+                price: "$200",
+                date: "OCT\n24",
+                year: "2024",
+                startingTime: "14:30",
+                endedTime: "17:00",
+                hasStartedEvent: true,
+                hasEndedEvent: true
+            ),
+            Details(
+                id: 4,
+                from: "Bern",
+                to: "Seattle",
+                time: "5:30 PM",
+                bookingID: "9101",
+                price: "$200",
+                date: "OCT\n24",
+                year: "2024",
+                startingTime: "",
+                endedTime: "",
+                hasStartedEvent: false,
+                hasEndedEvent: false
+            )
+        ]
+        detailsEventObject = DetailsEventModel(tickets: tickets)
+    }
+    
+    func updateTicket(at index: Int?, withStartTime startTime: String?) {
+        guard let index = index else { return }
+        detailsEventObject?.tickets?[index].startingTime = startTime
+        detailsEventObject?.tickets?[index].hasStartedEvent = true
+    }
+
+    func updateTicket(at index: Int?, withEndTime endTime: String?) {
+        guard let index = index else { return }
+        detailsEventObject?.tickets?[index].endedTime = endTime
+        detailsEventObject?.tickets?[index].hasEndedEvent = true
     }
     
     func fetchData() {

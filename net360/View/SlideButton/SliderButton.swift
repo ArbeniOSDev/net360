@@ -10,10 +10,9 @@ import SwiftUI
 struct SliderButton: View {
     @State var dragAmount: CGFloat = 0
     @State var showSliderText = true
-    @State var backgroundColor: Color = Color.customBlueColor
     var onComplete: (() -> Void)?
     var text: String = ""
-    var isFirstSlide: Bool
+    var backgroundColor: Color = .customBlueColor
 
     var body: some View {
         VStack {
@@ -34,9 +33,6 @@ struct SliderButton: View {
                             }
                             .onEnded { value in
                                 if dragAmount >= 100 {
-                                    if isFirstSlide {
-                                        backgroundColor = .red  // Change the color on first slide completion
-                                    }
                                     onComplete?()
                                     withAnimation(.spring()) {
                                         dragAmount = 0

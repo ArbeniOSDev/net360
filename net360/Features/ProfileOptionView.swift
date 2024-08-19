@@ -13,7 +13,7 @@ struct ProfileOptionView: View {
     var text: String = ""
     var hiddeRightImage = false
     var isForFaceId = false
-    @State private var toggleOn = false
+    @AppStorage("isInitialLoginCompleted") var isInitialLoginCompleted: Bool = false
 
     var body: some View {
         HStack {
@@ -41,18 +41,18 @@ struct ProfileOptionView: View {
             }
             
             if isForFaceId {
-                Toggle(isOn: $toggleOn) {
+                Toggle(isOn: $isInitialLoginCompleted) {
                     
                 }
                 .tint(Color(hex: "#05A8CC"))
-                .onChange(of: toggleOn) { newValue in
+                .onChange(of: isInitialLoginCompleted) { newValue in
                     if newValue {
                         let context = LAContext()
                         context.authenticateUser { success, _ in
                             if !success {
-                                toggleOn = false
+                                isInitialLoginCompleted = false
                             } else {
-                                toggleOn = true
+                                isInitialLoginCompleted = true
                             }
                         }
                     }
