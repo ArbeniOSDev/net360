@@ -28,13 +28,16 @@ struct MyEventsView: View {
                     .ignoresSafeArea()
                 VStack {
                     HeaderView()
-                    CustomSegmentedPickerView1(selectedIndex: $newsSelectedSegment).horizontalPadding()
+                    CustomSegmentedPickerView(selectedIndex: $newsSelectedSegment, titles: taskViewModel.segmentTitles)
+                        .horizontalPadding()
                     PointerView()
                     TaskView()
                 }
             }
             .onAppear {
-                setupInitialSelection()
+                if selectedCellID < taskViewModel.detailsEventObject?.tickets?.count ?? 0 {
+                    setupOverlayState(for: taskViewModel.detailsEventObject!.tickets![selectedCellID])
+                }
             }
         }
     }
@@ -91,7 +94,11 @@ struct MyEventsView: View {
                 sliderText: $sliderText,
                 taskViewModel: taskViewModel
             )
-            .presentationDetents([.height(230), .medium, .large])
+            .presentationDetents([.height(230)])
+            .onDisappear {
+                // call API again when the sheet will dissapear
+//                taskViewModel.fetchData()
+            }
         }
     }
     
@@ -176,6 +183,8 @@ struct MyEventsView: View {
                                     sliderText = "Slide to finish"
                                     taskViewModel.updateTicket(at: selectedCellID, withStartTime: slideStartTime)
                                     isFirstSlide = false
+                                    // call API for the start time
+//                                    taskViewModel.startTimingAPI()
                                     
                                 case (false, false):
                                     // Second case: Event started but not ended
@@ -184,7 +193,8 @@ struct MyEventsView: View {
                                     sliderBackgroundColor = .blue
                                     sliderText = "Completed"
                                     taskViewModel.updateTicket(at: selectedCellID, withEndTime: slideEndTime)
-                                    
+                                    // call API for the end time
+//                                    taskViewModel.endTimingAPI()
                                 default:
                                     break
                                 }
@@ -198,7 +208,7 @@ struct MyEventsView: View {
                                 .resizable()
                                 .frame(width: 60, height: 60)
                             SubText("You have completed the event", 16, color: .black)
-                            SubText("Total time: 2 hours and 30 min", 16, color: .black).bold()
+                            SubText("Total time: \(calculateTotalTime())", 16, color: .black).bold()
                         }
                     }
                 } else {
@@ -216,6 +226,22 @@ struct MyEventsView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.white)
+        }
+        
+        private func calculateTotalTime() -> String {
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "hh:mm a" // Assuming the times are in "hh:mm a" format
+            
+            guard let start = timeFormatter.date(from: slideStartTime),
+                  let end = timeFormatter.date(from: slideEndTime) else {
+                return "0 hours and 0 min"
+            }
+            
+            let components = Calendar.current.dateComponents([.hour, .minute], from: start, to: end)
+            let hours = components.hour ?? 0
+            let minutes = components.minute ?? 0
+            
+            return "\(hours) hours and \(minutes) min"
         }
         
         private func isEventScheduledForToday() -> Bool {

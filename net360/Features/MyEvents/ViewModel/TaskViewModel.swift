@@ -26,6 +26,8 @@ class TaskViewModel: ObservableObject {
          Task(taskTitle: "ZÜRICH", taskDescription: "Meine Ereignisse", taskDate: Date()),
      ]
     
+    var segmentTitles: [String] = ["Public", "Privat"]
+    
     init(apiService: APIServiceProtocol = APIService()) {
         self.apiService = apiService
         
@@ -55,9 +57,9 @@ class TaskViewModel: ObservableObject {
                 time: "2:00 PM",
                 bookingID: "5678",
                 price: "$150",
-                date: "AUG 19",
+                date: "AUG 20",
                 year: "2024",
-                startingTime: "10:31",
+                startingTime: "08:31",
                 endedTime: "",
                 hasStartedEvent: true,
                 hasEndedEvent: false
@@ -97,7 +99,7 @@ class TaskViewModel: ObservableObject {
                 time: "5:30 PM",
                 bookingID: "9102",
                 price: "$200",
-                date: "AUG 19",
+                date: "AUG 20",
                 year: "2024",
                 startingTime: "",
                 endedTime: "",
@@ -136,5 +138,13 @@ class TaskViewModel: ObservableObject {
                 self?.detailsEventObject = detailsEventObject
             })
             .store(in: &cancellables)
+    }
+    
+    func startTimingAPI() {
+        
+    }
+    
+    func endTimingAPI() {
+        
     }
 }

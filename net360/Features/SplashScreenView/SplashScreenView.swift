@@ -68,7 +68,7 @@ struct SplashScreenView: View {
                 }
             }
         } else {
-            authManager.logout()
+            authManager.makeLoginAPI()
         }
     }
 }

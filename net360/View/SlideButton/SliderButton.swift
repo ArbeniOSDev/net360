@@ -45,13 +45,52 @@ struct SliderButton: View {
                             }
                         )
                     if showSliderText && dragAmount <= 10 {
-                        SubText(text, 17, color: .white).bold()
-                            .padding(.leading, 14)
+                        SubText(text, 18, color: .white).bold()
+                            .padding(.leading, 12)
+                            .shimmer(.init(tint: .white.opacity(0.5), highlight: .white, blur: 5))
                     }
                     Spacer()
                 }
             }
             .frame(width: 250, height: 62)
         }
+    }
+}
+
+struct ShimmerEffect: ViewModifier {
+    @State private var phase: CGFloat = 0
+
+    func body(content: Content) -> some View {
+        content
+            .overlay(
+                GeometryReader { geometry in
+                    Rectangle()
+                        .fill(
+                            LinearGradient(
+                                gradient: Gradient(stops: [
+                                    .init(color: Color.white.opacity(0.4), location: phase),
+                                    .init(color: Color.white.opacity(0.8), location: phase + 0.1),
+                                    .init(color: Color.white.opacity(0.4), location: phase + 0.2)
+                                ]),
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
+                        .rotationEffect(.degrees(30))
+                        .offset(x: -geometry.size.width * 2 + phase * geometry.size.width * 3)
+                }
+            )
+            .mask(content)
+            .onAppear {
+                withAnimation(Animation.linear(duration: 1.5).repeatForever(autoreverses: false)) {
+                    phase = 1
+                }
+            }
+    }
+}
+
+extension View {
+    func shimmering() -> some View {
+        self.modifier(ShimmerEffect())
     }
 }

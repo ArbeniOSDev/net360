@@ -9,12 +9,13 @@ import SwiftUI
 
 struct CustomSegmentedPickerView: View {
     @Binding var selectedIndex: Int
-    private var titles = ["Current", "Expired"]
+    var titles: [String]
     private var colors = Color.white
     @State private var frames = Array<CGRect>(repeating: .zero, count: 3)
 
-    init(selectedIndex: Binding<Int>) {
+    init(selectedIndex: Binding<Int>, titles: [String] = ["Current", "Expired"]) {
         _selectedIndex = selectedIndex
+        self.titles = titles
     }
 
     var body: some View {
@@ -25,8 +26,9 @@ struct CustomSegmentedPickerView: View {
                         Button(action: { selectedIndex = index }) {
                             DescText(self.titles[index], LayoutConstants.fontSize14, .bold, color: selectedIndex == index ? .white : Color(hex: "#00A3FF"))
                                 .frame(maxWidth: .infinity)
-                        }.padding(EdgeInsets(top: 18, leading: 1, bottom: 18, trailing: 1))
-                            .background(
+                        }
+                        .padding(EdgeInsets(top: 18, leading: 1, bottom: 18, trailing: 1))
+                        .background(
                             GeometryReader { geo in
                                 Color.clear.onAppear { self.setFrame(index: index, frame: geo.frame(in: .global)) }
                             }
@@ -52,3 +54,4 @@ struct CustomSegmentedPickerView: View {
         self.frames[index] = frame
     }
 }
+
