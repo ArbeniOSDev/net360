@@ -12,6 +12,11 @@ enum EventType {
     case future
 }
 
+enum EventType2 {
+    case `public`
+    case `private`
+}
+
 struct EventListCardView: View {
     var event: Event?
     var eventType: EventType

@@ -72,7 +72,7 @@ struct MyEventsView: View {
                             index: index,
                             onSelect: { id in
                                 selectedCellID = id
-                            }
+                            }, eventType: newsSelectedSegment == 0 ? .public : .private
                         ).verticalPadding()
                             .onTapGesture {
                                 selectedCellID = index
@@ -230,7 +230,7 @@ struct MyEventsView: View {
         
         private func calculateTotalTime() -> String {
             let timeFormatter = DateFormatter()
-            timeFormatter.dateFormat = "hh:mm a" // Assuming the times are in "hh:mm a" format
+            timeFormatter.dateFormat = "hh:mm a"
             
             guard let start = timeFormatter.date(from: slideStartTime),
                   let end = timeFormatter.date(from: slideEndTime) else {

@@ -15,6 +15,7 @@ struct TicketCell: View {
     var index: Int
     var onSelect: (Int) -> Void
     let dateString = "AUG 04 2024"
+    var eventType: EventType2?
     
     var body: some View {
         HStack(spacing: 0) {
@@ -54,7 +55,7 @@ struct TicketCell: View {
                 }
             }
             .padding()
-            .background(Color.customBlueColor)
+            .background(eventType == .public ? Color.customBlueColor : Color(hex: "#9D6EFF"))
             .foregroundColor(.white)
             .cornerRadius(15)
             VStack(alignment: .center, spacing: 5) {
@@ -70,7 +71,7 @@ struct TicketCell: View {
                             Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                                 .resizable()
                                 .frame(width: 25, height: 25)
-                                .foregroundColor(Color.customBlueColor)
+                                .foregroundColor(eventType == .public ? Color.customBlueColor : Color(hex: "#9D6EFF"))
                         }
                     }
                 } else {
