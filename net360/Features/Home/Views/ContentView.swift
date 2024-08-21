@@ -15,6 +15,8 @@ struct ContentView: View {
     @State private var showOverlayView: Bool = false
     @StateObject var eventViewModel = EventViewModel()
     private let years = Array(2020...2024).reversed()
+    @State private var selectedItem: String = ""
+    private let menuItems = ["Availability", "Alphabet", "Date"]
     
     var filteredEvents: [Event1] {
         if search.isEmpty {
@@ -49,6 +51,32 @@ struct ContentView: View {
                         }.topPadding()
                         Divider()
                     }
+                    HStack {
+                        Spacer()
+                        Menu {
+                            ForEach(menuItems, id: \.self) { item in
+                                Button(action: {
+                                    selectedItem = item
+                                }) {
+                                    HStack {
+                                        DescText(item, 16, color: .blue)
+                                        if selectedItem == item {
+                                            Image(systemName: "checkmark")
+                                                .foregroundColor(.blue)
+                                        }
+                                    }
+                                }
+                            }
+                        } label: {
+                            HStack {
+                                Image("filter")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 20, height: 20)
+                                Text(selectedItem)
+                            }
+                        }
+                    }.horizontalPadding()
                     ScrollView {
                         VStack(spacing: 15) {
                             ForEach(filteredEvents) { event in
