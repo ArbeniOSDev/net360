@@ -26,13 +26,13 @@ struct DetailsEventListView: View {
                         ForEach(tickets.indices, id: \.self) { index in
                             TicketCell(
                                 ticket: tickets[index],
-                                isSelected: selectedCellID == tickets[index].id,
+                                isSelected: (selectedIndex != 0),
                                 showOverlayList: $showOverlay,
                                 selectedIndex: selectedIndex,
                                 index: index,
                                 onSelect: { id in
                                     selectedCellID = selectedCellID == id ? nil : id
-                                }
+                                }, eventType: selectedIndex == 0 ? .public : .private
                             ).verticalPadding()
                         }
                     } else if viewModel.noDataAvailable {
