@@ -32,6 +32,9 @@
 		F43496802C60F42A008DB661 /* APIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434967F2C60F42A008DB661 /* APIServiceProtocol.swift */; };
 		F4442FB82C6B365100C51996 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4442FB72C6B365100C51996 /* KeychainService.swift */; };
 		F4442FBA2C6B3F5100C51996 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4442FB92C6B3F5100C51996 /* APIClient.swift */; };
+		F45D6D632C75E9A70041DC3B /* UpcomingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D6D622C75E9A70041DC3B /* UpcomingView.swift */; };
+		F45D6D652C75F1EC0041DC3B /* CustomRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D6D642C75F1EC0041DC3B /* CustomRadioButton.swift */; };
+		F45D6D672C760F200041DC3B /* PointerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D6D662C760F200041DC3B /* PointerView.swift */; };
 		F461A6BB2C4A4D6000BEAFE2 /* DetailsEventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F461A6BA2C4A4D6000BEAFE2 /* DetailsEventListView.swift */; };
 		F461A6BD2C4A4D7500BEAFE2 /* DetailsEventCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F461A6BC2C4A4D7500BEAFE2 /* DetailsEventCellView.swift */; };
 		F461A6BF2C4A5CCD00BEAFE2 /* CustomDropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F461A6BE2C4A5CCD00BEAFE2 /* CustomDropDownView.swift */; };
@@ -116,6 +119,9 @@
 		F434967F2C60F42A008DB661 /* APIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceProtocol.swift; sourceTree = "<group>"; };
 		F4442FB72C6B365100C51996 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		F4442FB92C6B3F5100C51996 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		F45D6D622C75E9A70041DC3B /* UpcomingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingView.swift; sourceTree = "<group>"; };
+		F45D6D642C75F1EC0041DC3B /* CustomRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRadioButton.swift; sourceTree = "<group>"; };
+		F45D6D662C760F200041DC3B /* PointerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointerView.swift; sourceTree = "<group>"; };
 		F461A6BA2C4A4D6000BEAFE2 /* DetailsEventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsEventListView.swift; sourceTree = "<group>"; };
 		F461A6BC2C4A4D7500BEAFE2 /* DetailsEventCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsEventCellView.swift; sourceTree = "<group>"; };
 		F461A6BE2C4A5CCD00BEAFE2 /* CustomDropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropDownView.swift; sourceTree = "<group>"; };
@@ -233,6 +239,7 @@
 				F41DDEEA2C6E2F4600CAF5AC /* LanguageCellView.swift */,
 				F41DDEEC2C6E349700CAF5AC /* SupportCellView.swift */,
 				F41DDEF02C6E351700CAF5AC /* ContactList.swift */,
+				F45D6D622C75E9A70041DC3B /* UpcomingView.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -439,6 +446,8 @@
 				B924FF632C5123EF00F75AB9 /* DateTextField.swift */,
 				B924FF652C512EAE00F75AB9 /* LabeledStepper.swift */,
 				B9D154822C522C06001A0771 /* ImageButton.swift */,
+				F45D6D642C75F1EC0041DC3B /* CustomRadioButton.swift */,
+				F45D6D662C760F200041DC3B /* PointerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -558,6 +567,7 @@
 				F4EF38162C4E421200434364 /* AlertController.swift in Sources */,
 				F4E89B4C2C748D3A009C1BD2 /* ShimmerText.swift in Sources */,
 				F41DDEF12C6E351700CAF5AC /* ContactList.swift in Sources */,
+				F45D6D652C75F1EC0041DC3B /* CustomRadioButton.swift in Sources */,
 				F4EF380E2C4E410A00434364 /* UpdateVersionManager.swift in Sources */,
 				B924FF642C5123EF00F75AB9 /* DateTextField.swift in Sources */,
 				F4172E822C6DED6900C5CB2D /* BackgroundProfile.swift in Sources */,
@@ -578,6 +588,7 @@
 				F468AA0E2C6399D2002AB250 /* SplashScreenView.swift in Sources */,
 				F43496802C60F42A008DB661 /* APIServiceProtocol.swift in Sources */,
 				F461A6BD2C4A4D7500BEAFE2 /* DetailsEventCellView.swift in Sources */,
+				F45D6D632C75E9A70041DC3B /* UpcomingView.swift in Sources */,
 				F4E8E5912C4FA5D1003C661F /* AddNewKampagneView.swift in Sources */,
 				B924FF682C5133BD00F75AB9 /* EventModel.swift in Sources */,
 				F4EF3BF22C47E5BE002010E6 /* Colors.swift in Sources */,
@@ -598,6 +609,7 @@
 				F4EF3BF72C47E6EA002010E6 /* Modifier.swift in Sources */,
 				F461A6C62C4AA12A00BEAFE2 /* TourPlanOverlayView.swift in Sources */,
 				F4EF380C2C4E40F700434364 /* Network Manager.swift in Sources */,
+				F45D6D672C760F200041DC3B /* PointerView.swift in Sources */,
 				F4442FB82C6B365100C51996 /* KeychainService.swift in Sources */,
 				F4EF380A2C4E40C400434364 /* CustomTabBar.swift in Sources */,
 				F468AA0B2C639784002AB250 /* KeychainHelper.swift in Sources */,

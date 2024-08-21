@@ -30,6 +30,8 @@ class EventViewModel: ObservableObject {
     @Published var chooseCampaignList = ["Zirkus Knie Tournee 2022 Einsatzplan", "FC Aarau - 2022", "OFFA - 2022", "LUGA - 2022", "RHEMA - 2022"]
     @Published var responsibleList = ["Adis Mesic", "Alain Kappeler", "Albion Avdijaj", "Alena Jakupi", "Alexandra Bürgin", "Amra Asani"]
     @Published var deputyResponsibleList = ["Andrea May", "Angel Maria Flores Genao", "Besim Shagiri", "Arben Zulfiu", "Aurelia Frick"]
+    @Published var gender: String = ""
+    @Published var selectedValue: String = ""
     
     init(apiService: APIServiceProtocol = APIService()) {
         self.apiService = apiService

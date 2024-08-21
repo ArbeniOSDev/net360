@@ -30,7 +30,10 @@ struct SplashScreenView: View {
             }
         }
         .onAppear {
-            authenticateWithFaceID()
+//            authenticateWithFaceID()
+            isFaceIDValidated = true
+            hasCheckedFaceIDThisSession = true
+            authManager.isInitialLoginCompleted = true
         }
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .active && !hasCheckedFaceIDThisSession {

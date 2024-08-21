@@ -50,8 +50,6 @@ struct LoginView: View {
             loginForm
                 .horizontalPadding(15)
             Spacer()
-            signupPrompt
-                .bold()
         }
     }
     
@@ -129,15 +127,6 @@ struct LoginView: View {
             DescText("Forgot Your Password?", 16, color: .white).underline()
                 .fontWeight(.heavy)
         }
-    }
-    
-    private var signupPrompt: some View {
-        HStack {
-            DescText("Don't have an account?", 16, color: .white)
-            Button(action: {}) {
-                DescText("Sign Up!", 16, color: .white).underline()
-            }
-        }.bottomPadding(20)
     }
 }
 
