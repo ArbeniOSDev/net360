@@ -36,6 +36,7 @@
 		F45D6D652C75F1EC0041DC3B /* CustomRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D6D642C75F1EC0041DC3B /* CustomRadioButton.swift */; };
 		F45D6D672C760F200041DC3B /* PointerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D6D662C760F200041DC3B /* PointerView.swift */; };
 		F45D6D6A2C761E180041DC3B /* MenuPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D6D692C761E180041DC3B /* MenuPickerView.swift */; };
+		F45D6D6C2C762BD10041DC3B /* TeamEventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45D6D6B2C762BD10041DC3B /* TeamEventListView.swift */; };
 		F461A6BB2C4A4D6000BEAFE2 /* DetailsEventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F461A6BA2C4A4D6000BEAFE2 /* DetailsEventListView.swift */; };
 		F461A6BD2C4A4D7500BEAFE2 /* DetailsEventCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F461A6BC2C4A4D7500BEAFE2 /* DetailsEventCellView.swift */; };
 		F461A6BF2C4A5CCD00BEAFE2 /* CustomDropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F461A6BE2C4A5CCD00BEAFE2 /* CustomDropDownView.swift */; };
@@ -124,6 +125,7 @@
 		F45D6D642C75F1EC0041DC3B /* CustomRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRadioButton.swift; sourceTree = "<group>"; };
 		F45D6D662C760F200041DC3B /* PointerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointerView.swift; sourceTree = "<group>"; };
 		F45D6D692C761E180041DC3B /* MenuPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPickerView.swift; sourceTree = "<group>"; };
+		F45D6D6B2C762BD10041DC3B /* TeamEventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEventListView.swift; sourceTree = "<group>"; };
 		F461A6BA2C4A4D6000BEAFE2 /* DetailsEventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsEventListView.swift; sourceTree = "<group>"; };
 		F461A6BC2C4A4D7500BEAFE2 /* DetailsEventCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsEventCellView.swift; sourceTree = "<group>"; };
 		F461A6BE2C4A5CCD00BEAFE2 /* CustomDropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropDownView.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				F41DDEEC2C6E349700CAF5AC /* SupportCellView.swift */,
 				F41DDEF02C6E351700CAF5AC /* ContactList.swift */,
 				F45D6D622C75E9A70041DC3B /* UpcomingView.swift */,
+				F45D6D6B2C762BD10041DC3B /* TeamEventListView.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 				F429C7592C6CDBA20021E67B /* ProfileView.swift in Sources */,
 				F4EF3BDB2C47E545002010E6 /* TextStyles.swift in Sources */,
 				F468AA072C6396C9002AB250 /* LoginView.swift in Sources */,
+				F45D6D6C2C762BD10041DC3B /* TeamEventListView.swift in Sources */,
 				F461A6C82C4AAA5100BEAFE2 /* NewEventCellView.swift in Sources */,
 				F4EF3BC82C47E36C002010E6 /* net360App.swift in Sources */,
 				F4172E842C6DED8100C5CB2D /* ImagePicker.swift in Sources */,

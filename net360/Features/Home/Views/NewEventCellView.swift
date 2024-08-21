@@ -18,11 +18,11 @@ struct NewEventCellView: View {
                     ZStack(alignment: .topLeading) {
                     VStack(alignment: .center) {
                             DescText("Active", 12, color: .gray)
-                            let speaker = event.speaker == "1" ? "Enevt" : "Events"
+                            let speaker = event.speaker == "1" ? "Event" : "Events"
                             DescText(speaker, 12, color: .gray)
-                            DescText(event.speaker, 20, color: .black.opacity(0.7)).bold()
+                            DescText(event.speaker ?? "", 20, color: .black.opacity(0.7)).bold()
                     }.topPadding(12)
-                        if event.eventIsForToday && isCircleVisible {
+                        if event.eventIsForToday ?? false && isCircleVisible {
                             Circle()
                                 .frame(width: 12, height: 12)
                                 .foregroundColor(.blue)
@@ -31,7 +31,10 @@ struct NewEventCellView: View {
                         }
                     }
                     Divider()
-                    SubTextBold(event.title, 16, color: .black.opacity(0.7))
+                    VStack {
+                        SubTextBold(event.title ?? "", 16, color: .black.opacity(0.7))
+                        SubTextBold(event.date ?? "", 16, color: .black.opacity(0.7))
+                    }
                 }
                 Spacer()
                 Image(systemName:  "chevron.right")
@@ -43,7 +46,7 @@ struct NewEventCellView: View {
             .shadow(color: Color.gray.opacity(0.3), radius: 2, x: 0, y: 0)
             .padding(1)
             .onAppear {
-                if event.eventIsForToday {
+                if event.eventIsForToday ?? false {
                     withAnimation(.easeInOut(duration: 1).repeatForever(autoreverses: true)) {
                         isCircleVisible.toggle()
                     }
@@ -51,12 +54,4 @@ struct NewEventCellView: View {
             }
         }
     }
-}
-
-struct Event1: Identifiable {
-    var id = UUID()
-    var title: String
-    var speaker: String
-    var hall: String
-    var eventIsForToday: Bool
 }

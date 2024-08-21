@@ -14,15 +14,16 @@ struct ContentView: View {
     @StateObject var viewModel = ContentViewModel()
     @State private var showOverlayView: Bool = false
     @StateObject var eventViewModel = EventViewModel()
+    @State private var selectedItem: String = "Availability"
     private let years = Array(2020...2024).reversed()
-    @State private var selectedItem: String = ""
     private let menuItems = ["Availability", "Alphabet", "Date"]
     
     var filteredEvents: [Event1] {
+        let events = viewModel.sortedEvents(by: selectedItem)
         if search.isEmpty {
-            return viewModel.eventsData
+            return events
         } else {
-            return viewModel.eventsData.filter { $0.title.localizedCaseInsensitiveContains(search) }
+            return events.filter { $0.title?.localizedCaseInsensitiveContains(search) == true }
         }
     }
     

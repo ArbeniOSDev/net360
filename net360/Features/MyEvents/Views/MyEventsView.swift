@@ -64,10 +64,14 @@ struct MyEventsView: View {
                             index: index,
                             onSelect: { id in
                                 selectedCellID = id
-                            }, eventType: newsSelectedSegment == 0 ? .public : .private
+                                print("Selected Cell in main view ID: \(selectedCellID)") // Debug print
+                            }, eventType: newsSelectedSegment == 0 ? .public : .private, coverSelect: { id in
+                                selectedCellID = id
+                            }
                         ).verticalPadding()
                             .onTapGesture {
                                 selectedCellID = index
+                                print("Selected Cell in main view ID: \(selectedCellID)") // Debug print
                                 setupOverlayState(for: tickets[index])
                                 showSheet = true
                             }
@@ -91,6 +95,9 @@ struct MyEventsView: View {
                 // call API again when the sheet will dissapear
 //                taskViewModel.fetchData()
             }
+        }
+        .sheet(isPresented: $showOverlay) {
+            TeamEventListView(selectedCellID: $selectedCellID)
         }
     }
     

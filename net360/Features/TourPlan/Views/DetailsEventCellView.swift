@@ -16,7 +16,8 @@ struct TicketCell: View {
     var onSelect: (Int) -> Void
     let dateString = "AUG 04 2024"
     var eventType: EventType2?
-    
+    var coverSelect: ((Int) -> Void)?
+
     var body: some View {
         HStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 12) {
@@ -39,7 +40,6 @@ struct TicketCell: View {
                             SubTextBold("10:00", 16, .bold, color: .white)
                             SubTextBold("-", 16, .bold, color: .white)
                             SubTextBold("12:00", 16, .bold, color: .white)
-//                            Spacer()
                         }
                     }
                     Spacer()
@@ -52,21 +52,16 @@ struct TicketCell: View {
                 }
                 HStack {
                     Button {
+                        coverSelect?(ticket?.id ?? 0)
                         showOverlayList.toggle()
                     } label: {
-                        SupervisiorTeamList(showOverlay: $showOverlayList)
-                            .opacity(selectedIndex == 1 ? 0.8 : 1.0)
-                    }
-                    Spacer()
-                    Image(systemName: "arrow.right")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 20, height: 20)
-                    Button {
-                        showOverlayList.toggle()
-                    } label: {
-                        EventTeamList(showOverlay: $showOverlayList)
-                            .opacity(selectedIndex == 1 ? 0.8 : 1.0)
+                        SupervisiorTeamList()
+                        Spacer()
+                        Image(systemName: "arrow.right")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 20, height: 20)
+                        EventTeamList()
                     }
                 }
             }
@@ -127,5 +122,8 @@ struct TicketCell: View {
         .background(Color.clear)
         .cornerRadius(15)
         .shadow(radius: 5)
+        .onAppear {
+            print(ticket?.id ?? 0)
+        }
     }
 }
