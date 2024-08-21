@@ -57,10 +57,20 @@ struct AddNewKampagneView: View {
                                         viewModel.deputyResponsible = true
                                     }
                             }
+                            
                             CustomTextField(placeholder: "Beschreibung", text: $viewModel.description, validate: .requiredField)
                             CustomTextField(placeholder: "Ort", text: $viewModel.place, validate: .requiredField)
                             CustomTextField(placeholder: "Notice", text: $viewModel.notes, validate: .optionalValue)
-                            
+                            HStack {
+                                DescText("Event Type:", 16).bold()
+                                Spacer()
+                                CustomRadioButton(id: 1, label: "Public", callback: {
+                                    viewModel.gender = "Public"
+                                }, selectedRadio: $viewModel.selectedValue)
+                                CustomRadioButton(id: 2, label: "Private", callback: {
+                                    viewModel.gender = "Private"
+                                }, selectedRadio: $viewModel.selectedValue)
+                            }.bottomPadding()
                             ZStack(alignment: .bottom) {
                                 VStack {
                                     ForEach($dateFields) { $field in

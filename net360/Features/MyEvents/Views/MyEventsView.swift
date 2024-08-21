@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+enum EventsType {
+    case upcoming
+    case myEvents
+}
+
 struct MyEventsView: View {
     @StateObject var taskViewModel: TaskViewModel = TaskViewModel()
     @State private var selectedCellID: Int = 0
@@ -20,6 +25,7 @@ struct MyEventsView: View {
     @State private var sliderBackgroundColor: Color = .customBlueColor
     @State private var sliderText: String = "Slide to start"
     @State private var newsSelectedSegment = 0
+    var eventType: EventsType = .myEvents
     
     var body: some View {
         NavigationView {
@@ -27,42 +33,28 @@ struct MyEventsView: View {
                 Color.bgColor
                     .ignoresSafeArea()
                 VStack {
-                    HeaderView()
-                    CustomSegmentedPickerView(selectedIndex: $newsSelectedSegment, titles: taskViewModel.segmentTitles)
-                        .horizontalPadding()
+                    HeaderView().horizontalPadding(20)
+                    CustomSegmentedPickerView(selectedIndex: $newsSelectedSegment, titles: eventType == .upcoming ? taskViewModel.upcomingSegmentTitles : taskViewModel.myEventensSegmentTitles).horizontalPadding(20)
                     PointerView()
                     TaskView()
                 }
             }
             .onAppear {
-                if selectedCellID < taskViewModel.detailsEventObject?.tickets?.count ?? 0 {
-                    setupOverlayState(for: taskViewModel.detailsEventObject!.tickets![selectedCellID])
+                if selectedCellID < taskViewModel.myEventsDetailsObject?.tickets?.count ?? 0 {
+                    if eventType == .myEvents {
+                        setupOverlayState(for: taskViewModel.myEventsDetailsObject!.tickets![selectedCellID])
+                    } else {
+                        setupOverlayState(for: taskViewModel.upcomingDetailsObject!.tickets![selectedCellID])
+                    }
                 }
             }
         }
     }
     
-    private func setupInitialSelection() {
-        if let firstTicket = taskViewModel.detailsEventObject?.tickets?.first {
-            selectedCellID = 0
-            setupOverlayState(for: firstTicket)
-        }
-    }
-    
-    func PointerView() -> some View {
-        HStack(spacing: 8) {
-            Image("pointerIcon")
-                .resizable()
-                .frame(width: 25, height: 25)
-            DescText("Click an event to start timing", 16, color: .black)
-            Spacer()
-        }.horizontalPadding(20).topPadding()
-    }
-    
     func TaskView() -> some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
-                if let tickets = taskViewModel.detailsEventObject?.tickets {
+                if let tickets = ticketsForEventType() {
                     ForEach(tickets.indices, id: \.self) { index in
                         TicketCell(
                             ticket: tickets[index],
@@ -99,6 +91,15 @@ struct MyEventsView: View {
                 // call API again when the sheet will dissapear
 //                taskViewModel.fetchData()
             }
+        }
+    }
+    
+    func ticketsForEventType() -> [Details]? {
+        switch eventType {
+        case .upcoming:
+            return taskViewModel.upcomingDetailsObject?.tickets
+        case .myEvents:
+            return taskViewModel.myEventsDetailsObject?.tickets
         }
     }
     
@@ -245,7 +246,7 @@ struct MyEventsView: View {
         }
         
         private func isEventScheduledForToday() -> Bool {
-            guard let tickets = taskViewModel.detailsEventObject?.tickets,
+            guard let tickets = taskViewModel.myEventsDetailsObject?.tickets,
                   selectedCellID < tickets.count else {
                 return false
             }

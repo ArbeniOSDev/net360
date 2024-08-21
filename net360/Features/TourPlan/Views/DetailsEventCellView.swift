@@ -19,38 +19,54 @@ struct TicketCell: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: 12) {
+                SubTextBold("Zirkus Knie 2024", 24, color: .white)
                 HStack(alignment: .firstTextBaseline) {
                     VStack(alignment: .leading) {
                         DescText("Place", 11, color: .white.opacity(0.8))
-                        SubTextBold(ticket?.from ?? "", 24, color: .white).fontWeight(.bold)
+                        SubTextBold(ticket?.from ?? "", 20, color: .white).fontWeight(.bold)
                     }
                     Spacer()
                     VStack(alignment: .trailing) {
                         DescText("Freie Platze", 11, color: .white.opacity(0.8))
-                        SubTextBold("Available 4", 18, color: .white)
+                        SubTextBold("Available \(String(ticket?.availablePlaces ?? 0))", 18, color: .white)
                     }
                 }
                 HStack {
                     VStack(alignment: .leading) {
                         DescText("Time", 11, color: .white.opacity(0.8))
-                        VStack(alignment: .leading, spacing: 1) {
-                            SubTextBold("10:00", 20, .bold, color: .white)
-                            SubTextBold("12:00", 20, .bold, color: .white)
-                            Spacer()
+                        HStack(spacing: 8) {
+                            SubTextBold("10:00", 16, .bold, color: .white)
+                            SubTextBold("-", 16, .bold, color: .white)
+                            SubTextBold("12:00", 16, .bold, color: .white)
+//                            Spacer()
                         }
                     }
                     Spacer()
                     VStack(alignment: .trailing) {
                         DescText("Dauer", 11, color: .white.opacity(0.8))
-                        SubTextBold(ticket?.bookingID ?? "", 20, .bold, color: .white)
-                        Button {
-                            showOverlayList.toggle()
-                        } label: {
-                            EventTeamList(showOverlay: $showOverlayList)
-                                .opacity(selectedIndex == 1 ? 0.8 : 1.0)
-                        }
-                        .topPadding()
+                        SubTextBold(ticket?.eventTotalTime ?? "", 16, .bold, color: .white)
+
+                    }
+                    
+                }
+                HStack {
+                    Button {
+                        showOverlayList.toggle()
+                    } label: {
+                        SupervisiorTeamList(showOverlay: $showOverlayList)
+                            .opacity(selectedIndex == 1 ? 0.8 : 1.0)
+                    }
+                    Spacer()
+                    Image(systemName: "arrow.right")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 20, height: 20)
+                    Button {
+                        showOverlayList.toggle()
+                    } label: {
+                        EventTeamList(showOverlay: $showOverlayList)
+                            .opacity(selectedIndex == 1 ? 0.8 : 1.0)
                     }
                 }
             }

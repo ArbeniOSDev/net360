@@ -11,12 +11,12 @@ class ContentViewModel: ObservableObject {
     @Published var events: [Event]
     @Published var selectedEventID: Int? = nil
     let eventsData = [
-        Event1(title: "Zirkus Knie 2024", speaker: "5", hall: "Hall 1"),
-        Event1(title: "OHA 2024", speaker: "1", hall: "Hall 2"),
-        Event1(title: "ZOM 2024", speaker: "2", hall: "Hall 3"),
-        Event1(title: "Zugermesse 2024", speaker: "7", hall: "Hall 4"),
-        Event1(title: "Winti Mäss 2024", speaker: "4", hall: "Hall 5"),
-        Event1(title: "Winti 2024", speaker: "4", hall: "Hall 3")
+        Event1(title: "Zirkus Knie 2024", speaker: "5", hall: "Hall 1", eventIsForToday: true),
+        Event1(title: "OHA 2024", speaker: "1", hall: "Hall 2", eventIsForToday: false),
+        Event1(title: "ZOM 2024", speaker: "2", hall: "Hall 3", eventIsForToday: false),
+        Event1(title: "Zugermesse 2024", speaker: "7", hall: "Hall 4", eventIsForToday: true),
+        Event1(title: "Winti Mäss 2024", speaker: "4", hall: "Hall 5", eventIsForToday: false),
+        Event1(title: "Winti 2024", speaker: "4", hall: "Hall 3", eventIsForToday: false)
     ]
     
     init() {
