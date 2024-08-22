@@ -20,7 +20,7 @@ struct CustomRadioButton: View {
         }) {
             HStack {
                 Image(systemName: selectedRadio == String(id) ? "largecircle.fill.circle" : "circle")
-                    .foregroundColor(selectedRadio == String(id) ? .blue : .gray)
+                    .foregroundColor(selectedRadio == String(id) ? Color.buttonColor : .gray)
                 DescText(label)
             }
         }

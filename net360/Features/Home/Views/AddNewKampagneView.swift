@@ -11,7 +11,7 @@ struct AddNewKampagneView: View {
     @ObservedObject var viewModel: EventViewModel
     @State private var dateFields: [EventModel] = [EventModel()]
     @State private var buttonText = "Speichern"
-    @State private var buttonColor = Color.blue
+    @State private var buttonColor = Color.buttonColor
     @State private var buttonDisabled = false
     @State private var showAlert = false
     @State private var alertMessage = ""
@@ -36,7 +36,7 @@ struct AddNewKampagneView: View {
                                 DescText(buttonText, 16, color: .white)
                                     .padding(10)
                                     .frame(maxWidth: .infinity)
-                                    .background(buttonColor)
+                                    .background(Color.buttonColor)
                                     .cornerRadius(10)
                             }.disabled(buttonDisabled)
                         }
@@ -112,17 +112,17 @@ struct AddNewKampagneView: View {
                                 }.padding()
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 10)
-                                            .stroke(Color.blue.opacity(0.5), lineWidth: 1)
+                                            .stroke(Color.buttonColor.opacity(0.5), lineWidth: 1)
                                     )
                                 Button(action: {
                                     dateFields.append(EventModel())
                                 }) {
-                                    ImageButton(systemName: "plus", padding: 8, hexColor: "#00A3FF").bold()
+                                    ImageButton(systemName: "plus", padding: 8, hexColor: "#005491").bold()
                                         .cornerRadius(30)
                                 }.bottomPadding(-17)
                             }
                         }.paddingTB(10, 75)
-                    }.horizontalPadding(20)
+                    }.horizontalPadding(15)
                 }
                 Button {
                     if viewModel.checkFieldsValue(dateFields: dateFields) {
@@ -135,9 +135,9 @@ struct AddNewKampagneView: View {
                     DescText("Speichern", 16, color: .white)
                         .padding(10)
                         .frame(maxWidth: .infinity)
-                        .background(Color.blue)
+                        .background(Color.buttonColor)
                         .cornerRadius(10)
-                }.horizontalPadding(20)
+                }.horizontalPadding(13)
                     .frame(maxWidth: .infinity, minHeight: 50)
                     .background(Color.bgColor)
                     .alert(isPresented: $showAlert) {
@@ -165,7 +165,7 @@ struct AddNewKampagneView: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             withAnimation {
                 buttonText = "Speichern"
-                buttonColor = Color.blue
+                buttonColor = Color.buttonColor
                 buttonDisabled = false
             }
         }

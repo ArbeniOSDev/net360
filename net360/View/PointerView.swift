@@ -12,9 +12,10 @@ struct PointerView: View {
         HStack(spacing: 8) {
             Image("pointerIcon")
                 .resizable()
-                .frame(width: 25, height: 25)
-            DescText("Click an event to start timing", 16, color: .black)
+                .frame(width: 20, height: 20)
+                .foregroundColor(.gray)
+            DescText("Click an event to start timing", 14, color: .gray)
             Spacer()
-        }.horizontalPadding(20).topPadding()
+        }
     }
 }

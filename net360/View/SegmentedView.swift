@@ -24,10 +24,10 @@ struct CustomSegmentedPickerView: View {
                 HStack {
                     ForEach(self.titles.indices, id: \.self) { index in
                         Button(action: { selectedIndex = index }) {
-                            DescText(self.titles[index], LayoutConstants.fontSize14, .bold, color: selectedIndex == index ? .white : Color(hex: "#00A3FF"))
+                            DescText(self.titles[index], LayoutConstants.fontSize14, .bold, color: selectedIndex == index ? .white : Color.buttonColor)
                                 .frame(maxWidth: .infinity)
                         }
-                        .padding(EdgeInsets(top: 18, leading: 1, bottom: 18, trailing: 1))
+                        .padding(EdgeInsets(top: 12, leading: 1, bottom: 12, trailing: 1))
                         .background(
                             GeometryReader { geo in
                                 Color.clear.onAppear { self.setFrame(index: index, frame: geo.frame(in: .global)) }
@@ -36,16 +36,18 @@ struct CustomSegmentedPickerView: View {
                     }
                 }
                 .background(
-                    Capsule().fill(Color(hex: "#00A3FF"))
+                    Capsule()
+                        .fill(Color.buttonColor)
                         .frame(width: self.frames[self.selectedIndex].width,
                                height: self.frames[self.selectedIndex].height, alignment: .topLeading)
                         .offset(x: self.frames[self.selectedIndex].minX - self.frames[0].minX)
                     , alignment: .leading
+                    
                 )
             }
-            .frame(height: 51)
+            .frame(height: 40)
             .background(Color(hex: "#C5EAFF"))
-            .cornerRadius(51)
+            .cornerRadius(20)
             .shadow(color: .black.opacity(0.10), radius: 2, x: 0, y: 0)
         }
     }

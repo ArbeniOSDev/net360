@@ -32,10 +32,11 @@ struct MyEventsView: View {
             ZStack {
                 Color.bgColor
                     .ignoresSafeArea()
-                VStack {
-                    HeaderView().horizontalPadding(20)
-                    CustomSegmentedPickerView(selectedIndex: $newsSelectedSegment, titles: eventType == .upcoming ? taskViewModel.upcomingSegmentTitles : taskViewModel.myEventensSegmentTitles).horizontalPadding(20)
-                    PointerView()
+                VStack (spacing: 10) {
+                    HeaderView().horizontalPadding(25)
+//                        .horizontalPadding(20)
+                    CustomSegmentedPickerView(selectedIndex: $newsSelectedSegment, titles: eventType == .upcoming ? taskViewModel.upcomingSegmentTitles : taskViewModel.myEventensSegmentTitles).horizontalPadding(25)
+                    PointerView().horizontalPadding(25).topPadding(5)
                     TaskView()
                 }
             }
@@ -68,7 +69,7 @@ struct MyEventsView: View {
                             }, eventType: newsSelectedSegment == 0 ? .public : .private, coverSelect: { id in
                                 selectedCellID = id
                             }
-                        ).verticalPadding()
+                        ).verticalPadding(5).topPadding(3)
                             .onTapGesture {
                                 selectedCellID = index
                                 print("Selected Cell in main view ID: \(selectedCellID)") // Debug print
@@ -77,7 +78,8 @@ struct MyEventsView: View {
                             }
                     }
                 }
-            }.horizontalPadding()
+            }
+//            .horizontalPadding()
         }
         .sheet(isPresented: $showSheet) {
             OverlayView(
@@ -337,7 +339,7 @@ struct MyEventsView: View {
                     .imageCircleModifier(height: 45, width: 45, renderingMode: .original, color: .clear, aspectRatio: .fill, colorStroke: .clear, lineWidth: 0.1)
             }
         }
-        .padding()
+//        .padding()
         .background(Color.bgColor)
     }
     

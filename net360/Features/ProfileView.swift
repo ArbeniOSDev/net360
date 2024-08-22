@@ -31,7 +31,7 @@ struct ProfileSettingsView: View {
                     Image(systemName: "person.crop.circle.fill")
                         .resizable()
                         .frame(width: 60, height: 60)
-                        .foregroundColor(.blue)
+                        .foregroundColor(Color.buttonColor)
                         .topPadding()
                     
                     VStack(alignment: .center) {
@@ -50,7 +50,7 @@ struct ProfileSettingsView: View {
                                 .foregroundColor(.white)
                                 .padding(.vertical, 8)
                                 .padding(.horizontal, 20)
-                                .background(Color.blue)
+                                .background(Color.buttonColor)
                                 .cornerRadius(10)
                         }
                     }
@@ -72,7 +72,7 @@ struct ProfileSettingsView: View {
                                     HStack {
                                         Image(systemName: item.icon)
                                             .frame(width: 24)
-                                            .foregroundColor(.blue)
+                                            .foregroundColor(Color.buttonColor)
                                         
                                         Text(item.title)
                                             .font(.body)
