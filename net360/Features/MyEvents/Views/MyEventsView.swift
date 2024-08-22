@@ -21,6 +21,7 @@ struct MyEventsView: View {
     @State private var slideEndTime: String = ""
     @State private var isFirstSlide = true
     @State private var showSheet = false
+    @State private var showAlert = false
     @State private var slideCompletedTwice = false
     @State private var sliderBackgroundColor: Color = .customBlueColor
     @State private var sliderText: String = "Slide to start"
@@ -70,10 +71,14 @@ struct MyEventsView: View {
                             }
                         ).verticalPadding(5).topPadding(3)
                             .onTapGesture {
-                                selectedCellID = index
-                                print("Selected Cell in main view ID: \(selectedCellID)") // Debug print
-                                setupOverlayState(for: tickets[index])
-                                showSheet = true
+                                if eventType == .upcoming && newsSelectedSegment == 0 {
+                                    showAlert = true
+                                } else if eventType == .myEvents {
+                                    selectedCellID = index
+                                    print("Selected Cell in main view ID: \(selectedCellID)") // Debug print
+                                    setupOverlayState(for: tickets[index])
+                                    showSheet = true
+                                }
                             }
                     }
                 }
@@ -98,6 +103,15 @@ struct MyEventsView: View {
         }
         .sheet(isPresented: $showOverlay) {
             TeamEventListView(selectedCellID: $selectedCellID)
+        }
+        
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Do you want to appoint to the Zirkus Knie 2024 event?"),
+                message: Text(""),
+                primaryButton: .destructive(Text("OK")) {
+                },
+                secondaryButton: .cancel())
         }
     }
     
