@@ -14,11 +14,11 @@ struct EventListCell: View {
     
     var body: some View {
         HStack(alignment: .center) {
-            SubTextBold(event.name ?? "", 18, color: .black)
+            SubTextBold(event.cityName ?? "", 18, color: .black)
                 .frame(width: 165, alignment: .leading)
                 .lineLimit(nil)
                 .padding(.leading, 6)
-            SubTextBold("\(event.count ?? 0)", 18, color: .black)
+            SubTextBold("\(event.totalEvents ?? 0)", 18, color: .black)
                 .frame(width: 55, alignment: .center)
             Button(action: {
             }) {

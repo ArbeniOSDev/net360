@@ -13,15 +13,15 @@ struct NewEventCellView: View {
     
     var body: some View {
         NavigationLink(destination: TourPlanListView()) {
-            HStack {
-                HStack(spacing: 15) {
+            HStack(alignment: .center) {
+                HStack(alignment: .center) {
                     ZStack(alignment: .topLeading) {
                         VStack(alignment: .center) {
                             DescText("Active", 12, color: .gray)
                             let speaker = event.speaker == "1" ? "Event" : "Events"
                             DescText(speaker, 12, color: .gray)
                             DescText(event.speaker ?? "", 20, color: .black.opacity(0.7)).bold()
-                        }.topPadding(12)
+                        }.topPadding(12).horizontalPadding(6)
                         if event.eventIsForToday ?? false && isCircleVisible {
                             Circle()
                                 .frame(width: 12, height: 12)
@@ -31,14 +31,20 @@ struct NewEventCellView: View {
                         }
                     }
                     Divider()
-                    VStack {
-                        SubTextBold(event.title ?? "", 16, color: .black.opacity(0.7))
-                        SubTextBold(event.date ?? "", 16, color: .black.opacity(0.7))
-                    }
+                    Spacer()
+                    DescText(event.title ?? "", 18, color: .black.opacity(0.7), textAlignment: .center).bold()
+                    Spacer()
                 }
-                Spacer()
-                Image(systemName:  "chevron.right")
-                    .customImageModifier(width: 8, renderingMode: .original, color: Color(hex: "#00A3FF"), aspectRatio: .fit)
+                
+                Divider().trailingPadding(6)
+                HStack(spacing: 12) {
+                    VStack(spacing: 8) {
+                        DescText(formatDate(event.startDate ?? ""), 16, color: .black)
+                        DescText(formatDate(event.endDate ?? ""), 16, color: .black)
+                    }
+                    Image(systemName:  "chevron.right")
+                        .customImageModifier(width: 8, renderingMode: .original, color: Color(hex: "#00A3FF"), aspectRatio: .fit)
+                }
             }
             .padding()
             .background(Color.white)
@@ -47,13 +53,27 @@ struct NewEventCellView: View {
             .padding(1)
             .onAppear {
                 if event.eventIsForToday ?? false {
-                    Timer.scheduledTimer(withTimeInterval: 0.6, repeats: true) { _ in
-                        withAnimation(.easeInOut(duration: 0.6)) {
+                    Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true) { _ in
+                        withAnimation(.easeInOut(duration: 1.5)) {
                             isCircleVisible.toggle()
                         }
                     }
                 }
             }
+        }
+    }
+    
+    func formatDate(_ dateString: String?) -> String {
+        guard let dateString = dateString else { return "" }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        
+        if let date = dateFormatter.date(from: dateString) {
+            dateFormatter.dateFormat = "MMM dd"
+            return dateFormatter.string(from: date)
+        } else {
+            return ""
         }
     }
 }

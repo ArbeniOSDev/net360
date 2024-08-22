@@ -8,38 +8,39 @@
 import SwiftUI
 
 struct TourPlanListView: View {
+    @StateObject private var tourPlanListViewModel = TourPlanListViewModel()
     @State private var selectedIndex = 0
     @State private var showOverlayView: Bool = false
     
     var body: some View {
         ZStack {
-                Color.bgColor
-                    .ignoresSafeArea()
+            Color.bgColor
+                .ignoresSafeArea()
             VStack(alignment: .leading, spacing: 15) {
                 SubTextBold("Tourplan List", 18).topPadding()
                 CustomSegmentedPickerView(selectedIndex: $selectedIndex)
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 15) {
-                    ForEach(0..<4) { _ in
-                        if selectedIndex == 0 {
-                            EventListCardView(eventType: .future)
-                        } else {
-                            EventListCardView(eventType: .expired)
+                        ForEach(tourPlanListViewModel.event ?? [], id: \.self) { event in
+                            if selectedIndex == 0 {
+                                EventListCardView(event: event, eventType: .future)
+                            } else {
+                                EventListCardView(event: event, eventType: .expired)
+                            }
                         }
                     }
                 }
-                }
                 Spacer()
             }.horizontalPadding(20)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        showOverlayView = true
-                    }) {
-                        Image(systemName: "square.and.pencil")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+                            showOverlayView = true
+                        }) {
+                            Image(systemName: "square.and.pencil")
+                        }
                     }
                 }
-            }
             
             if showOverlayView {
                 Color.black.opacity(0.5)
