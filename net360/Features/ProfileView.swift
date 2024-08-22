@@ -25,6 +25,9 @@ struct ProfileSettingsView: View {
     
     var body: some View {
         NavigationView {
+            ZStack {
+                Color.bgColor
+                    .ignoresSafeArea()
             VStack(alignment: .center, spacing: 20) {
                 // Profile Header
                 VStack(spacing: 8) {
@@ -57,7 +60,6 @@ struct ProfileSettingsView: View {
                 }
                 .padding()
                 .horizontalPadding()
-                
                 // Settings Sections
                 ScrollView {
                     ForEach(sections, id: \.title) { section in
@@ -73,13 +75,10 @@ struct ProfileSettingsView: View {
                                         Image(systemName: item.icon)
                                             .frame(width: 24)
                                             .foregroundColor(Color.buttonColor)
-                                        
                                         Text(item.title)
                                             .font(.body)
                                             .fontWeight(.medium)
-                                        
                                         Spacer()
-                                        
                                         if item.isToggle {
                                             Toggle("", isOn: .constant(true))
                                                 .labelsHidden()
@@ -87,12 +86,7 @@ struct ProfileSettingsView: View {
                                             Text(detail)
                                                 .foregroundColor(.gray)
                                         }
-                                        
-                                        Image(systemName: "chevron.right")
-                                            .foregroundColor(.gray)
                                     }
-                                    .padding()
-                                    
                                     if item != section.items.last {
                                         Divider()
                                             .padding(.leading, 50)
@@ -108,7 +102,7 @@ struct ProfileSettingsView: View {
                 }
             }
             .background(Color(UIColor.systemGroupedBackground))
-            .ignoresSafeArea()
+        }
         }
     }
 }

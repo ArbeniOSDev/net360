@@ -20,7 +20,7 @@ struct CircleImageProfile: View {
             (inputImage ?? image)
                 .resizable()
                 .customCircleStyle(width: 110, height: 110, aspectWidth: 40, aspectHeight: 40, lineWidth: 4, color: .white, lineColor: .white)
-                .shadow(radius: 10)
+                .shadow(radius: 5)
             Button(action: {
                 showingActionSheet = true
             }) {

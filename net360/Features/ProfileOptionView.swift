@@ -19,9 +19,8 @@ struct ProfileOptionView: View {
         HStack {
             ZStack {
                 Circle()
-                    .fill(Color(hex: "#e6ecfb"))
+                    .fill(Color(hex: "#DAE1F2"))
                     .frame(width: 45, height: 45)
-                
                 Image(image)
                     .resizable()
                     .frame(width: 25, height: 25)
@@ -31,7 +30,6 @@ struct ProfileOptionView: View {
             
             SubText(text, 16, color: .black)
                 .padding(.leading, 8)
-            
             Spacer()
             
             if !hiddeRightImage {
@@ -60,7 +58,7 @@ struct ProfileOptionView: View {
             }
         }
         .padding(10)
-        .background(Color(hex: "#f2f4f9"))
+        .background(Color(hex: "#EBEEF5"))
         .cornerRadius(12)
     }
 }
