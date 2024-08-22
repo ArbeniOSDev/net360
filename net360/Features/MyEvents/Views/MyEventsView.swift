@@ -171,13 +171,14 @@ struct MyEventsView: View {
                             SubTextBold("\(slideStartTime)", 26, .bold, color: .black)
                                 .frame(height: 20)
                         }
-                        VStack {
-                            DescText("End time", 16, color: .black)
-                            SubTextBold("\(slideEndTime)", 26, .bold, color: .black)
-                                .frame(height: 20)
+                        if slideCompletedTwice {
+                            VStack {
+                                DescText("End time", 16, color: .black)
+                                SubTextBold("\(slideEndTime)", 26, .bold, color: .black)
+                                    .frame(height: 20)
+                            }
                         }
                     }.padding(.bottom, 15)
-                    
                     if !slideCompletedTwice {
                         SliderButton(
                             onComplete: {

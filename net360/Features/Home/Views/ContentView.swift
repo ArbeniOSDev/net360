@@ -36,7 +36,17 @@ struct ContentView: View {
                     VStack(alignment: .leading) {
                         SubTextBold("Kampagnen Liste", (18), color: .black.opacity(0.7))
                             .topPadding()
-                        SearchBar(text: $search)
+                        HStack {
+                            SearchBar(text: $search)
+                            Picker(selection: $selectedItem, label: HStack {
+                                Text(selectedItem)
+                                    .font(.footnote)
+                            }) {
+                                ForEach(menuItems, id: \.self) { option in
+                                        DescText(option, 10, color: .blue)
+                                }
+                            }.pickerStyle(MenuPickerStyle())
+                        }
                         HStack(alignment: .center, spacing: 25) {
                             Spacer()
                             HStack (spacing: 20) {
@@ -52,32 +62,7 @@ struct ContentView: View {
                         }.topPadding()
                         Divider()
                     }
-                    HStack {
-                        Spacer()
-                        Menu {
-                            ForEach(menuItems, id: \.self) { item in
-                                Button(action: {
-                                    selectedItem = item
-                                }) {
-                                    HStack {
-                                        DescText(item, 16, color: .blue)
-                                        if selectedItem == item {
-                                            Image(systemName: "checkmark")
-                                                .foregroundColor(.blue)
-                                        }
-                                    }
-                                }
-                            }
-                        } label: {
-                            HStack {
-                                Image("filter")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 20, height: 20)
-                                Text(selectedItem)
-                            }
-                        }
-                    }.horizontalPadding()
+
                     ScrollView {
                         VStack(spacing: 15) {
                             ForEach(filteredEvents) { event in

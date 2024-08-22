@@ -28,10 +28,10 @@ struct SearchBar: View {
                             .foregroundColor(.gray)
                             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                             .padding(.leading, 8)
-                        
                         if isEditing {
                             Button(action: {
                                 self.text = ""
+                                self.isEditing = false
                             }) {
                                 Image(systemName: "multiply.circle.fill")
                                     .foregroundColor(.gray)
@@ -40,18 +40,6 @@ struct SearchBar: View {
                         }
                     }
                 )
-            if isEditing {
-                Button(action: {
-                    self.isEditing = false
-                    self.text = ""
-                    
-                }) {
-                    DescText("Cancel", color: .blue)
-                }
-                .padding(.trailing, 10)
-                .transition(.move(edge: .trailing))
-                .animation(.default)
-            }
         }
     }
 }
