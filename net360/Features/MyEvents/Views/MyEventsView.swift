@@ -335,10 +335,9 @@ struct MyEventsView: View {
             NavigationLink(destination: NewProfileView()) {
                 Image("User1")
                     .resizable()
-                    .imageCircleModifier(height: 45, width: 45, renderingMode: .original, color: .clear, aspectRatio: .fill, colorStroke: .clear, lineWidth: 0.1)
+                    .imageCircleModifier(height: 35, width: 35, renderingMode: .original, color: .clear, aspectRatio: .fill, colorStroke: .clear, lineWidth: 0.1)
             }
         }
-//        .padding()
         .background(Color.bgColor)
     }
     

@@ -66,7 +66,7 @@ class TaskViewModel: ObservableObject {
                 year: "2024",
                 startingTime: "08:31",
                 endedTime: "",
-                hasStartedEvent: true,
+                hasStartedEvent: false,
                 hasEndedEvent: false
             ),
             Details(
@@ -77,12 +77,12 @@ class TaskViewModel: ObservableObject {
                 time: "5:30 PM",
                 eventTotalTime: "03:15",
                 price: "$200",
-                date: "SEP 11 2024",
+                date: "AUG 22 2024",
                 year: "2024",
                 startingTime: "14:30",
                 endedTime: "17:00",
                 hasStartedEvent: true,
-                hasEndedEvent: true
+                hasEndedEvent: false
             ),
             Details(
                 id: 4,

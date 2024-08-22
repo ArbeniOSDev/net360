@@ -18,7 +18,7 @@ struct NewProfileView: View {
                 VStack(spacing: 15) {
                         VStack(spacing: 10) {
                             CircleImageProfile(image: Image("avatar6"))
-                            SubText("John Doe", 28).bold()
+                            SubText("Fisnik Sadiki", 28).bold()
                             SubText("ID: 524687975", 16)
                         }.topPadding(10)
                     ScrollView {

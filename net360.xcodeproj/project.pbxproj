@@ -161,7 +161,7 @@
 		F4EF38132C4E41E600434364 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		F4EF38152C4E421200434364 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		F4EF38172C4E42F400434364 /* InternetConnectionBannerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetConnectionBannerModifier.swift; sourceTree = "<group>"; };
-		F4EF3BC42C47E36C002010E6 /* net360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = net360.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4EF3BC42C47E36C002010E6 /* smzh.360net.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smzh.360net.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4EF3BC72C47E36C002010E6 /* net360App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = net360App.swift; sourceTree = "<group>"; };
 		F4EF3BC92C47E36C002010E6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F4EF3BCB2C47E36D002010E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -365,7 +365,7 @@
 		F4EF3BC52C47E36C002010E6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F4EF3BC42C47E36C002010E6 /* net360.app */,
+				F4EF3BC42C47E36C002010E6 /* smzh.360net.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -497,7 +497,7 @@
 			packageProductDependencies = (
 			);
 			productName = net360;
-			productReference = F4EF3BC42C47E36C002010E6 /* net360.app */;
+			productReference = F4EF3BC42C47E36C002010E6 /* smzh.360net.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -783,7 +783,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.smzh.net360;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = smzh.360net;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -815,7 +815,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.smzh.net360;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = smzh.360net;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

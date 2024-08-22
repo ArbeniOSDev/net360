@@ -15,7 +15,7 @@ struct TicketCell: View {
     @Binding var showOverlayList: Bool
     var selectedIndex: Int
     var index: Int
-    var onSelect: (Int, String) -> Void // Modify this
+    var onSelect: (Int, String) -> Void
     let dateString = "AUG 04 2024"
     var eventType: EventType2?
     var coverSelect: ((Int) -> Void)?
@@ -47,7 +47,7 @@ struct TicketCell: View {
                     Spacer()
                     VStack(alignment: .trailing) {
                         DescText("Dauer", 11, color: .white.opacity(0.8))
-                        SubTextBold(ticket?.eventTotalTime ?? "", 16, .bold, color: .white)
+                        SubTextBold(ticket?.eventTotalTime ?? "2 Hours", 16, .bold, color: .white)
                     }
                 }
                 HStack {
