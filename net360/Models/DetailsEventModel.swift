@@ -14,7 +14,13 @@ struct DetailsEventModel: Codable, Hashable {
 // MARK: - Ticket
 struct Details: Codable, Hashable, Identifiable {
     var id, availablePlaces: Int?
-    var from, to, title, time, eventTotalTime, price, date, year: String?
+    var from, to, eventName, place, title, time, eventTotalTime, price, date, year: String?
     var startingTime, endedTime: String?
     var hasStartedEvent, hasEndedEvent: Bool?
+    var eventMembers: EventMembers?
+}
+
+struct EventMembers: Codable, Hashable {
+    var name, surname, image: String?
+    var isSupervisior: Bool?
 }
