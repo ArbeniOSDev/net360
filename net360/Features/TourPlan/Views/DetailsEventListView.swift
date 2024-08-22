@@ -40,7 +40,8 @@ struct DetailsEventListView: View {
                                         selectedCellID = id
                                         selectedDate = date
                                     }
-                                }, eventType: selectedIndex == 0 ? .public : .private
+                                }, eventType: selectedIndex == 0 ? .public : .private,
+                                cellIsClosed: true
                             ).verticalPadding()
                                 .onTapGesture {
                                     if selectedIndex == 0 {

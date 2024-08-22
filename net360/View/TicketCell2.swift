@@ -1,13 +1,13 @@
 //
-//  DetailsEventCellView.swift
+//  TicketCell2.swift
 //  net360
 //
-//  Created by Arben on 19.7.24.
+//  Created by Arben on 22.8.24.
 //
 
 import SwiftUI
 
-struct TicketCell: View {
+struct TicketCell2: View {
     var ticket: Details?
     var cityName: String?
     var eventName: String = "Zirkus Knie 2024"
@@ -20,6 +20,7 @@ struct TicketCell: View {
     var eventType: EventType2?
     var coverSelect: ((Int) -> Void)?
     var cellIsClosed: Bool = false
+    var newsSelectedSegment: Int // Add this property
 
     var body: some View {
         HStack(spacing: 0) {
@@ -80,7 +81,7 @@ struct TicketCell: View {
                                 print("Selected Ticket ID: \(id)")
                             }
                         }) {
-                            Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
+                            Image(systemName: isSelected ? "circle" : "checkmark.circle.fill")
                                 .resizable()
                                 .frame(width: 22, height: 22)
                                 .foregroundColor(eventType == .public ? Color.customBlueColor : Color(hex: "#DB1971"))
