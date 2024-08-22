@@ -22,6 +22,7 @@ struct EventListCardView: View {
     var eventType: EventType
     @State private var navigateToDetails = false
     @State private var isCircleVisible: Bool = true
+    var eventName: String = ""
     
     var body: some View {
         HStack {
@@ -78,7 +79,7 @@ struct EventListCardView: View {
                         
                     }) {
                         HStack {
-                            NavigationLink(destination: DetailsEventListView()) {
+                            NavigationLink(destination: DetailsEventListView(cityName: event?.cityName, eventName: eventName)) {
                                 Spacer()
                                 SubTextBold("Zeitpläne", 16, .bold, color: .black)
                                 Spacer()
@@ -107,16 +108,24 @@ struct EventListCardView: View {
     }
     
     func getDay(from date: String) -> String {
-        let components = date.split(separator: "-")
-        return String(components[0])
+        if !date.isEmpty {
+            let components = date.split(separator: "-")
+            return String(components[0])
+        } else {
+            return ""
+        }
     }
     
     func getMonth(from date: String) -> String {
-        let components = date.split(separator: "-")
-        let monthNumber = Int(components[1]) ?? 1
-        let dateFormatter = DateFormatter()
-        let monthName = dateFormatter.shortMonthSymbols[monthNumber - 1].uppercased()
-        return monthName
+        if !date.isEmpty {
+            let components = date.split(separator: "-")
+            let monthNumber = Int(components[1]) ?? 1
+            let dateFormatter = DateFormatter()
+            let monthName = dateFormatter.shortMonthSymbols[monthNumber - 1].uppercased()
+            return monthName
+        } else {
+            return ""
+        }
     }
 }
 

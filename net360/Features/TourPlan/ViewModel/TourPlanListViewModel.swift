@@ -14,6 +14,7 @@ class TourPlanListViewModel: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
     @Published var isLoading: Bool = false
     @Published var error: Error?
+    @Published var eventName: String = ""
     
     init(apiService: APIServiceProtocol = APIService()) {
         self.apiService = apiService
