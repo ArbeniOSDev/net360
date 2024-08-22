@@ -54,6 +54,7 @@
 		F47217ED2C490A8300ADCB54 /* TourPlanListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47217EC2C490A8300ADCB54 /* TourPlanListView.swift */; };
 		F47217EF2C490AA500ADCB54 /* EventListCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47217EE2C490AA500ADCB54 /* EventListCardView.swift */; };
 		F47217F12C49433400ADCB54 /* SegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47217F02C49433400ADCB54 /* SegmentedView.swift */; };
+		F4E46F102C772BBF0074A521 /* TourPlanListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E46F0F2C772BBF0074A521 /* TourPlanListViewModel.swift */; };
 		F4E6FA1C2C6A5765004BE52F /* LoginObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E6FA1B2C6A5765004BE52F /* LoginObject.swift */; };
 		F4E89B4C2C748D3A009C1BD2 /* ShimmerText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B4B2C748D3A009C1BD2 /* ShimmerText.swift */; };
 		F4E8E58D2C4F87DF003C661F /* EventTeamHList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8E58C2C4F87DF003C661F /* EventTeamHList.swift */; };
@@ -144,6 +145,7 @@
 		F47217EC2C490A8300ADCB54 /* TourPlanListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourPlanListView.swift; sourceTree = "<group>"; };
 		F47217EE2C490AA500ADCB54 /* EventListCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListCardView.swift; sourceTree = "<group>"; };
 		F47217F02C49433400ADCB54 /* SegmentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedView.swift; sourceTree = "<group>"; };
+		F4E46F0F2C772BBF0074A521 /* TourPlanListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourPlanListViewModel.swift; sourceTree = "<group>"; };
 		F4E6FA1B2C6A5765004BE52F /* LoginObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginObject.swift; sourceTree = "<group>"; };
 		F4E89B4B2C748D3A009C1BD2 /* ShimmerText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerText.swift; sourceTree = "<group>"; };
 		F4E8E58C2C4F87DF003C661F /* EventTeamHList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTeamHList.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				F461A6C02C4A5E6500BEAFE2 /* DetailsEventListViewModel.swift */,
+				F4E46F0F2C772BBF0074A521 /* TourPlanListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 				F4172E862C6E08D400C5CB2D /* ProfileOptionView.swift in Sources */,
 				F4E8E58F2C4F942B003C661F /* DetailsListView.swift in Sources */,
 				B924FF6A2C5135B200F75AB9 /* EventViewModel.swift in Sources */,
+				F4E46F102C772BBF0074A521 /* TourPlanListViewModel.swift in Sources */,
 				B924FF662C512EAE00F75AB9 /* LabeledStepper.swift in Sources */,
 				F4EF3BFB2C47E76B002010E6 /* Images.swift in Sources */,
 				F4EF38142C4E41E600434364 /* LoginViewModel.swift in Sources */,

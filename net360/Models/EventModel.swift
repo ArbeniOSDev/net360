@@ -25,10 +25,15 @@ struct EventModel: Identifiable, Hashable {
 
 struct Event: Identifiable, Hashable {
     let id: Int?
-    let name: String?
-    let count: Int?
+    let cityName: String?
+    let totalEvents: Int?
+    let startDate: String?
+    let endDate: String?
     let location: String?
     let venue: String?
+    let eventDuration: Int?
+    let eventIsForToday: Bool?
+    let daysToStartEvent: Int?
 }
 
 struct Event1: Identifiable {
@@ -38,6 +43,8 @@ struct Event1: Identifiable {
     var hall: String?
     var eventIsForToday: Bool?
     var date: String?
+    var startDate: String?
+    var endDate: String?
     
     var eventDate: Date? {
         let dateFormatter = DateFormatter()
