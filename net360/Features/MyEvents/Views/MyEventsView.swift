@@ -78,7 +78,6 @@ struct MyEventsView: View {
                     }
                 }
             }
-//            .horizontalPadding()
         }
         .sheet(isPresented: $showSheet) {
             OverlayView(
