@@ -13,6 +13,8 @@ struct DetailsEventListView: View {
     @State private var showAlert: Bool = false
     @State private var showOverlay: Bool = false
     @State private var selectedCellID: Int? = nil
+    var cityName: String?
+    var eventName: String?
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -20,12 +22,14 @@ struct DetailsEventListView: View {
                 .ignoresSafeArea()
             VStack(spacing: 15) {
                 CustomSegmentedPickerView(selectedIndex: $selectedIndex)
-                    .horizontalPadding()
+                    .horizontalPadding(25)
                 ScrollView {
                     if let tickets = viewModel.detailsEventObject?.tickets {
                         ForEach(tickets.indices, id: \.self) { index in
                             TicketCell(
                                 ticket: tickets[index],
+                                cityName: cityName,
+                                eventName: eventName ?? "",
                                 isSelected: (selectedIndex != 0),
                                 showOverlayList: $showOverlay,
                                 selectedIndex: selectedIndex,

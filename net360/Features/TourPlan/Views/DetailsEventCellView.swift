@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TicketCell: View {
     var ticket: Details?
+    var cityName: String?
+    var eventName: String = ""
     var isSelected: Bool
     @Binding var showOverlayList: Bool
     var selectedIndex: Int
@@ -21,11 +23,11 @@ struct TicketCell: View {
     var body: some View {
         HStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 12) {
-                SubTextBold("Zirkus Knie 2024", 24, color: .white)
+                SubTextBold(eventName, 24, color: .white)
                 HStack(alignment: .firstTextBaseline) {
                     VStack(alignment: .leading) {
                         DescText("Place", 11, color: .white.opacity(0.8))
-                        SubTextBold(ticket?.from ?? "", 20, color: .white).fontWeight(.bold)
+                        SubTextBold(cityName ?? "", 20, color: .white).fontWeight(.bold)
                     }
                     Spacer()
                     VStack(alignment: .trailing) {

@@ -12,7 +12,7 @@ struct NewEventCellView: View {
     @State var isCircleVisible: Bool = true
     
     var body: some View {
-        NavigationLink(destination: TourPlanListView()) {
+        NavigationLink(destination: TourPlanListView(eventName: event.title ?? "")) {
             HStack(alignment: .center) {
                 HStack(alignment: .center) {
                     ZStack(alignment: .topLeading) {
