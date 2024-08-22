@@ -38,14 +38,22 @@ struct ContentView: View {
                             .topPadding()
                         HStack {
                             SearchBar(text: $search)
-                            Picker(selection: $selectedItem, label: HStack {
-                                Text(selectedItem)
-                                    .font(.footnote)
-                            }) {
-                                ForEach(menuItems, id: \.self) { option in
-                                        DescText(option, 10, color: .blue)
-                                }
-                            }.pickerStyle(MenuPickerStyle())
+                            Menu {
+                                Picker(selection: $selectedItem) {
+                                    ForEach(menuItems, id: \.self) { value in
+                                        DescText(value, 14, color: .blue)
+                                            .tag(value)
+                                    }
+                                } label: {}
+                            } label: {
+                                HStack {
+                                    DescText(selectedItem, 14, color: .blue)
+                                    Image("arrows")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 14)
+                                }.foregroundColor(.blue)
+                            }.id(selectedItem)
                         }
                         HStack(alignment: .center, spacing: 25) {
                             Spacer()
@@ -62,7 +70,7 @@ struct ContentView: View {
                         }.topPadding()
                         Divider()
                     }
-
+                    
                     ScrollView {
                         VStack(spacing: 15) {
                             ForEach(filteredEvents) { event in
@@ -71,16 +79,8 @@ struct ContentView: View {
                         }
                     }
                 }.horizontalPadding(20)
-            }
-            .toolbar(content: {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        authManager.logout()
-                    }) {
-                        Image("logoutIcon")
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                    }
+            }.toolbar(content: {
+                ToolbarItem(placement: .principal) {
                     Image("smzh-logo2")
                         .customImageModifier(width: 110, renderingMode: .original, color: .mainColor)
                         .if(UIDevice.current.userInterfaceIdiom == .pad) {
@@ -88,9 +88,18 @@ struct ContentView: View {
                         }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: AddNewKampagneView(viewModel: eventViewModel)) {
-                        Image(systemName: "plus.circle.fill")
-                            .customImageModifier(width: 25, renderingMode: .template, color: .blue, aspectRatio: .fit)
+                    HStack {
+                        Button(action: {
+                            authManager.logout()
+                        }) {
+                            Image("logoutIcon")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                        }
+                        NavigationLink(destination: AddNewKampagneView(viewModel: eventViewModel)) {
+                            Image(systemName: "plus.circle.fill")
+                                .customImageModifier(width: 22, renderingMode: .template, color: .blue, aspectRatio: .fit)
+                        }
                     }
                 }
             }).navigationBarTitleDisplayMode(.inline)
