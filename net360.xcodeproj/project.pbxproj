@@ -23,7 +23,6 @@
 		F4172E862C6E08D400C5CB2D /* ProfileOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4172E852C6E08D400C5CB2D /* ProfileOptionView.swift */; };
 		F4172E882C6E1BB900C5CB2D /* LAContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4172E872C6E1BB900C5CB2D /* LAContext.swift */; };
 		F4172E8A2C6E1E6200C5CB2D /* NewPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4172E892C6E1E6200C5CB2D /* NewPasswordView.swift */; };
-		F418EEA02C69E56E00B45D9F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F418EE9F2C69E56E00B45D9F /* Kingfisher */; };
 		F41DDEEB2C6E2F4600CAF5AC /* LanguageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41DDEEA2C6E2F4600CAF5AC /* LanguageCellView.swift */; };
 		F41DDEED2C6E349700CAF5AC /* SupportCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41DDEEC2C6E349700CAF5AC /* SupportCellView.swift */; };
 		F41DDEEF2C6E34A700CAF5AC /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41DDEEE2C6E34A700CAF5AC /* Person.swift */; };
@@ -194,7 +193,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F418EEA02C69E56E00B45D9F /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,7 +495,6 @@
 			);
 			name = net360;
 			packageProductDependencies = (
-				F418EE9F2C69E56E00B45D9F /* Kingfisher */,
 			);
 			productName = net360;
 			productReference = F4EF3BC42C47E36C002010E6 /* net360.app */;
@@ -858,14 +855,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		F418EE9F2C69E56E00B45D9F /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F418EE9E2C69E56E00B45D9F /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F4EF3BBC2C47E36B002010E6 /* Project object */;
 }

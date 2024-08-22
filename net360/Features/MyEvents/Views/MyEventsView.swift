@@ -34,7 +34,6 @@ struct MyEventsView: View {
                     .ignoresSafeArea()
                 VStack (spacing: 10) {
                     HeaderView().horizontalPadding(25)
-//                        .horizontalPadding(20)
                     CustomSegmentedPickerView(selectedIndex: $newsSelectedSegment, titles: eventType == .upcoming ? taskViewModel.upcomingSegmentTitles : taskViewModel.myEventensSegmentTitles).horizontalPadding(25)
                     PointerView().horizontalPadding(25).topPadding(5)
                     TaskView()
@@ -264,7 +263,7 @@ struct MyEventsView: View {
             let eventDateString = tickets[selectedCellID].date?.trimmingCharacters(in: .whitespacesAndNewlines)
             
             let formatter = DateFormatter()
-            formatter.dateFormat = "MMM dd"
+            formatter.dateFormat = "MMM dd yyyy"
             
             // Get current year
             let currentYear = Calendar.current.component(.year, from: Date())
