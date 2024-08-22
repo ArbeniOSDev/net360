@@ -66,7 +66,7 @@ struct TicketCell: View {
                 }
             }
             .padding()
-            .background(eventType == .public ? Color.customBlueColor : Color(hex: "#9D6EFF"))
+            .background(eventType == .public ? Color.customBlueColor : Color(hex: "#044675"))
             .foregroundColor(.white)
             .cornerRadius(15)
             VStack(alignment: .center, spacing: 5) {
@@ -82,7 +82,7 @@ struct TicketCell: View {
                             Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                                 .resizable()
                                 .frame(width: 22, height: 22)
-                                .foregroundColor(eventType == .public ? Color.customBlueColor : Color(hex: "#9D6EFF"))
+                                .foregroundColor(eventType == .public ? Color.customBlueColor : Color(hex: "#DB1971"))
                         }
                     }
                 } else {

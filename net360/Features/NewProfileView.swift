@@ -38,10 +38,10 @@ struct NewProfileView: View {
                                     authManager.logout()
                                 } label: {
                                     Spacer()
-                                    SubText("Logout", 16, color: .black)
+                                    SubText("Logout", 16, color: Color(hex: "#DB1971"))
                                     Spacer()
                                 }
-                            }.padding(10)
+                            }.padding(13)
                                 .background(Color(hex: "#EBEEF5"))
                                 .cornerRadius(12)
                         }
