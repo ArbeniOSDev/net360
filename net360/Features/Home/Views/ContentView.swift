@@ -41,17 +41,15 @@ struct ContentView: View {
                             Menu {
                                 Picker(selection: $selectedItem) {
                                     ForEach(menuItems, id: \.self) { value in
-                                        DescText(value, 14, color: .blue)
+                                        DescText(value, 14, color: Color.buttonColor)
                                             .tag(value)
                                     }
                                 } label: {}
                             } label: {
                                 HStack {
-                                    DescText(selectedItem, 14, color: .blue)
+                                    DescText(selectedItem, 14, color: Color.buttonColor)
                                     Image("arrows")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 14)
+                                        .customImageModifier(width: 14, renderingMode: .template, color: Color.buttonColor, aspectRatio: .fit)
                                 }.foregroundColor(.blue)
                             }.id(selectedItem)
                         }
@@ -70,7 +68,6 @@ struct ContentView: View {
                         }.topPadding()
                         Divider()
                     }
-                    
                     ScrollView {
                         VStack(spacing: 15) {
                             ForEach(filteredEvents) { event in
@@ -78,7 +75,7 @@ struct ContentView: View {
                             }
                         }
                     }
-                }.horizontalPadding(20)
+                }.horizontalPadding(10)
             }.toolbar(content: {
                 ToolbarItem(placement: .principal) {
                     Image("smzh-logo2")
@@ -98,7 +95,7 @@ struct ContentView: View {
                         }
                         NavigationLink(destination: AddNewKampagneView(viewModel: eventViewModel)) {
                             Image(systemName: "plus.circle.fill")
-                                .customImageModifier(width: 22, renderingMode: .template, color: .blue, aspectRatio: .fit)
+                                .customImageModifier(width: 22, renderingMode: .template, color: Color.buttonColor, aspectRatio: .fit)
                         }
                     }
                 }

@@ -31,9 +31,9 @@ struct NewEventCellView: View {
                         }
                     }
                     Divider()
-                    VStack {
+                    VStack(alignment: .leading, spacing: 10) {
                         SubTextBold(event.title ?? "", 16, color: .black.opacity(0.7))
-                        SubTextBold(event.date ?? "", 16, color: .black.opacity(0.7))
+                        SubTextBold(event.date ?? "", 14, color: .black.opacity(0.7))
                     }
                 }
                 Spacer()

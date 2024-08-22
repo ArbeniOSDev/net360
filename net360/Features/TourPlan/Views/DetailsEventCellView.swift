@@ -46,9 +46,7 @@ struct TicketCell: View {
                     VStack(alignment: .trailing) {
                         DescText("Dauer", 11, color: .white.opacity(0.8))
                         SubTextBold(ticket?.eventTotalTime ?? "", 16, .bold, color: .white)
-
                     }
-                    
                 }
                 HStack {
                     Button {
@@ -102,7 +100,7 @@ struct TicketCell: View {
                             .foregroundColor(selectedIndex == 1 ? Color.red.opacity(0.5) : Color.customBlueColor)
                         Text(String(components[2])) // Year
                             .font(.system(size: 19, weight: .bold))
-                            .foregroundColor(.black)
+                            .foregroundColor(.gray)
                     } else {
                         Text(ticket?.date ?? dateString)
                             .font(.system(size: 22, weight: .bold))
@@ -118,10 +116,10 @@ struct TicketCell: View {
             .background(Color.white)
             .cornerRadius(15)
         }
-        .padding(.horizontal)
+        .horizontalPadding(27)
         .background(Color.clear)
         .cornerRadius(15)
-        .shadow(radius: 5)
+        .shadow(radius: 3)
         .onAppear {
             print(ticket?.id ?? 0)
         }

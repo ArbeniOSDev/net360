@@ -30,7 +30,7 @@ struct TourPlanListView: View {
                 }
                 }
                 Spacer()
-            }.horizontalPadding(20)
+            }.horizontalPadding(10)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
