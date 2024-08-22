@@ -29,10 +29,11 @@ struct EventListCardView: View {
             VStack(spacing: 15) {
                 ZStack(alignment: .topLeading) {
                     HStack {
-                        VStack(alignment: .leading) {
+                        VStack(alignment: .leading, spacing: 6) {
+                            SubTextBold(eventName, 22, .bold, color: Color(hex: "#07314C"))
                             SubTextBold(event?.cityName ?? "", 22, .bold, color: Color(hex: "#07314C"))
                             SubTextBold(event?.location ?? "", 16, .bold, color: .gray)
-                        }
+                        }.topPadding(6)
                         Spacer()
                         VStack(alignment: .trailing) {
                             SubTextBold(eventType == .future ? "\(event?.daysToStartEvent ?? 0) days to Start" : "Expired", 14, .bold, color: .white)
@@ -81,11 +82,11 @@ struct EventListCardView: View {
                         HStack {
                             NavigationLink(destination: DetailsEventListView(cityName: event?.cityName, eventName: eventName)) {
                                 Spacer()
-                                SubTextBold("Zeitpläne", 16, .bold, color: .black)
+                                SubTextBold("Zeitpläne", 16, .bold, color: eventType == .expired ? .white : .black)
                                 Spacer()
                             }
                         }.verticalPadding()
-                            .background(eventType == .future ? Color(hex: "#0BFFD3") : Color(hex: "#C3FE45"))
+                            .background(eventType == .future ? Color(hex: "#0BFFD3") : Color(hex: "#DB1971"))
                     }
                     .frame(width: 140)
                     .cornerRadius(10)

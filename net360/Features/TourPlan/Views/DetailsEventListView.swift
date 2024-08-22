@@ -12,7 +12,7 @@ struct DetailsEventListView: View {
     @State private var selectedIndex = 0
     @State private var showAlert: Bool = false
     @State private var showOverlay: Bool = false
-    @State private var selectedCellID: Int? = nil
+    @State private var selectedCellID: Int = 0
     var cityName: String?
     var eventName: String?
     @State private var selectedDate: String? = nil
@@ -37,11 +37,16 @@ struct DetailsEventListView: View {
                                 index: index,
                                 onSelect: { id, date in
                                     if selectedIndex == 0 {
-                                        selectedCellID = selectedCellID == id ? nil : id
+                                        selectedCellID = id
                                         selectedDate = date
                                     }
                                 }, eventType: selectedIndex == 0 ? .public : .private
                             ).verticalPadding()
+                                .onTapGesture {
+                                    if selectedIndex == 0 {
+                                        showAlert = true
+                                    }
+                                }
                         }
                     } else if viewModel.noDataAvailable {
                         Text("No tickets available")
@@ -50,30 +55,16 @@ struct DetailsEventListView: View {
                 }
             }
         }
-        .toolbar {
-            if selectedIndex != 1 {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        showAlert = true
-                    }) {
-                        SubText("Save", 16, color: .blue)
-                    }
-                    .disabled(selectedCellID == nil)
-                }
-            }
-        }
-        .overlay {
-            if showOverlay {
-                VStack {
-                    DetailsListView(dismissList: $showOverlay)
-                        .horizontalPadding(20)
-                }
-            }
+        .sheet(isPresented: $showOverlay) {
+            TeamEventListView(selectedCellID: $selectedCellID)
         }
         .alert(isPresented: $showAlert) {
-            Alert(title: Text("Event appointed!"),
-                  message: Text("You have successfully appointed in the \(eventName ?? "") event in \(cityName ?? "") on \(convertDateFormat(dateString: selectedDate ?? "N/A")) 2024"),
-                  dismissButton: .default(Text("OK")))
+            Alert(
+                title: Text("Do you want to make appointment?"),
+                message: Text("To the \(eventName ?? "") event in \(cityName ?? "") on \(convertDateFormat(dateString: selectedDate ?? "23 August")) 2024"),
+                primaryButton: .destructive(Text("OK")) {
+                },
+                secondaryButton: .cancel())
         }
     }
     

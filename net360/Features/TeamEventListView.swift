@@ -9,28 +9,33 @@ import SwiftUI
 
 struct TeamEventListView: View {
     @Binding var selectedCellID: Int
+    @State var superVisiorTeamNames: [String] = ["Fisnik Sadiki", "Kasam Kasami"]
+    @State var eventTeamNames: [String] = ["Mergime Raci", "Melanie Guenth", "Edona Rexhepi"]
+
+    private let supervisorImages = ["Circle-Fisnik Sadiki", "k_kasami"]
+    private let eventTeamImages = ["mergimeRaci", "melanieGuenth", "edonaRexhepi"]
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 DescText("Supervisior Team", 18)
-                ForEach(["Circle-Fisnik Sadiki","k_kasami"], id: \.self) { user in
+                ForEach(superVisiorTeamNames.indices, id: \.self) { index in
                     HStack {
-                        Image(user)
+                        Image(supervisorImages[index])
                             .resizable()
                             .imageCircleModifier(height: 55, width: 55, renderingMode: .original, color: .clear, aspectRatio: .fill, colorStroke: .white, lineWidth: 2)
-                        DescText(user, 16)
+                        DescText(superVisiorTeamNames[index], 16)
                         Spacer()
                     }
                 }
                 Divider()
                 DescText("Event Team", 18)
-                ForEach(["mergimeRaci", "melanieGuenth", "edonaRexhepi"], id: \.self) { user in
+                ForEach(eventTeamNames.indices, id: \.self) { index in
                     HStack {
-                        Image(user)
+                        Image(eventTeamImages[index])
                             .resizable()
                             .imageCircleModifier(height: 55, width: 55, renderingMode: .original, color: .clear, aspectRatio: .fill, colorStroke: .white, lineWidth: 2)
-                        DescText(user, 16)
+                        DescText(eventTeamNames[index], 16)
                         Spacer()
                     }
                 }
@@ -42,6 +47,7 @@ struct TeamEventListView: View {
         }
     }
 }
+
 
 #Preview {
     UpcomingView()

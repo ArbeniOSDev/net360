@@ -57,7 +57,6 @@
 		F4E6FA1C2C6A5765004BE52F /* LoginObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E6FA1B2C6A5765004BE52F /* LoginObject.swift */; };
 		F4E89B4C2C748D3A009C1BD2 /* ShimmerText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B4B2C748D3A009C1BD2 /* ShimmerText.swift */; };
 		F4E8E58D2C4F87DF003C661F /* EventTeamHList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8E58C2C4F87DF003C661F /* EventTeamHList.swift */; };
-		F4E8E58F2C4F942B003C661F /* DetailsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8E58E2C4F942B003C661F /* DetailsListView.swift */; };
 		F4E8E5912C4FA5D1003C661F /* AddNewKampagneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8E5902C4FA5D1003C661F /* AddNewKampagneView.swift */; };
 		F4E8E5932C4FDB90003C661F /* MyEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8E5922C4FDB90003C661F /* MyEventsView.swift */; };
 		F4E8E5952C4FDC5A003C661F /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8E5942C4FDC5A003C661F /* TaskViewModel.swift */; };
@@ -148,7 +147,6 @@
 		F4E6FA1B2C6A5765004BE52F /* LoginObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginObject.swift; sourceTree = "<group>"; };
 		F4E89B4B2C748D3A009C1BD2 /* ShimmerText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerText.swift; sourceTree = "<group>"; };
 		F4E8E58C2C4F87DF003C661F /* EventTeamHList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTeamHList.swift; sourceTree = "<group>"; };
-		F4E8E58E2C4F942B003C661F /* DetailsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsListView.swift; sourceTree = "<group>"; };
 		F4E8E5902C4FA5D1003C661F /* AddNewKampagneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewKampagneView.swift; sourceTree = "<group>"; };
 		F4E8E5922C4FDB90003C661F /* MyEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsView.swift; sourceTree = "<group>"; };
 		F4E8E5942C4FDC5A003C661F /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
@@ -306,7 +304,6 @@
 				F461A6BC2C4A4D7500BEAFE2 /* DetailsEventCellView.swift */,
 				F461A6C52C4AA12A00BEAFE2 /* TourPlanOverlayView.swift */,
 				F4E8E58C2C4F87DF003C661F /* EventTeamHList.swift */,
-				F4E8E58E2C4F942B003C661F /* DetailsListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -576,7 +573,6 @@
 				F4E8E5932C4FDB90003C661F /* MyEventsView.swift in Sources */,
 				B924FF622C5105F100F75AB9 /* CustomDropDown.swift in Sources */,
 				F4172E862C6E08D400C5CB2D /* ProfileOptionView.swift in Sources */,
-				F4E8E58F2C4F942B003C661F /* DetailsListView.swift in Sources */,
 				B924FF6A2C5135B200F75AB9 /* EventViewModel.swift in Sources */,
 				F4E46F102C772BBF0074A521 /* TourPlanListViewModel.swift in Sources */,
 				B924FF662C512EAE00F75AB9 /* LabeledStepper.swift in Sources */,
