@@ -77,8 +77,8 @@ struct ContentView: View {
                                 Spacer()
                             }.leadingPadding()
                                 if let tickets = ticketsForEventType() {
-                                    TabView(selection: $selectedCellID) {
-                                    ForEach(tickets.indices.prefix(2), id: \.self) { index in
+//                                    TabView(selection: $selectedCellID) {
+                                    ForEach(tickets.indices.prefix(1), id: \.self) { index in
                                         TicketCell(
                                             ticket: tickets[index],
                                             isSelected: true,
@@ -96,11 +96,11 @@ struct ContentView: View {
                                                 setupOverlayState(for: tickets[index])
                                                 showSheet = true
                                             }
-                                            .tag(index)
+//                                            .tag(index)
                                     }
-                                }
-                                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
-                                    .frame(height: 220)
+//                                }
+//                                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
+//                                    .frame(height: 220)
                             }
                             HStack {
                                 SubTextBold("All events", 24)

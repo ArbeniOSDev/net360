@@ -94,54 +94,44 @@ struct MyEventsView: View {
                         }
                     }
                 } else {
-                    
+                    if newsSelectedSegment == 0 {
+                        if let tickets = ticketsForEventType() {
+                            ForEach(tickets.indices, id: \.self) { index in
+                                TicketCell3(
+                                    ticket: tickets[index],
+                                    cityName: "Your City",
+                                    eventName: "Your Event Name",
+//                                    isSelected: false, // Or whatever condition you want
+                                    showOverlayList: $showOverlay,
+                                    selectedIndex: 0, // This index should match your logic
+                                    index: index, // You can adjust this based on your data
+                                    onSelect: { id, date in
+                                        // Handle the selection
+                                    },
+                                    eventType: .public, newsSelectedSegment: newsSelectedSegment
+                                )
+                            }
+                        }
+                    } else {
+                        if let tickets = ticketsForEventType() {
+                            ForEach(tickets.indices, id: \.self) { index in
+                                TicketCell3(
+                                    ticket: tickets[index],
+                                    cityName: "Your City",
+                                    eventName: "Your Event Name",
+//                                    isSelected: false, // Or whatever condition you want
+                                    showOverlayList: $showOverlay,
+                                    selectedIndex: 1, // This index should match your logic
+                                    index: index, // You can adjust this based on your data
+                                    onSelect: { id, date in
+                                        // Handle the selection
+                                    },
+                                    eventType: .public, newsSelectedSegment: newsSelectedSegment
+                                )
+                            }
+                        }
+                    }
                 }
-//                else {
-//                    if let tickets = ticketsForEventType() {
-//                        ForEach(tickets.indices, id: \.self) { index in
-//                            TicketCell2(
-//                                ticket: tickets[index],
-//                                cityName: "Your City",
-//                                eventName: "Your Event Name",
-//                                isSelected: false, // Or whatever condition you want
-//                                showOverlayList: $showOverlay,
-//                                selectedIndex: 1, // This index should match your logic
-//                                index: 1, // You can adjust this based on your data
-//                                onSelect: { id, date in
-//                                    // Handle the selection
-//                                },
-//                                eventType: .public, newsSelectedSegment: newsSelectedSegment
-//                            )
-//                        }
-//                    }
-//                }
-//                if let tickets = ticketsForEventType() {
-//                    ForEach(tickets.indices, id: \.self) { index in
-//                        TicketCell(
-//                            ticket: tickets[index],
-//                            isSelected: true,
-//                            showOverlayList: $showOverlay,
-//                            selectedIndex: selectedCellID,
-//                            index: index,
-//                            onSelect: { id, _ in
-//                                selectedCellID = id
-//                                print("Selected Cell in main view ID: \(selectedCellID)") // Debug print
-//                            }, eventType: newsSelectedSegment == 0 ? .public : .private, coverSelect: { id in
-//                                selectedCellID = id
-//                            }
-//                        ).verticalPadding(5).topPadding(3)
-//                            .onTapGesture {
-//                                if eventType == .upcoming && newsSelectedSegment == 0 {
-//                                    showAlert = true
-//                                } else if eventType == .myEvents {
-//                                    selectedCellID = index
-//                                    print("Selected Cell in main view ID: \(selectedCellID)") // Debug print
-//                                    setupOverlayState(for: tickets[index])
-//                                    showSheet = true
-//                                }
-//                            }
-//                    }
-//                }
             }
         }
         .sheet(isPresented: $showSheet) {
