@@ -15,7 +15,7 @@ struct TicketCell: View {
     @Binding var showOverlayList: Bool
     var selectedIndex: Int
     var index: Int
-    var onSelect: (Int) -> Void
+    var onSelect: (Int, String) -> Void // Modify this
     let dateString = "AUG 04 2024"
     var eventType: EventType2?
     var coverSelect: ((Int) -> Void)?
@@ -70,13 +70,13 @@ struct TicketCell: View {
             .foregroundColor(.white)
             .cornerRadius(15)
             VStack(alignment: .center, spacing: 5) {
-                if selectedIndex > -1 {
+                if selectedIndex == 0 {
                     HStack {
                         Spacer()
                         Button(action: {
                             if let id = ticket?.id {
-                                onSelect(id)
-                                print(id)
+                                onSelect(id, ticket?.date ?? dateString) // Pass date here
+                                print("Selected Ticket ID: \(id)")
                             }
                         }) {
                             Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
@@ -86,9 +86,13 @@ struct TicketCell: View {
                         }
                     }
                 } else {
-                    Circle()
-                        .stroke(Color.clear, lineWidth: 0)
-                        .frame(width: 22, height: 22)
+                    HStack {
+                        Spacer()
+                        Image(systemName: "checkmark.circle.fill")
+                            .resizable()
+                            .frame(width: 22, height: 22)
+                            .foregroundColor(eventType == .public ? Color.customBlueColor : Color(hex: "#9D6EFF"))
+                    }
                 }
                 Spacer()
                 let components = (ticket?.date ?? dateString).split(separator: " ")

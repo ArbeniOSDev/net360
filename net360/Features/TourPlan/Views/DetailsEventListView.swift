@@ -15,6 +15,7 @@ struct DetailsEventListView: View {
     @State private var selectedCellID: Int? = nil
     var cityName: String?
     var eventName: String?
+    @State private var selectedDate: String? = nil
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -30,12 +31,15 @@ struct DetailsEventListView: View {
                                 ticket: tickets[index],
                                 cityName: cityName,
                                 eventName: eventName ?? "",
-                                isSelected: (selectedIndex != 0),
+                                isSelected: selectedIndex == 1 ? true : selectedCellID == tickets[index].id,
                                 showOverlayList: $showOverlay,
                                 selectedIndex: selectedIndex,
                                 index: index,
-                                onSelect: { id in
-                                    selectedCellID = selectedCellID == id ? nil : id
+                                onSelect: { id, date in
+                                    if selectedIndex == 0 {
+                                        selectedCellID = selectedCellID == id ? nil : id
+                                        selectedDate = date
+                                    }
                                 }, eventType: selectedIndex == 0 ? .public : .private
                             ).verticalPadding()
                         }
@@ -68,9 +72,21 @@ struct DetailsEventListView: View {
         }
         .alert(isPresented: $showAlert) {
             Alert(title: Text("Event appointed!"),
-                  message: Text("You have successfully appointed in the  \(viewModel.getSelectedTicketFromField(selectedCellID: selectedCellID)) event on 04 August 2024"),
+                  message: Text("You have successfully appointed in the \(eventName ?? "") event in \(cityName ?? "") on \(convertDateFormat(dateString: selectedDate ?? "N/A")) 2024"),
                   dismissButton: .default(Text("OK")))
         }
+    }
+    
+    func convertDateFormat(dateString: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd" // Input format
+        
+        if let date = dateFormatter.date(from: dateString) {
+            dateFormatter.dateFormat = "dd MMMM" // Output format
+            return dateFormatter.string(from: date)
+        }
+        
+        return dateString // Return original string if conversion fails
     }
 }
 

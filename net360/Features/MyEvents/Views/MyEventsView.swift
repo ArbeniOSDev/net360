@@ -62,7 +62,7 @@ struct MyEventsView: View {
                             showOverlayList: $showOverlay,
                             selectedIndex: selectedCellID,
                             index: index,
-                            onSelect: { id in
+                            onSelect: { id, _ in
                                 selectedCellID = id
                                 print("Selected Cell in main view ID: \(selectedCellID)") // Debug print
                             }, eventType: newsSelectedSegment == 0 ? .public : .private, coverSelect: { id in
