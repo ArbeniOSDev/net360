@@ -79,14 +79,14 @@ struct TicketCell: View {
                         }) {
                             Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                                 .resizable()
-                                .frame(width: 25, height: 25)
+                                .frame(width: 22, height: 22)
                                 .foregroundColor(eventType == .public ? Color.customBlueColor : Color(hex: "#9D6EFF"))
                         }
                     }
                 } else {
                     Circle()
                         .stroke(Color.clear, lineWidth: 0)
-                        .frame(width: 25, height: 25)
+                        .frame(width: 22, height: 22)
                 }
                 Spacer()
                 let components = (ticket?.date ?? dateString).split(separator: " ")
@@ -94,10 +94,10 @@ struct TicketCell: View {
                     if components.count == 3 {
                         Text(String(components[0])) // Month
                             .font(.system(size: 22, weight: .bold))
-                            .foregroundColor(selectedIndex == 1 ? Color.red.opacity(0.5) : Color.customBlueColor)
+                            .foregroundColor( Color.customBlueColor)
                         Text(String(components[1])) // Day
                             .font(.system(size: 37, weight: .bold))
-                            .foregroundColor(selectedIndex == 1 ? Color.red.opacity(0.5) : Color.customBlueColor)
+                            .foregroundColor(Color.customBlueColor)
                         Text(String(components[2])) // Year
                             .font(.system(size: 19, weight: .bold))
                             .foregroundColor(.gray)

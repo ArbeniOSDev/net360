@@ -24,7 +24,10 @@ struct CustomSegmentedPickerView: View {
                 HStack {
                     ForEach(self.titles.indices, id: \.self) { index in
                         Button(action: { selectedIndex = index }) {
-                            DescText(self.titles[index], LayoutConstants.fontSize14, .bold, color: selectedIndex == index ? .white : Color.buttonColor)
+                            Text(self.titles[index])
+                                .foregroundColor(selectedIndex == index ? .white : Color.buttonColor)
+                                .font(.ubuntuCustomFont(ofSize: LayoutConstants.fontSize14))
+                                .fontWeight(selectedIndex == index ? .bold : .regular)
                                 .frame(maxWidth: .infinity)
                         }
                         .padding(EdgeInsets(top: 12, leading: 1, bottom: 12, trailing: 1))

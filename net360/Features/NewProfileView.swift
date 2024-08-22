@@ -8,80 +8,53 @@
 import SwiftUI
 
 struct NewProfileView: View {
+    @EnvironmentObject private var authManager: LoginViewModel
+    @State var isEdit: Bool = false
     
     var body: some View {
-        NavigationView {
-            VStack {
-                VStack {
-                    HStack {
-                        Button(action: {
-                            
-                        }) {
-                            Image(systemName: "chevron.left")
-                                .foregroundColor(.black)
-                                .font(.title2)
-                        }
-                        Spacer()
-                        Text("Profile")
-                            .font(.title3)
-                            .foregroundColor(.black)
-                            .bold()
-                        Spacer()
-                        Button(action: {
-                            
-                        }) {
-                            Text("Edit Profile")
-                                .foregroundColor(.black)
-                                .font(.callout)
-                                .padding(10)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color.white, lineWidth: 1)
-                                )
+        ZStack {
+            Color.bgColor
+                .ignoresSafeArea()
+                VStack(spacing: 15) {
+                        VStack(spacing: 10) {
+                            CircleImageProfile(image: Image("avatar6"))
+                            SubText("John Doe", 28).bold()
+                            SubText("ID: 524687975", 16)
+                        }.topPadding(10)
+                    ScrollView {
+                        VStack(spacing: 15) {
+                            NavigationLink(destination: NewPasswordView()) {
+                                ProfileOptionView(image: "passwordIcon", text: "Password")
+                            }
+                            ProfileOptionView(image: "faceIDIcon", text: "Face ID", hiddeRightImage: true, isForFaceId: true)
+                            NavigationLink(destination: LanguagesMenu()) {
+                                ProfileOptionView(image: "languageIcon", text: "Language")
+                            }
+                            NavigationLink(destination: ContactList()) {
+                                ProfileOptionView(image: "supportIcon", text: "Support")
+                            }
+                            HStack {
+                                Button {
+                                    authManager.logout()
+                                } label: {
+                                    Spacer()
+                                    SubText("Logout", 16, color: .black)
+                                    Spacer()
+                                }
+                            }.padding(10)
+                                .background(Color(hex: "#EBEEF5"))
+                                .cornerRadius(12)
                         }
                     }
-                    .padding(.horizontal)
-                    .padding(.top, 50)
-                    
                     Spacer()
-                    
-                    VStack(spacing: 10) {
-                        CircleImageProfile(image: Image("avatar6"))
-                        Text("John Doe")
-                            .font(.title2)
-                            .foregroundColor(.black)
-                            .bold()
-                        
-                        Text("ID: 524687975")
-                            .foregroundColor(Color.black.opacity(0.7))
-                            .font(.subheadline)
+                }.horizontalPadding(15)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        CustomCircleButton(action: {
+                            isEdit.toggle()
+                        }, imageName: "pen", size: 14)
                     }
-                    .topPadding(20)
                 }
-                .frame(height: 300)
-                
-                Spacer()
-                    .frame(height: 20)
-                
-                ScrollView {
-                    VStack(spacing: 12) {
-                        NavigationLink(destination: NewPasswordView()) {
-                            ProfileOptionView(image: "passwordIcon", text: "Password")
-                        }
-                        ProfileOptionView(image: "faceIDIcon", text: "Face ID", hiddeRightImage: true, isForFaceId: true)
-                        NavigationLink(destination: LanguagesMenu()) {
-                            ProfileOptionView(image: "languageIcon", text: "Language")
-                        }
-                        NavigationLink(destination: ContactList()) {
-                            ProfileOptionView(image: "supportIcon", text: "Support")
-                        }
-                        ProfileOptionView(image: "logoutIcon 1", text: "Logout", hiddeRightImage: true)
-                    }
-                }.padding(.horizontal, 20)
-                
-                Spacer()
-            }
-            .edgesIgnoringSafeArea(.top)
         }
     }
 }

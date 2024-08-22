@@ -15,6 +15,7 @@
 		B924FF662C512EAE00F75AB9 /* LabeledStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B924FF652C512EAE00F75AB9 /* LabeledStepper.swift */; };
 		B924FF682C5133BD00F75AB9 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B924FF672C5133BD00F75AB9 /* EventModel.swift */; };
 		B924FF6A2C5135B200F75AB9 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B924FF692C5135B200F75AB9 /* EventViewModel.swift */; };
+		B9AC8FE82C7755B700C02862 /* CustomCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC8FE72C7755B700C02862 /* CustomCircleButton.swift */; };
 		B9D154832C522C06001A0771 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D154822C522C06001A0771 /* ImageButton.swift */; };
 		F4172E802C6DEBA700C5CB2D /* NewProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4172E7F2C6DEBA700C5CB2D /* NewProfileView.swift */; };
 		F4172E822C6DED6900C5CB2D /* BackgroundProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4172E812C6DED6900C5CB2D /* BackgroundProfile.swift */; };
@@ -105,6 +106,7 @@
 		B924FF652C512EAE00F75AB9 /* LabeledStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledStepper.swift; sourceTree = "<group>"; };
 		B924FF672C5133BD00F75AB9 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		B924FF692C5135B200F75AB9 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
+		B9AC8FE72C7755B700C02862 /* CustomCircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCircleButton.swift; sourceTree = "<group>"; };
 		B9D154822C522C06001A0771 /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
 		F4172E7F2C6DEBA700C5CB2D /* NewProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileView.swift; sourceTree = "<group>"; };
 		F4172E812C6DED6900C5CB2D /* BackgroundProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundProfile.swift; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 			children = (
 				F45D6D682C761E0B0041DC3B /* Menu Picker */,
 				F4F55AB92C6C988A00FFC66B /* SlideButton */,
+				B9AC8FE72C7755B700C02862 /* CustomCircleButton.swift */,
 				F47217F02C49433400ADCB54 /* SegmentedView.swift */,
 				F461A6BE2C4A5CCD00BEAFE2 /* CustomDropDownView.swift */,
 				F4EF38092C4E40C400434364 /* CustomTabBar.swift */,
@@ -589,6 +592,7 @@
 				F4172E882C6E1BB900C5CB2D /* LAContext.swift in Sources */,
 				F461A6C12C4A5E6500BEAFE2 /* DetailsEventListViewModel.swift in Sources */,
 				F47217EF2C490AA500ADCB54 /* EventListCardView.swift in Sources */,
+				B9AC8FE82C7755B700C02862 /* CustomCircleButton.swift in Sources */,
 				B924FF602C51048200F75AB9 /* SecureTextField.swift in Sources */,
 				F41DDEEF2C6E34A700CAF5AC /* Person.swift in Sources */,
 				F4172E802C6DEBA700C5CB2D /* NewProfileView.swift in Sources */,
