@@ -37,12 +37,12 @@ struct EventListCardView: View {
                             SubTextBold(eventType == .future ? "\(event?.daysToStartEvent ?? 0) days to Start" : "Expired", 14, .bold, color: .white)
                                 .padding(.vertical, 4)
                                 .padding(.horizontal, 8)
-                                .background(eventType == .future ? Color(hex: "#00A3FF") : Color(hex: "#9D6EFF"))
+                                .background(eventType == .future ? Color(hex: "#00A3FF") : Color(hex: "#DB1971"))
                                 .cornerRadius(5)
                             SubTextBold("\(event?.eventDuration ?? 0) days", 14, .bold, color: .white)
                                 .padding(.vertical, 4)
                                 .padding(.horizontal, 8)
-                                .background(eventType == .future ? Color(hex: "#00A3FF") : Color(hex: "#9D6EFF"))
+                                .background(eventType == .future ? Color(hex: "#00A3FF") : Color(hex: "#DB1971"))
                                 .cornerRadius(5)
                         }
                     }

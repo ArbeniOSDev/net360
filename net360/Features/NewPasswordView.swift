@@ -20,10 +20,10 @@ struct NewPasswordView: View {
             ZStack {
                 Color.bgColor
                     .ignoresSafeArea()
-            VStack {
+            VStack(spacing: 15) {
                 // Header
                 DescText("Change Password", 28).bold()
-                    .padding(.top, 40)
+                    .padding(.top, 30)
                 DescText("Must be 8 characters or longer", 16, color: .gray)
                 // Old Password Field
                 HStack {
@@ -45,7 +45,6 @@ struct NewPasswordView: View {
                 .padding()
                 .background(Color(.systemGray5))
                 .cornerRadius(8)
-                .padding(.top, 20)
                 
                 // New Password Field
                 HStack {
@@ -67,7 +66,6 @@ struct NewPasswordView: View {
                 .padding()
                 .background(Color(.systemGray5))
                 .cornerRadius(8)
-                .padding(.top, 10)
                 
                 // Confirm Password Field
                 HStack {
@@ -87,8 +85,7 @@ struct NewPasswordView: View {
                 .padding()
                 .background(Color(.systemGray5))
                 .cornerRadius(8)
-                .padding(.top, 10)
-                
+                Spacer()
                 Button(action: {
                     
                 }) {
@@ -98,9 +95,7 @@ struct NewPasswordView: View {
                         .background(Color.buttonColor)
                         .cornerRadius(10)
                 }
-                .padding(.top, 20)
-                
-                Spacer()
+
             }
             .padding(.horizontal, 24)
             .navigationBarHidden(true)

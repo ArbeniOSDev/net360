@@ -16,6 +16,13 @@ struct LoginView: View {
     var body: some View {
         ZStack {
             backgroundGradient
+            Image("360netLogo1")
+                .customImageModifier(width: 600, renderingMode: .original, aspectRatio: .fit)
+//                .customImageHeightModifier(height: 350, renderingMode: .original, aspectRatio: .fill)
+                .rotationEffect(.degrees(35))
+                .opacity(0.3)
+                .bottomPadding(-350)
+                .horizontalPadding(-200)
             GeometryReader { geometry in
                 ScrollView(.vertical) {
                     content
@@ -38,9 +45,9 @@ struct LoginView: View {
         Color("mainColor").opacity(0.85)
             .overlay {
                 LinearGradient(gradient: Gradient(colors: [
-                    Color("#001f2f"),
-                    Color(red: 7/255, green: 49/255, blue: 76/255, opacity: 0.85)
-                ]), startPoint: .bottom, endPoint: .top)
+                    Color(hex: "#002F5C"),
+                     Color(hex: "#00C5FE")
+                ]), startPoint: .topTrailing, endPoint: .bottomLeading)
             }
     }
     
@@ -55,46 +62,75 @@ struct LoginView: View {
     
     private var loginForm: some View {
         VStack(spacing: 20) {
+            VStack(spacing: 20) {
+                Spacer()
             Image("logo")
-                .customImageModifier(width: 90, aspectRatio: .fit)
-                .padding(.bottom, 25)
-            inputField(icon: "person", placeholder: "E-Mail Address", text: $authManager.username)
-            passwordField
-            loginButton
-                .verticalPadding()
-            forgotPasswordButton
+                .customImageHeightModifier(height: 50, aspectRatio: .fit)
+                .bottomPadding(30)
+                inputField(icon: "person", placeholder: "E-Mail Address", text: $authManager.username)
+                passwordField
+                loginButton
+                    .verticalPadding(15)
+                Divider()
+                descriprion
+                    .verticalPadding(10)
+//                VStack(spacing: 15) {
+//                    hilfeButton
+//                    contactButton
+//                }
+            }
+            Spacer()
+            HStack {
+                DescText("powered by", color: .white).italic()
+                Image("360netLogo")
+                    .customImageModifier(width: 22, renderingMode: .original, aspectRatio: .fit)
+                DescText("360net.ch", color: .white)
+            }
         }.horizontalPadding(20)
     }
     
     private var passwordField: some View {
         HStack {
             Image(systemName: "lock")
-                .foregroundColor(.secondary)
+                .foregroundColor(.white)
             if showPassword {
                 TextField("Password", text: $authManager.password)
                     .font(.ubuntuCustomFont(ofSize: 16))
+                    .foregroundColor(.white)
             } else {
                 SecureField("Password", text: $authManager.password)
                     .font(.ubuntuCustomFont(ofSize: 16))
+                    .foregroundColor(.white)
             }
             Button(action: { showPassword.toggle() }) {
                 Image(systemName: "eye")
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.white)
             }
         }
-        .padding()
-        .background(Capsule().fill(Color.white))
+        .padding(12)
+        .background(Capsule()
+        .fill(Color(hex: "#D9D9D9")).opacity(0.3))
+        .overlay {
+            Capsule()
+                .stroke(Color.white, lineWidth: 1)
+        }
     }
     
     private func inputField(icon: String, placeholder: String, text: Binding<String>) -> some View {
         HStack {
             Image(systemName: icon)
-                .foregroundColor(.secondary)
+                .foregroundColor(.white)
             TextField(placeholder, text: text)
                 .font(.ubuntuCustomFont(ofSize: 16))
+                .foregroundColor(.white)
         }
-        .padding()
-        .background(Capsule().fill(Color.white))
+        .padding(12)
+        .background(Capsule()
+            .fill(Color(hex: "#D9D9D9")).opacity(0.3))
+        .overlay {
+            Capsule()
+                .stroke(Color.white, lineWidth: 1)
+        }
     }
     
     private var loader: some View {
@@ -114,19 +150,41 @@ struct LoginView: View {
         Button(action: {
             authManager.makeLoginAPI()
         }) {
-            DescText("Login", 20, color: .white).bold()
+            DescText("LOGIN", 14, color: .white)
                 .frame(maxWidth: .infinity)
-                .padding()
+                .padding(12)
                 .background(Color.loginColor)
                 .cornerRadius(40)
-        }
+        }.shadow(color: Color.black.opacity(0.5), radius: 2, x: 0, y: 3)
     }
     
-    private var forgotPasswordButton: some View {
-        Button(action: {}) {
-            DescText("Forgot Your Password?", 16, color: .white).underline()
-                .fontWeight(.heavy)
-        }
+    private var hilfeButton: some View {
+        Button(action: {
+
+        }) {
+            DescText("Brauchen Soe Hilfe?", 14, color: .white)
+                .frame(maxWidth: .infinity)
+                .padding(12)
+                .background(Color(hex: "#28A745"))
+                .cornerRadius(40)
+        }.shadow(color: Color.black.opacity(0.5), radius: 2, x: 0, y: 3)
+    }
+    
+    private var contactButton: some View {
+        Button(action: {
+ 
+        }) {
+            DescText("Kontakt IT-Service?", 14, color: .black)
+                .frame(maxWidth: .infinity)
+                .padding(12)
+                .background(Color(hex: "FFC107"))
+                .cornerRadius(40)
+        }.shadow(color: Color.black.opacity(0.5), radius: 2, x: 0, y: 3)
+    }
+    
+    private var descriprion: some View {
+        DescText("Für dich entworfen von Finance & HR-Experten!", 16, color: .white).bold()
+            .frame(width: 200)
     }
 }
 

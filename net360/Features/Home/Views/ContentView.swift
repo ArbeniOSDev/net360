@@ -85,18 +85,9 @@ struct ContentView: View {
                         }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    HStack {
-                        Button(action: {
-                            authManager.logout()
-                        }) {
-                            Image("logoutIcon")
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                        }
-                        NavigationLink(destination: AddNewKampagneView(viewModel: eventViewModel)) {
-                            Image(systemName: "plus.circle.fill")
-                                .customImageModifier(width: 22, renderingMode: .template, color: Color.buttonColor, aspectRatio: .fit)
-                        }
+                    NavigationLink(destination: AddNewKampagneView(viewModel: eventViewModel)) {
+                        Image(systemName: "plus.circle.fill")
+                            .customImageModifier(width: 22, renderingMode: .template, color: Color.buttonColor, aspectRatio: .fit)
                     }
                 }
             }).navigationBarTitleDisplayMode(.inline)
