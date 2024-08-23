@@ -93,8 +93,8 @@
 		F4EF3BFD2C47E8BE002010E6 /* DeviceResolutionResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF3BFC2C47E8BE002010E6 /* DeviceResolutionResolver.swift */; };
 		F4EF3C002C47ED2D002010E6 /* EventListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF3BFF2C47ED2D002010E6 /* EventListCell.swift */; };
 		F4F55ABB2C6C98D500FFC66B /* SliderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F55ABA2C6C98D500FFC66B /* SliderButton.swift */; };
-		F4FE84922C77E9D900A23F55 /* TicketCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE84912C77E9D900A23F55 /* TicketCell2.swift */; };
-		F4FE84942C77F40A00A23F55 /* TicketCell3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE84932C77F40A00A23F55 /* TicketCell3.swift */; };
+		F4FE84922C77E9D900A23F55 /* MyEventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE84912C77E9D900A23F55 /* MyEventsCell.swift */; };
+		F4FE84942C77F40A00A23F55 /* UpcomingEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE84932C77F40A00A23F55 /* UpcomingEventCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -186,8 +186,8 @@
 		F4EF3BFC2C47E8BE002010E6 /* DeviceResolutionResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceResolutionResolver.swift; sourceTree = "<group>"; };
 		F4EF3BFF2C47ED2D002010E6 /* EventListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListCell.swift; sourceTree = "<group>"; };
 		F4F55ABA2C6C98D500FFC66B /* SliderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderButton.swift; sourceTree = "<group>"; };
-		F4FE84912C77E9D900A23F55 /* TicketCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketCell2.swift; sourceTree = "<group>"; };
-		F4FE84932C77F40A00A23F55 /* TicketCell3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketCell3.swift; sourceTree = "<group>"; };
+		F4FE84912C77E9D900A23F55 /* MyEventsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsCell.swift; sourceTree = "<group>"; };
+		F4FE84932C77F40A00A23F55 /* UpcomingEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -467,8 +467,8 @@
 				B9D154822C522C06001A0771 /* ImageButton.swift */,
 				F45D6D642C75F1EC0041DC3B /* CustomRadioButton.swift */,
 				F45D6D662C760F200041DC3B /* PointerView.swift */,
-				F4FE84912C77E9D900A23F55 /* TicketCell2.swift */,
-				F4FE84932C77F40A00A23F55 /* TicketCell3.swift */,
+				F4FE84912C77E9D900A23F55 /* MyEventsCell.swift */,
+				F4FE84932C77F40A00A23F55 /* UpcomingEventCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -583,7 +583,7 @@
 				F4E46F102C772BBF0074A521 /* TourPlanListViewModel.swift in Sources */,
 				B924FF662C512EAE00F75AB9 /* LabeledStepper.swift in Sources */,
 				F4EF3BFB2C47E76B002010E6 /* Images.swift in Sources */,
-				F4FE84922C77E9D900A23F55 /* TicketCell2.swift in Sources */,
+				F4FE84922C77E9D900A23F55 /* MyEventsCell.swift in Sources */,
 				F4EF38142C4E41E600434364 /* LoginViewModel.swift in Sources */,
 				F4EF38162C4E421200434364 /* AlertController.swift in Sources */,
 				F4E89B4C2C748D3A009C1BD2 /* ShimmerText.swift in Sources */,
@@ -631,7 +631,7 @@
 				F468AA092C63971B002AB250 /* UserResponse.swift in Sources */,
 				F4EF3BD82C47E51C002010E6 /* DateFieldValidator.swift in Sources */,
 				F4EF3BF72C47E6EA002010E6 /* Modifier.swift in Sources */,
-				F4FE84942C77F40A00A23F55 /* TicketCell3.swift in Sources */,
+				F4FE84942C77F40A00A23F55 /* UpcomingEventCell.swift in Sources */,
 				F461A6C62C4AA12A00BEAFE2 /* TourPlanOverlayView.swift in Sources */,
 				F4EF380C2C4E40F700434364 /* Network Manager.swift in Sources */,
 				F45D6D672C760F200041DC3B /* PointerView.swift in Sources */,

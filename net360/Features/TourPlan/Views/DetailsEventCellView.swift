@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TicketCell: View {
+struct AllEventsTicketCell: View {
     var ticket: Details?
     var cityName: String?
     var eventName: String = "Zirkus Knie 2024"

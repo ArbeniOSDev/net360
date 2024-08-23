@@ -1,17 +1,17 @@
 //
-//  TicketCell2.swift
+//  TicketCell3.swift
 //  net360
 //
-//  Created by Arben on 22.8.24.
+//  Created by Arben on 23.8.24.
 //
 
 import SwiftUI
 
-struct TicketCell2: View {
+struct UpcomingEventCell: View {
     var ticket: Details?
     var cityName: String?
     var eventName: String = "Zirkus Knie 2024"
-    var isSelected: Bool
+    @Binding var isSelected: Bool
     @Binding var showOverlayList: Bool
     var selectedIndex: Int
     var index: Int
@@ -72,15 +72,17 @@ struct TicketCell2: View {
             .foregroundColor(.white)
             .cornerRadius(15)
             VStack(alignment: .center, spacing: 5) {
-                if selectedIndex == 0 {
+                if newsSelectedSegment == 0 {
                     HStack {
                         Spacer()
                         Button(action: {
+                            isSelected.toggle() // Toggle the selection state
                             if let id = ticket?.id {
                                 onSelect(id, ticket?.date ?? dateString) // Pass date here
+                                print("Selected Ticket ID: \(id)")
                             }
                         }) {
-                            Image(systemName: !isSelected ? "checkmark.circle.fill" : "circle")
+                            Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                                 .resizable()
                                 .frame(width: 22, height: 22)
                                 .foregroundColor(eventType == .public ? Color.customBlueColor : Color(hex: "#DB1971"))
@@ -101,7 +103,7 @@ struct TicketCell2: View {
                     if components.count == 3 {
                         Text(String(components[0])) // Month
                             .font(.system(size: 22, weight: .bold))
-                            .foregroundColor( Color.customBlueColor)
+                            .foregroundColor(Color.customBlueColor)
                         Text(String(components[1])) // Day
                             .font(.system(size: 37, weight: .bold))
                             .foregroundColor(Color.customBlueColor)
@@ -132,3 +134,5 @@ struct TicketCell2: View {
         }
     }
 }
+
+

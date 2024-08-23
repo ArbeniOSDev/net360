@@ -79,7 +79,7 @@ struct ContentView: View {
                                 if let tickets = ticketsForEventType() {
 //                                    TabView(selection: $selectedCellID) {
                                     ForEach(tickets.indices.prefix(1), id: \.self) { index in
-                                        TicketCell(
+                                        AllEventsTicketCell(
                                             ticket: tickets[index],
                                             isSelected: true,
                                             showOverlayList: $showOverlay,

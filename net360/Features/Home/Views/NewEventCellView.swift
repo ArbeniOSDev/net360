@@ -53,8 +53,8 @@ struct NewEventCellView: View {
             .padding(1)
             .onAppear {
                 if event.eventIsForToday ?? false {
-                    Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true) { _ in
-                        withAnimation(.easeInOut(duration: 1.5)) {
+                    Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+                        withAnimation(.easeInOut(duration: 1.0)) {
                             isCircleVisible.toggle()
                         }
                     }

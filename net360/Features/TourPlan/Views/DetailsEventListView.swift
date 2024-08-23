@@ -27,7 +27,7 @@ struct DetailsEventListView: View {
                 ScrollView {
                     if let tickets = viewModel.detailsEventObject?.tickets {
                         ForEach(tickets.indices, id: \.self) { index in
-                            TicketCell(
+                            AllEventsTicketCell(
                                 ticket: tickets[index],
                                 cityName: cityName,
                                 eventName: eventName ?? "",

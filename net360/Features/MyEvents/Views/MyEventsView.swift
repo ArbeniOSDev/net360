@@ -64,7 +64,7 @@ struct MyEventsView: View {
                     if newsSelectedSegment == 0 {
                         if let tickets = ticketsForEventType() {
                             ForEach(tickets.indices, id: \.self) { index in
-                                TicketCell2(
+                                MyEventsCell(
                                     ticket: tickets[index],
                                     cityName: "Your City",
                                     eventName: "Your Event Name",
@@ -83,7 +83,7 @@ struct MyEventsView: View {
                     } else if newsSelectedSegment == 1 {
                         if let tickets = ticketsForEventType() {
                             ForEach(tickets.indices, id: \.self) { index in
-                                TicketCell2(
+                                MyEventsCell(
                                     ticket: tickets[index],
                                     cityName: "Your City",
                                     eventName: "Your Event Name",
@@ -104,7 +104,7 @@ struct MyEventsView: View {
                     if newsSelectedSegment == 0 {
                         if let tickets = ticketsForEventType() {
                             ForEach(tickets.indices, id: \.self) { index in
-                                TicketCell3(
+                                UpcomingEventCell(
                                     ticket: tickets[index],
                                     cityName: "Your City",
                                     eventName: "Your Event Name",
@@ -133,7 +133,7 @@ struct MyEventsView: View {
                     } else {
                         if let tickets = ticketsForEventType() {
                             ForEach(tickets.indices, id: \.self) { index in
-                                TicketCell3(
+                                UpcomingEventCell(
                                     ticket: tickets[index],
                                     cityName: "Your City",
                                     eventName: "Your Event Name",
