@@ -167,7 +167,7 @@ struct ContentView: View {
                 if isEventScheduledForToday() {
                     HStack(spacing: 32) {
                         VStack {
-                            if isFirstSlide {
+                            if !isFirstSlide {
                                 DescText("Start time", 16, color: .black)
                                 SubTextBold("\(slideStartTime)", 26, .bold, color: .black)
                                     .frame(height: 20)
