@@ -18,7 +18,13 @@ struct TeamEventListView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                DescText("Supervisior Team", 18)
+                HStack {
+                    DescText("Supervisior Team", 18)
+                    Spacer()
+                    DescText("Invite", 16)
+                    Image(systemName: "plus.circle.fill")
+                        .customImageModifier(width: 26, renderingMode: .template, color: Color.buttonColor, aspectRatio: .fit)
+                }
                 ForEach(superVisiorTeamNames.indices, id: \.self) { index in
                     HStack {
                         Image(supervisorImages[index])

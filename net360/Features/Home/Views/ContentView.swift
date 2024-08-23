@@ -167,9 +167,11 @@ struct ContentView: View {
                 if isEventScheduledForToday() {
                     HStack(spacing: 32) {
                         VStack {
-                            DescText("Start time", 16, color: .black)
-                            SubTextBold("\(slideStartTime)", 26, .bold, color: .black)
-                                .frame(height: 20)
+                            if isFirstSlide {
+                                DescText("Start time", 16, color: .black)
+                                SubTextBold("\(slideStartTime)", 26, .bold, color: .black)
+                                    .frame(height: 20)
+                            }
                         }
                         if slideCompletedTwice {
                             VStack {
