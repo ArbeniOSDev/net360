@@ -20,7 +20,7 @@ struct TicketCell2: View {
     var eventType: EventType2?
     var coverSelect: ((Int) -> Void)?
     var cellIsClosed: Bool = false
-    var newsSelectedSegment: Int // Add this property
+    var newsSelectedSegment: Int
 
     var body: some View {
         HStack(spacing: 0) {
@@ -78,10 +78,9 @@ struct TicketCell2: View {
                         Button(action: {
                             if let id = ticket?.id {
                                 onSelect(id, ticket?.date ?? dateString) // Pass date here
-                                print("Selected Ticket ID: \(id)")
                             }
                         }) {
-                            Image(systemName: isSelected ? "circle" : "checkmark.circle.fill")
+                            Image(systemName: !isSelected ? "checkmark.circle.fill" : "circle")
                                 .resizable()
                                 .frame(width: 22, height: 22)
                                 .foregroundColor(eventType == .public ? Color.customBlueColor : Color(hex: "#DB1971"))

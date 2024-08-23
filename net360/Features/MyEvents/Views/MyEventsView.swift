@@ -28,6 +28,7 @@ struct MyEventsView: View {
     @State private var newsSelectedSegment = 0
     @State private var selectedTicketIDs: Set<Int> = []
     @State private var selectedTicketID: Int?
+    @State private var ticketIDToUpdate: Int?
 
     var eventType: EventsType = .myEvents
     
@@ -58,6 +59,7 @@ struct MyEventsView: View {
     func TaskView() -> some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
+                // my events
                 if eventType == .myEvents {
                     if newsSelectedSegment == 0 {
                         if let tickets = ticketsForEventType() {
@@ -66,12 +68,13 @@ struct MyEventsView: View {
                                     ticket: tickets[index],
                                     cityName: "Your City",
                                     eventName: "Your Event Name",
-                                    isSelected: false, // Or whatever condition you want
+                                    isSelected: selectedTicketIDs.contains(tickets[index].id ?? 0),
                                     showOverlayList: $showOverlay,
-                                    selectedIndex: 0, // This index should match your logic
-                                    index: 0, // You can adjust this based on your data
+                                    selectedIndex: 0,
+                                    index: 0,
                                     onSelect: { id, date in
-                                        // Handle the selection
+                                        ticketIDToUpdate = id
+                                        showAlert = true
                                     },
                                     eventType: .public, newsSelectedSegment: newsSelectedSegment
                                 )
@@ -84,12 +87,12 @@ struct MyEventsView: View {
                                     ticket: tickets[index],
                                     cityName: "Your City",
                                     eventName: "Your Event Name",
-                                    isSelected: false, // Or whatever condition you want
+                                    isSelected: false,
                                     showOverlayList: $showOverlay,
-                                    selectedIndex: 1, // This index should match your logic
-                                    index: 1, // You can adjust this based on your data
+                                    selectedIndex: 1,
+                                    index: 1,
                                     onSelect: { id, date in
-                                        // Handle the selection
+                                        
                                     },
                                     eventType: .public, newsSelectedSegment: newsSelectedSegment
                                 )
@@ -97,6 +100,7 @@ struct MyEventsView: View {
                         }
                     }
                 } else {
+                    // upcoming ticket
                     if newsSelectedSegment == 0 {
                         if let tickets = ticketsForEventType() {
                             ForEach(tickets.indices, id: \.self) { index in
@@ -177,6 +181,14 @@ struct MyEventsView: View {
                     if let ticketID = selectedTicketID {
                         // Update the selection state
                         selectedTicketIDs.insert(ticketID)
+                    }
+                    if let ticketID = ticketIDToUpdate {
+                        // Update the selection state
+                        if selectedTicketIDs.contains(ticketID) {
+                            selectedTicketIDs.remove(ticketID)
+                        } else {
+                            selectedTicketIDs.insert(ticketID)
+                        }
                     }
                 },
                 secondaryButton: .cancel())
