@@ -34,7 +34,7 @@ class DetailsEventListViewModel: ObservableObject {
                     to: "New Zealand",
                     time: "10:00 - 10:30",
                     price: "300 MYR",
-                    date: "AUG\n04",
+                    date: "AUG 23 2024",
                     year: "2024"
                 ),
                 Details(
@@ -43,7 +43,7 @@ class DetailsEventListViewModel: ObservableObject {
                     to: "New Zealand",
                     time: "12:00 - 13:30",
                     price: "300 MYR",
-                    date: "SEP\n04",
+                    date: "AUG 23 2024",
                     year: "2024"
                 ),
                 Details(
@@ -52,7 +52,7 @@ class DetailsEventListViewModel: ObservableObject {
                     to: "New Zealand",
                     time: "13:00 - 14:30",
                     price: "300 MYR",
-                    date: "MAR\n04",
+                    date: "MAR 04 2024",
                     year: "2024"
                 ),
                 Details(
@@ -61,7 +61,7 @@ class DetailsEventListViewModel: ObservableObject {
                     to: "New Zealand",
                     time: "09:00 - 11:30",
                     price: "available 4",
-                    date: "JUN\n04",
+                    date: "JUN 04 2024",
                     year: "2024"
                 )
             ]

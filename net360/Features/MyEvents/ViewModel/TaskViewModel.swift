@@ -66,7 +66,7 @@ class TaskViewModel: ObservableObject {
                 year: "2024",
                 startingTime: "08:31",
                 endedTime: "",
-                hasStartedEvent: true,
+                hasStartedEvent: false,
                 hasEndedEvent: false
             ),
             Details(

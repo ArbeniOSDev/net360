@@ -78,6 +78,11 @@ struct MyEventsView: View {
                                     },
                                     eventType: .public, newsSelectedSegment: newsSelectedSegment
                                 )
+                                .onTapGesture {
+                                    selectedCellID = index
+                                    setupOverlayState(for: tickets[index])
+                                    showSheet = true
+                                }
                             }
                         }
                     } else if newsSelectedSegment == 1 {
@@ -206,7 +211,7 @@ struct MyEventsView: View {
     
     private func setupOverlayState(for ticket: Details) {
         let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "HH:mm"
+        timeFormatter.dateFormat = "HH:mm a"
         
         let displayFormatter = DateFormatter()
         displayFormatter.dateFormat = "hh:mm a"
@@ -333,7 +338,7 @@ struct MyEventsView: View {
         
         private func calculateTotalTime() -> String {
             let timeFormatter = DateFormatter()
-            timeFormatter.dateFormat = "hh:mm a"
+            timeFormatter.dateFormat = "hh:mm"
             
             guard let start = timeFormatter.date(from: slideStartTime),
                   let end = timeFormatter.date(from: slideEndTime) else {
