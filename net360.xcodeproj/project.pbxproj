@@ -27,7 +27,6 @@
 		F41DDEED2C6E349700CAF5AC /* SupportCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41DDEEC2C6E349700CAF5AC /* SupportCellView.swift */; };
 		F41DDEEF2C6E34A700CAF5AC /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41DDEEE2C6E34A700CAF5AC /* Person.swift */; };
 		F41DDEF12C6E351700CAF5AC /* ContactList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41DDEF02C6E351700CAF5AC /* ContactList.swift */; };
-		F429C7592C6CDBA20021E67B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429C7582C6CDBA20021E67B /* ProfileView.swift */; };
 		F434967D2C60F29C008DB661 /* DetailsEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434967C2C60F29C008DB661 /* DetailsEventModel.swift */; };
 		F43496802C60F42A008DB661 /* APIServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434967F2C60F42A008DB661 /* APIServiceProtocol.swift */; };
 		F4442FB82C6B365100C51996 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4442FB72C6B365100C51996 /* KeychainService.swift */; };
@@ -119,7 +118,6 @@
 		F41DDEEC2C6E349700CAF5AC /* SupportCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportCellView.swift; sourceTree = "<group>"; };
 		F41DDEEE2C6E34A700CAF5AC /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		F41DDEF02C6E351700CAF5AC /* ContactList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactList.swift; sourceTree = "<group>"; };
-		F429C7582C6CDBA20021E67B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		F434967C2C60F29C008DB661 /* DetailsEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsEventModel.swift; sourceTree = "<group>"; };
 		F434967F2C60F42A008DB661 /* APIServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceProtocol.swift; sourceTree = "<group>"; };
 		F4442FB72C6B365100C51996 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
@@ -247,7 +245,6 @@
 				F4E8E59E2C4FECB2003C661F /* MyEvents */,
 				F4E8E59B2C4FEBDA003C661F /* TourPlan */,
 				F4E8E5972C4FEB74003C661F /* Home */,
-				F429C7582C6CDBA20021E67B /* ProfileView.swift */,
 				F4172E7F2C6DEBA700C5CB2D /* NewProfileView.swift */,
 				F4172E812C6DED6900C5CB2D /* BackgroundProfile.swift */,
 				F4172E852C6E08D400C5CB2D /* ProfileOptionView.swift */,
@@ -620,7 +617,6 @@
 				F41DDEED2C6E349700CAF5AC /* SupportCellView.swift in Sources */,
 				F4E8E58D2C4F87DF003C661F /* EventTeamHList.swift in Sources */,
 				B924FF5B2C50DD9200F75AB9 /* SearchBar.swift in Sources */,
-				F429C7592C6CDBA20021E67B /* ProfileView.swift in Sources */,
 				F4EF3BDB2C47E545002010E6 /* TextStyles.swift in Sources */,
 				F468AA072C6396C9002AB250 /* LoginView.swift in Sources */,
 				F45D6D6C2C762BD10041DC3B /* TeamEventListView.swift in Sources */,

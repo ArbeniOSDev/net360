@@ -15,46 +15,44 @@ struct NewProfileView: View {
         ZStack {
             Color.bgColor
                 .ignoresSafeArea()
+            VStack(spacing: 15) {
+                VStack(spacing: 10) {
+                    CircleImageProfile(image: Image("Circle-Fisnik Sadiki"))
+                    SubText("Fisnik Sadiki", 28).bold()
+                    SubText("ID: 524687975", 16)
+                }.topPadding(10)
+                Spacer()
                 VStack(spacing: 15) {
-                        VStack(spacing: 10) {
-                            CircleImageProfile(image: Image("Circle-Fisnik Sadiki"))
-                            SubText("Fisnik Sadiki", 28).bold()
-                            SubText("ID: 524687975", 16)
-                        }.topPadding(10)
-                    ScrollView {
-                        VStack(spacing: 15) {
-                            NavigationLink(destination: NewPasswordView()) {
-                                ProfileOptionView(image: "passwordIcon", text: "Password")
-                            }
-                            ProfileOptionView(image: "faceIDIcon", text: "Face ID", hiddeRightImage: true, isForFaceId: true)
-                            NavigationLink(destination: LanguagesMenu()) {
-                                ProfileOptionView(image: "languageIcon", text: "Language")
-                            }
-                            NavigationLink(destination: ContactList()) {
-                                ProfileOptionView(image: "supportIcon", text: "Support")
-                            }
-                            HStack {
-                                Button {
-                                    authManager.logout()
-                                } label: {
-                                    Spacer()
-                                    SubText("Logout", 16, color: Color(hex: "#DB1971"))
-                                    Spacer()
-                                }
-                            }.padding(13)
-                                .background(Color(hex: "#EBEEF5"))
-                                .cornerRadius(12)
-                        }
+                    NavigationLink(destination: NewPasswordView()) {
+                        ProfileOptionView(image: "passwordIcon", text: "Password")
                     }
-                    Spacer()
-                }.horizontalPadding(15)
-//                .toolbar {
-//                    ToolbarItem(placement: .navigationBarTrailing) {
-//                        CustomCircleButton(action: {
-//                            isEdit.toggle()
-//                        }, imageName: "pen", size: 14)
-//                    }
-//                }
+                    ProfileOptionView(image: "faceIDIcon", text: "Face ID", hiddeRightImage: true, isForFaceId: true)
+                    NavigationLink(destination: LanguagesMenu()) {
+                        ProfileOptionView(image: "languageIcon", text: "Language")
+                    }
+                    NavigationLink(destination: ContactList()) {
+                        ProfileOptionView(image: "supportIcon", text: "Support")
+                    }
+                    HStack {
+                        Button {
+                            authManager.logout()
+                        } label: {
+                            Spacer()
+                            SubText("Logout", 16, color: Color(hex: "#DB1971"))
+                            Spacer()
+                        }
+                    }.padding(13)
+                        .background(Color(hex: "#EBEEF5"))
+                        .cornerRadius(12)
+                }
+            }.horizontalPadding(15)
+            //                .toolbar {
+            //                    ToolbarItem(placement: .navigationBarTrailing) {
+            //                        CustomCircleButton(action: {
+            //                            isEdit.toggle()
+            //                        }, imageName: "pen", size: 14)
+            //                    }
+            //                }
         }
     }
 }
