@@ -29,7 +29,8 @@ struct MyEventsView: View {
     @State private var selectedTicketIDs: Set<Int> = []
     @State private var selectedTicketID: Int?
     @State private var ticketIDToUpdate: Int?
-
+    @State private var selectedDate: String?
+    @State private var selectedEventName: String?
     var eventType: EventsType = .myEvents
     
     var body: some View {
@@ -72,8 +73,10 @@ struct MyEventsView: View {
                                     showOverlayList: $showOverlay,
                                     selectedIndex: 0,
                                     index: 0,
-                                    onSelect: { id, date in
+                                    onSelect: { id, date, eventName in
                                         ticketIDToUpdate = id
+                                        selectedDate = date
+                                        selectedEventName = eventName
                                         showAlert = true
                                     },
                                     eventType: .public, newsSelectedSegment: newsSelectedSegment
@@ -96,7 +99,10 @@ struct MyEventsView: View {
                                     showOverlayList: $showOverlay,
                                     selectedIndex: 1,
                                     index: 1,
-                                    onSelect: { id, date in
+                                    onSelect: { id, date, eventName in
+                                        ticketIDToUpdate = id
+                                        selectedDate = date
+                                        selectedEventName = eventName
                                     },
                                     eventType: .public, newsSelectedSegment: newsSelectedSegment
                                 ).topPadding()
@@ -126,8 +132,9 @@ struct MyEventsView: View {
                                     showOverlayList: $showOverlay,
                                     selectedIndex: 0,
                                     index: index,
-                                    onSelect: { id, date in
-                                        // Handle selection if needed
+                                    onSelect: { id, date, eventName in
+                                        selectedDate = date
+                                        selectedEventName = eventName
                                     },
                                     eventType: newsSelectedSegment == 0 ? .public : .private,
                                     newsSelectedSegment: newsSelectedSegment
@@ -145,8 +152,9 @@ struct MyEventsView: View {
                                     showOverlayList: $showOverlay,
                                     selectedIndex: 1, // This index should match your logic
                                     index: index, // You can adjust this based on your data
-                                    onSelect: { id, date in
-                                        // Handle the selection
+                                    onSelect: { id, date, eventName in
+                                        selectedDate = date
+                                        selectedEventName = eventName
                                     },
                                     eventType: newsSelectedSegment == 0 ? .public : .private,
                                     newsSelectedSegment: newsSelectedSegment
@@ -180,8 +188,8 @@ struct MyEventsView: View {
         
         .alert(isPresented: $showAlert) {
             Alert(
-                title: Text("Do you want to appoint to the Zirkus Knie 2024 event?"),
-                message: Text(""),
+                title: eventType == .myEvents ? Text("Do you want to deselect ") : Text("Do you want to appoint "),
+                message: eventType == .myEvents ? Text("From the \(selectedEventName ?? "") event in \(selectedDate ?? "")?") : Text("To the \(selectedEventName ?? "") event in \(selectedDate ?? "")?"),
                 primaryButton: .default(Text("OK")) {
                     if let ticketID = selectedTicketID {
                         // Update the selection state
@@ -431,9 +439,9 @@ struct MyEventsView: View {
             }
             .hLeading()
             NavigationLink(destination: NewProfileView()) {
-                Image("User1")
+                Image("Circle-Fisnik Sadiki")
                     .resizable()
-                    .imageCircleModifier(height: 35, width: 35, renderingMode: .original, color: .clear, aspectRatio: .fill, colorStroke: .clear, lineWidth: 0.1)
+                    .imageCircleModifier(height: 40, width: 40, renderingMode: .original, color: .clear, aspectRatio: .fill, colorStroke: .clear, lineWidth: 0.1)
             }
         }
         .background(Color.bgColor)

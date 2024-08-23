@@ -15,7 +15,7 @@ struct MyEventsCell: View {
     @Binding var showOverlayList: Bool
     var selectedIndex: Int
     var index: Int
-    var onSelect: (Int, String) -> Void
+    var onSelect: (Int, String, String) -> Void
     let dateString = "AUG 04 2024"
     var eventType: EventType2?
     var coverSelect: ((Int) -> Void)?
@@ -77,7 +77,7 @@ struct MyEventsCell: View {
                         Spacer()
                         Button(action: {
                             if let id = ticket?.id {
-                                onSelect(id, ticket?.date ?? dateString) // Pass date here
+                                onSelect(id, ticket?.date ?? dateString, eventName) // Pass date here
                             }
                         }) {
                             Image(systemName: !isSelected ? "checkmark.circle.fill" : "circle")

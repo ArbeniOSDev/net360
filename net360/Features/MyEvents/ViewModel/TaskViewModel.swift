@@ -28,7 +28,7 @@ class TaskViewModel: ObservableObject {
      ]
     
     @Published var eventNames: [String] = ["Zirkus Knie 2024", "Zugermesse 2024", "OHA 2024", "ZOM 2024", "Winti Mäss 2024"]
-    @Published var eventCities: [String] = ["Bern", "Basel", "Zürich", "Aarau", "Lucerne"]
+    @Published var eventCities: [String] = ["Bern", "Zürich", "Zürich", "Aarau", "Lucerne"]
     @Published var availablePlaces: [Int] = [15, 7, 3, 9, 5]
     
     var upcomingSegmentTitles: [String] = ["Free", "Full"]
@@ -46,7 +46,7 @@ class TaskViewModel: ObservableObject {
             Details(
                 id: 1,
                 availablePlaces: 25,
-                from: "Zurich",
+                from: "Bern",
                 to: "Los Angeles",
                 time: "10:00 AM",
                 eventTotalTime: "02:30",
@@ -61,7 +61,7 @@ class TaskViewModel: ObservableObject {
             Details(
                 id: 2,
                 availablePlaces: 15,
-                from: "Basel",
+                from: "Zürich",
                 to: "Houston",
                 time: "2:00 PM",
                 eventTotalTime: "01:45",
@@ -76,7 +76,7 @@ class TaskViewModel: ObservableObject {
             Details(
                 id: 3,
                 availablePlaces: 3,
-                from: "Bern",
+                from: "Zürich",
                 to: "Seattle",
                 time: "5:30 PM",
                 eventTotalTime: "03:15",
@@ -91,7 +91,7 @@ class TaskViewModel: ObservableObject {
             Details(
                 id: 4,
                 availablePlaces: 5,
-                from: "Bern",
+                from: "Aarau",
                 to: "Seattle",
                 time: "5:30 PM",
                 eventTotalTime: "02:15",
@@ -106,7 +106,7 @@ class TaskViewModel: ObservableObject {
             Details(
                 id: 5,
                 availablePlaces: 8,
-                from: "St.Gallen",
+                from: "Lucerne",
                 to: "Seattle",
                 time: "5:30 PM",
                 eventTotalTime: "03:15",
@@ -127,7 +127,7 @@ class TaskViewModel: ObservableObject {
             Details(
                 id: 1,
                 availablePlaces: 25,
-                from: "Zurich",
+                from: "Bern",
                 to: "Los Angeles",
                 time: "10:00 AM",
                 eventTotalTime: "02:30",
@@ -142,7 +142,7 @@ class TaskViewModel: ObservableObject {
             Details(
                 id: 2,
                 availablePlaces: 13,
-                from: "Basel",
+                from: "Zürich",
                 to: "Houston",
                 time: "2:00 PM",
                 eventTotalTime: "01:45",
@@ -157,7 +157,7 @@ class TaskViewModel: ObservableObject {
             Details(
                 id: 3,
                 availablePlaces: 7,
-                from: "Bern",
+                from: "Zürich",
                 to: "Seattle",
                 time: "5:30 PM",
                 eventTotalTime: "03:15",
@@ -172,7 +172,7 @@ class TaskViewModel: ObservableObject {
             Details(
                 id: 4,
                 availablePlaces: 17,
-                from: "Bern",
+                from: "Aarau",
                 to: "Seattle",
                 time: "5:30 PM",
                 eventTotalTime: "02:15",
@@ -187,7 +187,7 @@ class TaskViewModel: ObservableObject {
             Details(
                 id: 5,
                 availablePlaces: 6,
-                from: "St.Gallen",
+                from: "Lucerne",
                 to: "Seattle",
                 time: "5:30 PM",
                 eventTotalTime: "03:15",

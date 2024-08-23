@@ -66,7 +66,7 @@ struct LoginView: View {
                 Spacer()
             Image("logo")
                 .customImageHeightModifier(height: 50, aspectRatio: .fit)
-                .bottomPadding(30)
+                Spacer()
                 inputField(icon: "person", placeholder: "E-Mail Address", text: $authManager.username)
                 passwordField
                 loginButton
@@ -74,10 +74,6 @@ struct LoginView: View {
                 Divider()
                 descriprion
                     .verticalPadding(10)
-//                VStack(spacing: 15) {
-//                    hilfeButton
-//                    contactButton
-//                }
             }
             Spacer()
             HStack {

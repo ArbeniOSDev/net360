@@ -17,7 +17,7 @@ struct NewProfileView: View {
                 .ignoresSafeArea()
                 VStack(spacing: 15) {
                         VStack(spacing: 10) {
-                            CircleImageProfile(image: Image("avatar6"))
+                            CircleImageProfile(image: Image("Circle-Fisnik Sadiki"))
                             SubText("Fisnik Sadiki", 28).bold()
                             SubText("ID: 524687975", 16)
                         }.topPadding(10)
