@@ -27,6 +27,10 @@ class TaskViewModel: ObservableObject {
          Task(taskTitle: "ZÜRICH", taskDescription: "Meine Ereignisse", taskDate: Date()),
      ]
     
+    @Published var eventNames: [String] = ["Zirkus Knie 2024", "Zugermesse 2024", "OHA 2024", "ZOM 2024", "Winti Mäss 2024"]
+    @Published var eventCities: [String] = ["Bern", "Basel", "Zürich", "Aarau", "Lucerne"]
+    @Published var availablePlaces: [Int] = [15, 7, 3, 9, 5]
+    
     var upcomingSegmentTitles: [String] = ["Free", "Full"]
     var myEventensSegmentTitles: [String] = ["Public", "Privat"]
     
@@ -122,7 +126,7 @@ class TaskViewModel: ObservableObject {
         let tickets = [
             Details(
                 id: 1,
-                availablePlaces: 0,
+                availablePlaces: 25,
                 from: "Zurich",
                 to: "Los Angeles",
                 time: "10:00 AM",
@@ -137,7 +141,7 @@ class TaskViewModel: ObservableObject {
             ),
             Details(
                 id: 2,
-                availablePlaces: 0,
+                availablePlaces: 13,
                 from: "Basel",
                 to: "Houston",
                 time: "2:00 PM",
@@ -152,7 +156,7 @@ class TaskViewModel: ObservableObject {
             ),
             Details(
                 id: 3,
-                availablePlaces: 0,
+                availablePlaces: 7,
                 from: "Bern",
                 to: "Seattle",
                 time: "5:30 PM",
@@ -167,7 +171,7 @@ class TaskViewModel: ObservableObject {
             ),
             Details(
                 id: 4,
-                availablePlaces: 0,
+                availablePlaces: 17,
                 from: "Bern",
                 to: "Seattle",
                 time: "5:30 PM",
@@ -182,7 +186,7 @@ class TaskViewModel: ObservableObject {
             ),
             Details(
                 id: 5,
-                availablePlaces: 0,
+                availablePlaces: 6,
                 from: "St.Gallen",
                 to: "Seattle",
                 time: "5:30 PM",

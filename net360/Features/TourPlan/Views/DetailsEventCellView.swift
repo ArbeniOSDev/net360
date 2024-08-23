@@ -27,18 +27,18 @@ struct AllEventsTicketCell: View {
                 SubTextBold(eventName, 24, color: .white)
                 HStack(alignment: .firstTextBaseline) {
                     VStack(alignment: .leading) {
-                        DescText("Place", 11, color: .white.opacity(0.8))
+                        DescText("Ort", 11, color: .white.opacity(0.8))
                         SubTextBold(cityName ?? "Zürich", 20, color: .white).fontWeight(.bold)
                     }
                     Spacer()
                     VStack(alignment: .trailing) {
                         DescText("Freie Platze", 11, color: .white.opacity(0.8))
-                        SubTextBold("Available \(String(ticket?.availablePlaces ?? 0))", 18, color: .white)
+                        SubTextBold("Verfügbar \(String(ticket?.availablePlaces ?? 0))", 18, color: .white)
                     }
                 }
                 HStack {
                     VStack(alignment: .leading) {
-                        DescText("Time", 11, color: .white.opacity(0.8))
+                        DescText("Zeit", 11, color: .white.opacity(0.8))
                         HStack(spacing: 8) {
                             SubTextBold("10:00", 16, .bold, color: .white)
                             SubTextBold("-", 16, .bold, color: .white)
@@ -48,7 +48,7 @@ struct AllEventsTicketCell: View {
                     Spacer()
                     VStack(alignment: .trailing) {
                         DescText("Dauer", 11, color: .white.opacity(0.8))
-                        SubTextBold(ticket?.eventTotalTime ?? "2 Hours", 16, .bold, color: .white)
+                        SubTextBold(ticket?.eventTotalTime ?? "02:00", 16, .bold, color: .white)
                     }
                 }
                 HStack {
@@ -101,10 +101,10 @@ struct AllEventsTicketCell: View {
                     if components.count == 3 {
                         Text(String(components[0])) // Month
                             .font(.system(size: 22, weight: .bold))
-                            .foregroundColor( Color.customBlueColor)
+                            .foregroundColor(eventType == .public ? Color.customBlueColor : Color(hex: "#044675"))
                         Text(String(components[1])) // Day
                             .font(.system(size: 37, weight: .bold))
-                            .foregroundColor(Color.customBlueColor)
+                            .foregroundColor(eventType == .public ? Color.customBlueColor : Color(hex: "#044675"))
                         Text(String(components[2])) // Year
                             .font(.system(size: 19, weight: .bold))
                             .foregroundColor(.gray)

@@ -66,8 +66,8 @@ struct MyEventsView: View {
                             ForEach(tickets.indices, id: \.self) { index in
                                 MyEventsCell(
                                     ticket: tickets[index],
-                                    cityName: "Your City",
-                                    eventName: "Your Event Name",
+                                    cityName: taskViewModel.eventCities[index],
+                                    eventName: taskViewModel.eventNames[index],
                                     isSelected: selectedTicketIDs.contains(tickets[index].id ?? 0),
                                     showOverlayList: $showOverlay,
                                     selectedIndex: 0,
@@ -90,14 +90,13 @@ struct MyEventsView: View {
                             ForEach(tickets.indices, id: \.self) { index in
                                 MyEventsCell(
                                     ticket: tickets[index],
-                                    cityName: "Your City",
-                                    eventName: "Your Event Name",
+                                    cityName: taskViewModel.eventCities[index],
+                                    eventName: taskViewModel.eventNames[index],
                                     isSelected: false,
                                     showOverlayList: $showOverlay,
                                     selectedIndex: 1,
                                     index: 1,
                                     onSelect: { id, date in
-                                        
                                     },
                                     eventType: .public, newsSelectedSegment: newsSelectedSegment
                                 )
@@ -111,8 +110,8 @@ struct MyEventsView: View {
                             ForEach(tickets.indices, id: \.self) { index in
                                 UpcomingEventCell(
                                     ticket: tickets[index],
-                                    cityName: "Your City",
-                                    eventName: "Your Event Name",
+                                    cityName: taskViewModel.eventCities[index],
+                                    eventName: taskViewModel.eventNames[index],
                                     isSelected: Binding(
                                         get: { selectedTicketIDs.contains(tickets[index].id ?? 0) },
                                         set: { isSelected in
@@ -130,7 +129,7 @@ struct MyEventsView: View {
                                     onSelect: { id, date in
                                         // Handle selection if needed
                                     },
-                                    eventType: .public,
+                                    eventType: newsSelectedSegment == 0 ? .public : .private,
                                     newsSelectedSegment: newsSelectedSegment
                                 )
                             }
@@ -140,8 +139,8 @@ struct MyEventsView: View {
                             ForEach(tickets.indices, id: \.self) { index in
                                 UpcomingEventCell(
                                     ticket: tickets[index],
-                                    cityName: "Your City",
-                                    eventName: "Your Event Name",
+                                    cityName: taskViewModel.eventCities[index],
+                                    eventName: taskViewModel.eventNames[index],
                                     isSelected: .constant(false), // Or whatever condition you want
                                     showOverlayList: $showOverlay,
                                     selectedIndex: 1, // This index should match your logic
@@ -149,7 +148,8 @@ struct MyEventsView: View {
                                     onSelect: { id, date in
                                         // Handle the selection
                                     },
-                                    eventType: .public, newsSelectedSegment: newsSelectedSegment
+                                    eventType: newsSelectedSegment == 0 ? .public : .private,
+                                    newsSelectedSegment: newsSelectedSegment
                                 )
                             }
                         }

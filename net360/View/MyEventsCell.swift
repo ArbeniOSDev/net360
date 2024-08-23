@@ -28,18 +28,18 @@ struct MyEventsCell: View {
                 SubTextBold(eventName, 24, color: .white)
                 HStack(alignment: .firstTextBaseline) {
                     VStack(alignment: .leading) {
-                        DescText("Place", 11, color: .white.opacity(0.8))
+                        DescText("Ort", 11, color: .white.opacity(0.8))
                         SubTextBold(cityName ?? "Zürich", 20, color: .white).fontWeight(.bold)
                     }
                     Spacer()
                     VStack(alignment: .trailing) {
                         DescText("Freie Platze", 11, color: .white.opacity(0.8))
-                        SubTextBold("Available \(String(ticket?.availablePlaces ?? 0))", 18, color: .white)
+                        SubTextBold(newsSelectedSegment == 0 ? "Verfügbar \(String(ticket?.availablePlaces ?? 0))" : "Nicht Verfügbar", 18, color: .white)
                     }
                 }
                 HStack {
                     VStack(alignment: .leading) {
-                        DescText("Time", 11, color: .white.opacity(0.8))
+                        DescText("Zeit", 11, color: .white.opacity(0.8))
                         HStack(spacing: 8) {
                             SubTextBold("10:00", 16, .bold, color: .white)
                             SubTextBold("-", 16, .bold, color: .white)
@@ -49,7 +49,7 @@ struct MyEventsCell: View {
                     Spacer()
                     VStack(alignment: .trailing) {
                         DescText("Dauer", 11, color: .white.opacity(0.8))
-                        SubTextBold(ticket?.eventTotalTime ?? "2 Hours", 16, .bold, color: .white)
+                        SubTextBold(ticket?.eventTotalTime ?? "02:00", 16, .bold, color: .white)
                     }
                 }
                 HStack {
