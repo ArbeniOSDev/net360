@@ -182,7 +182,7 @@ struct MyEventsView: View {
             Alert(
                 title: Text("Do you want to appoint to the Zirkus Knie 2024 event?"),
                 message: Text(""),
-                primaryButton: .destructive(Text("OK")) {
+                primaryButton: .default(Text("OK")) {
                     if let ticketID = selectedTicketID {
                         // Update the selection state
                         selectedTicketIDs.insert(ticketID)

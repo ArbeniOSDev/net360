@@ -16,6 +16,7 @@ struct DetailsEventListView: View {
     var cityName: String?
     var eventName: String?
     @State private var selectedDate: String? = nil
+    @State private var isCellSelected: Bool = false
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -31,7 +32,7 @@ struct DetailsEventListView: View {
                                 ticket: tickets[index],
                                 cityName: cityName,
                                 eventName: eventName ?? "",
-                                isSelected: selectedIndex == 1 ? true : selectedCellID == tickets[index].id,
+                                isSelected: selectedIndex == 0 ? isCellSelected && selectedCellID == tickets[index].id : selectedCellID == tickets[index].id,
                                 showOverlayList: $showOverlay,
                                 selectedIndex: selectedIndex,
                                 index: index,
@@ -39,15 +40,13 @@ struct DetailsEventListView: View {
                                     if selectedIndex == 0 {
                                         selectedCellID = id
                                         selectedDate = date
+                                        showAlert = true // Trigger the alert
                                     }
-                                }, eventType: selectedIndex == 0 ? .public : .private,
+                                },
+                                eventType: selectedIndex == 0 ? .public : .private,
                                 cellIsClosed: true
-                            ).topPadding()
-                                .onTapGesture {
-                                    if selectedIndex == 0 {
-                                        showAlert = true
-                                    }
-                                }
+                            )
+                            .topPadding()
                         }
                     } else if viewModel.noDataAvailable {
                         Text("No tickets available")
@@ -62,8 +61,9 @@ struct DetailsEventListView: View {
         .alert(isPresented: $showAlert) {
             Alert(
                 title: Text("Do you want to make appointment?"),
-                message: Text("To the \(eventName ?? "") event in \(cityName ?? "") on \(convertDateFormat(dateString: selectedDate ?? "23 August")) 2024"),
-                primaryButton: .destructive(Text("OK")) {
+                message: Text("To the \(eventName ?? "") event in \(cityName ?? "") on \(convertDateFormat(dateString: selectedDate ?? "23 August"))"),
+                primaryButton: .default(Text("OK")) {
+                    isCellSelected.toggle()
                 },
                 secondaryButton: .cancel())
         }

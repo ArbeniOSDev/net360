@@ -72,8 +72,8 @@ struct ContentView: View {
                     ScrollView {
                         VStack(spacing: 15) {
                             VStack(alignment: .leading) {
-                                SubTextBold("Today's events", 24)
-                                    .horizontalPadding(20)
+                                SubTextBold("Today's events", 24).horizontalPadding(20)
+                                PointerView().horizontalPadding(20)
                             if let tickets = ticketsForEventType() {
                                 ForEach(tickets.indices.prefix(1), id: \.self) { index in
                                     AllEventsTicketCell(
