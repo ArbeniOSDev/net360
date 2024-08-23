@@ -11,7 +11,7 @@ struct TicketCell3: View {
     var ticket: Details?
     var cityName: String?
     var eventName: String = "Zirkus Knie 2024"
-    @State private var isSelected: Bool = false // Manage local selection state
+    @Binding var isSelected: Bool
     @Binding var showOverlayList: Bool
     var selectedIndex: Int
     var index: Int

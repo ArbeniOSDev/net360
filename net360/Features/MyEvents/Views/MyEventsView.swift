@@ -26,6 +26,9 @@ struct MyEventsView: View {
     @State private var sliderBackgroundColor: Color = .customBlueColor
     @State private var sliderText: String = "Slide to start"
     @State private var newsSelectedSegment = 0
+    @State private var selectedTicketIDs: Set<Int> = []
+    @State private var selectedTicketID: Int?
+
     var eventType: EventsType = .myEvents
     
     var body: some View {
@@ -101,14 +104,25 @@ struct MyEventsView: View {
                                     ticket: tickets[index],
                                     cityName: "Your City",
                                     eventName: "Your Event Name",
-//                                    isSelected: false, // Or whatever condition you want
+                                    isSelected: Binding(
+                                        get: { selectedTicketIDs.contains(tickets[index].id ?? 0) },
+                                        set: { isSelected in
+                                            if isSelected {
+                                                selectedTicketID = tickets[index].id
+                                                showAlert = true
+                                            } else {
+                                                selectedTicketID = nil
+                                            }
+                                        }
+                                    ),
                                     showOverlayList: $showOverlay,
-                                    selectedIndex: 0, // This index should match your logic
-                                    index: index, // You can adjust this based on your data
+                                    selectedIndex: 0,
+                                    index: index,
                                     onSelect: { id, date in
-                                        // Handle the selection
+                                        // Handle selection if needed
                                     },
-                                    eventType: .public, newsSelectedSegment: newsSelectedSegment
+                                    eventType: .public,
+                                    newsSelectedSegment: newsSelectedSegment
                                 )
                             }
                         }
@@ -119,7 +133,7 @@ struct MyEventsView: View {
                                     ticket: tickets[index],
                                     cityName: "Your City",
                                     eventName: "Your Event Name",
-//                                    isSelected: false, // Or whatever condition you want
+                                    isSelected: .constant(false), // Or whatever condition you want
                                     showOverlayList: $showOverlay,
                                     selectedIndex: 1, // This index should match your logic
                                     index: index, // You can adjust this based on your data
@@ -160,6 +174,10 @@ struct MyEventsView: View {
                 title: Text("Do you want to appoint to the Zirkus Knie 2024 event?"),
                 message: Text(""),
                 primaryButton: .destructive(Text("OK")) {
+                    if let ticketID = selectedTicketID {
+                        // Update the selection state
+                        selectedTicketIDs.insert(ticketID)
+                    }
                 },
                 secondaryButton: .cancel())
         }
