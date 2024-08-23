@@ -125,7 +125,7 @@ struct ContentView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(destination: AddNewKampagneView(viewModel: eventViewModel)) {
                         Image(systemName: "plus.circle.fill")
-                            .customImageModifier(width: 22, renderingMode: .template, color: Color.buttonColor, aspectRatio: .fit)
+                            .customImageModifier(width: 26, renderingMode: .template, color: Color.buttonColor, aspectRatio: .fit)
                     }
                 }
             }).navigationBarTitleDisplayMode(.inline)

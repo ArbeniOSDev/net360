@@ -16,6 +16,6 @@ struct PointerView: View {
                 .foregroundColor(.gray)
             DescText("Click an event to start timing", 14, color: .gray)
             Spacer()
-        }
+        }.topPadding(5)
     }
 }
