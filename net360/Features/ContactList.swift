@@ -22,8 +22,8 @@ struct ContactList: View {
                 SubTextBold("Support team", 18)
                 ForEach(people.indices, id: \.self) { index in
                     CustomCell(person: people[index])
-                        .verticalPadding(-5)
-                }
+                        .topPadding()
+                }.horizontalPadding(20)
             }.background(Color(hex: "F5F5F5"))
         }
     }

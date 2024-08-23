@@ -96,7 +96,7 @@ struct ProfileSettingsView: View {
                             .background(Color.white)
                             .cornerRadius(10)
                             .shadow(color: Color.gray.opacity(0.3), radius: 2, x: 0, y: 0)
-                        }
+                        }.topPadding(20)
                         .padding(.horizontal)
                     }
                 }

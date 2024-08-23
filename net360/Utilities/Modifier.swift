@@ -101,3 +101,42 @@ struct FloatingContentModifier: ViewModifier {
             )
     }
 }
+
+
+struct ButtonModifier: ViewModifier {
+    let width: CGFloat
+    let accentColor: Color
+    let color: Color
+    let radius: CGFloat
+    
+    init(width: CGFloat = .infinity, accentColor: Color = .white, color: Color = .blue, radius: CGFloat = 5) {
+        self.width = width
+        self.accentColor = accentColor
+        self.color = color
+        self.radius = radius
+    }
+    
+    func body(content: Content) -> some View {
+        content
+            .paddingHV(5, 8)
+            .frame(maxWidth: width)
+            .accentColor(accentColor)
+            .background(color)
+            .cornerRadius(radius)
+    }
+}
+
+struct CardStyle: ViewModifier {
+    var padding: CGFloat = 22
+    var color: Color = Color.white
+    var radius: CGFloat = 18
+    
+    func body(content: Content) -> some View {
+        content
+            .allPadding(padding)
+            .frame(maxWidth: .infinity)
+            .background(color)
+            .cornerRadius(radius)
+            .shadow(color: Color.black.opacity(0.10), radius: 2, x: 0, y: 0)
+    }
+}

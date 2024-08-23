@@ -15,37 +15,39 @@ struct CustomCell: View {
             VStack(alignment: .center, spacing: 8) {
                 SubTextBold(person?.name ?? "", 17, textAlignment: .center)
                 DescText(person?.position ?? "", 14, textAlignment: .center)
-                
-                Spacer()
-                
-                HStack(spacing: 20) {
-                    ContactCellView(imageName: "phone", text: "", action: {
+                HStack(spacing: 5) {
+                    Button(action: {
                         if let phoneNumber = person?.phoneNumber?.removeSpaces {
                             phoneNumber.callPhone()
                         }
-                    })
-                    ContactCellView(imageName: "email", text: "", action: {
+                    }) {
+                        HStack {
+                            Image(systemName: "phone.fill")
+                                .customImageHeightModifier(height: 13, color: .white, aspectRatio: .fit)
+                            DescText("Call", 13, color: .white)
+                        }.modifier(ButtonModifier(color: .blue))
+                    }
+                    Button(action: {
                         if let email = person?.email?.removeSpaces {
                             email.sendEmail()
                         }
-                    })
-                }.frame(maxWidth: .infinity)
+                    }) {
+                        HStack {
+                            Image(systemName: "envelope.fill")
+                                .customImageHeightModifier(height: 11, color: .white, aspectRatio: .fit)
+                            DescText("Email", 13, color: .white)
+                        }.modifier(ButtonModifier(color: .blue))
+                    }
+                }
             }
-            .padding()
-            
             Spacer()
-            
             VStack(alignment: .center) {
                 Image(person?.imageName ?? "")
                     .imageModifier(height: 120, width: 120, renderingMode: .original, color: .gray, aspectRatio: .fit)
                     .cornerRadius(4)
                     .shadow(color: .gray, radius: 4, x: 0, y: 4)
-            }.padding(.trailing, 25)
-        }
-        .background(Color.white)
-        .cornerRadius(20)
-        .shadow(radius: 2)
-        .padding()
+            }
+        }.modifier(CardStyle())
     }
 }
 
