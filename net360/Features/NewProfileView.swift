@@ -48,13 +48,13 @@ struct NewProfileView: View {
                     }
                     Spacer()
                 }.horizontalPadding(15)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        CustomCircleButton(action: {
-                            isEdit.toggle()
-                        }, imageName: "pen", size: 14)
-                    }
-                }
+//                .toolbar {
+//                    ToolbarItem(placement: .navigationBarTrailing) {
+//                        CustomCircleButton(action: {
+//                            isEdit.toggle()
+//                        }, imageName: "pen", size: 14)
+//                    }
+//                }
         }
     }
 }

@@ -90,9 +90,7 @@ struct AllEventsTicketCell: View {
                     HStack {
                         Spacer()
                         Image("eyeIcon")
-                            .resizable()
-                            .frame(width: 22, height: 22)
-                            .foregroundColor(eventType == .public ? Color.customBlueColor : Color(hex: "#9D6EFF"))
+                            .customImageHeightModifier(height: 22, renderingMode: .template, color: Color(hex: "#DB1971"), aspectRatio: .fit)
                     }
                 }
                 Spacer()

@@ -33,15 +33,15 @@ struct TourPlanListView: View {
                 }
                 Spacer()
             }.horizontalPadding(10)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: {
-                            showOverlayView = true
-                        }) {
-                            Image(systemName: "square.and.pencil")
-                        }
-                    }
-                }
+//                .toolbar {
+//                    ToolbarItem(placement: .navigationBarTrailing) {
+//                        Button(action: {
+//                            showOverlayView = true
+//                        }) {
+//                            Image(systemName: "square.and.pencil")
+//                        }
+//                    }
+//                }
             
             if showOverlayView {
                 Color.black.opacity(0.5)
