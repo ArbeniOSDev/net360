@@ -28,7 +28,7 @@ struct EventListCardView: View {
         HStack {
             VStack(spacing: 15) {
                 ZStack(alignment: .topLeading) {
-                    HStack {
+                    HStack(alignment: .firstTextBaseline) {
                         VStack(alignment: .leading, spacing: 6) {
                             SubTextBold(eventName, 22, .bold, color: Color(hex: "#07314C"))
                             SubTextBold(event?.cityName ?? "", 22, .bold, color: Color(hex: "#07314C"))

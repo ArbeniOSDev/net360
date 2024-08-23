@@ -42,7 +42,7 @@ struct DetailsEventListView: View {
                                     }
                                 }, eventType: selectedIndex == 0 ? .public : .private,
                                 cellIsClosed: true
-                            ).verticalPadding()
+                            ).topPadding()
                                 .onTapGesture {
                                     if selectedIndex == 0 {
                                         showAlert = true

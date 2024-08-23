@@ -77,7 +77,7 @@ struct MyEventsView: View {
                                         showAlert = true
                                     },
                                     eventType: .public, newsSelectedSegment: newsSelectedSegment
-                                )
+                                ).topPadding()
                                 .onTapGesture {
                                     selectedCellID = index
                                     setupOverlayState(for: tickets[index])
@@ -99,7 +99,7 @@ struct MyEventsView: View {
                                     onSelect: { id, date in
                                     },
                                     eventType: .public, newsSelectedSegment: newsSelectedSegment
-                                )
+                                ).topPadding()
                             }
                         }
                     }
@@ -131,7 +131,7 @@ struct MyEventsView: View {
                                     },
                                     eventType: newsSelectedSegment == 0 ? .public : .private,
                                     newsSelectedSegment: newsSelectedSegment
-                                )
+                                ).topPadding()
                             }
                         }
                     } else {
@@ -150,7 +150,7 @@ struct MyEventsView: View {
                                     },
                                     eventType: newsSelectedSegment == 0 ? .public : .private,
                                     newsSelectedSegment: newsSelectedSegment
-                                )
+                                ).topPadding()
                             }
                         }
                     }

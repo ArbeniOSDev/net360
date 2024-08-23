@@ -68,44 +68,33 @@ struct ContentView: View {
                             }.id(selectedItem)
                         }
                         Divider()
-                    }
+                    }.horizontalPadding(20)
                     ScrollView {
                         VStack(spacing: 15) {
-//                            VStack {
-                            HStack {
+                            VStack(alignment: .leading) {
                                 SubTextBold("Today's events", 24)
-                                Spacer()
-                            }.leadingPadding()
-                                if let tickets = ticketsForEventType() {
-//                                    TabView(selection: $selectedCellID) {
-                                    ForEach(tickets.indices.prefix(1), id: \.self) { index in
-                                        AllEventsTicketCell(
-                                            ticket: tickets[index],
-                                            isSelected: true,
-                                            showOverlayList: $showOverlay,
-//                                            selectedIndex: selectedCellID,
-                                            selectedIndex: 0, index: index,
-                                            onSelect: { id, _ in
-                                                //                                                selectedCellID = id
-                                            }, eventType: newsSelectedSegment == 0 ? .public : .private, coverSelect: { id in
-//                                                selectedCellID = id
-                                            }
-                                        ).verticalPadding(5).topPadding(3).horizontalPadding(-17)
-                                            .onTapGesture {
-                                                selectedCellID = index
-                                                setupOverlayState(for: tickets[index])
-                                                showSheet = true
-                                            }
-//                                            .tag(index)
-                                    }
-//                                }
-//                                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
-//                                    .frame(height: 220)
+                                    .horizontalPadding(20)
+                            if let tickets = ticketsForEventType() {
+                                ForEach(tickets.indices.prefix(1), id: \.self) { index in
+                                    AllEventsTicketCell(
+                                        ticket: tickets[index],
+                                        isSelected: true,
+                                        showOverlayList: $showOverlay,
+                                        selectedIndex: 0, index: index,
+                                        onSelect: { id, _ in
+                                        }, eventType: newsSelectedSegment == 0 ? .public : .private, coverSelect: { id in
+                                        }
+                                    ).verticalPadding(5).topPadding(3).horizontalPadding(-17)
+                                        .onTapGesture {
+                                            selectedCellID = index
+                                            setupOverlayState(for: tickets[index])
+                                            showSheet = true
+                                        }
+                                }.horizontalPadding()
                             }
-                            HStack {
                                 SubTextBold("All events", 24)
-                                Spacer()
-                            }.leadingPadding().topPadding(5)
+                                    .horizontalPadding(20)
+                        }
                             HStack(alignment: .center, spacing: 25) {
                                 Spacer()
                                 HStack (spacing: 20) {
@@ -121,10 +110,10 @@ struct ContentView: View {
                             }.topPadding(5)
                             ForEach(filteredEvents) { event in
                                 NewEventCellView(event: event)
-                            }.horizontalPadding()
+                            }.horizontalPadding(20)
                         }
                     }
-                }.horizontalPadding(10)
+                }
             }.toolbar(content: {
                 ToolbarItem(placement: .principal) {
                     Image("smzh-logo2")
