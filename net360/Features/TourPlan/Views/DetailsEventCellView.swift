@@ -33,7 +33,7 @@ struct AllEventsTicketCell: View {
                     Spacer()
                     VStack(alignment: .trailing) {
                         DescText("Freie Platze", 11, color: .white.opacity(0.8))
-                        SubTextBold("Verfügbar \(String(ticket?.availablePlaces ?? 0))", 18, color: .white)
+                        SubTextBold("\(String(ticket?.availablePlaces ?? 0))", 18, color: .white)
                     }
                 }
                 HStack {

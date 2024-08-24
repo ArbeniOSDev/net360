@@ -34,7 +34,7 @@ struct MyEventsCell: View {
                     Spacer()
                     VStack(alignment: .trailing) {
                         DescText("Freie Platze", 11, color: .white.opacity(0.8))
-                        SubTextBold(newsSelectedSegment == 0 ? "Verfügbar \(String(ticket?.availablePlaces ?? 0))" : "Nicht Verfügbar", 18, color: .white)
+                        SubTextBold(newsSelectedSegment == 0 ? "\(String(ticket?.availablePlaces ?? 0))" : "Nicht Verfügbar", 18, color: .white)
                     }
                 }
                 HStack {
