@@ -86,6 +86,12 @@ struct MyEventsView: View {
                                     setupOverlayState(for: tickets[index])
                                     showSheet = true
                                 }
+                                .onChange(of: selectedCellID) { newValue in
+                                    // This triggers a view update when selectedCellID changes
+                                    if newValue == index {
+                                        setupOverlayState(for: tickets[index])
+                                    }
+                                }
                             }
                         }
                     } else if newsSelectedSegment == 1 {
@@ -132,7 +138,7 @@ struct MyEventsView: View {
                                     showOverlayList: $showOverlay,
                                     selectedIndex: 0,
                                     index: index,
-                                    onSelect: { id, date, eventName in
+                                    onSelect: { _, date, eventName in
                                         selectedDate = date
                                         selectedEventName = eventName
                                     },
@@ -271,7 +277,7 @@ struct MyEventsView: View {
         
         var body: some View {
             VStack {
-                if isEventScheduledForToday() {
+                if isEventScheduledForToday(for: selectedCellID) {
                     HStack(spacing: 32) {
                         VStack {
                             DescText("Start time", 16, color: .black)
@@ -360,36 +366,30 @@ struct MyEventsView: View {
             return "\(hours) hours and \(minutes) min"
         }
         
-        private func isEventScheduledForToday() -> Bool {
+        private func isEventScheduledForToday(for cellID: Int) -> Bool {
             guard let tickets = taskViewModel.myEventsDetailsObject?.tickets,
-                  selectedCellID < tickets.count else {
+                  cellID < tickets.count else {
                 return false
             }
-            
-            let eventDateString = tickets[selectedCellID].date?.trimmingCharacters(in: .whitespacesAndNewlines)
+
+            let eventDateString = tickets[cellID].date?.trimmingCharacters(in: .whitespacesAndNewlines)
             
             let formatter = DateFormatter()
             formatter.dateFormat = "MMM dd yyyy"
-            
-            // Get current year
-            let currentYear = Calendar.current.component(.year, from: Date())
-            
-            // Combine the date and year
-            let fullDateString = "\(eventDateString ?? "") \(currentYear)"
+            formatter.timeZone = TimeZone(secondsFromGMT: 0)
             
             if let eventDate = formatter.date(from: eventDateString ?? "") {
-                let calendar = Calendar.current
-                var components = calendar.dateComponents([.year, .month, .day], from: eventDate)
-                components.year = currentYear
+                let today = Date()
+                formatter.timeZone = TimeZone.current
                 
-                if let updatedEventDate = calendar.date(from: components) {
-                    return Calendar.current.isDateInToday(updatedEventDate)
-                } else {
-                    print("Failed to update event date with current year")
+                let todayString = formatter.string(from: today)
+                if let todayDate = formatter.date(from: todayString) {
+                    return Calendar.current.isDate(eventDate, inSameDayAs: todayDate)
                 }
             } else {
-                print("Failed to parse date: \(fullDateString)")
+                print("Failed to parse date: \(eventDateString ?? "")")
             }
+            
             return false
         }
     }
