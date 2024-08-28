@@ -110,7 +110,7 @@ struct MyEventsView: View {
                                         selectedDate = date
                                         selectedEventName = eventName
                                     },
-                                    eventType: .public, newsSelectedSegment: newsSelectedSegment
+                                    eventType: newsSelectedSegment == 0 ? .public : .private, newsSelectedSegment: newsSelectedSegment
                                 ).topPadding()
                             }
                         }

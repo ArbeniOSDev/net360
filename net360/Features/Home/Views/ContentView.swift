@@ -74,27 +74,32 @@ struct ContentView: View {
                             VStack(alignment: .leading) {
                                 SubTextBold("Today's events", 24).horizontalPadding(20)
                                 PointerView().horizontalPadding(20)
-                            if let tickets = ticketsForEventType() {
-                                ForEach(tickets.indices.prefix(1), id: \.self) { index in
-                                    AllEventsTicketCell(
-                                        ticket: tickets[index],
-                                        isSelected: true,
-                                        showOverlayList: $showOverlay,
-                                        selectedIndex: 0, index: index,
-                                        onSelect: { id, _ in
-                                        }, eventType: newsSelectedSegment == 0 ? .public : .private, coverSelect: { id in
-                                        }
-                                    ).verticalPadding(5).topPadding(3).horizontalPadding(-17)
-                                        .onTapGesture {
-                                            selectedCellID = index
-                                            setupOverlayState(for: tickets[index])
-                                            showSheet = true
-                                        }
-                                }.horizontalPadding()
-                            }
+                                if let tickets = ticketsForEventType() {
+                                    ForEach(tickets.indices.prefix(1), id: \.self) { index in
+                                        AllEventsTicketCell(
+                                            ticket: tickets[index],
+                                            isSelected: true,
+                                            showOverlayList: $showOverlay,
+                                            selectedIndex: 0, index: index,
+                                            onSelect: { id, _ in
+                                            }, eventType: newsSelectedSegment == 0 ? .public : .private, coverSelect: { id in
+                                            }
+                                        ).verticalPadding(5).topPadding(3).horizontalPadding(-17)
+                                            .onTapGesture {
+                                                selectedCellID = index
+                                                setupOverlayState(for: tickets[index])
+                                                showSheet = true
+                                            }
+                                            .onChange(of: selectedCellID) { newValue in
+                                                if newValue == index {
+                                                    setupOverlayState(for: tickets[index])
+                                                }
+                                            }
+                                    }.horizontalPadding()
+                                }
                                 SubTextBold("All events", 24)
                                     .horizontalPadding(20)
-                        }
+                            }
                             HStack(alignment: .center, spacing: 25) {
                                 Spacer()
                                 HStack (spacing: 20) {
@@ -143,7 +148,7 @@ struct ContentView: View {
                     .presentationDetents([.height(230)])
                     .onDisappear {
                         // call API again when the sheet will dissapear
-        //                taskViewModel.fetchData()
+                        //                taskViewModel.fetchData()
                     }
                 }
                 .sheet(isPresented: $showOverlay) {
@@ -195,7 +200,7 @@ struct ContentView: View {
                                     taskViewModel.updateTicket(at: selectedCellID, withStartTime: slideStartTime)
                                     isFirstSlide = false
                                     // call API for the start time
-//                                    taskViewModel.startTimingAPI()
+                                    //                                    taskViewModel.startTimingAPI()
                                     
                                 case (false, false):
                                     // Second case: Event started but not ended
@@ -205,7 +210,7 @@ struct ContentView: View {
                                     sliderText = "Completed"
                                     taskViewModel.updateTicket(at: selectedCellID, withEndTime: slideEndTime)
                                     // call API for the end time
-//                                    taskViewModel.endTimingAPI()
+                                    //                                    taskViewModel.endTimingAPI()
                                 default:
                                     break
                                 }

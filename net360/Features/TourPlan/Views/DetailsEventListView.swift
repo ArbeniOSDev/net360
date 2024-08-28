@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DetailsEventListView: View {
     @StateObject var viewModel = DetailsEventListViewModel()
+    var eventType: EventType
     @State private var selectedIndex = 0
     @State private var showAlert: Bool = false
     @State private var showOverlay: Bool = false
@@ -23,8 +24,10 @@ struct DetailsEventListView: View {
             Color.bgColor
                 .ignoresSafeArea()
             VStack(spacing: 15) {
-                CustomSegmentedPickerView(selectedIndex: $selectedIndex)
-                    .horizontalPadding(25)
+//                if eventType == .future {
+//                    CustomSegmentedPickerView(selectedIndex: $selectedIndex)
+//                        .horizontalPadding(25)
+//                }
                 ScrollView {
                     if let tickets = viewModel.detailsEventObject?.tickets {
                         ForEach(tickets.indices, id: \.self) { index in
@@ -32,18 +35,20 @@ struct DetailsEventListView: View {
                                 ticket: tickets[index],
                                 cityName: cityName,
                                 eventName: eventName ?? "",
-                                isSelected: selectedIndex == 0 ? isCellSelected && selectedCellID == tickets[index].id : selectedCellID == tickets[index].id,
+                                isSelected: eventType == .future ? selectedIndex == 0 ? isCellSelected && selectedCellID == tickets[index].id : selectedCellID == tickets[index].id : true,
                                 showOverlayList: $showOverlay,
                                 selectedIndex: selectedIndex,
                                 index: index,
                                 onSelect: { id, date in
-                                    if selectedIndex == 0 {
-                                        selectedCellID = id
-                                        selectedDate = date
-                                        showAlert = true // Trigger the alert
+                                    if eventType == .future {
+                                        if selectedIndex == 0 {
+                                            selectedCellID = id
+                                            selectedDate = date
+                                            showAlert = true
+                                        }
                                     }
                                 },
-                                eventType: selectedIndex == 0 ? .public : .private,
+                                eventType: eventType == .future ? .public : .private,
                                 cellIsClosed: true
                             )
                             .topPadding()
@@ -71,19 +76,13 @@ struct DetailsEventListView: View {
     
     func convertDateFormat(dateString: String) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM dd" // Input format
+        dateFormatter.dateFormat = "MMM dd"
         
         if let date = dateFormatter.date(from: dateString) {
-            dateFormatter.dateFormat = "dd MMMM" // Output format
+            dateFormatter.dateFormat = "dd MMMM"
             return dateFormatter.string(from: date)
         }
         
-        return dateString // Return original string if conversion fails
-    }
-}
-
-struct DetailsEventListView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailsEventListView()
+        return dateString
     }
 }

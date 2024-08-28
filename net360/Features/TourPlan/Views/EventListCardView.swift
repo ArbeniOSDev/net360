@@ -80,7 +80,7 @@ struct EventListCardView: View {
                         
                     }) {
                         HStack {
-                            NavigationLink(destination: DetailsEventListView(cityName: event?.cityName, eventName: eventName)) {
+                            NavigationLink(destination: DetailsEventListView(eventType: eventType, cityName: event?.cityName, eventName: eventName)) {
                                 Spacer()
                                 SubTextBold("Zeitpläne", 16, .bold, color: eventType == .expired ? .white : .black)
                                 Spacer()
