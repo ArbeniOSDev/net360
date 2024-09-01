@@ -51,7 +51,7 @@ class TaskViewModel: ObservableObject {
                 time: "10:00 AM",
                 eventTotalTime: "02:30",
                 price: "$300",
-                date: "AUG 26 2024",
+                date: "AUG 30 2024",
                 year: "2024",
                 startingTime: "",
                 endedTime: "",
