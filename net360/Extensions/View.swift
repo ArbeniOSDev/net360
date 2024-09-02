@@ -83,6 +83,30 @@ extension View {
         self.padding(.top, top)
             .padding(.leading, leading)
     }
+    func paddingBT(_ bottom: CGFloat, _ trailing: CGFloat) -> some View {
+        self.padding(.bottom, bottom)
+            .padding(.trailing, trailing)
+    }
+    
+    func frameWH(_ width: CGFloat, _ height: CGFloat) -> some View {
+        self.frame(width: width, height: height)
+    }
+        
+    func frameMaxWH(_ maxWidth: CGFloat, _ maxHeight: CGFloat) -> some View {
+        self.frame(maxWidth: maxWidth, maxHeight: maxHeight)
+    }
+    
+    func frameMaxW(_ maxWidth: CGFloat) -> some View {
+        self.frame(maxWidth: maxWidth)
+    }
+    
+    func frameW(_ width: CGFloat) -> some View {
+        self.frame(width: width)
+    }
+    
+    func frameH(_ height: CGFloat) -> some View {
+        self.frame(height: height)
+    }
     
     func `if`<Content: View>(_ conditional: Bool, content: (Self) -> Content) -> some View {
       if conditional {

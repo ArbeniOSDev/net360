@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B924D34D2C859D8D004ADA1A /* CustomCircleButton2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B924D34C2C859D8D004ADA1A /* CustomCircleButton2.swift */; };
 		B924FF5B2C50DD9200F75AB9 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B924FF5A2C50DD9200F75AB9 /* SearchBar.swift */; };
 		B924FF5E2C51040300F75AB9 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B924FF5D2C51040300F75AB9 /* CustomTextField.swift */; };
 		B924FF602C51048200F75AB9 /* SecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B924FF5F2C51048200F75AB9 /* SecureTextField.swift */; };
@@ -17,6 +18,7 @@
 		B924FF6A2C5135B200F75AB9 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B924FF692C5135B200F75AB9 /* EventViewModel.swift */; };
 		B9AC8FE82C7755B700C02862 /* CustomCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC8FE72C7755B700C02862 /* CustomCircleButton.swift */; };
 		B9D154832C522C06001A0771 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D154822C522C06001A0771 /* ImageButton.swift */; };
+		B9D2F9652C85BDEE006A16BB /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D2F9642C85BDEE006A16BB /* Member.swift */; };
 		F4172E802C6DEBA700C5CB2D /* NewProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4172E7F2C6DEBA700C5CB2D /* NewProfileView.swift */; };
 		F4172E822C6DED6900C5CB2D /* BackgroundProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4172E812C6DED6900C5CB2D /* BackgroundProfile.swift */; };
 		F4172E842C6DED8100C5CB2D /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4172E832C6DED8100C5CB2D /* ImagePicker.swift */; };
@@ -97,6 +99,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B924D34C2C859D8D004ADA1A /* CustomCircleButton2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCircleButton2.swift; sourceTree = "<group>"; };
 		B924FF5A2C50DD9200F75AB9 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		B924FF5C2C50E97E00F75AB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B924FF5D2C51040300F75AB9 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -108,6 +111,7 @@
 		B924FF692C5135B200F75AB9 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		B9AC8FE72C7755B700C02862 /* CustomCircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCircleButton.swift; sourceTree = "<group>"; };
 		B9D154822C522C06001A0771 /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
+		B9D2F9642C85BDEE006A16BB /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		F4172E7F2C6DEBA700C5CB2D /* NewProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileView.swift; sourceTree = "<group>"; };
 		F4172E812C6DED6900C5CB2D /* BackgroundProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundProfile.swift; sourceTree = "<group>"; };
 		F4172E832C6DED8100C5CB2D /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -225,6 +229,7 @@
 				F468AA082C63971B002AB250 /* UserResponse.swift */,
 				F4E6FA1B2C6A5765004BE52F /* LoginObject.swift */,
 				F41DDEEE2C6E34A700CAF5AC /* Person.swift */,
+				B9D2F9642C85BDEE006A16BB /* Member.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -474,6 +479,7 @@
 			isa = PBXGroup;
 			children = (
 				F4F55ABA2C6C98D500FFC66B /* SliderButton.swift */,
+				B924D34C2C859D8D004ADA1A /* CustomCircleButton2.swift */,
 			);
 			path = SlideButton;
 			sourceTree = "<group>";
@@ -574,6 +580,7 @@
 				F4E6FA1C2C6A5765004BE52F /* LoginObject.swift in Sources */,
 				F41DDEEB2C6E2F4600CAF5AC /* LanguageCellView.swift in Sources */,
 				F4E8E5932C4FDB90003C661F /* MyEventsView.swift in Sources */,
+				B924D34D2C859D8D004ADA1A /* CustomCircleButton2.swift in Sources */,
 				B924FF622C5105F100F75AB9 /* CustomDropDown.swift in Sources */,
 				F4172E862C6E08D400C5CB2D /* ProfileOptionView.swift in Sources */,
 				B924FF6A2C5135B200F75AB9 /* EventViewModel.swift in Sources */,
@@ -622,6 +629,7 @@
 				F45D6D6C2C762BD10041DC3B /* TeamEventListView.swift in Sources */,
 				F461A6C82C4AAA5100BEAFE2 /* NewEventCellView.swift in Sources */,
 				F4EF3BC82C47E36C002010E6 /* net360App.swift in Sources */,
+				B9D2F9652C85BDEE006A16BB /* Member.swift in Sources */,
 				F4172E842C6DED8100C5CB2D /* ImagePicker.swift in Sources */,
 				F4442FBA2C6B3F5100C51996 /* APIClient.swift in Sources */,
 				F468AA092C63971B002AB250 /* UserResponse.swift in Sources */,

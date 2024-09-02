@@ -72,97 +72,120 @@ struct TeamEventListView: View {
             Spacer()
         }
         .sheet(isPresented: $showInviteView) {
-            HorizontalScrollView(memberType: $memberType)
-            .presentationDetents([.height(230)])
+                        MembersListView(memberType: $memberType)
         }
     }
 }
 
-struct HorizontalScrollView: View {
-    @State private var selectedCellIndex: Int? = nil
+struct MembersListView: View {
+    @State private var selectedMemberIDs: Set<UUID> = [] // Track selected members by ID
     @Binding var memberType: MemberType
+    @State var search: String = ""
     
-    let items = [
-        ("mergimeRaci", "Mergime Raci"),
-        ("melanieGuenth", "Melanie Guenth"),
-        ("edonaRexhepi", "Edona Rexhepi"),
-        ("k_kasami", "Kasam Kasami"),
+    let items: [Member] = [
+        Member(id: UUID(), imageName: "mergimeRaci", text: "Mergime Raci"),
+        Member(id: UUID(), imageName: "melanieGuenth", text: "Melanie Guenth"),
+        Member(id: UUID(), imageName: "edonaRexhepi", text: "Edona Rexhepi"),
+        Member(id: UUID(), imageName: "k_kasami", text: "Kasam Kasami")
     ]
     
-    var body: some View {
-        VStack {
-            ScrollView(.horizontal, showsIndicators: false) {
-                if memberType == .supervisior {
-                    VStack {
-                        HStack {
-                            DescText("Supervisior Team", 18)
-                            Spacer()
-                        }.horizontalPadding()
-                        HStack(spacing: 7) {
-                            ForEach(0..<items.count, id: \.self) { index in
-                                CellView(imageName: items[index].0, text: items[index].1, isSelected: selectedCellIndex == index)
-                                    .onTapGesture {
-                                        selectedCellIndex = index
-                                    }
-                            }
-                        }
-                        .padding()
-                    }
-                } else if memberType == .member {
-                    VStack {
-                        HStack {
-                            DescText("Member Team", 18)
-                            Spacer()
-                        }.horizontalPadding()
-                        HStack(spacing: 7) {
-                            ForEach(0..<items.count, id: \.self) { index in
-                                CellView(imageName: items[index].0, text: items[index].1, isSelected: selectedCellIndex == index)
-                                    .onTapGesture {
-                                        selectedCellIndex = index
-                                    }
-                            }
-                        }
-                        .padding()
-                    }
-                }
-            }
-            Button {
-                
-            } label: {
-                HStack {
-                    Spacer()
-                    SubTextBold("Invite", 16, .bold, color: .white)
-                    Spacer()
-                }
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.buttonColor)
-                .cornerRadius(8)
-            }
-            .padding(.horizontal)
+    // Filtered items based on search text
+    var filteredItems: [Member] {
+        if search.isEmpty {
+            return items
+        } else {
+            return items.filter { $0.text.lowercased().contains(search.lowercased()) }
         }
     }
+    
+    var body: some View {
+            VStack {
+                ScrollView(showsIndicators: false) {
+                    SearchBar(text: $search)
+                    if memberType == .supervisior {
+                        VStack {
+                            HStack {
+                                DescText("Supervisior Team", 18)
+                                Spacer()
+                            }.verticalPadding(15)
+                            VStack(spacing: 7) {
+                                ForEach(filteredItems) { member in
+                                    CellView(
+                                        imageName: member.imageName,
+                                        text: member.text,
+                                        isSelected: selectedMemberIDs.contains(member.id),
+                                        onTap: {
+                                            if selectedMemberIDs.contains(member.id) {
+                                                selectedMemberIDs.remove(member.id) // Deselect
+                                            } else {
+                                                selectedMemberIDs.insert(member.id) // Select
+                                            }
+                                        }
+                                    )
+                                }
+                            }
+                        }
+                    } else if memberType == .member {
+                        VStack {
+                            HStack {
+                                DescText("Member Team", 18)
+                                Spacer()
+                            }.verticalPadding(15)
+                            VStack(spacing: 7) {
+                                ForEach(filteredItems) { member in
+                                    CellView(
+                                        imageName: member.imageName,
+                                        text: member.text,
+                                        isSelected: selectedMemberIDs.contains(member.id),
+                                        onTap: {
+                                            if selectedMemberIDs.contains(member.id) {
+                                                selectedMemberIDs.remove(member.id) // Deselect
+                                            } else {
+                                                selectedMemberIDs.insert(member.id) // Select
+                                            }
+                                        }
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }.padding(30)
+                Button {
+                    // Invite button action
+                } label: {
+                    HStack {
+                        Spacer()
+                        SubTextBold("Invite", 16, .bold, color: .white)
+                        Spacer()
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.buttonColor)
+                    .cornerRadius(8)
+                }
+                .padding(.horizontal)
+            }
+        }
 }
-
 struct CellView: View {
     var imageName: String
     var text: String
     var isSelected: Bool
+    var onTap: () -> Void
     
     var body: some View {
-        VStack {
-            ZStack(alignment: .bottomTrailing) {
-                Image(imageName)
-                    .resizable()
-                    .imageCircleModifier(height: 55, width: 55, renderingMode: .original, color: .clear, aspectRatio: .fill, colorStroke: .white, lineWidth: 2)
-                
-                if isSelected {
-                    Image("checkMark")
-                        .resizable()
-                        .imageCircleModifier(height: 20, width: 20, renderingMode: .original, color: .clear, aspectRatio: .fill, colorStroke: .white, lineWidth: 0)
-                }
-            }
-            DescText(text)
+        HStack {
+            Image(imageName)
+                .resizable()
+                .imageCircleModifier(height: 55, width: 55, renderingMode: .original, color: .clear, aspectRatio: .fill, colorStroke: .white, lineWidth: 2)
+            DescText(text, LayoutConstants.fontSize14)
+            Spacer()
+            CustomCircleButton2(action: {
+                onTap()
+            },fillColor: isSelected ? Color.buttonColor : Color(.systemGray3), imageName: isSelected ? "check" : "plus", color: .white)
+        }
+        .onTapGesture {
+            onTap()
         }
     }
 }
