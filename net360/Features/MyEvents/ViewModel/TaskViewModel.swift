@@ -51,7 +51,7 @@ class TaskViewModel: ObservableObject {
                 time: "10:00 AM",
                 eventTotalTime: "02:30",
                 price: "$300",
-                date: "SEP 02 2024",
+                date: getTodayDateString(),
                 year: "2024",
                 startingTime: "",
                 endedTime: "",
@@ -201,6 +201,14 @@ class TaskViewModel: ObservableObject {
             )
         ]
         upcomingDetailsObject = DetailsEventModel(tickets: tickets)
+    }
+    
+    func getTodayDateString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd yyyy"
+        let todayDate = Date()
+        let todayDateString = dateFormatter.string(from: todayDate)
+        return todayDateString
     }
     
     func updateTicket(at index: Int?, withStartTime startTime: String?) {
