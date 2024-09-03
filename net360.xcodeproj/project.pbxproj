@@ -59,7 +59,7 @@
 		F4E89B4C2C748D3A009C1BD2 /* ShimmerText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E89B4B2C748D3A009C1BD2 /* ShimmerText.swift */; };
 		F4E8E58D2C4F87DF003C661F /* EventTeamHList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8E58C2C4F87DF003C661F /* EventTeamHList.swift */; };
 		F4E8E5912C4FA5D1003C661F /* AddNewKampagneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8E5902C4FA5D1003C661F /* AddNewKampagneView.swift */; };
-		F4E8E5932C4FDB90003C661F /* MyEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8E5922C4FDB90003C661F /* MyEventsView.swift */; };
+		F4E8E5932C4FDB90003C661F /* MainEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8E5922C4FDB90003C661F /* MainEventsView.swift */; };
 		F4E8E5952C4FDC5A003C661F /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8E5942C4FDC5A003C661F /* TaskViewModel.swift */; };
 		F4E8E5A22C4FECF4003C661F /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E8E5A12C4FECF4003C661F /* TaskModel.swift */; };
 		F4EF380A2C4E40C400434364 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EF38092C4E40C400434364 /* CustomTabBar.swift */; };
@@ -152,7 +152,7 @@
 		F4E89B4B2C748D3A009C1BD2 /* ShimmerText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerText.swift; sourceTree = "<group>"; };
 		F4E8E58C2C4F87DF003C661F /* EventTeamHList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTeamHList.swift; sourceTree = "<group>"; };
 		F4E8E5902C4FA5D1003C661F /* AddNewKampagneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewKampagneView.swift; sourceTree = "<group>"; };
-		F4E8E5922C4FDB90003C661F /* MyEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsView.swift; sourceTree = "<group>"; };
+		F4E8E5922C4FDB90003C661F /* MainEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainEventsView.swift; sourceTree = "<group>"; };
 		F4E8E5942C4FDC5A003C661F /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 		F4E8E5A12C4FECF4003C661F /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		F4EF38092C4E40C400434364 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
@@ -335,7 +335,7 @@
 		F4E8E59F2C4FECBC003C661F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F4E8E5922C4FDB90003C661F /* MyEventsView.swift */,
+				F4E8E5922C4FDB90003C661F /* MainEventsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -579,7 +579,7 @@
 				F4172E8A2C6E1E6200C5CB2D /* NewPasswordView.swift in Sources */,
 				F4E6FA1C2C6A5765004BE52F /* LoginObject.swift in Sources */,
 				F41DDEEB2C6E2F4600CAF5AC /* LanguageCellView.swift in Sources */,
-				F4E8E5932C4FDB90003C661F /* MyEventsView.swift in Sources */,
+				F4E8E5932C4FDB90003C661F /* MainEventsView.swift in Sources */,
 				B924D34D2C859D8D004ADA1A /* CustomCircleButton2.swift in Sources */,
 				B924FF622C5105F100F75AB9 /* CustomDropDown.swift in Sources */,
 				F4172E862C6E08D400C5CB2D /* ProfileOptionView.swift in Sources */,

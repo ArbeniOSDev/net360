@@ -189,7 +189,7 @@ struct ContentView: View {
                     if !slideCompletedTwice {
                         SliderButton(
                             onComplete: {
-                                let currentTime = MyEventsView.getCurrentTime()
+                                let currentTime = MainEventsView.getCurrentTime()
                                 
                                 switch (isFirstSlide, slideCompletedTwice) {
                                 case (true, false):

@@ -1,5 +1,5 @@
 //
-//  MyEventsView.swift
+//  MainEventsView.swift
 //  net360
 //
 //  Created by Arben on 23.7.24.
@@ -12,7 +12,7 @@ enum EventsType {
     case myEvents
 }
 
-struct MyEventsView: View {
+struct MainEventsView: View {
     @StateObject var taskViewModel: TaskViewModel = TaskViewModel()
     @State private var selectedCellID: Int = 0
     @State private var showOverlay: Bool = false
@@ -297,7 +297,7 @@ struct MyEventsView: View {
                     if !slideCompletedTwice {
                         SliderButton(
                             onComplete: {
-                                let currentTime = MyEventsView.getCurrentTime()
+                                let currentTime = MainEventsView.getCurrentTime()
                                 
                                 switch (isFirstSlide, slideCompletedTwice) {
                                 case (true, false):
@@ -410,7 +410,7 @@ struct MyEventsView: View {
                 
                 HStack(spacing: 0){
                     HStack(spacing: -10){
-                        ForEach(["User1","User2","User3"],id: \.self){user in
+                        ForEach(["User1", "User2", "User3"],id: \.self){user in
                             Image(user)
                                 .imageCircleModifier(height: 42, width: 42, renderingMode: .original, color: .clear, aspectRatio: .fill, colorStroke: .black, lineWidth: 3)
                                 .background(
@@ -458,6 +458,6 @@ struct MyEventsView: View {
 
 struct MyEventsView_Previews: PreviewProvider {
     static var previews: some View {
-        MyEventsView()
+        MainEventsView()
     }
 }

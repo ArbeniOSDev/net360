@@ -83,7 +83,7 @@ struct CustomTabBar: View {
                             .environmentObject(authManager)
                         UpcomingView()
                             .tag(1)
-                        MyEventsView()
+                        MainEventsView()
                             .tag(2)
                     }.modifier(InternetConnectionBannerModifier(isInternetConnected: $networkManager.isConnected))
                     if selectedTab != 4 {

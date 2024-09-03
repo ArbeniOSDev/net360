@@ -102,6 +102,7 @@ struct MembersListView: View {
             VStack {
                 ScrollView(showsIndicators: false) {
                     SearchBar(text: $search)
+                        .topPadding(15)
                     if memberType == .supervisior {
                         VStack {
                             HStack {
@@ -149,7 +150,7 @@ struct MembersListView: View {
                             }
                         }
                     }
-                }.padding(30)
+                }.padding(20)
                 Button {
                     // Invite button action
                 } label: {
