@@ -9,28 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject private var authManager: LoginViewModel
-    @State private var selectedYear: String = "2024"
-    @State var search: String = ""
     @StateObject var viewModel = ContentViewModel()
     @StateObject var taskViewModel: TaskViewModel = TaskViewModel()
-    @State private var showOverlayView: Bool = false
     @StateObject var eventViewModel = EventViewModel()
-    @State private var selectedItem: String = "Availability"
-    private let years = Array(2020...2024).reversed()
-    private let menuItems = ["Availability", "Alphabet", "Date"]
-    var eventType: EventsType = .myEvents
-    @State private var newsSelectedSegment = 0
-    @State private var showOverlay: Bool = false
-    
-    @State private var selectedCellID: Int = 0
-    @State private var selectedIndex = 0
-    @State private var slideStartTime: String = ""
-    @State private var slideEndTime: String = ""
-    @State private var isFirstSlide = true
-    @State private var showSheet = false
-    @State private var slideCompletedTwice = false
     @State private var sliderBackgroundColor: Color = .customBlueColor
-    @State private var sliderText: String = "Slide to start"
     
     init() {
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color.customBlueColor)
@@ -38,11 +20,11 @@ struct ContentView: View {
        }
     
     var filteredEvents: [Event1] {
-        let events = viewModel.sortedEvents(by: selectedItem)
-        if search.isEmpty {
+        let events = viewModel.sortedEvents(by: viewModel.selectedItem)
+        if viewModel.search.isEmpty {
             return events
         } else {
-            return events.filter { $0.title?.localizedCaseInsensitiveContains(search) == true }
+            return events.filter { $0.title?.localizedCaseInsensitiveContains(viewModel.search) == true }
         }
     }
     
@@ -56,21 +38,21 @@ struct ContentView: View {
                         SubTextBold("Kampagnen Liste", (18), color: .black.opacity(0.7))
                             .topPadding()
                         HStack {
-                            SearchBar(text: $search)
+                            SearchBar(text: $viewModel.search)
                             Menu {
-                                Picker(selection: $selectedItem) {
-                                    ForEach(menuItems, id: \.self) { value in
+                                Picker(selection: $viewModel.selectedItem) {
+                                    ForEach(viewModel.menuItems, id: \.self) { value in
                                         DescText(value, 14, color: Color.buttonColor)
                                             .tag(value)
                                     }
                                 } label: {}
                             } label: {
                                 HStack {
-                                    DescText(selectedItem, 14, color: Color.buttonColor)
+                                    DescText(viewModel.selectedItem, 14, color: Color.buttonColor)
                                     Image("arrows")
                                         .customImageModifier(width: 14, renderingMode: .template, color: Color.buttonColor, aspectRatio: .fit)
                                 }.foregroundColor(.blue)
-                            }.id(selectedItem)
+                            }.id(viewModel.selectedItem)
                         }
                         Divider()
                     }.horizontalPadding(20)
@@ -85,18 +67,18 @@ struct ContentView: View {
                                         AllEventsTicketCell(
                                             ticket: tickets[index],
                                             isSelected: true,
-                                            showOverlayList: $showOverlay,
+                                            showOverlayList: $eventViewModel.showOverlay,
                                             selectedIndex: 0, index: index,
                                             onSelect: { id, _ in
-                                            }, eventType: newsSelectedSegment == 0 ? .public : .private, coverSelect: { id in
+                                            }, eventType: eventViewModel.newsSelectedSegment == 0 ? .public : .private, coverSelect: { id in
                                             }
                                         ).verticalPadding(5).topPadding(3).horizontalPadding(-17)
                                             .onTapGesture {
-                                                selectedCellID = index
+                                                eventViewModel.selectedCellID = index
                                                 setupOverlayState(for: tickets[index])
-                                                showSheet = true
+                                                eventViewModel.showSheet = true
                                             }
-                                            .onChange(of: selectedCellID) { newValue in
+                                            .onChange(of: eventViewModel.selectedCellID) { newValue in
                                                 if newValue == index {
                                                     setupOverlayState(for: tickets[index])
                                                 }
@@ -112,11 +94,11 @@ struct ContentView: View {
                             HStack(alignment: .center, spacing: 25) {
                                 Spacer()
                                 HStack (spacing: 20) {
-                                    ForEach(years, id: \.self) { year in
+                                    ForEach(viewModel.years, id: \.self) { year in
                                         Button {
-                                            selectedYear = "\(year)"
+                                            viewModel.selectedYear = "\(year)"
                                         } label: {
-                                            DescText("\(year)", 16, color: selectedYear == "\(year)" ? .blue : .gray)
+                                            DescText("\(year)", 16, color: viewModel.selectedYear == "\(year)" ? .blue : .gray)
                                         }
                                     }
                                 }
@@ -143,15 +125,15 @@ struct ContentView: View {
                     }
                 }
             }).navigationBarTitleDisplayMode(.inline)
-                .sheet(isPresented: $showSheet) {
+                .sheet(isPresented: $eventViewModel.showSheet) {
                     OverlayView(
-                        selectedCellID: selectedCellID,
-                        slideStartTime: $slideStartTime,
-                        slideEndTime: $slideEndTime,
-                        isFirstSlide: $isFirstSlide,
-                        slideCompletedTwice: $slideCompletedTwice,
+                        selectedCellID: eventViewModel.selectedCellID,
+                        slideStartTime: $eventViewModel.slideStartTime,
+                        slideEndTime: $eventViewModel.slideEndTime,
+                        isFirstSlide: $eventViewModel.isFirstSlide,
+                        slideCompletedTwice: $eventViewModel.slideCompletedTwice,
                         sliderBackgroundColor: $sliderBackgroundColor,
-                        sliderText: $sliderText,
+                        sliderText: $eventViewModel.sliderText,
                         taskViewModel: taskViewModel
                     )
                     .presentationDetents([.height(230)])
@@ -160,8 +142,8 @@ struct ContentView: View {
                         //                taskViewModel.fetchData()
                     }
                 }
-                .sheet(isPresented: $showOverlay) {
-                    TeamEventListView(selectedCellID: $selectedCellID)
+                .sheet(isPresented: $eventViewModel.showOverlay) {
+                    TeamEventListView(selectedCellID: $eventViewModel.selectedCellID)
                 }
         }
     }
@@ -312,35 +294,35 @@ struct ContentView: View {
 
         if let startTime = ticket.startingTime,
            let startTimeDate = timeFormatter.date(from: startTime) {
-            slideStartTime = displayFormatter.string(from: startTimeDate)
+            eventViewModel.slideStartTime = displayFormatter.string(from: startTimeDate)
         } else {
-            slideStartTime = ""
+            eventViewModel.slideStartTime = ""
         }
         
         if let endTime = ticket.endedTime,
            let endTimeDate = timeFormatter.date(from: endTime) {
-            slideEndTime = displayFormatter.string(from: endTimeDate)
+            eventViewModel.slideEndTime = displayFormatter.string(from: endTimeDate)
         } else {
-            slideEndTime = ""
+            eventViewModel.slideEndTime = ""
         }
         
-        isFirstSlide = !(ticket.hasStartedEvent ?? false)
-        slideCompletedTwice = ticket.hasEndedEvent ?? false
+        eventViewModel.isFirstSlide = !(ticket.hasStartedEvent ?? false)
+        eventViewModel.slideCompletedTwice = ticket.hasEndedEvent ?? false
         
         if ticket.hasStartedEvent == true && ticket.hasEndedEvent == false {
             sliderBackgroundColor = .red
-            sliderText = "Slide to finish"
+            eventViewModel.sliderText = "Slide to finish"
         } else if ticket.hasEndedEvent == true {
             sliderBackgroundColor = .blue
-            sliderText = "Completed"
+            eventViewModel.sliderText = "Completed"
         } else {
             sliderBackgroundColor = .customBlueColor
-            sliderText = "Slide to start"
+            eventViewModel.sliderText = "Slide to start"
         }
     }
     
     func ticketsForEventType() -> [Details]? {
-        switch eventType {
+        switch viewModel.eventType {
         case .upcoming:
             return taskViewModel.upcomingDetailsObject?.tickets
         case .myEvents:

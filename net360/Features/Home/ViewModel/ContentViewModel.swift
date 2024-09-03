@@ -9,6 +9,16 @@ import SwiftUI
 
 class ContentViewModel: ObservableObject {
     @Published var selectedEventID: Int? = nil
+    @Published var selectedYear: String = "2024"
+    @Published var years = Array(2020...2024).reversed()
+    @Published var search: String = ""
+    @Published var selectedItem: String = "Availability"
+    @Published var menuItems = ["Availability", "Alphabet", "Date"]
+    @Published var eventType: EventsType = .myEvents
+    
+   
+
+    
     @Published var eventsData = [
         Event1(title: "Zirkus Knie 2024", speaker: "5", hall: "Hall 1", eventIsForToday: true, date: "15.08.2024", startDate: "15.08.2024", endDate: "15.09.2024"),
         Event1(title: "OHA 2024", speaker: "1", hall: "Hall 2", eventIsForToday: false, date: "03.03.2024", startDate: "01.06.2024", endDate: "12.06.2024"),

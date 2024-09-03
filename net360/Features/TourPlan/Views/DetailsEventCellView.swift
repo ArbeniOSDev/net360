@@ -59,9 +59,7 @@ struct AllEventsTicketCell: View {
                         SupervisiorTeamList()
                         Spacer()
                         Image(systemName: "arrow.right")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 16, height: 16)
+                            .customImageModifier(width: 16, renderingMode: .original, aspectRatio: .fit)
                         EventTeamList()
                     }
                 }
