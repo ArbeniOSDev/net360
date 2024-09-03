@@ -47,7 +47,6 @@ struct AddNewKampagneView: View {
                                 .onTapGesture {
                                     viewModel.chooseCampaign = true
                                 }
-                            HStack(alignment: .firstTextBaseline, spacing: 4) {
                                 CustomDropDownLineView(placeholder: "Verantwortlich", selectedValue: $viewModel.responsibleValue, value: "", dropDownList: viewModel.responsibleList, shouldShowDropDown: $viewModel.responsible, validate: .date)
                                     .onTapGesture {
                                         viewModel.responsible = true
@@ -56,8 +55,6 @@ struct AddNewKampagneView: View {
                                     .onTapGesture {
                                         viewModel.deputyResponsible = true
                                     }
-                            }
-                            
                             CustomTextField(placeholder: "Beschreibung", text: $viewModel.description, validate: .requiredField)
                             CustomTextField(placeholder: "Ort", text: $viewModel.place, validate: .requiredField)
                             CustomTextField(placeholder: "Notice", text: $viewModel.notes, validate: .optionalValue)

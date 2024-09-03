@@ -59,9 +59,7 @@ struct AllEventsTicketCell: View {
                         SupervisiorTeamList()
                         Spacer()
                         Image(systemName: "arrow.right")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 20, height: 20)
+                            .customImageModifier(width: 16, renderingMode: .original, aspectRatio: .fit)
                         EventTeamList()
                     }
                 }
@@ -116,11 +114,12 @@ struct AllEventsTicketCell: View {
                 .bottomPadding()
                 Spacer()
             }
-            .frame(maxWidth: 60, maxHeight: .infinity)
+            .frame(maxWidth: 60)
+            .frame(height: 175)
             .padding()
             .background(Color.white)
             .cornerRadius(15)
-        }
+        }.frame(height: 210)
         .horizontalPadding(27)
         .background(Color.clear)
         .cornerRadius(15)

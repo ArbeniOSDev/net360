@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CustomDropDownLineView: View {
-//    var title: String = "Label"
     var placeholder: String = "All Types"
     @Binding var selectedValue: String
     @State var value = ""
@@ -16,6 +15,7 @@ struct CustomDropDownLineView: View {
     @Binding var shouldShowDropDown: Bool
     @State var prompt: String = ""
     var validate: DateFieldValidator = .optionalValue
+    @State private var searchText: String = ""
     
     var body: some View {
         ZStack {
@@ -34,41 +34,51 @@ struct CustomDropDownLineView: View {
                             .customImageModifier(width: 12, color: .gray.opacity(0.6))
                     }.modifier(FloatingContentModifier(text: value, borderColor: Color.gray))
                 }
-                ZStack {
-                    if self.shouldShowDropDown {
-                        HStack {
-                            VStack(alignment: .leading) {
-                                ScrollView {
-                                    ForEach(dropDownList, id: \.self) { item in
-                                        Button(action: {
-                                            self.value = item ?? ""
-                                            selectedValue = item ?? ""
-                                            self.shouldShowDropDown = false
-                                        }) {
-                                            SubText(item ?? "", 14)
-                                                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                                                .contentShape(Rectangle())
-                                        }
-                                        Divider()
-//                                            .verticalPadding(2)
-                                    }
+                
+                if self.shouldShowDropDown {
+                    VStack {
+                        // Search bar
+                        SearchBar(text: $searchText)
+                            .padding()
+                        
+                        // Filtered list
+                        ScrollView {
+                            ForEach(filteredDropDownList, id: \.self) { item in
+                                Button(action: {
+                                    self.value = item ?? ""
+                                    selectedValue = item ?? ""
+                                    self.shouldShowDropDown = false
+                                    self.searchText = ""
+                                }) {
+                                    SubText(item ?? "", 14)
+                                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                                        .contentShape(Rectangle())
                                 }
-                            }.paddingHV(LayoutConstants.padding15, 6)
-                        }.frame(minHeight: 95, maxHeight: 170)
-                            .foregroundColor(.gray)
-//                            .verticalPadding(10)
-                            .background(Color.white)
-                            .cornerRadius(10)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.gray, lineWidth: 0.4)
-                            )
-                            .topPadding(1)
+                                Divider()
+                            }
+                        }.padding(.horizontal)
                     }
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray, lineWidth: 0.4)
+                    )
+                    .padding(.top, 1)
                 }
+                
                 DescText(prompt, 10, color: .red.opacity(0.7))
-                    .topPadding(4)
+                    .padding(.top, 4)
             }
+        }
+    }
+    
+    // Filtered dropdown list based on the search text
+    private var filteredDropDownList: [String?] {
+        if searchText.isEmpty {
+            return dropDownList
+        } else {
+            return dropDownList.filter { $0?.localizedCaseInsensitiveContains(searchText) == true }
         }
     }
     

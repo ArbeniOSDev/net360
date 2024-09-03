@@ -10,11 +10,21 @@ import Combine
 
 class EventViewModel: ObservableObject {
     @Published var events: [EventModel] = []
+    @Published var newsSelectedSegment = 0
+    @Published var showOverlay: Bool = false
+    @Published var selectedCellID: Int = 0
+    @Published var slideStartTime: String = ""
+    @Published var slideEndTime: String = ""
+    @Published var isFirstSlide: Bool = true
+    @Published var showSheet: Bool = false
+    @Published var slideCompletedTwice: Bool = false
+    @Published var sliderText: String = "Slide to start"
+
+
     @Published var campaignName: String = ""
     @Published var description: String = ""
     @Published var place: String = ""
     @Published var notes: String = ""
-    @Published var dropDownList = ["Dog", "Cat", "Cow", "Pig", "Other"]
     @Published var chooseCampaignValue: String = ""
     @Published var responsibleValue: String = ""
     @Published var deputyResponsibleValue: String = ""
@@ -47,7 +57,6 @@ class EventViewModel: ObservableObject {
                 return false
             }
         }
-        
         return true
     }
     
