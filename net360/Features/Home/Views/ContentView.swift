@@ -32,6 +32,11 @@ struct ContentView: View {
     @State private var sliderBackgroundColor: Color = .customBlueColor
     @State private var sliderText: String = "Slide to start"
     
+    init() {
+        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color.customBlueColor)
+       UIPageControl.appearance().pageIndicatorTintColor = UIColor.black.withAlphaComponent(0.2)
+       }
+    
     var filteredEvents: [Event1] {
         let events = viewModel.sortedEvents(by: selectedItem)
         if search.isEmpty {
@@ -74,8 +79,9 @@ struct ContentView: View {
                             VStack(alignment: .leading) {
                                 SubTextBold("Today's events", 24).horizontalPadding(20)
                                 PointerView().horizontalPadding(20)
+                                TabView {
                                 if let tickets = ticketsForEventType() {
-                                    ForEach(tickets.indices.prefix(1), id: \.self) { index in
+                                    ForEach(tickets.indices.prefix(2), id: \.self) { index in
                                         AllEventsTicketCell(
                                             ticket: tickets[index],
                                             isSelected: true,
@@ -95,8 +101,11 @@ struct ContentView: View {
                                                     setupOverlayState(for: tickets[index])
                                                 }
                                             }
-                                    }.horizontalPadding()
+                                    }.horizontalPadding() 
+                                        .topPadding(-25)
                                 }
+                            }.tabViewStyle(PageTabViewStyle())
+                                    .frame(height: 260)
                                 SubTextBold("All events", 24)
                                     .horizontalPadding(20)
                             }
