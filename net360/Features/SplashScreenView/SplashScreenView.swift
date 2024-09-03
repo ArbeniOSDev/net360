@@ -17,7 +17,7 @@ struct SplashScreenView: View {
     var body: some View {
         Group {
             if authManager.isInitialLoginCompleted {
-                if isFaceIDValidated {
+                if isFaceIDValidated || !isFaceIDConfigured() {
                     CustomTabBar(authManager: authManager)
                         .environmentObject(authManager)
                 } else {
@@ -30,10 +30,7 @@ struct SplashScreenView: View {
             }
         }
         .onAppear {
-//            authenticateWithFaceID()
-            isFaceIDValidated = true
-            hasCheckedFaceIDThisSession = true
-            authManager.isInitialLoginCompleted = true
+            checkInitialLoginStatus()
         }
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .active && !hasCheckedFaceIDThisSession {
@@ -52,11 +49,25 @@ struct SplashScreenView: View {
         }
     }
 
-    func authenticateWithFaceID() {
+    func checkInitialLoginStatus() {
+        if authManager.isInitialLoginCompleted {
+            authenticateWithFaceID()
+        } else {
+            authManager.checkLoggedIn()
+        }
+    }
+
+    func isFaceIDConfigured() -> Bool {
         let context = LAContext()
         var error: NSError?
 
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+        return context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
+    }
+
+    func authenticateWithFaceID() {
+        let context = LAContext()
+
+        if isFaceIDConfigured() {
             let reason = "Authenticate with Face ID to continue."
 
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
@@ -64,14 +75,22 @@ struct SplashScreenView: View {
                     if success {
                         isFaceIDValidated = true
                         hasCheckedFaceIDThisSession = true
-                        authManager.isInitialLoginCompleted = true
                     } else {
                         authManager.logout()
                     }
                 }
             }
         } else {
-            authManager.makeLoginAPI()
+            if authManager.isInitialLoginCompleted {
+                DispatchQueue.main.async {
+                    isFaceIDValidated = true
+                    hasCheckedFaceIDThisSession = true
+                }
+            } else {
+                DispatchQueue.main.async {
+                    authManager.checkLoggedIn()
+                }
+            }
         }
     }
 }
