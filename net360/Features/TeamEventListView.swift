@@ -72,24 +72,25 @@ struct TeamEventListView: View {
             Spacer()
         }
         .sheet(isPresented: $showInviteView) {
-                        MembersListView(memberType: $memberType)
+            MembersListView(memberType: $memberType, eventId: selectedCellID)
         }
     }
 }
 
 struct MembersListView: View {
-    @State private var selectedMemberIDs: Set<UUID> = [] // Track selected members by ID
+    @State private var selectedMemberIDs: Set<Int> = []
+    @StateObject private var membersListViewModel = MembersListViewModel()
     @Binding var memberType: MemberType
     @State var search: String = ""
+    @State var eventId: Int = 0
     
     let items: [Member] = [
-        Member(id: UUID(), imageName: "mergimeRaci", text: "Mergime Raci"),
-        Member(id: UUID(), imageName: "melanieGuenth", text: "Melanie Guenth"),
-        Member(id: UUID(), imageName: "edonaRexhepi", text: "Edona Rexhepi"),
-        Member(id: UUID(), imageName: "k_kasami", text: "Kasam Kasami")
+        Member(id: 1, imageName: "mergimeRaci", text: "Mergime Raci"),
+        Member(id: 2, imageName: "melanieGuenth", text: "Melanie Guenth"),
+        Member(id: 3, imageName: "edonaRexhepi", text: "Edona Rexhepi"),
+        Member(id: 4, imageName: "k_kasami", text: "Kasam Kasami")
     ]
     
-    // Filtered items based on search text
     var filteredItems: [Member] {
         if search.isEmpty {
             return items
@@ -118,11 +119,19 @@ struct MembersListView: View {
                                         onTap: {
                                             if selectedMemberIDs.contains(member.id) {
                                                 selectedMemberIDs.remove(member.id) // Deselect
+                                                print(selectedMemberIDs, eventId)
                                             } else {
                                                 selectedMemberIDs.insert(member.id) // Select
+                                                print(selectedMemberIDs, eventId)
                                             }
                                         }
                                     )
+                                }
+                                .onChange(of: selectedMemberIDs) { newSelectedIDs in
+                                    membersListViewModel.membersId = Array(newSelectedIDs)
+                                    membersListViewModel.eventId = eventId
+                                    print("members ID: \(membersListViewModel.membersId)")
+                                    print("event ID: \(eventId)")
                                 }
                             }
                         }
@@ -152,7 +161,7 @@ struct MembersListView: View {
                     }
                 }.padding(20)
                 Button {
-                    // Invite button action
+                    // make API
                 } label: {
                     HStack {
                         Spacer()

@@ -11,8 +11,7 @@ struct ContentView: View {
     @EnvironmentObject private var authManager: LoginViewModel
     @State private var selectedYear: String = "2024"
     @State var search: String = ""
-    @StateObject var viewModel = ContentViewModel()
-    @StateObject var taskViewModel: TaskViewModel = TaskViewModel()
+    @StateObject var taskViewModel = TaskViewModel()
     @State private var showOverlayView: Bool = false
     @StateObject var eventViewModel = EventViewModel()
     @State private var selectedItem: String = "Availability"
@@ -33,7 +32,7 @@ struct ContentView: View {
     @State private var sliderText: String = "Slide to start"
     
     var filteredEvents: [Event1] {
-        let events = viewModel.sortedEvents(by: selectedItem)
+        let events = taskViewModel.sortedEvents(by: selectedItem)
         if search.isEmpty {
             return events
         } else {
@@ -86,13 +85,18 @@ struct ContentView: View {
                                             }
                                         ).verticalPadding(5).topPadding(3).horizontalPadding(-17)
                                             .onTapGesture {
-                                                selectedCellID = index
+                                                selectedCellID = tickets[index].id ?? 0
                                                 setupOverlayState(for: tickets[index])
                                                 showSheet = true
                                             }
                                             .onChange(of: selectedCellID) { newValue in
                                                 if newValue == index {
                                                     setupOverlayState(for: tickets[index])
+                                                }
+                                            }
+                                            .onChange(of: showOverlay) { newValue in
+                                                if newValue {
+                                                    selectedCellID = tickets[index].id ?? 0
                                                 }
                                             }
                                     }.horizontalPadding()

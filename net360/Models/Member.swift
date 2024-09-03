@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Member: Identifiable {
-    let id: UUID
+struct Member: Identifiable, Hashable {
+    let id: Int
     let imageName: String
     let text: String
 }
