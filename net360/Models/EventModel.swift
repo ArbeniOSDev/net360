@@ -15,12 +15,6 @@ struct EventModel: Identifiable, Hashable {
     var startTime: Date = Date()
     var endTime: Date = Date()
     var numberofPersons: Int = 1
-    var campaignName: String = ""
-    var description: String = ""
-    var place: String = ""
-    var notes: String = ""
-    var valueHaustiere: String = ""
-    var dropDownList = ["Dog", "Cat", "Cow", "Pig", "Other"]
 }
 
 struct Event: Identifiable, Hashable {
